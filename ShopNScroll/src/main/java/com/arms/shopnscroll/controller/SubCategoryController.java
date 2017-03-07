@@ -1,8 +1,11 @@
 package com.arms.shopnscroll.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,8 +48,17 @@ public class SubCategoryController
 	}
 	
 	@RequestMapping("/addsubcategory")
-	public String addSubCategory(@ModelAttribute("subCategory")SubCategory subCategory, Model model)
+	public String addSubCategory(@Valid @ModelAttribute("subCategory")SubCategory subCategory,BindingResult result,Model model)
 	{
+		if(result.hasErrors())
+		{
+		model.addAttribute("subCategoryList", subCategoryService.fetchAllSubCategory());
+		model.addAttribute("btnLabel","Retry Add");
+		
+		return "admin-subcategory";
+		}
+		
+		
 		subCategoryService.addSubCategory(subCategory);
 		return "redirect:/subcategory";
 	}

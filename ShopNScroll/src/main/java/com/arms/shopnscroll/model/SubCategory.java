@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class SubCategory
 {
@@ -14,8 +16,12 @@ public class SubCategory
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int subCategoryId;
 
+	@NotEmpty(message="Name is required")
 	private String subCategoryName;
+	
+	@NotEmpty(message="Description is required")
 	private String subCategoryDescription;
+	
 	private int categoryId;
 	
 	@ManyToOne

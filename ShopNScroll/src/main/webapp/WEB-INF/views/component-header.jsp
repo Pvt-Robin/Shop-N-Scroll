@@ -9,24 +9,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ShopNScroll</title>
-<link href="resources/theme-1/img/favicon.ico" rel="icon" type="image/x-icon" />
+<link href="resources/img/favicon.ico" rel="icon" type="image/x-icon" />
 
-<link rel="stylesheet" href="resources/commons/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="resources/theme-1/css/head-style.css"/>
-<link rel="stylesheet" href="resources/theme-1/css/body-style.css"/>
-<link rel="stylesheet" href="resources/theme-1/css/foot-style.css"/>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="resources/css/main-style.css" />
 
 </head>
 
 <body>
 
 <div class="container-fluid">
-<div>
 <div class="head-area row well-sm">
 
 <div class="col-md-4 col-lg-3 col-xs-12 col-sm-12">
 <center>
-<img src="resources/theme-1/img/logo.png" class="head-logo"/>
+<img src="resources/img/logo.png" class="head-logo"/>
 </center>
 </div>
 
@@ -44,32 +41,28 @@
 </div>
 
 <div class="head-menu col-md-4 col-lg-3 col-xs-6 col-sm-4">
-<div class=" btn-group-justified">
-<a href="home" class="head-menu btn btn-xs col-md-2 col-xs-4"><button class="btn btn-warning btn-xs">Home</button></a>
-<a href="cart" class="head-menu btn btn-xs col-md-2 col-xs-4"><button class="btn btn-warning btn-xs">Cart</button></a>
-<a href="login" class="head-menu btn btn-xs col-md-2 col-xs-4"><button class="btn btn-warning btn-xs">Login</button></a>
-<a href="signup" class="head-menu btn btn-xs col-md-2 col-xs-4"><button class="btn btn-warning btn-xs">SignUp</button></a>
+<div class="btn-group-justified">
+<a href="home" class="head-menu btn btn-xs btn-warning col-md-2 col-xs-4"><button>Home</button></a>
+<a href="cart" class="head-menu btn btn-xs btn-warning col-md-2 col-xs-4"><button>Cart</button></a>
+<a href="login" class="head-menu btn btn-xs btn-warning col-md-2 col-xs-4"><button>Login</button></a>
+<a href="signup" class="head-menu btn btn-xs btn-warning col-md-2 col-xs-4"><button>SignUp</button></a>
 </div>
 </div>
 
-</div>
-
-<!-- <br> -->
-<!-- <br> -->
-<!-- <br> -->
-<!-- <br> -->
-<!-- <br> -->
-<!-- <div class="navigation-bar navbar container-fluid well-sm"> -->
-<!-- <div class=" nav navbar-nav">Trending</div> -->
-<!-- <div class="nav navbar-nav">Electronics</div> -->
-<!-- <div class="nav navbar-nav">Home Appliances</div> -->
-<!-- <div class="nav navbar-nav">Outfits</div> -->
-<!-- <div class="nav navbar-nav">Sports</div> -->
-<!-- <div class="nav navbar-nav">More</div> -->
-<!-- </div> -->
 </div>
 </div>
 
 <!-- MARGIN-DIVIDER -->
 <div class="margin-divider"></div>
 
+<div class="head-navig-bar row navbar">
+<div class="container col-md-* col-lg-* col-xs-* col-sm-*">
+
+<div class="navbar-header">Trending</div>
+<div class="navbar-nav">Electronics</div>
+<div class="navbar-nav">Home Appliances</div>
+<div class="navbar-nav">Outfits</div>
+<div class="navbar-nav">Sports</div>
+<div class="navbar-right">More</div>
+</div>
+</div>

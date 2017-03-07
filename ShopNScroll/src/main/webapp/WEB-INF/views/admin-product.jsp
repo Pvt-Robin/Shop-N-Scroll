@@ -12,16 +12,35 @@
 <button class="btn btn-info">Products</button><br/>
 
 <h1>Product Management</h1>
-<form:form action="addproduct" modelAttribute="product">
+<form:form action="addproduct" modelAttribute="product" enctype="multipart/form-data">
+
 <form:input path="productId" hidden="true"/>
+
 <form:input path="productName" placeholder="Name"/>
+<form:errors path="productName"/>
+
 <form:input path="description" placeholder="Description"/>
+<form:errors path="description"/>
+
 <form:input path="actualPrice" placeholder="Original Price"/>
+<form:errors path="actualPrice"/>
+
 <form:input path="finalPrice" placeholder="Final Price"/>
+<form:errors path="finalPrice"/>
+
 <form:input path="color" placeholder="Color"/>
+<form:errors path="color"/>
+
 <form:input path="size" placeholder="Size"/>
+<form:errors path="size"/>
+
 <form:input path="madeCountry" placeholder="Country"/>
+<form:errors path="madeCountry"/>
+
 <form:input path="stock" placeholder="Stock"/>
+<form:errors path="stock"/>
+
+<form:input type="file" path="productImage"/>
 
 <form:select path="categoryId" items="${categoryList}" itemLabel="categoryName" itemValue="categoryId"/>
 <form:select path="subCategoryId" items="${subCategoryList}" itemLabel="subCategoryName" itemValue="subCategoryId" />

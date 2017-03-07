@@ -1,14 +1,23 @@
 package com.arms.shopnscroll.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.arms.shopnscroll.service.CategoryService;
 
 @Controller
 public class HomeController 
 {
+	@Autowired
+	CategoryService categoryService;
+
 	@RequestMapping(value={"/","/home"})
-	public String getHome()
+	public String getHome(Model model)
 	{
+		model.addAttribute("categoryList", categoryService.fetchAllCategory());
+		
 		return "main-home";
 	}
 	
@@ -28,18 +37,6 @@ public class HomeController
 	public String getSignUp()
 	{
 		return "main-signup";
-	}
-	
-	@RequestMapping("/admin")
-	public String getAdminLogin()
-	{
-		return "main-adminlogin";
-	}
-	
-	@RequestMapping("/control")
-	public String getControl()
-	{
-		return "admin-tools";
 	}
 	
 	@RequestMapping("/about")

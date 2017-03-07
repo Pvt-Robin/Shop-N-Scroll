@@ -6,6 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Product 
@@ -14,19 +20,40 @@ public class Product
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private  int productId;
 	
+	@NotEmpty(message="Name is required")
 	private String productName;
+	
+	@NotEmpty(message="Description is required")
 	private String description;
+	
+	@NotNull(message="Actual Price is required")
+	@Min(value=1, message="Cannot be less than 1")
 	private float actualPrice;
+	
+	@NotNull(message="Final Price is required or cannot be greater than ")
+	@Min(value=1, message="Cannot be less than 1")
 	private float finalPrice;
+	
+	@NotEmpty(message="Color is required")
 	private String color;
+	
+	@NotEmpty(message="Size is required")
 	private String size;
+	
+	@NotEmpty(message="Country is required")
 	private String madeCountry;
+	
+	@NotNull(message="Stock is needed")
+	@Min(value=1, message="Cannot be less than 1")
 	private int stock;
 	
 	private int categoryId;
 	private int subCategoryId;
 	private int supplierId;
 	private int brandId;
+	
+	@Transient
+	private MultipartFile productImage;
 	
 	@ManyToOne
 	@JoinColumn(name="categoryId", nullable=false , updatable=false , insertable=false )
@@ -106,7 +133,7 @@ public class Product
 
 	public void setMadeCountry(String madeCountry) {
 		this.madeCountry = madeCountry;
-	}
+	}	
 
 	public int getStock() {
 		return stock;
@@ -179,6 +206,13 @@ public class Product
 	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
-	
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 	
 }

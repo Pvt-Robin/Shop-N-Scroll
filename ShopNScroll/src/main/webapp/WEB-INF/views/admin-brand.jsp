@@ -12,13 +12,24 @@
 
 <h1>Brand Management</h1>
 <form:form action="addbrand" modelAttribute="brand">
+
 <form:input path="brandId" hidden="true"/>
-<form:input path="brandName" placeholder="Name"/>
-<form:input path="brandDescription" placeholder="Description"/>
-<form:button>${btnLabel}</form:button>
+
+<div class="row form-control">
+<div class="col-md-4" ><form:input  path="brandName" placeholder="Name"/></div>
+<div class="col-md-4" ><form:input path="brandDescription" placeholder="Description"/></div>
+</div>
+<div class="css-form-error row form-control">
+<div class="col-md-4" ><form:errors path="brandName"/></div>
+<div class="col-md-4" ><form:errors path="brandDescription"/></div>
+</div>
+
+<div class="row text-center">
+<form:button class="btn btn-success">${btnLabel}</form:button>
 <c:if test="${btnLabel eq 'Update'}">
-<form action="brand"><input type="submit" value="Back" /></form>
+<form action="brand"><input type="submit" value="Back" class="btn btn-danger" /></form>
 </c:if>
+</div>
 </form:form>
 <br/>
 

@@ -11,10 +11,16 @@
 <a href="product" ><button class="btn btn-warning">Products</button></a><br/>
 
 <h1>Category Management</h1>
+
 <form:form action="addcategory" modelAttribute="category">
+
 <form:input path="categoryId" hidden="true"/>
 <form:input path="categoryName" placeholder="Name"/>
+<form:errors path="categoryName"></form:errors>
+
 <form:input path="categoryDescription" placeholder="Description"/>
+<form:errors path="categoryDescription"></form:errors>
+
 <form:button>${btnLabel}</form:button>
 <c:if test="${btnLabel eq 'Update'}">
 <form action="category"><input type="submit" value="Back" /></form>

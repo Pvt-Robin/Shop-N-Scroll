@@ -14,16 +14,37 @@
 <form:form action="addsupplier" modelAttribute="supplier">
 <form:input path="supplierId" hidden="true"/>
 <form:input path="supplierName" placeholder="Name"/>
+<form:errors path="supplierName"/>
+
 <form:input path="supplierFirmName" placeholder="Firm Name"/>
+<form:errors path="supplierFirmName"/>
+ 
 <form:input path="supplierDescription" placeholder="Description"/>
+<form:errors path="supplierDescription"/>
+
 <form:input path="supplierLandmark" placeholder="Landmark"/>
+<form:errors path="supplierLandmark"/>
+
 <form:input path="supplierStreet" placeholder="Street"/>
+<form:errors path="supplierStreet"/>
+
 <form:input path="supplierCity" placeholder="City"/>
+<form:errors path="supplierCity"/>
+
 <form:input path="supplierState" placeholder="State"/>
+<form:errors path="supplierState"/>
+
 <form:input path="supplierCountry" placeholder="Country"/>
+<form:errors path="supplierCountry"/>
+
 <form:input path="supplierEmail" placeholder="Email"/>
+<form:errors path="supplierEmail"/>
+
 <form:input path="supplierContact" placeholder="Contact"/>
+<form:errors path="supplierContact"/>
+
 <form:input path="supplierDisabled" placeholder="Disabled (yes/no)"/>
+<form:errors path="supplierDisabled"/>
 
 <form:button>${btnLabel}</form:button>
 <c:if test="${btnLabel eq 'Update'}">

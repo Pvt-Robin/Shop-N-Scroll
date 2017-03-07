@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Supplier 
 {
@@ -12,16 +14,27 @@ public class Supplier
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int supplierId;
 	
+	@NotEmpty(message="Name is required")
 	private String supplierName;
+	@NotEmpty(message="Firm Name required")
 	private String supplierFirmName;
+	@NotEmpty(message="Description is required")
 	private String supplierDescription;
+	@NotEmpty(message="Landmark is required")
 	private String supplierLandmark;
+	@NotEmpty(message="Street is required")
 	private String supplierStreet;
+	@NotEmpty(message="City is required")
 	private String supplierCity;
+	@NotEmpty(message="State is required")
 	private String supplierState;
+	@NotEmpty(message="Country is required")
 	private String supplierCountry;
+	@NotEmpty(message="Email is required")
 	private String supplierEmail;
+	@NotEmpty(message="Contace is required")
 	private String supplierContact;
+	@NotEmpty(message="Active Status is required")
 	private String supplierDisabled;
 	
 	public int getSupplierId() {

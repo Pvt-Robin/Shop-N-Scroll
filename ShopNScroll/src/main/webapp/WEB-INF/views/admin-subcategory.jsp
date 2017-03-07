@@ -12,9 +12,15 @@
 
 <h1>Sub-Category Management</h1>
 <form:form action="addsubcategory" modelAttribute="subCategory">
+
 <form:input path="subCategoryId" hidden="true"/>
+
 <form:input path="subCategoryName" placeholder="Name"/>
+<form:errors path="subCategoryName"/>
+
 <form:input path="subCategoryDescription" placeholder="Description"/>
+<form:errors path="subCategoryDescription"/>
+
 <form:select path="categoryId" items="${categoryList}" itemLabel="categoryName" itemValue="categoryId" />
 <form:button>${btnLabel}</form:button>
 <c:if test="${btnLabel eq 'Update'}">

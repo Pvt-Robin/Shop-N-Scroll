@@ -1,8 +1,11 @@
 package com.arms.shopnscroll.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,7 @@ public class BrandController
 	BrandService brandService;
 	
 	@RequestMapping(value="/brand")
-	public String getbrand(Model model)
+	public String getBrand(Model model)
 	{
 		model.addAttribute("brandList", brandService.fetchAllBrand());
 		model.addAttribute("brand",new Brand());
@@ -37,8 +40,16 @@ public class BrandController
 	}
 	
 	@RequestMapping("/addbrand")
-	public String addBrand(@ModelAttribute("brand")Brand brand)
+	public String addBrand(@Valid @ModelAttribute("brand")Brand brand,BindingResult result,Model model)
 	{
+		if(result.hasErrors())
+		{
+			model.addAttribute("brandList", brandService.fetchAllBrand());
+			model.addAttribute("btnLabel","Add");
+			
+			return "admin-brand";
+		}
+		
 		brandService.addBrand(brand);
 		return "redirect:/brand";
 	}
