@@ -15,29 +15,12 @@
 </head>
 <body>
 
-
-
-<div class="row">
-<c:forEach var="clist" items="${categoryList}">
-<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">${clist.categoryName}
-  <span class="caret"></span></button>
-  <ul class="dropdown-content">
-			 <c:forEach var="slist" items="${clist.subCategory}">
-    	    	<li><a href="#">${slist.subCategoryName}</a></li>
-  			</c:forEach>
-  	</ul>
-	</div>
-  </c:forEach>
-
-
-
 <!-- HEADER STARTS -->
 <div class="container-fluid well-sm"  id="test-header">
 
 <!-- FIRST ROW STARTS -->
 <div class="row">
-
+<!-- LEFT PADDING -->
 <div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
 
 <div class="head-src">
@@ -48,15 +31,45 @@
 </form>
 </div>
 
+<!-- RIGHT PADDING -->
 <div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
-
+</div>
 </div>
 
-</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
 

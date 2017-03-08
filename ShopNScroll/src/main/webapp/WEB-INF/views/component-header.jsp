@@ -55,14 +55,6 @@
 <!-- MARGIN-DIVIDER -->
 <div class="margin-divider"></div>
 
-<div class="head-navig-bar row navbar">
-<div class="container col-md-* col-lg-* col-xs-* col-sm-*">
 
-<div class="navbar-header">Trending</div>
-<div class="navbar-nav">Electronics</div>
-<div class="navbar-nav">Home Appliances</div>
-<div class="navbar-nav">Outfits</div>
-<div class="navbar-nav">Sports</div>
-<div class="navbar-right">More</div>
-</div>
-</div>
+
+<div class="body-area container">

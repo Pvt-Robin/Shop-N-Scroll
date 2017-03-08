@@ -1,7 +1,6 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
 
-<div class="body-area container">
 <h1>HOME</h1>
 
 <div class="row">
@@ -17,7 +16,6 @@
 </c:forEach>
 </div>
 
-</div>
 <!-- BASE -->
 <%@ include file="component-base.jsp" %>
 <!-- FOOTER  -->

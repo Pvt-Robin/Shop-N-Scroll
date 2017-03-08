@@ -40,7 +40,7 @@
 <form:input path="stock" placeholder="Stock"/>
 <form:errors path="stock"/>
 
-<form:input type="file" path="productImage"/>
+<form:input type="file" accept=".jpg,.jpeg,.png" path="productImage"/>
 
 <form:select path="categoryId" items="${categoryList}" itemLabel="categoryName" itemValue="categoryId"/>
 <form:select path="subCategoryId" items="${subCategoryList}" itemLabel="subCategoryName" itemValue="subCategoryId" />
@@ -65,6 +65,7 @@
 <th>Size</th>
 <th>Made Country</th>
 <th>Stock</th>
+<th>Image</th>
 <th>Operations</th>
 
 </tr>
@@ -79,6 +80,7 @@
 <td>${plist.size}</td>
 <td>${plist.madeCountry}</td>
 <td>${plist.stock}</td>
+<td><img src="resources/data/productImage-${plist.productId}.jpg" height="100px" width="100px" alt="img not uploaded"/></td>
 <td>
 <a href="updateproduct-${plist.productId}"><button>Update</button></a>
 <a href="removeproduct-${plist.productId}"><button>Delete</button></a>

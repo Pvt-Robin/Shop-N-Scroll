@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 
 import javax.validation.Valid;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -100,7 +101,7 @@ public class ProductController {
 							directory.mkdirs();
 						}
 						
-						File imageFile = new File(directory.getAbsolutePath() + File.separator + "productImage-" + product.getProductId() + "." + productImage.getOriginalFilename());
+						File imageFile = new File(directory.getAbsolutePath() + File.separator + "productImage-" + product.getProductId() + ".jpg");
 						BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(imageFile));
 						stream.write(bytes);
 						stream.close();
@@ -108,13 +109,13 @@ public class ProductController {
 			catch(Exception e)
 			{
 				e.printStackTrace();
-				model.addAttribute("uploadmessage","Image Upload Failed.try again");
+				model.addAttribute("fmessage","Image Upload Failed.try again");
 			}
-			model.addAttribute("uploadmessage","Image Upload Successful");
+			model.addAttribute("filemessage","Image Upload Successful");
 		}
 		else
 		{
-			model.addAttribute("uploadmessage","Image file is required");
+			model.addAttribute("filemessage","Image file is required");
 		}
 		
 		return "redirect:/product";
@@ -122,7 +123,17 @@ public class ProductController {
 
 	@RequestMapping("/removeproduct-{productId}")
 	public String removeProduct(@PathVariable("productId") int productId) {
-		productService.removeProduct(productId);
+				
+		try{
+    		File file = new File(Data_Folder +  File.separator + "productImage-" + productId +".jpg");
+    		file.delete();
+			}
+			catch(Exception e)
+			{
+    		e.printStackTrace();
+    		}
+		
+		
 		return "redirect:/product";
 	}
 }
