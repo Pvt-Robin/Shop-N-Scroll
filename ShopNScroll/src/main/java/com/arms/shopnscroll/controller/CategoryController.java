@@ -24,17 +24,20 @@ public class CategoryController
 	{
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
 		model.addAttribute("category",new Category());
+		model.addAttribute("categoryListJSON", categoryService.fetchAllCategoryJSON());
+		
 		model.addAttribute("btnLabel","Add");
 		
 		return "admin-category";
 	}
-	
 	
 	@RequestMapping("/updatecategory-{categoryId}")
 	public String updateCategory(@PathVariable("categoryId") int categoryId, @ModelAttribute("category") Category category, Model model)
 	{
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
 		model.addAttribute("category",categoryService.fetchOneCategory(categoryId));
+		model.addAttribute("categoryListJSON", categoryService.fetchAllCategoryJSON());
+
 		model.addAttribute("btnLabel","Update");
 		
 		return "admin-category";
@@ -46,7 +49,10 @@ public class CategoryController
 		if(result.hasErrors())
 		{
 			model.addAttribute("categoryList", categoryService.fetchAllCategory());
-			model.addAttribute("btnLabel","Add");
+			model.addAttribute("categoryListJSON", categoryService.fetchAllCategoryJSON());
+			System.out.println(categoryService.fetchAllCategoryJSON());
+			
+			model.addAttribute("btnLabel","Update");
 			
 			return"admin-category";
 		}

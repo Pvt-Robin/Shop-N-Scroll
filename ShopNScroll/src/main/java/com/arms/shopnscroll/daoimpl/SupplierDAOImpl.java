@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.arms.shopnscroll.dao.SupplierDAO;
 import com.arms.shopnscroll.model.Supplier;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class SupplierDAOImpl implements SupplierDAO
@@ -20,6 +22,13 @@ public class SupplierDAOImpl implements SupplierDAO
 		return supplierList;
 	}
 
+	public String fetchAllSupplierJSON() {
+//		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier").getResultList();
+		return gson.toJson(supplierList);
+	}
+	
 	public Supplier fetchOneCategory(int supplierId) {
 		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier where supplierId = "+supplierId).getResultList();
 		return supplierList.get(0);

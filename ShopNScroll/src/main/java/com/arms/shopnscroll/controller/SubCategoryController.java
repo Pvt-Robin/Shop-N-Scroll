@@ -29,6 +29,7 @@ public class SubCategoryController
 		model.addAttribute("subCategoryList", subCategoryService.fetchAllSubCategory());
 		model.addAttribute("subCategory", new SubCategory());
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
+		model.addAttribute("subCategoryListJSON", subCategoryService.fetchAllSubCategoryJSON());
 		
 		model.addAttribute("btnLabel","Add");
 
@@ -41,6 +42,7 @@ public class SubCategoryController
 		model.addAttribute("subCategoryList", subCategoryService.fetchAllSubCategory());
 		model.addAttribute("subCategory", subCategoryService.fetchOneSubCategory(subCategoryId));
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
+		model.addAttribute("subCategoryListJSON", subCategoryService.fetchAllSubCategoryJSON());
 
 		model.addAttribute("btnLabel","Update");
 
@@ -53,7 +55,10 @@ public class SubCategoryController
 		if(result.hasErrors())
 		{
 		model.addAttribute("subCategoryList", subCategoryService.fetchAllSubCategory());
-		model.addAttribute("btnLabel","Retry Add");
+		model.addAttribute("categoryList", categoryService.fetchAllCategory());
+		model.addAttribute("subCategoryListJSON", subCategoryService.fetchAllSubCategoryJSON());
+
+		model.addAttribute("btnLabel","Update");
 		
 		return "admin-subcategory";
 		}

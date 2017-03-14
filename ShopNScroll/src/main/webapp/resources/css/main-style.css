@@ -1,142 +1,203 @@
 /* ------------------------------------------------------------------------- HEAD STYLING  */
 
-/* AFFECTS HEADER-FIRST ROW*/
-.head-area 
+#main-header
 {
-	background-color: rgba(0, 0, 0, 1);
-	background-image: url("../../resources/img/headpattern.jpg");
-	color: rgba( 255, 255, 255, 1);
-	position: fixed;
+	background-color:rgba(0,0,0,0.5) ;
+	position:fixed;
 	top: 0px;
 	left: 0px;
 	right: 0px;
 	z-index: 2;
-	color: rgba(255, 255, 255, 1);
-	width:100%;
 }
 
-/* AFFECTS SHOP N SCROLL LOGO ONLY */
-.head-logo 
+.main-header-btn
 {
-	alignment:center;
-	width: 100%;
-/* 	height: 40px; */
-}
-
-/* AFFECTS SEARCH BAR GRID */
-.head-searchbar
-{
-
-}
-
-/* AFFECTS SEARCH BAR BOX */
-.head-searchbar-box
-{
-	color: rgba(255, 165, 0, 1);
-	background-color: rgb(255,255,255,0.5);
-	border:4px;
-}
-
-/* AFFECTS SEARCH BAR BUTTON */
-.head-searchbar-button 
-{
-	color: rgb(0,0,0);
-	background-color: rgba(255,255,255);
-	border:5px;
-	border-color:rgb(255,165,0);
-}
-
-/* AFFECTS SEARCH BAR MENU */
-.head-menu 
-{
+	background-color:rgba(0,0,0,0.2);
 	color:white;
+	width:"100%";
+	border: 1px solid white;
+	border-radius: 50px 50px 50px 50px;
+	outline:none;
+}
+
+.main-header-btn:hover
+{
+	background-color:rgba(255,165,0,0.5);
+	border: 1px solid white;
+}
+
+.main-header-btn:active
+{
 	background-color:rgba(0,0,0,0.0);
 }
 
-/* AFFECTS NAV BAR ONLY */
-.head-navig-bar
-{
-background-color:rgba(0,0,0,0.5);
 
+#main-head-srctxt
+{
+	background:rgba(0,0,0,0.3) url("../../resources/img/logo.png") center no-repeat;
+	background-size:auto 100%;
+	width:"100%";
+	border: 1px solid white;
+	border-radius: 50px 50px 50px 50px;
+	font-size: large;
+	color:rgb(255,255,255)
+}
+#main-head-srctxt:focus
+{
+	background-image:none;
+	background-color:rgba(0,0,0,0.2);
+	outline:none;
+}
+#main-head-srctxt:hover
+{
+	background-color:rgba(255,165,0,0.5);
 }
 
+#main-head-srctxt-sm
+{
+	background:rgba(0,0,0,0.3) url("../../resources/img/logo-sm.png") center no-repeat;
+	background-size:auto 100%;
+	width:"100%";
+	border: 1px solid white;
+	border-radius: 50px 50px 50px 50px;
+	font-size: large;
+	color:rgb(255,255,255)
+}
+#main-head-srctxt-sm:focus
+{
+	background-image:none;
+	background-color:rgba(0,0,0,0.2);
+	outline:none;
+}
+#main-head-srctxt-sm:hover
+{
+	background-color:rgba(255,165,0,0.5);
+}
 /* ------------------------------------------------------------------------- BODY STYLING */
+
+#margin-divider
+{
+	margin-top: 50px;
+}
+
 
 body
 {
-	background-color:rgb(220,245,213);
-	background-image:url("../../resources/img/bodypattern.png");
+	background-color:rgba(255,255,255,0.3);
+	background-image:url("../../resources/img/bodypattern-3.png");
 	background-attachment: fixed;
+	
 }
 
 .body-area
 {
-	background-color: rgba(255,255,255,0.8);
+	background-color: rgba(255,255,255,0.7);
 	background-attachment: fixed;
 }
 
-.margin-divider
+.signup-grid
 {
-	margin-top: 60px;
+	background-color:rgba(0,0,0,0.1);
+	border-radius: 20px 20px 20px 20px;
 }
 
-.casual-button
+.signup-grid:hover
 {
-	background-color:rgba(125,81,0,0.6);
-	color:rgb(255,255,255);
+	background-color:rgba(255,165,0,0.8);
 }
 
-.functional-button
+.carosel-ad
 {
-	background-color:rgba(255,140,0,0.6);
-	color:rgb(255,255,255);
+	height:200px;
+	width:100%;
 }
 
-.danger-button
+.carosel-ad-image
 {
-	background-color:rgba(255,10,0,0.6);
-	color:rgb(255,255,255);
+	height:100%;
+	width:100%;
 }
 
-.css-form-error 
+.sns-heading
 {
-color:rgb(107,0,0);
-font-weight:bold;
-background-color:rgb(245,222,179);	
+	color:rgba(255,255,255,0.9);
+/* 	background-color: rgba(255,255,255,0.5); */
+	background-color:rgba(0,0,0,0.5);
+	font-weight: bold;
+	font-stretch:extra-expanded;
+	background-image: url("../../resources/img/bodypattern-3.png");
 }
 
-
-/* test */
-h1
+.sns-content
 {
+	color:rgba(0,0,0,0.7);
+	background-color: rgba(255,255,255,0.5);
+	background-image: url("../../resources/img/bodypattern-3.png");
+}
+
+.sns-product-grid
+{
+	background-color: rgba(0,0,0,0.2);
+}
+
+.sns-product-title
+{
+	font-weight:bold;
+}
+
+.sns-product-grid-img
+{
+	height:100%;
+	width:100%;
+}
+
+.special-icon
+{
+	height:40px;
+	width:40px;
+	border-radius: 50px 50px 50px 50px;
+	outline:none;
+}
+
+.admin-tool-heading
+{
+	color:rgb(91,192,222);
+}
+
+.admin-tool-form
+{
+/* 	background-color:rgba(255,220,154,0.3); */
+	background-image: url("../../resources/img/bodypattern-3.png");
 	
-	color:orange;
 }
 
-
+.admin-tool-error
+{
+	color:red;
+	font-style: italic;
+}
 
 /* ------------------------------------------------------------------------- FOOT STYLING */
 
 #base-area
 {
-	background-color: rgba(0,0,0,1);
+	background-color: rgba(0,0,0,0.5);
 	color:rgba(163,106,0,1);
 	position:fixed;
 	left:0px;
 	bottom:0px;
 	width:100%;
-/* 	alignment:right; */
 }
 
 .base-area-btn
 {
-	background-color:rgb(0,0,0);
+	background-color:rgba(0,0,0,0);
 	color:rgba(255,255,255,0.5);
 }
 
 .base-area-btn:visited
 {
-	background-color:rgb(0,0,0);
+	background-color:rgba(0,0,0,0);
 	color:rgba(255,255,255,0.5);
 }
 
@@ -148,104 +209,12 @@ h1
 
 .base-area-btn:active
 {
-	background-color:rgb(255,165,0,1.0);
+	background-color:rgba(255,165,0,1.0);
 	color:rgba(255,255,255,1);
 }
 
 
 /* -------------------------------------------------------------------XCLUSIVE AREA */
 
-#test-header
-{
-	background-color:rgba(0,0,0,1) ;
-	background-image: url("../../resources/img/headpattern.jpg");
-	position:fixed;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	z-index: 2;
-}
 
-.head-src
-{
-	width:100%;
-	padding:0px
-}
-
-
-
-.form-element
-{
-	background-color:rbga(0,0,0,0);
-	border: 2px solid rgba(142,73,17,1);
-	border-radius: 50px;
-	color:rgb(255,255,255);
-	font-size:18px;
-}
-
-.head-srcbtn-left
-{
-	background-color:rgba(0,0,0,0.3);
-	width:"100%";
-	border: 1px solid orange;
-	border-radius: 50px 0px 0px 50px;
-	outline:none;
-}
-
-.head-srcbtn-left:hover
-{
-	background-color:rgba(0,0,0,0.5);
-	border: 1px solid white;
-}
-
-.head-srcbtn-left:active
-{
-	background-color:rgba(0,0,0,0.8);
-	border: 1px white;
-}
-
-
-
-
-.head-srcbtn-right
-{
-	background-color:rgba(0,0,0,0.3);
-	width:"100%";
-	border: 1px solid orange;
-	border-radius: 0px 50px 50px 0px;
-	outline:none;
-}
-
-.head-srcbtn-right:hover
-{
-	background-color:rgba(0,0,0,0.5);
-	border: 1px solid white;
-}
-
-.head-srcbtn-right:active
-{
-	background-color:rgba(0,0,0,0.8);
-	border: 1px white;
-}
-
-
-.head-srctxt
-{
-	background:rgba(0,0,0,0.3) url("../../resources/img/logo.png") center no-repeat;
-	background-size:auto 100%;
-	width:"100%";
-	border: 1px solid orange;
-	border-radius: 0px;
-}
-
-.head-srctxt:focus
-{
-	background-image:none;
-	border: 1px white;
-}
-
-.head-srctxt:hover
-{
-	background-color:rgba(0,0,0,0.5);
-	border: 1px solid white;
-}
+/* ------------------------------------------------------------------------------SITE THEME */

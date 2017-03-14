@@ -21,6 +21,11 @@ public class BrandService
 		return brandDAOImpl.fetchAllBrand();
 	}
 	
+	public String fetchAllBrandJSON()
+	{
+		return brandDAOImpl.fetchAllBrandJSON();
+	}
+	
 	public Brand fetchOneBrand(int brandId)
 	{
 		return brandDAOImpl.fetchOneBrand(brandId);

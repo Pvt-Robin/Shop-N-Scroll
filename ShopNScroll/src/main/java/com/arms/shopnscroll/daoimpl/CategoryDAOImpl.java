@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.arms.shopnscroll.dao.CategoryDAO;
 import com.arms.shopnscroll.model.Category;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class CategoryDAOImpl implements CategoryDAO
@@ -18,6 +20,13 @@ public class CategoryDAOImpl implements CategoryDAO
 	public List<Category> fetchAllCategory() {
 		List<Category> catList = sessionFactory.getCurrentSession().createQuery("from Category").getResultList();
 		return catList;
+	}
+	
+	public String fetchAllCategoryJSON() {
+		List<Category> catList = sessionFactory.getCurrentSession().createQuery("from Category").getResultList();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+//		Gson gson = new Gson();
+		return gson.toJson(catList);
 	}
 
 	public Category fetchOneCategory(int categoryId) {

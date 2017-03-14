@@ -7,34 +7,58 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class Supplier 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Expose
 	private int supplierId;
 	
 	@NotEmpty(message="Name is required")
+	@Expose
 	private String supplierName;
+	
 	@NotEmpty(message="Firm Name required")
+	@Expose
 	private String supplierFirmName;
+	
 	@NotEmpty(message="Description is required")
+	@Expose
 	private String supplierDescription;
+	
 	@NotEmpty(message="Landmark is required")
+	@Expose
 	private String supplierLandmark;
+	
 	@NotEmpty(message="Street is required")
+	@Expose
 	private String supplierStreet;
+	
 	@NotEmpty(message="City is required")
+	@Expose
 	private String supplierCity;
+	
 	@NotEmpty(message="State is required")
+	@Expose
 	private String supplierState;
+	
 	@NotEmpty(message="Country is required")
+	@Expose
 	private String supplierCountry;
+	
 	@NotEmpty(message="Email is required")
+	@Expose
 	private String supplierEmail;
-	@NotEmpty(message="Contace is required")
+	
+	@NotEmpty(message="Contact is required")
+	@Expose
 	private String supplierContact;
+	
 	@NotEmpty(message="Active Status is required")
+	@Expose
 	private String supplierDisabled;
 	
 	public int getSupplierId() {

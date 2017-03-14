@@ -1,95 +1,164 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
-<div class="body-content">
 
-<div class="body-area container">
 
-<br/><br/>
+<div class="well-sm text-center">
 <a href="supplier" ><button class="btn btn-warning">Suppliers</button></a>
 <a href="category" ><button class="btn btn-warning">Category</button></a>
 <a href="subcategory" ><button class="btn btn-warning">SubCategory</button></a>
 <a href="brand" ><button class="btn btn-warning">Brand</button></a>
-<button class="btn btn-info">Products</button><br/>
+<button class="btn btn-info">Products</button>
+</div>
 
-<h1>Product Management</h1>
+<div ng-app="SiteAppAJS" class="text-center">
+
+<div class="well-sm sns-heading">
+
+<button class="admin-expand-btn btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i>Form</button>
+
+<input type="text" ng-model="searchkeyword" placeholder="Search" class="btn btn-default btn-sm" autofocus/>
+
+<select ng-model="orderkeyword" class="btn btn-default btn-sm">
+<option value="productId" selected>Id</option>
+<option value="productName">Name</option>
+<option value="description">Description</option>
+<option value="categoryId">Category</option>
+<option value="stock">Stock</option>
+<option value="brandId">Brand</option>
+<option value="creationDate">Date</option>
+<option value="categoryId">Category</option>
+<option value="subCategoryId">Sub Category</option>
+<option value="supplierId">Supplier</option>
+<option value="madeCountry">MadeCountry</option>
+</select>
+
+<button class="btn btn-default btn-sm">
+<input type="checkbox" value="true" ng-model="orderflag">&nbsp Descending</input>
+</button>
+
+</div>
+
+<c:if test="${btnLabel eq 'Update'}">
+<div class="admin-tool-form text-center well-sm">
+</c:if>
+
+<c:if test="${btnLabel ne 'Update'}">
+<div class="admin-tool-form text-center well-sm" style="display:none;">
+</c:if>
+
 <form:form action="addproduct" modelAttribute="product" enctype="multipart/form-data">
 
 <form:input path="productId" hidden="true"/>
+<form:input path="viewCount" hidden="true"/>
+<form:input path="rating" hidden="true"/>
 
-<form:input path="productName" placeholder="Name"/>
-<form:errors path="productName"/>
+<form:label path="productName">Name</form:label><br>
+<form:input path="productName" placeholder="Name"/><br>
+<form:errors path="productName" class="admin-tool-error" /><br>
 
-<form:input path="description" placeholder="Description"/>
-<form:errors path="description"/>
+<form:label path="description">Description</form:label><br>
+<form:input path="description" placeholder="Description"/><br>
+<form:errors path="description" class="admin-tool-error" /><br>
 
-<form:input path="actualPrice" placeholder="Original Price"/>
-<form:errors path="actualPrice"/>
+<form:label path="price">Price</form:label><br>
+<form:input path="price" placeholder="Price"/><br>
+<form:errors path="price" class="admin-tool-error" /><br>
 
-<form:input path="finalPrice" placeholder="Final Price"/>
-<form:errors path="finalPrice"/>
+<form:label path="discount">Discount</form:label><br>
+<form:input path="discount" placeholder="Discount"/><br>
+<form:errors path="discount" class="admin-tool-error" /><br>
 
-<form:input path="color" placeholder="Color"/>
-<form:errors path="color"/>
+<form:label path="madeCountry">Made Country</form:label><br>
+<form:input path="madeCountry" placeholder="Country"/><br>
+<form:errors path="madeCountry" class="admin-tool-error" /><br>
 
-<form:input path="size" placeholder="Size"/>
-<form:errors path="size"/>
+<form:label path="stock">Stock</form:label><br>
+<form:input path="stock" placeholder="Stock" class="form-horizontal"/><br>
+<form:errors path="stock" class="admin-tool-error" /><br>
 
-<form:input path="madeCountry" placeholder="Country"/>
-<form:errors path="madeCountry"/>
+<center>
+<form:label path="productImage">Image</form:label><br>
+<form:input type="file" accept=".jpg,.jpeg,.png" class="btn btn-default" path="productImage"/><br>
+</center>
 
-<form:input path="stock" placeholder="Stock"/>
-<form:errors path="stock"/>
+<form:label path="categoryId">Category</form:label><br>
+<form:select path="categoryId" items="${categoryList}" itemLabel="categoryName" itemValue="categoryId"/><br>
 
-<form:input type="file" accept=".jpg,.jpeg,.png" path="productImage"/>
+<form:label path="subCategoryId">Sub Category</form:label><br>
+<form:select path="subCategoryId" items="${subCategoryList}" itemLabel="subCategoryName" itemValue="subCategoryId" /><br>
 
-<form:select path="categoryId" items="${categoryList}" itemLabel="categoryName" itemValue="categoryId"/>
-<form:select path="subCategoryId" items="${subCategoryList}" itemLabel="subCategoryName" itemValue="subCategoryId" />
-<form:select path="brandId" items="${brandList}" itemLabel="brandName" itemValue="brandId" />
-<form:select path="supplierId" items="${supplierList}" itemLabel="supplierName" itemValue="supplierId" />
+<form:label path="brandId">Brand</form:label><br>
+<form:select path="brandId" items="${brandList}" itemLabel="brandName" itemValue="brandId" /><br>
 
-<form:button>${btnLabel}</form:button>
+<form:label path="supplierId">Supplier</form:label><br>
+<form:select path="supplierId" items="${supplierList}" itemLabel="supplierName" itemValue="supplierId" /><br><br>
+
+<form:button class="special-icon btn btn-success"><i class="glyphicon glyphicon-ok"></i></form:button>
 <c:if test="${btnLabel eq 'Update'}">
-<form action="product"><input type="submit" value="Cancel" /></form>
+<form action="product"><button class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></form>
 </c:if>
 </form:form>
-<br/>
+</div> 
 
-<table class="table">
+<!-- TABLE-STARTS -->
+<table class="table well-sm text-center" ng-controller="productControllerAJS">
 <tr>
-<th>Unique Id</th>
-<th>Name</th>
-<th>Description</th>
-<th>Actual Price</th>
-<th>Final Price</th>
-<th>Color</th>
-<th>Size</th>
-<th>Made Country</th>
-<th>Stock</th>
-<th>Image</th>
-<th>Operations</th>
-
+<th><center>Image</center></th>
+<th><center>About</center></th>
+<th><center>Details</center></th>
+<th><center>Country</center></th>
+<th><center>Date</center></th>
+<th><center>Stats</center></th>
+<th><center>Brand</center></th>
+<th><center>Category</center></th>
+<th><center>Supplier</center></th>
+<th><center>Operation</center></th>
 </tr>
-<c:forEach var="plist" items="${productList}">
-<tr>
-<td>${plist.productId}</td>
-<td>${plist.productName}</td>
-<td>${plist.description}</td>
-<td>${plist.actualPrice}</td>
-<td>${plist.finalPrice}</td>
-<td>${plist.color}</td>
-<td>${plist.size}</td>
-<td>${plist.madeCountry}</td>
-<td>${plist.stock}</td>
-<td><img src="resources/data/productImage-${plist.productId}.jpg" height="100px" width="100px" alt="img not uploaded"/></td>
+
+<tr ng-repeat="p in plist | filter:searchkeyword | orderBy:orderkeyword : orderflag ">
+
+<td><img src="resources/data/PRDT-{{p.productId}}.jpg" height="120px" width="120px" alt="img not uploaded"/></td>
+
 <td>
-<a href="updateproduct-${plist.productId}"><button>Update</button></a>
-<a href="removeproduct-${plist.productId}"><button>Delete</button></a>
+<i>#{{p.productId}}</i><br>
+<b>{{p.productName}}</b><br>
+{{p.description}}<br>
 </td>
-</tr>
-</c:forEach>
-</table>
 
+<td>
+<font style="color:green;">&#8377{{p.price}}</font><br>
+<font style="color:orange;">{{p.discount}}%</font><br>
+<font style="color:blue;">({{p.stock}})</font>
+</td>
+
+<td>{{p.madeCountry}}</td>
+<td>{{p.createdDate}}</td>
+
+<td>
+<font style="color:red;" ng-if="p.disabled">Disabled</font>
+<font style="color:green;" ng-if="!p.disabled">Active</font><br>
+{{p.viewCount}} v<br>
+{{p.rating}}/5 r<br>
+</td>
+
+<td>{{p.brand.brandName}}</td>
+
+<td>
+{{p.subCategory.subCategoryName}}<br>
+({{p.category.categoryName}})
+</td>
+
+<td>{{p.supplier.supplierName}}</td>
+<td>
+<a href="updateproduct-{{p.productId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>
+<a href="removeproduct-{{p.productId}}"><button class="special-icon btn btn btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-trash"></i></button></a>
+<a href="toggleproduct-{{p.productId}}" ng-if="!p.disabled"><button class="special-icon btn btn btn-warning" data-toggle="tooltip" title="Block"><i class="glyphicon glyphicon-ban-circle"></i></button></a>
+<a href="toggleproduct-{{p.productId}}" ng-if="p.disabled"><button class="special-icon btn btnbtn-success" data-toggle="tooltip" title="Unblock"><i class="glyphicon glyphicon-ok-circle"></i></button></a>
+</td>
+
+</tr>
+</table>
 </div>
-</div>
+
 <!-- FOOTER -->
 <%@ include file="component-footer.jsp" %>

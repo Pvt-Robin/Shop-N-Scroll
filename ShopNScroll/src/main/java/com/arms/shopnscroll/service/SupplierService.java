@@ -21,6 +21,11 @@ public class SupplierService
 		return supplierDAOImpl.fetchAllSupplier();
 	}
 	
+	public String fetchAllSupplierJSON()
+	{
+		return supplierDAOImpl.fetchAllSupplierJSON();
+	}
+	
 	public Supplier fetchOneCategory(int supplierId)
 	{
 		return supplierDAOImpl.fetchOneCategory(supplierId);

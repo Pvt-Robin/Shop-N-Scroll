@@ -18,43 +18,44 @@
 
 <body>
 
-<div class="container-fluid">
-<div class="head-area row well-sm">
+<!-- HEADER STARTS -->
+<div class="container-fluid well-sm"  id="main-header">
 
-<div class="col-md-4 col-lg-3 col-xs-12 col-sm-12">
-<center>
-<img src="resources/img/logo.png" class="head-logo"/>
-</center>
+<!-- FIRST ROW STARTS -->
+<div class="row">
+<!-- LEFT PADDING -->
+<div class="col-xs-0 col-sm-3 col-md-3 col-lg-3"></div>
+
+<div id="main-head-src" class="form-element col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+<div>
+<a href="home"><button class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-home" data-toggle="tooltip" title="Home" data-placement="left"></button></a>
+<a href="cart"><button class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-shopping-cart" data-toggle="tooltip" title="Cart" data-placement="right"></button></a>
 </div>
 
-<div class="head-searchbar col-md-4 col-lg-6 col-xs-6 col-sm-6">
-<div class="form-group">
+<div>
 <form>
-<center>
-<button class="head-searchbar-button btn btn-warning btn-well col-md-1">X</button>
-<input class="head-searchbar-box col-md-10 well-sm" type="text" placeholder="Search Product Name,Brand,Type..." />
-<button class="head-searchbar-button btn btn-warning btn-well col-md-1">>></button>
-</center>
+<input id="main-head-srctxt" class="well-sm hidden-xs col-sm-6 col-md-6 col-lg-6" type="text" name="searchkeyword" style="text-align:center;" data-toggle="tooltip" title="Search" data-placement="bottom"></input>
+<input id="main-head-srctxt-sm" class="well-sm col-xs-4 hidden-sm hidden-md hidden-lg" type="text" name="searchkeyword" style="text-align:center;" data-toggle="tooltip" title="Search" data-placement="bottom"></input>
 </form>
 </div>
 
-</div>
-
-<div class="head-menu col-md-4 col-lg-3 col-xs-6 col-sm-4">
-<div class="btn-group-justified">
-<a href="home" class="head-menu btn btn-xs btn-warning col-md-2 col-xs-4"><button>Home</button></a>
-<a href="cart" class="head-menu btn btn-xs btn-warning col-md-2 col-xs-4"><button>Cart</button></a>
-<a href="login" class="head-menu btn btn-xs btn-warning col-md-2 col-xs-4"><button>Login</button></a>
-<a href="signup" class="head-menu btn btn-xs btn-warning col-md-2 col-xs-4"><button>SignUp</button></a>
+<div>
+<a href="login"><button class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Login" data-placement="left"></button></a>
+<a href="signup"><button class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-log-in" data-toggle="tooltip" title="SignUp" data-placement="right"></button></a>
 </div>
 </div>
 
+<!-- RIGHT PADDING -->
+<div class="col-xs-0 col-sm-3 col-md-3 col-lg-3"></div>
 </div>
 </div>
+
+<!-- NAVBAR -->
+
+<!-- NAVBAR-ENDS -->
 
 <!-- MARGIN-DIVIDER -->
-<div class="margin-divider"></div>
+<div id="margin-divider"></div>
 
-
-
-<div class="body-area container">
+<div class="body-area container well-lg">

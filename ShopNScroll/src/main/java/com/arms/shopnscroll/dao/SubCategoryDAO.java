@@ -7,6 +7,7 @@ import com.arms.shopnscroll.model.SubCategory;
 public interface SubCategoryDAO 
 {
 	public List<SubCategory> fetchAllSubCategory();
+	public String fetchAllSubCategoryJSON();
 	public SubCategory fetchOneSubCategory(int subCategoryId);
 	
 	public void addSubCategory(SubCategory subCategory);

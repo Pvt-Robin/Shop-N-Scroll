@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.arms.shopnscroll.dao.BrandDAO;
 import com.arms.shopnscroll.model.Brand;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class BrandDAOImpl implements BrandDAO 
@@ -19,6 +21,15 @@ public class BrandDAOImpl implements BrandDAO
 	{
 		List<Brand> brandList = sessionFactory.getCurrentSession().createQuery("from Brand").getResultList();
 		return brandList;
+	}
+	
+	public String fetchAllBrandJSON() 
+	{
+//		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		List<Brand> brandList = sessionFactory.getCurrentSession().createQuery("from Brand").getResultList();
+		String list = gson.toJson(brandList);
+		return list;
 	}
 
 	public Brand fetchOneBrand(int brandId) {

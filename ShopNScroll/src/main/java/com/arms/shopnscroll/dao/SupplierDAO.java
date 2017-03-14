@@ -7,6 +7,7 @@ import com.arms.shopnscroll.model.Supplier;
 public interface SupplierDAO
 {
 public List<Supplier> fetchAllSupplier();
+public String fetchAllSupplierJSON();
 public Supplier fetchOneCategory(int supplierId);
 
 public void addSupplier(Supplier supplier);

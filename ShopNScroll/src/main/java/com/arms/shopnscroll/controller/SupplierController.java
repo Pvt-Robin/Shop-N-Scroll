@@ -22,6 +22,8 @@ public class SupplierController {
 	public String getSupplier(Model model) {
 		model.addAttribute("supplierList", supplierService.fetchAllSupplier());
 		model.addAttribute("supplier", new Supplier());
+		model.addAttribute("supplierListJSON", supplierService.fetchAllSupplierJSON());
+		
 		model.addAttribute("btnLabel", "Add");
 
 		return "admin-supplier";
@@ -31,6 +33,8 @@ public class SupplierController {
 	public String updateSupplier(@PathVariable("supplierId") int supplierId, Model model) {
 		model.addAttribute("supplierList", supplierService.fetchAllSupplier());
 		model.addAttribute("supplier", supplierService.fetchOneCategory(supplierId));
+		model.addAttribute("supplierListJSON", supplierService.fetchAllSupplierJSON());
+		
 		model.addAttribute("btnLabel", "Update");
 
 		return "admin-supplier";
@@ -42,7 +46,9 @@ public class SupplierController {
 		if(result.hasErrors())
 		{
 			model.addAttribute("supplierList", supplierService.fetchAllSupplier());
-			model.addAttribute("btnLabel", "Retry");
+			model.addAttribute("supplierListJSON", supplierService.fetchAllSupplierJSON());
+
+			model.addAttribute("btnLabel", "Update");
 
 			return "admin-supplier";
 		}

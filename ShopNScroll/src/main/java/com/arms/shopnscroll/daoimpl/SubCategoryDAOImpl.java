@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.arms.shopnscroll.dao.SubCategoryDAO;
 import com.arms.shopnscroll.model.SubCategory;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class SubCategoryDAOImpl implements SubCategoryDAO
@@ -18,6 +20,13 @@ public class SubCategoryDAOImpl implements SubCategoryDAO
 	public List<SubCategory> fetchAllSubCategory() {
 		List<SubCategory> catList = sessionFactory.getCurrentSession().createQuery("from SubCategory").getResultList();
 		return catList;
+	}
+	
+	public String fetchAllSubCategoryJSON() {
+		//Gson gson = new Gson();
+		List<SubCategory> catList = sessionFactory.getCurrentSession().createQuery("from SubCategory").getResultList();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		return gson.toJson(catList);
 	}
 
 	public SubCategory fetchOneSubCategory(int subCategoryId) {

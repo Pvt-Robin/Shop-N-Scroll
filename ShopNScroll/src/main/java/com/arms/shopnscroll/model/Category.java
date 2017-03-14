@@ -11,16 +11,21 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class Category 
 {
+	@Expose
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int categoryId;
-
+	
+	@Expose
 	@NotEmpty(message="Name is required")
 	private String categoryName;
 	
+	@Expose
 	@NotEmpty(message="Description is required")
 	private String categoryDescription;
 
@@ -33,6 +38,7 @@ public class Category
 	public void setSubCategory(Set<SubCategory> subCategory) {
 		this.subCategory = subCategory;
 	}
+	
 	public int getCategoryId() 
 	{
 		return categoryId;

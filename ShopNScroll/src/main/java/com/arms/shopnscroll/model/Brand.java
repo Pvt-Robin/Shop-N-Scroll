@@ -4,23 +4,42 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class Brand 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Expose
 	private int brandId;
 	
 	@NotEmpty(message="*Name is required")
+	@Expose
 	private String brandName;
+	
 	@NotEmpty(message="*Description is required")
+	@Expose
 	private String brandDescription;
 	
+	@Expose
+	private String brandSite;
 	
+	@Transient
+	@Expose
+	private MultipartFile brandImage;
 	
+	public String getBrandSite() {
+		return brandSite;
+	}
+	public void setBrandSite(String brandSite) {
+		this.brandSite = brandSite;
+	}
 	public int getBrandId() {
 		return brandId;
 	}
@@ -38,6 +57,12 @@ public class Brand
 	}
 	public void setBrandDescription(String brandDescription) {
 		this.brandDescription = brandDescription;
+	}
+	public MultipartFile getBrandImage() {
+		return brandImage;
+	}
+	public void setBrandImage(MultipartFile brandImage) {
+		this.brandImage = brandImage;
 	}
 	
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.arms.shopnscroll.dao.CategoryDAO;
 import com.arms.shopnscroll.daoimpl.CategoryDAOImpl;
 import com.arms.shopnscroll.model.Category;
 
@@ -24,6 +25,11 @@ public class CategoryService
 	public Category fetchOneCategory(int categoryId)
 	{
 		return categoryDAOImpl.fetchOneCategory(categoryId);
+	}
+	
+	public String fetchAllCategoryJSON()
+	{
+		return categoryDAOImpl.fetchAllCategoryJSON();
 	}
 	
 	public void addCategory(Category category)

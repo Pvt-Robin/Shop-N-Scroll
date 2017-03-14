@@ -1,74 +1,111 @@
 package com.arms.shopnscroll.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class Product 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Expose
 	private  int productId;
 	
 	@NotEmpty(message="Name is required")
+	@Expose
 	private String productName;
 	
 	@NotEmpty(message="Description is required")
+	@Expose
 	private String description;
 	
 	@NotNull(message="Actual Price is required")
-	@Min(value=1, message="Cannot be less than 1")
-	private float actualPrice;
+	@Min(value=1, message="Cannot be 0 or less")
+	@Expose
+	private float price;
+	 
+	@NotNull(message="Discount is required")
+	@Max(value=85, message="Cannot be greater than 85%")
+	@Expose
+	private int discount;
 	
-	@NotNull(message="Final Price is required or cannot be greater than ")
-	@Min(value=1, message="Cannot be less than 1")
-	private float finalPrice;
+	@NotNull(message="*")
+	@Expose
+	private int viewCount;
 	
-	@NotEmpty(message="Color is required")
-	private String color;
-	
-	@NotEmpty(message="Size is required")
-	private String size;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Expose
+	private Date createdDate = new Date();
+
+	@NotNull(message="Rating is required")
+	@Min(value=1, message="Cannot be lesser than 1")
+	@Max(value=5, message="Cannot be greater than 5")
+	@Expose
+	private float rating = 1;
 	
 	@NotEmpty(message="Country is required")
+	@Expose
 	private String madeCountry;
 	
 	@NotNull(message="Stock is needed")
-	@Min(value=1, message="Cannot be less than 1")
+	@Min(value=5, message="Cannot be less than 5")
+	@Expose
 	private int stock;
 	
+	@Expose
+	private boolean disabled;
+	
+	@Expose
 	private int categoryId;
+	
+	@Expose
 	private int subCategoryId;
+	
+	@Expose
 	private int supplierId;
+	
+	@Expose
 	private int brandId;
 	
 	@Transient
+	@Expose
 	private MultipartFile productImage;
 	
 	@ManyToOne
 	@JoinColumn(name="categoryId", nullable=false , updatable=false , insertable=false )
+	@Expose
 	private Category category;
 	
 	@ManyToOne
 	@JoinColumn(name="subCategoryId", nullable=false , updatable=false , insertable=false )
+	@Expose
 	private SubCategory subCategory;
 	
 	@ManyToOne
 	@JoinColumn(name="supplierId", nullable=false , updatable=false , insertable=false )
+	@Expose
 	private Supplier supplier;
 	
 	@ManyToOne
 	@JoinColumn(name="brandId", nullable=false , updatable=false , insertable=false )
+	@Expose
 	private Brand brand;
 
 	public int getProductId() {
@@ -95,36 +132,48 @@ public class Product
 		this.description = description;
 	}
 
-	public float getActualPrice() {
-		return actualPrice;
+	public float getPrice() {
+		return price;
 	}
 
-	public void setActualPrice(float actualPrice) {
-		this.actualPrice = actualPrice;
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
-	public float getFinalPrice() {
-		return finalPrice;
+	public int getDiscount() {
+		return discount;
 	}
 
-	public void setFinalPrice(float finalPrice) {
-		this.finalPrice = finalPrice;
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 
-	public String getColor() {
-		return color;
+	public int getViewCount() {
+		return viewCount;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public float getRating() {
+		return rating;
 	}
 
-	public String getSize() {
-		return size;
+	public void setRating(float rating) {
+		this.rating = rating;
 	}
 
-	public void setSize(String size) {
-		this.size = size;
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
 	}
 
 	public String getMadeCountry() {
@@ -215,4 +264,8 @@ public class Product
 		this.productImage = productImage;
 	}
 	
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
 }

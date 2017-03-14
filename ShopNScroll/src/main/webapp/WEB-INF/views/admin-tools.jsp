@@ -2,14 +2,21 @@
 <%@ include file="component-header.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<div class="body-area container">
-<h1>MANAGEMENT TOOLS</h1>
-<div class="btn-group">
-<a href="supplier" ><button class="btn btn-warning">Suppliers</button></a>
-<a href="category" ><button class="btn btn-warning">Category</button></a>
-<a href="subcategory" ><button class="btn btn-warning">SubCategory</button></a>
-<a href="brand" ><button class="btn btn-warning">Brand</button></a>
-<a href="product" ><button class="btn btn-warning">Products</button></a>
+<div class="row">
+<div class="col-md-3">
+<a href="supplier" ><img class="signup-grid" src="resources/img/admin-edit.png" data-toggle="tooltip" title="Manage Site Data" data-placement="bottom" width="100%"/></a>
+</div>
+
+<div class="col-md-3">
+<a href="#" ><img class="signup-grid" src="resources/img/admin-theme.png" data-toggle="tooltip" title="Change Site Theme" data-placement="bottom" width="100%"/></a>
+</div>
+
+<div class="col-md-3">
+<a href="#" ><img class="signup-grid" src="resources/img/admin-announce.png" data-toggle="tooltip" title="Announcements" data-placement="bottom" width="100%"/></a>
+</div>
+
+<div class="col-md-3">
+<a href="test" ><img class="signup-grid" src="resources/img/admin-test.png" data-toggle="tooltip" title="Test Site" data-placement="bottom" width="100%"/></a>
 </div>
 </div>
 

@@ -7,6 +7,7 @@ import com.arms.shopnscroll.model.Brand;
 public interface BrandDAO 
 {
 	public List<Brand> fetchAllBrand();
+	public String fetchAllBrandJSON();
 	public Brand fetchOneBrand(int brandId);
 	
 	public void addBrand(Brand brand);

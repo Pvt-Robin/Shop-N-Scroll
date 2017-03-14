@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 
 import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +50,7 @@ public class ProductController {
 		model.addAttribute("brandList", brandService.fetchAllBrand());
 		model.addAttribute("supplierList", supplierService.fetchAllSupplier());
 		model.addAttribute("productList", productService.fetchAllProduct());
+		model.addAttribute("productListJSON", productService.fetchAllProductJSON());
 
 		model.addAttribute("product", new Product());
 
@@ -60,13 +60,13 @@ public class ProductController {
 	}
 
 	@RequestMapping("/updateproduct-{productId}")
-	public String updateProduct(@PathVariable("productId") int productId,
-			@ModelAttribute("product") SubCategory product, Model model) {
+	public String updateProduct(@PathVariable("productId") int productId,@ModelAttribute("product") SubCategory product, Model model) {
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
 		model.addAttribute("subCategoryList", subCategoryService.fetchAllSubCategory());
 		model.addAttribute("brandList", brandService.fetchAllBrand());
 		model.addAttribute("supplierList", supplierService.fetchAllSupplier());
 		model.addAttribute("productList", productService.fetchAllProduct());
+		model.addAttribute("productListJSON", productService.fetchAllProductJSON());
 
 		model.addAttribute("product", productService.fetchOneProduct(productId));
 		model.addAttribute("btnLabel", "Update");
@@ -75,15 +75,20 @@ public class ProductController {
 	}
 
 	@RequestMapping("/addproduct")
-	public String addProduct(@Valid @ModelAttribute("product") Product product,@RequestParam("productImage")MultipartFile productImage, BindingResult result, Model model) {
-		if (result.hasErrors()) {
+	public String addProduct(@Valid @ModelAttribute("product") Product product,BindingResult result, @RequestParam("productImage")MultipartFile productImage,  Model model)
+	{
+		if(result.hasErrors()) 
+		{
 			model.addAttribute("categoryList", categoryService.fetchAllCategory());
 			model.addAttribute("subCategoryList", subCategoryService.fetchAllSubCategory());
 			model.addAttribute("brandList", brandService.fetchAllBrand());
 			model.addAttribute("supplierList", supplierService.fetchAllSupplier());
 			model.addAttribute("productList", productService.fetchAllProduct());
-
-			model.addAttribute("btnLabel", "Retry Add");
+			model.addAttribute("productListJSON", productService.fetchAllProductJSON());
+			
+			System.out.println("Result has error");
+			
+			model.addAttribute("btnLabel", "Update");
 
 			return "admin-product";
 		}
@@ -101,7 +106,7 @@ public class ProductController {
 							directory.mkdirs();
 						}
 						
-						File imageFile = new File(directory.getAbsolutePath() + File.separator + "productImage-" + product.getProductId() + ".jpg");
+						File imageFile = new File(directory.getAbsolutePath() + File.separator + "PRDT-" + product.getProductId() + ".jpg");
 						BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(imageFile));
 						stream.write(bytes);
 						stream.close();
@@ -124,8 +129,10 @@ public class ProductController {
 	@RequestMapping("/removeproduct-{productId}")
 	public String removeProduct(@PathVariable("productId") int productId) {
 				
+		productService.removeProduct(productId);
+		
 		try{
-    		File file = new File(Data_Folder +  File.separator + "productImage-" + productId +".jpg");
+    		File file = new File(Data_Folder +  File.separator + "PRDT-" + productId +".jpg");
     		file.delete();
 			}
 			catch(Exception e)
@@ -135,5 +142,25 @@ public class ProductController {
 		
 		
 		return "redirect:/product";
+	}
+	
+	@RequestMapping("/toggleproduct-{productId}")
+	public String toggleDisabled(@PathVariable("productId") int productId)
+	{
+		System.out.println("**********************************************************Entering toggle product");
+		Product product = productService.fetchOneProduct(productId);
+		if(product.isDisabled())
+		{
+			System.out.println("***********************************************************if cond*"+product.isDisabled());
+		product.setDisabled(false);
+		}
+		else
+		{
+			System.out.println("**********************************************************else cond**"+product.isDisabled());
+			product.setDisabled(true);
+		}
+		productService.addProduct(product);
+		
+	return "redirect:/product";
 	}
 }

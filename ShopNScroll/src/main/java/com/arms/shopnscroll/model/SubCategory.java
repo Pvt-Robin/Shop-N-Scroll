@@ -9,23 +9,33 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class SubCategory
-{
+{	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Expose
 	private int subCategoryId;
 
+	
 	@NotEmpty(message="Name is required")
+	@Expose
 	private String subCategoryName;
 	
+	
 	@NotEmpty(message="Description is required")
+	@Expose
 	private String subCategoryDescription;
 	
+	@Expose
 	private int categoryId;
 	
 	@ManyToOne
 	@JoinColumn(name="categoryId", nullable=false , updatable=false , insertable=false )
+	@Expose
 	private Category category;
 
 	public Category getCategory() {
