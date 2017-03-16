@@ -57,14 +57,17 @@
 
 <h5 class="sns-heading text-center well-sm">Shop By Discount</h5>
 
-<h5 class="sns-heading text-center well-sm" ng-app="SiteAppAJS">Shop By Brand</h5>
+<h5 class="sns-heading text-center well-sm">Shop By Brand</h5>
 
+<div  ng-app="SiteAppAJS">
 <div ng-controller="brandControllerAJS">
 <div class="sns-product-grid col-md-2 well-sm" ng-repeat="b in blist">
-<img class="sns-product-grid-img" src="BRND-{{b.brandId}}.jpg"/>
+<img class="sns-product-grid-img" src="resources/data/BRND-{{b.brandId}}.jpg"/>
 <br><font class="sns-product-title text-center">{{b.brandName}}</font>
 </div>
 </div>
+</div>
+
 
 <!-- BASE -->
 <%@ include file="component-base.jsp" %>

@@ -2,6 +2,7 @@
 <%@ include file="component-header.jsp" %>
 
 <div class="text-center admin-tool well-sm">
+<a href="user" ><button class="btn btn-warning">Users</button></a>
 <a href="supplier" ><button class="btn btn-warning">Suppliers</button></a>
 <a href="category" ><button class="btn btn-warning">Category</button></a>
 <a href="subcategory" ><button class="btn btn-warning">SubCategory</button></a>
@@ -67,6 +68,7 @@
 </form:form>
 </div>
 
+<div class="table-responsive">
 <table class="table well-sm text-center" ng-controller="brandControllerAJS">
 <tr>
 <th><center>Logo</center></th>

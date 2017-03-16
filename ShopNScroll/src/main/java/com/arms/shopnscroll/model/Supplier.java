@@ -1,9 +1,13 @@
 package com.arms.shopnscroll.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -60,6 +64,9 @@ public class Supplier
 	@NotEmpty(message="Active Status is required")
 	@Expose
 	private String supplierDisabled;
+	
+	@OneToMany(mappedBy="supplier", fetch=FetchType.EAGER)
+	Set<Product> product;
 	
 	public int getSupplierId() {
 		return supplierId;

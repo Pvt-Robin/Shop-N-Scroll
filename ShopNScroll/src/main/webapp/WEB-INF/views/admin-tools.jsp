@@ -4,7 +4,7 @@
 
 <div class="row">
 <div class="col-md-3">
-<a href="supplier" ><img class="signup-grid" src="resources/img/admin-edit.png" data-toggle="tooltip" title="Manage Site Data" data-placement="bottom" width="100%"/></a>
+<a href="user" ><img class="signup-grid" src="resources/img/admin-edit.png" data-toggle="tooltip" title="Manage Site Data" data-placement="bottom" width="100%"/></a>
 </div>
 
 <div class="col-md-3">

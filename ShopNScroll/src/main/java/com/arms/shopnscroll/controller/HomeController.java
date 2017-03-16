@@ -25,9 +25,8 @@ public class HomeController
 	public String getHome(Model model)
 	{
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
-		//model.addAttribute("productListJSON", productService.fetchAllProductJSON());
-		//model.addAttribute("brandListJSON", brandService.fetchAllBrandJSON());
-		//System.out.println(productService.fetchAllProductJSON());
+		model.addAttribute("productListJSON", productService.fetchAllProductJSON());
+		model.addAttribute("brandListJSON", brandService.fetchAllBrandJSON());
 		
 		return "main-home";
 	}
@@ -36,18 +35,6 @@ public class HomeController
 	public String getCart()
 	{
 		return "main-cart";
-	}
-	
-	@RequestMapping("/login")
-	public String getLogin()
-	{
-		return "main-login";
-	}
-	
-	@RequestMapping("/signup")
-	public String getSignUp()
-	{
-		return "main-signup";
 	}
 	
 	@RequestMapping("/about")

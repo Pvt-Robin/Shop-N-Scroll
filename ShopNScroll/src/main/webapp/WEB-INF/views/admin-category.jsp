@@ -2,6 +2,7 @@
 <%@ include file="component-header.jsp" %>
 
 <div class="text-center admin-tool well-sm">
+<a href="user" ><button class="btn btn-warning">Users</button></a>
 <a href="supplier" ><button class="btn btn-warning">Suppliers</button></a>
 <button class="btn btn-info">Category</button>
 <a href="subcategory" ><button class="btn btn-warning">SubCategory</button></a>

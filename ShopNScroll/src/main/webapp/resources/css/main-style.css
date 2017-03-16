@@ -143,6 +143,9 @@ body
 .sns-product-title
 {
 	font-weight:bold;
+	text-align:center;
+	height:200px;
+	width:200px;
 }
 
 .sns-product-grid-img

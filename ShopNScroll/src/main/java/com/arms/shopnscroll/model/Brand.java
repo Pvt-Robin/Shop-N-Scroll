@@ -1,9 +1,13 @@
 package com.arms.shopnscroll.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -34,6 +38,15 @@ public class Brand
 	@Expose
 	private MultipartFile brandImage;
 	
+	@OneToMany(mappedBy="brand", fetch=FetchType.EAGER)
+	Set<Product> product;
+	
+	public Set<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(Set<Product> product) {
+		this.product = product;
+	}
 	public String getBrandSite() {
 		return brandSite;
 	}

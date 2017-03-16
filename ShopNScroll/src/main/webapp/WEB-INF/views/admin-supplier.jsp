@@ -2,6 +2,7 @@
 <%@ include file="component-header.jsp" %>
 
 <div class="text-center admin-tool well-sm">
+<a href="user" ><button class="btn btn-warning">Users</button></a>
 <button class="btn btn-info">Suppliers</button>
 <a href="category" ><button class="btn btn-warning">Category</button></a>
 <a href="subcategory" ><button class="btn btn-warning">SubCategory</button></a>
@@ -95,6 +96,7 @@
 </form:form>
 </div>
 
+<div class="table-responsive">
 <table class="table well-sm text-center" ng-controller="supplierControllerAJS">
 <tr>
 <th><center>Id</center></th>

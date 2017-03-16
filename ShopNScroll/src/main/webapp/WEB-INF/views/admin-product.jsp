@@ -3,6 +3,7 @@
 
 
 <div class="well-sm text-center">
+<a href="user" ><button class="btn btn-warning">Users</button></a>
 <a href="supplier" ><button class="btn btn-warning">Suppliers</button></a>
 <a href="category" ><button class="btn btn-warning">Category</button></a>
 <a href="subcategory" ><button class="btn btn-warning">SubCategory</button></a>
@@ -101,6 +102,7 @@
 </div> 
 
 <!-- TABLE-STARTS -->
+<div class="table-responsive">
 <table class="table well-sm text-center" ng-controller="productControllerAJS">
 <tr>
 <th><center>Image</center></th>

@@ -4,6 +4,7 @@
     pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -51,11 +52,16 @@
 </div>
 </div>
 
-<!-- NAVBAR -->
+<!-- NAVBAR STARTS -->
+
+<div>
+
+</div>
 
 <!-- NAVBAR-ENDS -->
 
 <!-- MARGIN-DIVIDER -->
 <div id="margin-divider"></div>
 
-<div class="body-area container well-lg">
+<!-- <div class="hidden-xs hidden-sm body-area container well-lg"> -->
+<div class="body-area container-fluid well-lg">

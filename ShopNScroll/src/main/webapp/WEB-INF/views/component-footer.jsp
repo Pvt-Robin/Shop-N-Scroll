@@ -48,6 +48,13 @@ siteApp.controller("supplierControllerAJS", function($scope)
 </script>
 
 <script>
+siteApp.controller("userControllerAJS", function($scope) 
+{
+	$scope.ulist = ${userListJSON};
+});
+</script>
+
+<script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
@@ -57,7 +64,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$( ".admin-expand-btn" ).click(function() {
 	  $( ".admin-tool-form" ).slideToggle( "fast", function() {
-	    // Animation complete.
+	    // Animation
 	  });
 	});
 	});
