@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="resources/css/main-style.css" />
 
 </head>
-
 <body>
 
 <!-- HEADER STARTS -->
@@ -42,8 +41,35 @@
 </div>
 
 <div>
-<a href="login"><button class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Login" data-placement="left"></button></a>
-<a href="signup"><button class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-log-in" data-toggle="tooltip" title="SignUp" data-placement="right"></button></a>
+
+<sec:authorize access="isAnonymous()">
+<a href="login">
+<button id="header-login-button" class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Login" data-placement="left">
+</button>
+</a>
+<a href="signup">
+<button class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-log-in" data-toggle="tooltip" title="SignUp" data-placement="right"></button>
+</a>
+</sec:authorize>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+<a href="profile">
+<button class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Profile" data-placement="left"></button>
+</a>
+<a href="admin">
+<button class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-tasks" data-toggle="tooltip" title="Manage" data-placement="right"></button>
+</a>
+</sec:authorize>
+
+<sec:authorize access="hasRole('ROLE_BUYER')">
+<a href="profile">
+<button class="main-header-btn-buyer well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Profile" data-placement="left"></button>
+</a>
+<a href="wishlist">
+<button class="main-header-btn-buyer well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-heart" data-toggle="tooltip" title="Wishlist" data-placement="right"></button>
+</a>
+</sec:authorize>
+
 </div>
 </div>
 
@@ -51,17 +77,33 @@
 <div class="col-xs-0 col-sm-3 col-md-3 col-lg-3"></div>
 </div>
 </div>
-
-<!-- NAVBAR STARTS -->
-
-<div>
-
-</div>
-
-<!-- NAVBAR-ENDS -->
-
 <!-- MARGIN-DIVIDER -->
 <div id="margin-divider"></div>
 
+<!-- TOGGLEABLE AREA STARTS -->
+
+<!-- <!-- LOGIN-STARTS -->
+<!-- <div id="header-login-form" style="display:none;"> -->
+<!-- <hr> -->
+<!-- <form action="perform_login" method="post"> -->
+<!-- <center> -->
+<!-- <input type="text" name="username" class="special-textbox" placeholder="Username"/> -->
+<!-- <input type="password" name="password" class="special-textbox" placeholder="Password"/> -->
+<!-- <button type="submit" class="btn btn-default" style="border-radius: 50px 50px 50px 50px;outline:none;"><i class="glyphicon glyphicon-circle-arrow-right"></i></button> -->
+<!-- <!-- <button type="submit" class="special-icon">Go</button> -->
+<!-- </center> -->
+<!-- </form> -->
+<!-- </div> -->
+<!-- <!-- LOGIN ENDS -->
+
+<!-- NAVBAR STARTS -->
+
+
+
+<!-- NAVBAR-ENDS -->
+
+
+<!-- TOGGLEABLE AREA ENDS -->
+
 <!-- <div class="hidden-xs hidden-sm body-area container well-lg"> -->
-<div class="body-area container-fluid well-lg">
+<div class="body-area container-fluid well-sm">

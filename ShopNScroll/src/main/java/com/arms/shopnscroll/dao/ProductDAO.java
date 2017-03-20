@@ -9,6 +9,7 @@ public interface ProductDAO {
 	public Product fetchOneProduct(int productId);
 	public String fetchAllProductJSON();
 	
-	public void addProduct(Product product);
+	public boolean addProduct(Product product);
 	public void removeProduct(int productId);
+	public void toggleProduct(int productId);
 }

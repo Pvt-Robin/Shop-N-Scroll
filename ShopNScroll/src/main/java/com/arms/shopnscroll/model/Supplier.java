@@ -21,49 +21,48 @@ public class Supplier
 	@Expose
 	private int supplierId;
 	
-	@NotEmpty(message="Name is required")
+	@NotEmpty(message="Name Is Required")
 	@Expose
 	private String supplierName;
 	
-	@NotEmpty(message="Firm Name required")
+	@NotEmpty(message="Firm Name Required")
 	@Expose
 	private String supplierFirmName;
 	
-	@NotEmpty(message="Description is required")
+	@NotEmpty(message="Description Is Required")
 	@Expose
 	private String supplierDescription;
 	
-	@NotEmpty(message="Landmark is required")
+	@NotEmpty(message="Landmark Is Required")
 	@Expose
 	private String supplierLandmark;
 	
-	@NotEmpty(message="Street is required")
+	@NotEmpty(message="Street Is Required")
 	@Expose
 	private String supplierStreet;
 	
-	@NotEmpty(message="City is required")
+	@NotEmpty(message="City Is Required")
 	@Expose
 	private String supplierCity;
 	
-	@NotEmpty(message="State is required")
+	@NotEmpty(message="State Is Required")
 	@Expose
 	private String supplierState;
 	
-	@NotEmpty(message="Country is required")
+	@NotEmpty(message="Country Is Required")
 	@Expose
 	private String supplierCountry;
 	
-	@NotEmpty(message="Email is required")
+	@NotEmpty(message="Email Is Required")
 	@Expose
 	private String supplierEmail;
 	
-	@NotEmpty(message="Contact is required")
+	@NotEmpty(message="Contact Is Required")
 	@Expose
 	private String supplierContact;
 	
-	@NotEmpty(message="Active Status is required")
 	@Expose
-	private String supplierDisabled;
+	private boolean enabled;
 	
 	@OneToMany(mappedBy="supplier", fetch=FetchType.EAGER)
 	Set<Product> product;
@@ -134,12 +133,17 @@ public class Supplier
 	public void setSupplierContact(String supplierContact) {
 		this.supplierContact = supplierContact;
 	}
-	public String getSupplierDisabled() {
-		return supplierDisabled;
+	public boolean isEnabled() {
+		return enabled;
 	}
-	public void setSupplierDisabled(String supplierDisabled) {
-		this.supplierDisabled = supplierDisabled;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
-	
-	
+	public Set<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(Set<Product> product) {
+		this.product = product;
+	}
+
 }

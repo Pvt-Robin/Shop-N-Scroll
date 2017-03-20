@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
 
-<div id="myCarousel" class="carousel slide vertical" data-ride="carousel">
+<div id="myCarousel" class="carousel slide vertical well-sm sns-heading" data-ride="carousel">
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
@@ -51,11 +51,13 @@
 
 <!-- HOME PAGE-BROWSE AREA -->
 
-<h5 class="sns-heading text-center well-sm">Trending</h5>
+<h5 class="sns-heading text-center well-sm">Shop Trending</h5>
 
-<h5 class="sns-heading text-center well-sm">Top Selling</h5>
+<h5 class="sns-heading text-center well-sm">Shop Latest</h5>
 
 <h5 class="sns-heading text-center well-sm">Shop By Discount</h5>
+
+<h5 class="sns-heading text-center well-sm">Shop By Offers</h5>
 
 <h5 class="sns-heading text-center well-sm">Shop By Brand</h5>
 

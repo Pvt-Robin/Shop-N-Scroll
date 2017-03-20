@@ -25,12 +25,12 @@ public class SubCategory
 	private int subCategoryId;
 
 	
-	@NotEmpty(message="Name is required")
+	@NotEmpty(message="Name Is Required")
 	@Expose
 	private String subCategoryName;
 	
 	
-	@NotEmpty(message="Description is required")
+	@NotEmpty(message="Description Is Required")
 	@Expose
 	private String subCategoryDescription;
 	

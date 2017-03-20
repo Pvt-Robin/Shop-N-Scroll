@@ -64,18 +64,9 @@ public class SupplierController {
 	}
 
 	@RequestMapping("/supplieractivatetoggle-{supplierId}")
-	public String activeToggleSupplier(@PathVariable("supplierId") int supplierId) {
-
-		Supplier supplier = supplierService.fetchOneCategory(supplierId);
-		
-		if ((supplier.getSupplierDisabled()).equalsIgnoreCase("yes")) {
-			supplier.setSupplierDisabled("no");
-		} else {
-			supplier.setSupplierDisabled("yes");
-		}
-		
-		supplierService.addSupplier(supplier);
-		
+	public String activeToggleSupplier(@PathVariable("supplierId") int supplierId) 
+	{
+		supplierService.toggleSupplier(supplierId);
 		return "redirect:/supplier";
 	}
 }

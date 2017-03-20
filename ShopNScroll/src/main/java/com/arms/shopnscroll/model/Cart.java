@@ -3,29 +3,31 @@ package com.arms.shopnscroll.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class Cart 
 {
 	@Id
-	private int cartId;
-	
+	@Expose
 	private int userId;
 	
+	@Expose
 	private int productId;
 	//but use it like array
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
 	private User user;
-	
-	public int getUserId() {
-		return userId;
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public int getProductId() {
@@ -36,14 +38,13 @@ public class Cart
 		this.productId = productId;
 	}
 
-	public int getCartId() {
-		return cartId;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	
-	
+
 
 }

@@ -8,8 +8,9 @@ public interface SupplierDAO
 {
 public List<Supplier> fetchAllSupplier();
 public String fetchAllSupplierJSON();
-public Supplier fetchOneCategory(int supplierId);
+public Supplier fetchOneSupplier(int supplierId);
 
 public void addSupplier(Supplier supplier);
 public void removeSupplier(int supplierId);
+public void toggleSupplier(int supplierId);
 }

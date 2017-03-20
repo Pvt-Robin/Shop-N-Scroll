@@ -38,12 +38,6 @@ public class AuthenticationController
 	@RequestMapping("/admin")
 	public String getAdminLogin()
 	{
-		return "main-adminlogin";
-	}
-	
-	@RequestMapping("/control")
-	public String getControl()
-	{
 		return "admin-tools";
 	}
 	

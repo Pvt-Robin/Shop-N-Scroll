@@ -23,24 +23,38 @@ public class SupplierDAOImpl implements SupplierDAO
 	}
 
 	public String fetchAllSupplierJSON() {
-//		Gson gson = new Gson();
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier").getResultList();
 		return gson.toJson(supplierList);
 	}
 	
-	public Supplier fetchOneCategory(int supplierId) {
+	public Supplier fetchOneSupplier(int supplierId) {
 		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier where supplierId = "+supplierId).getResultList();
 		return supplierList.get(0);
 	}
 
 	public void addSupplier(Supplier supplier) {
+		supplier.setEnabled(true);
 		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 	}
 
 	public void removeSupplier(int supplierId) {
-		sessionFactory.getCurrentSession().delete(fetchOneCategory(supplierId));
+		sessionFactory.getCurrentSession().delete(fetchOneSupplier(supplierId));
 
+	}
+
+	@Override
+	public void toggleSupplier(int supplierId) {
+		Supplier supplier = fetchOneSupplier(supplierId);
+		if(supplier.isEnabled())
+		{
+			supplier.setEnabled(false);
+		}
+		else
+		{
+			supplier.setEnabled(true);
+		}
+		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 	}
 
 }

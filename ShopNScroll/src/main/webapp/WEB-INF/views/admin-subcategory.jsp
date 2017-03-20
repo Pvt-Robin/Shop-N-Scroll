@@ -37,25 +37,34 @@
 <div class="admin-tool-form text-center well-sm" style="display:none;">
 </c:if>
 
-<form:form action="addsubcategory" modelAttribute="subCategory">
+<form:form action="addsubcategory" modelAttribute="subCategory" method="post">
+
+<div class="row">
+<div class="col-xs-0 col-sm-8 col-md-4 col-lg-4 well-lg"></div>
+<div class="col-xs-0 col-sm-8 col-md-4 col-lg-4 well-lg">
 
 <form:input path="subCategoryId" hidden="true"/>
 
 <form:label path="subCategoryName">Name</form:label><br>
-<form:input path="subCategoryName" placeholder="Name"/><br>
+<form:input path="subCategoryName" placeholder="Name" class="special-textbox"/><br>
 <form:errors path="subCategoryName" class="admin-tool-error" /><br>
 
 <form:label path="subCategoryDescription">Description</form:label><br>
-<form:input path="subCategoryDescription" placeholder="Description"/><br>
+<form:input path="subCategoryDescription" placeholder="Description" class="special-textbox"/><br>
 <form:errors path="subCategoryDescription" class="admin-tool-error"/><br>
 
 <form:label path="categoryId">Category</form:label><br>
-<form:select path="categoryId" items="${categoryList}" itemLabel="categoryName" itemValue="categoryId" /><br><br>
+<form:select path="categoryId" items="${categoryList}" itemLabel="categoryName" itemValue="categoryId" class="special-textbox"/><br><br>
 
 <form:button class="special-icon btn btn-success"><i class="glyphicon glyphicon-ok"></i></form:button>
 <c:if test="${btnLabel eq 'Update'}">
-<form action="subcategory"><button class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></form>
+<a href="subcategory"><button type="button" class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
 </c:if>
+
+</div>
+<div class="col-xs-0 col-sm-8 col-md-4 col-lg-4 well-lg"></div>
+</div>
+
 </form:form>
 </div>
 

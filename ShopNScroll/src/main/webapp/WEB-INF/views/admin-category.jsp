@@ -38,27 +38,32 @@
 
 <form:form class="form" action="addcategory" modelAttribute="category">
 
+<div class="row">
+<div class="col-xs-0 col-sm-8 col-md-4 col-lg-4 well-lg"></div>
+<div class="col-xs-0 col-sm-8 col-md-4 col-lg-4 well-lg">
+
 <form:input path="categoryId" hidden="true"/>
-<div class="row">
-<div class="col-md-2">
-<form:label path="categoryName">Name</form:label>
-</div></div>
-<div class="row">
-<div class="col-md-4">
-<form:input class="form-control" path="categoryName" placeholder="Name"/>
-</div></div>
+
+<form:label path="categoryName">Name</form:label><br>
+<form:input path="categoryName" placeholder="Name" class="special-textbox" /><br>
 <form:errors path="categoryName" class="admin-tool-error"/><br>
 
 <form:label path="categoryDescription">Description</form:label><br>
-<form:input path="categoryDescription" placeholder="Description"/><br>
+<form:input path="categoryDescription" placeholder="Description" class="special-textbox"/><br>
 <form:errors path="categoryDescription" class="admin-tool-error"/><br>
 
 <form:button class="special-icon btn btn-success"><i class="glyphicon glyphicon-ok"></i></form:button>
 <c:if test="${btnLabel eq 'Update'}">
-<form action="category"><button class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></form>
+<a href="category"><button type="button" class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
 </c:if>
+
+</div>
+<div class="col-xs-0 col-sm-8 col-md-4 col-lg-4 well-lg"></div>
+</div>
+
 </form:form>
 </div>
+
 <div class="table-responsive">
 <table class="table  well-sm text-center" ng-controller="categoryControllerAJS">
 <tr>

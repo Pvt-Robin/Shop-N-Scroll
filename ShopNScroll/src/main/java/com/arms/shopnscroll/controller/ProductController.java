@@ -23,6 +23,8 @@ import com.arms.shopnscroll.service.CategoryService;
 import com.arms.shopnscroll.service.ProductService;
 import com.arms.shopnscroll.service.SubCategoryService;
 import com.arms.shopnscroll.service.SupplierService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class ProductController {
@@ -144,23 +146,24 @@ public class ProductController {
 		return "redirect:/product";
 	}
 	
+	@RequestMapping("/viewproduct-{productId}")
+	public String viewOneProductJSON(@PathVariable("productId") int productId, Model model)
+	{
+		Product product = productService.fetchOneProduct(productId);
+		int counterPlus = product.getViewCount()+1;
+		product.setViewCount(counterPlus);
+		
+		productService.addProduct(product);
+		
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		model.addAttribute("viewProductJSON", gson.toJson(product));
+		return "main-viewproduct";
+	}
+	
 	@RequestMapping("/toggleproduct-{productId}")
 	public String toggleDisabled(@PathVariable("productId") int productId)
 	{
-		System.out.println("**********************************************************Entering toggle product");
-		Product product = productService.fetchOneProduct(productId);
-		if(product.isDisabled())
-		{
-			System.out.println("***********************************************************if cond*"+product.isDisabled());
-		product.setDisabled(false);
-		}
-		else
-		{
-			System.out.println("**********************************************************else cond**"+product.isDisabled());
-			product.setDisabled(true);
-		}
-		productService.addProduct(product);
-		
-	return "redirect:/product";
+		productService.toggleProduct(productId);		
+		return "redirect:/product";
 	}
 }

@@ -6,33 +6,109 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"username", "email", "contact"}))
 public class User 
 {
-
 	@Id
+	@Expose
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userId;
-	
-	private int cartId;
 
+	@NotEmpty(message="Cannot Be Empty")
+	@Expose
+	@Pattern(regexp="^[a-zA-Z_]*$", message="Cannot Have Numbers,Symbols or Space")
 	private String firstName;
+	
+	@NotEmpty(message="Cannot Be Empty")
+	@Expose
+	@Pattern(regexp="^[a-zA-Z_]*$", message="Cannot Have Numbers,Symbols or Space")
 	private String lastName;
 	
-	private int age;
+	@NotEmpty(message="Cannot Be Empty")
+	@Expose
+	@Pattern(regexp="(^$|[0-9]{10})", message="Cannot have Characters,Symbols or Space")
 	private String contact;
+	
+	@NotEmpty(message="Cannot Be Empty")
+	@Expose
+	@Email(message="Email Format Incorrect")
 	private String email;
+	
+	@NotEmpty(message="Gender Is Mandatory")
+	@Expose
 	private String gender;
+	
+	@Expose
 	private String role;
+	
+	@Expose
 	private boolean enabled;
 	
+	//NOTE:DON'T MAKE SETTER FOR DATE
+//	@Expose
+//	@NotEmpty(message="Date of Birth is Mandatory")
 //	private Date dateOfBirth;
-//	private Date createdDate = new Date();
 	
+	@Expose
+	private Date createdDate = new Date();
+	
+	@Expose
+	@NotEmpty(message="Cannot Be Empty")
+	@Length(min=8, max=16, message="User Name Should Be 8-16 Characters In length" )
 	private String username;
+	
+	@Expose
+	@NotEmpty(message="Cannot Be Empty")
+	@Length(min=8, max=16, message="Should Be 8-16 Characters Long")
 	private String password;
 	
+	@Transient
+	@Expose
+	private MultipartFile userAvatar;
+	
+//	@OneToOne
+//	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
+//	private Cart cart;
+//
+//	@OneToOne
+//	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
+//	private BillingAddress billingAddress;
+//	
+//	@OneToOne
+//	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
+//	private ShippingAddress shippingAddress;
+
+//	public Cart getCart() {
+//		return cart;
+//	}
+//	public void setCart(Cart cart) {
+//		this.cart = cart;
+//	}
+//	public BillingAddress getBillingAddress() {
+//		return billingAddress;
+//	}
+//	public void setBillingAddress(BillingAddress billingAddress) {
+//		this.billingAddress = billingAddress;
+//	}
+//	public ShippingAddress getShippingAddress() {
+//		return shippingAddress;
+//	}
+//	public void setShippingAddress(ShippingAddress shippingAddress) {
+//		this.shippingAddress = shippingAddress;
+//	}
 	public String getUsername() {
 		return username;
 	}
@@ -44,12 +120,6 @@ public class User
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public int getCartId() {
-		return cartId;
-	}
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
 	}
 	public int getUserId() {
 		return userId;
@@ -69,18 +139,15 @@ public class User
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
 //	public Date getDateOfBirth() {
 //		return dateOfBirth;
 //	}
 //	public void setDateOfBirth(Date dateOfBirth) {
 //		this.dateOfBirth = dateOfBirth;
 //	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
 	public String getContact() {
 		return contact;
 	}
@@ -111,5 +178,12 @@ public class User
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	public MultipartFile getUserAvatar() {
+		return userAvatar;
+	}
+	public void setUserAvatar(MultipartFile userAvatar) {
+		this.userAvatar = userAvatar;
+	}
+	
 
 }

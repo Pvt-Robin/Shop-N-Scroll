@@ -22,11 +22,11 @@ public class Category
 	private int categoryId;
 	
 	@Expose
-	@NotEmpty(message="Name is required")
+	@NotEmpty(message="Name Is Required")
 	private String categoryName;
 	
 	@Expose
-	@NotEmpty(message="Description is required")
+	@NotEmpty(message="Description Is Required")
 	private String categoryDescription;
 
 	@OneToMany(mappedBy="category", fetch=FetchType.EAGER)

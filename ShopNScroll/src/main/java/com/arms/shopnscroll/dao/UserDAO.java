@@ -6,5 +6,6 @@ public interface UserDAO
 {
 	public void addUser(User user);
 	public String fetchAllUser();
-	public String fetchOneUser(int userId);
+	public User fetchOneUser(int userId);
+	public void toggleUserStatus(int userId);
 }

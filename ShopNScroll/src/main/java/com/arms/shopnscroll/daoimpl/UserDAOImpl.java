@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.arms.shopnscroll.dao.UserDAO;
+import com.arms.shopnscroll.model.BillingAddress;
 import com.arms.shopnscroll.model.Cart;
+import com.arms.shopnscroll.model.ShippingAddress;
 import com.arms.shopnscroll.model.User;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 @Repository
 public class UserDAOImpl implements UserDAO
@@ -26,12 +27,20 @@ public class UserDAOImpl implements UserDAO
 		session.saveOrUpdate(user);
 		
 		Cart cart = new Cart();
-		cart.setCartId(user.getUserId());
-		cart.setUserId(user.getUserId());
+		BillingAddress billingAddress = new BillingAddress();
+		ShippingAddress shippingAddress = new ShippingAddress();
 		
-		user.setEnabled(true);
+		cart.setUserId(user.getUserId());
+		billingAddress.setUserId(user.getUserId());
+		shippingAddress.setUserId(user.getUserId());
 		
 		session.saveOrUpdate(cart);
+		session.saveOrUpdate(billingAddress);
+		session.saveOrUpdate(shippingAddress);
+		
+		user.setEnabled(true);
+		user.setRole("ROLE_BUYER");
+		
 		session.saveOrUpdate(user);
 	}
 
@@ -45,12 +54,24 @@ public class UserDAOImpl implements UserDAO
 	}
 
 	@Override
-	public String fetchOneUser(int userId) 
+	public User fetchOneUser(int userId) 
 	{
 		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User where userId="+userId).getResultList();
-//		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		Gson gson  = new Gson();
-		return gson.toJson(userList);
+		return userList.get(0);
+	}
+	
+	@Override
+	public void toggleUserStatus(int userId)
+	{
+		User user = fetchOneUser(userId);
+		if(user.isEnabled())
+		{
+			user.setEnabled(false);
+		}
+		else
+		{
+			user.setEnabled(true);
+		}
 	}
 
 }

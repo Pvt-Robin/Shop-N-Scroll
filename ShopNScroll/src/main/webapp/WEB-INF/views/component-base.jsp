@@ -6,7 +6,5 @@
 <a href="faqs"><button class="base-area-btn btn btn-xs">FAQs</button></a>
 |
 <a href="contact"><button class="base-area-btn btn btn-xs">Contacts</button></a>
-|
-<a href="admin"><button class="base-area-btn btn btn-xs">Admin</button></a>
 </div>
 </div>

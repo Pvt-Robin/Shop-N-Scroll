@@ -28,7 +28,7 @@ public class SupplierService
 	
 	public Supplier fetchOneCategory(int supplierId)
 	{
-		return supplierDAOImpl.fetchOneCategory(supplierId);
+		return supplierDAOImpl.fetchOneSupplier(supplierId);
 	}
 
 	public void addSupplier(Supplier supplier)
@@ -40,5 +40,8 @@ public class SupplierService
 	{
 		supplierDAOImpl.removeSupplier(supplierId);
 	}
-	
+	public void toggleSupplier(int supplierId)
+	{
+		supplierDAOImpl.toggleSupplier(supplierId);
+	}
 }

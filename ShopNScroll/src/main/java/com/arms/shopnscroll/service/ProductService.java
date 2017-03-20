@@ -31,12 +31,16 @@ public class ProductService
 		return productDAOImpl.fetchAllProductJSON();
 	}
 	
-	public void addProduct(Product product)
-	{
-		productDAOImpl.addProduct(product);
+	public boolean addProduct(Product product)
+	{	
+		return productDAOImpl.addProduct(product);
 	}
 	public void removeProduct(int productId)
 	{
 		productDAOImpl.removeProduct(productId);
+	}
+	public void toggleProduct(int productId)
+	{
+		productDAOImpl.toggleProduct(productId);
 	}
 }

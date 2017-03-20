@@ -1,7 +1,26 @@
+/* --------------------------------------------------------------------------CUSTOM CONTENT */
+
+@font-face {
+    font-family: fontRoundedElegance;
+    src: url("../../resources/fonts/dev-font-roundedelegance.woff2");
+}
+
+@font-face {
+    font-family: fontAbelRegular;
+    src: url("../../resources/fonts/dev-font-abelregular.woff2");
+}
+
+.tooltip
+{
+	font-family: fontRoundedElegance;
+	font-stretch: condensed;
+}
+
 /* ------------------------------------------------------------------------- HEAD STYLING  */
 
 #main-header
 {
+	font-family:fontRoundedElegance;
 	background-color:rgba(0,0,0,0.5) ;
 	position:fixed;
 	top: 0px;
@@ -10,7 +29,7 @@
 	z-index: 2;
 }
 
-.main-header-btn
+.main-header-btn , .main-header-btn-buyer , .main-header-btn-admin
 {
 	background-color:rgba(0,0,0,0.2);
 	color:white;
@@ -32,6 +51,18 @@
 }
 
 
+.main-header-btn-buyer:hover
+{
+	background-color:rgba(255,89,89,0.5);
+	border: 1px solid white;
+}
+
+.main-header-btn-admin:hover
+{
+	background-color:rgba(189,255,89,0.5);
+	border: 1px solid white;
+}
+
 #main-head-srctxt
 {
 	background:rgba(0,0,0,0.3) url("../../resources/img/logo.png") center no-repeat;
@@ -51,6 +82,7 @@
 #main-head-srctxt:hover
 {
 	background-color:rgba(255,165,0,0.5);
+/* 	background-color:rgba(255,255,255,0.5); */
 }
 
 #main-head-srctxt-sm
@@ -77,12 +109,12 @@
 
 #margin-divider
 {
-	margin-top: 50px;
+	margin-top: 60px;
 }
-
 
 body
 {
+/* 	background-color:rgba(100,149,237,0.2); */
 	background-color:rgba(255,255,255,0.3);
 	background-image:url("../../resources/img/bodypattern-3.png");
 	background-attachment: fixed;
@@ -91,8 +123,15 @@ body
 
 .body-area
 {
-	background-color: rgba(255,255,255,0.7);
+	font-family:fontAbelRegular;
+	background-color: rgba(255,255,255,0.3);
 	background-attachment: fixed;
+}
+
+#login-signup-panels
+{
+/* 	background-color:rgba(255,255,255,0.3) ; */
+	background-color:rgba(0,0,0,0.1) ;
 }
 
 .signup-grid
@@ -103,7 +142,7 @@ body
 
 .signup-grid:hover
 {
-	background-color:rgba(255,165,0,0.8);
+	background-color:rgba(255,165,0,0.5);
 }
 
 .carosel-ad
@@ -118,14 +157,12 @@ body
 	width:100%;
 }
 
-.sns-heading
+.sns-heading ,th
 {
 	color:rgba(255,255,255,0.9);
-/* 	background-color: rgba(255,255,255,0.5); */
 	background-color:rgba(0,0,0,0.5);
 	font-weight: bold;
-	font-stretch:extra-expanded;
-	background-image: url("../../resources/img/bodypattern-3.png");
+	font-stretch:condensed;
 }
 
 .sns-content
@@ -162,6 +199,34 @@ body
 	outline:none;
 }
 
+.special-textbox
+{
+	width:70%;
+/* 	height:200%; */
+	background-color:rgba(255,255,255,0.5);
+	border-color: rgba(0,0,0,0.3);
+	border-radius: 50px 50px 50px 50px;
+	border-width:1px;
+	text-align:center;
+	font-size: large;
+	outline:none;
+}
+
+.special-textbox:hover
+{
+	background-color: rgba(255,255,255,0.7);
+	border-color: rgba(0,0,0,0.5);
+}
+
+.special-textbox:focus
+{
+	background-color: rgba(255,255,255,1.0);
+	border-color: rgba(0,0,0,0.8);
+	width:80%;
+	border-left-width: 3px;
+	border-right-width: 3px;
+}
+
 .admin-tool-heading
 {
 	color:rgb(91,192,222);
@@ -184,6 +249,7 @@ body
 
 #base-area
 {
+	font-family:fontRoundedElegance;
 	background-color: rgba(0,0,0,0.5);
 	color:rgba(163,106,0,1);
 	position:fixed;
@@ -216,8 +282,6 @@ body
 	color:rgba(255,255,255,1);
 }
 
-
 /* -------------------------------------------------------------------XCLUSIVE AREA */
 
 
-/* ------------------------------------------------------------------------------SITE THEME */

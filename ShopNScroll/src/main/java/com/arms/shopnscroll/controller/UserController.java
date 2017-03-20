@@ -1,5 +1,9 @@
 package com.arms.shopnscroll.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.arms.shopnscroll.model.User;
 import com.arms.shopnscroll.service.UserService;
@@ -18,6 +24,8 @@ public class UserController
 {
 	@Autowired
 	UserService userService;
+	
+	private String Data_Folder = "E:\\Workspaces\\ShopNScrollSecond\\ShopNScroll\\src\\main\\webapp\\resources\\data";
 	
 	@RequestMapping("/user")
 	public String getUserPage(Model model)
@@ -32,7 +40,7 @@ public class UserController
 	}
 	
 	@RequestMapping("/adduser")
-	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model)
+	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam("userAvatar")MultipartFile userAvatar, Model model)
 	{
 		if(result.hasErrors())
 		{
@@ -43,10 +51,41 @@ public class UserController
 			return"admin-user";
 		}
 		userService.addUser(user);
+		
+		
+		if(!userAvatar.isEmpty()){
+			try
+			{
+				byte[] bytes = userAvatar.getBytes();
+				
+				File directory = new File(Data_Folder + File.separator);
+						if(!directory.exists())
+						{
+							directory.mkdirs();
+						}
+						
+						File imageFile = new File(directory.getAbsolutePath() + File.separator + "USER-" + user.getUserId() + ".jpg");
+						BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(imageFile));
+						stream.write(bytes);
+						stream.close();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+				model.addAttribute("fmessage","Image Upload Failed.try again");
+			}
+			model.addAttribute("filemessage","Image Upload Successful");
+		}
+		else
+		{
+			model.addAttribute("filemessage","Image file is required");
+		}
+		
+		
 		return "redirect:/user";
 	}
 	
-	@RequestMapping("/updateuser")
+	@RequestMapping("/updateuser-{userId}")
 	public String updateUser(@PathVariable("userId")int userId, Model model)
 	{
 		
@@ -57,6 +96,14 @@ public class UserController
 		
 		return "admin-user";
 	}
+	
+	@RequestMapping("toggleuser-{userId}")
+	public String toggleUser(@PathVariable("userId")int userId)
+	{
+		userService.toggleUserStatus(userId);
+		return "redirect:/user";
+	}
+	
 	
 	@RequestMapping("/signup1")
 	public String getSignupStep1()

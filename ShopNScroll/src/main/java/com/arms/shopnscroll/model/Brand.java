@@ -23,11 +23,11 @@ public class Brand
 	@Expose
 	private int brandId;
 	
-	@NotEmpty(message="*Name is required")
+	@NotEmpty(message="Name is required")
 	@Expose
 	private String brandName;
 	
-	@NotEmpty(message="*Description is required")
+	@NotEmpty(message="Description is Required")
 	@Expose
 	private String brandDescription;
 	

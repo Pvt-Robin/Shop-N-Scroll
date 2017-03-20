@@ -75,18 +75,18 @@
 
 </div>
 
-
 <button class="admin-expand-btn">Button</button>
 <h1 class="admin-tool-form">vsvhiwrh</h1>
 
 <%-- <h1>WELCOME ${user}</h1> --%>
 <h1>
+<sec:authorize access="isAuthenticated()">
 <sec:authentication property="principal.username"/>
+</sec:authorize>
 </h1><br>
-<form action="logout">
-<button>Logout</button>
-<button>Home</button>
-</form>
+
+<a href="logout">Logout</a>
+
 <script type="text/javascript" src="resources/js/jquery-3.1.1.min.js" ></script>
 <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/dev-query.js" ></script>

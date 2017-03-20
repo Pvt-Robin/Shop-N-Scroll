@@ -28,21 +28,21 @@ public class Product
 	@Expose
 	private  int productId;
 	
-	@NotEmpty(message="Name is required")
+	@NotEmpty(message="Name Is Required")
 	@Expose
 	private String productName;
 	
-	@NotEmpty(message="Description is required")
+	@NotEmpty(message="Description Is Required")
 	@Expose
 	private String description;
 	
-	@NotNull(message="Actual Price is required")
-	@Min(value=1, message="Cannot be 0 or less")
+	@NotNull(message="Actual Price Is Required")
+	@Min(value=1, message="Cannot Be 0 Or Less")
 	@Expose
 	private float price;
 	 
-	@NotNull(message="Discount is required")
-	@Max(value=85, message="Cannot be greater than 85%")
+	@NotNull(message="Discount Is Required")
+	@Max(value=85, message="Cannot Be Greater Than 85%")
 	@Expose
 	private int discount;
 	
@@ -54,23 +54,23 @@ public class Product
 	@Expose
 	private Date createdDate = new Date();
 
-	@NotNull(message="Rating is required")
-	@Min(value=1, message="Cannot be lesser than 1")
-	@Max(value=5, message="Cannot be greater than 5")
+	@NotNull(message="Rating Is Required")
+	@Min(value=1, message="Cannot Be Lesser Than 1")
+	@Max(value=5, message="Cannot Be Greater Than 5")
 	@Expose
 	private float rating = 1;
 	
-	@NotEmpty(message="Country is required")
+	@NotEmpty(message="Country Is Required")
 	@Expose
 	private String madeCountry;
 	
-	@NotNull(message="Stock is needed")
-	@Min(value=5, message="Cannot be less than 5")
+	@NotNull(message="Stock Is Needed")
+	@Min(value=5, message="Cannot Be Less Than 5")
 	@Expose
 	private int stock;
 	
 	@Expose
-	private boolean disabled;
+	private boolean enabled;
 	
 	@Expose
 	private int categoryId;
@@ -168,12 +168,12 @@ public class Product
 		this.rating = rating;
 	}
 
-	public boolean isDisabled() {
-		return disabled;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
-	public void setDisabled(boolean disabled) {
-		this.disabled = disabled;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public String getMadeCountry() {

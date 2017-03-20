@@ -27,6 +27,13 @@ siteApp.controller("productControllerAJS", function($scope)
 </script>
 
 <script>
+siteApp.controller("viewProductControllerAJS", function($scope) 
+{
+	$scope.thisproduct = ${viewProductJSON};
+});
+</script>
+
+<script>
 siteApp.controller("brandControllerAJS", function($scope) 
 {
 	$scope.blist = ${brandListJSON};
@@ -63,11 +70,70 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
 	$( ".admin-expand-btn" ).click(function() {
-	  $( ".admin-tool-form" ).slideToggle( "fast", function() {
+	  $( ".admin-tool-form" ).slideToggle( "1000", function() {
 	    // Animation
 	  });
 	});
 	});
+</script>
+
+<script>
+$(document).ready(function(){
+	$( "#header-login-button" ).click(function() {
+	  $( "#header-login-form" ).slideToggle( {direction: 'left'}, "fast", function() {
+	    // Animation
+	  });
+	});
+	});
+</script>
+
+<script>
+$(document).ready(function(){
+    $("#main-head-srctxt")
+    .blur(function()
+    	{	
+        if($(this).val().length > 0)
+        {
+            $(this).css("background-image", "none");
+            $(this).css("background-color", "rgba(0,0,0,0.2)");
+        }
+        else
+        	{
+        	$(this).css("background-image", "url(resources/img/logo.png)");
+            $(this).css("background-color", "rgba(0,0,0,0.2)");
+        	}
+    })
+    .focus(function(){
+        $(this).css("background-image", "none");
+        $(this).css("background-color", "rgba(0,0,0,0.2)");
+	})
+	.mouseenter(function(){
+        $(this).css("background-color", "rgba(255,165,0,0.5)");
+	})
+	.mouseleave(function(){
+        $(this).css("background-color", "rgba(0,0,0,0.2)");
+	});
+});
+</script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
+
+<script>
+function callNoImg(obj)
+{
+       var defaultimg = "resources/img/default-picture.png";
+       obj.src=defaultimg;
+};
+
+function callNoAvatar(obj)
+{
+       var defaultavatar = "resources/img/default-avatar.png";
+       obj.src=defaultavatar;
+};
 </script>
 
 </body>

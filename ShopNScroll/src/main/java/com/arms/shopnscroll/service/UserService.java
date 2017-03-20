@@ -25,9 +25,14 @@ public class UserService
 		return userDAOImpl.fetchAllUser();
 	}
 	
-	public String fetchOneUser(int userId)
+	public User fetchOneUser(int userId)
 	{
 		return userDAOImpl.fetchOneUser(userId);
+	}
+	
+	public void toggleUserStatus(int userId)
+	{
+		userDAOImpl.toggleUserStatus(userId);
 	}
 	
 }

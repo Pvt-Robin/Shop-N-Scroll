@@ -2,20 +2,57 @@ package com.arms.shopnscroll.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.Pattern;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class ShippingAddress 
 {
 	@Id
+	@Expose
 	private int userId;
 	
+	@Expose
+	private String sName;
+	
+	@Expose
 	private String sPrefix;
-	private String sStreet;
-	private String sCity;
-	private String sState;
-	private String sCountry;
-	private int sPIN;
+	
+	@Expose
 	private String sLandmark;
+	
+	@Expose
+	private String sStreet;
+	
+	@Expose
+	@Pattern(regexp="^[a-zA-Z_]*$",message="Cannot Have Numbers And Symbols")
+	private String sCity;
+	
+	@Expose
+	@Pattern(regexp="^[a-zA-Z_]*$",message="Cannot Have Numbers And Symbols")
+	private String sState;
+	
+	@Expose
+	@Pattern(regexp="^[a-zA-Z_]*$",message="Cannot Have Numbers And Symbols")
+	private String sCountry;
+	
+	@Expose
+//	@Pattern(regexp="(^$|[0-9]{10})",message="Should Be A 6 Digit Number")
+	private int sPIN;
+	
+	@OneToOne
+	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public int getUserId() {
 		return userId;
 	}
@@ -63,6 +100,12 @@ public class ShippingAddress
 	}
 	public void setsLandmark(String sLandmark) {
 		this.sLandmark = sLandmark;
+	}
+	public String getsName() {
+		return sName;
+	}
+	public void setsName(String sName) {
+		this.sName = sName;
 	}
 	
 	
