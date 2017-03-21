@@ -27,6 +27,10 @@ public class Brand
 	@Expose
 	private String brandName;
 	
+	@NotEmpty(message="Name is required")
+	@Expose
+	private String brandTagLine;
+	
 	@NotEmpty(message="Description is Required")
 	@Expose
 	private String brandDescription;
@@ -77,6 +81,11 @@ public class Brand
 	public void setBrandImage(MultipartFile brandImage) {
 		this.brandImage = brandImage;
 	}
-	
+	public String getBrandTagLine() {
+		return brandTagLine;
+	}
+	public void setBrandTagLine(String brandTagLine) {
+		this.brandTagLine = brandTagLine;
+	}
 	
 }

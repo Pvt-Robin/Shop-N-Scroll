@@ -136,5 +136,16 @@ function callNoAvatar(obj)
 };
 </script>
 
+<script>
+function finalPrice(p, d) 
+{
+	  var price = parseInt(p);
+	  var discount = parseInt(d);
+	  var final = (price) - ((price/discount)* 100);
+      document.write(final);
+
+};
+</script>
+
 </body>
 </html>

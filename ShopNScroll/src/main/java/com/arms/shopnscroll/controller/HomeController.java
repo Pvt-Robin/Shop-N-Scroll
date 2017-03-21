@@ -31,12 +31,6 @@ public class HomeController
 		return "main-home";
 	}
 	
-	@RequestMapping("/cart")
-	public String getCart()
-	{
-		return "main-cart";
-	}
-	
 	@RequestMapping("/about")
 	public String getAbout()
 	{

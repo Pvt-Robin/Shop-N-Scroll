@@ -69,11 +69,10 @@
 		<intercept-url pattern="/removeproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/toggleproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
 
-		<intercept-url pattern="/user**" access="hasRole('ROLE_ADMIN')"/>
-		<intercept-url pattern="/updateuser-{{userId}}**" access="hasRole('ROLE_ADMIN')"/>
-		<intercept-url pattern="/adduser**" access="hasRole('ROLE_ADMIN')"/>
-		<intercept-url pattern="/userprofile**" access="hasRole('ROLE_ADMIN')"/>
-
+<!-- 		<intercept-url pattern="/user**" access="hasRole('ROLE_ADMIN')"/> -->
+<!-- 		<intercept-url pattern="/updateuser-{{userId}}**" access="hasRole('ROLE_ADMIN')"/> -->
+<!-- 		<intercept-url pattern="/adduser**" access="hasRole('ROLE_ADMIN')"/> -->
+<!-- 		<intercept-url pattern="/userprofile**" access="hasRole('ROLE_ADMIN')"/> -->
 
 		<!-- access denied page -->
 <!-- 		<access-denied-handler error-page="/403" /> -->

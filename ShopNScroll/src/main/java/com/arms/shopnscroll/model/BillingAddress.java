@@ -13,7 +13,10 @@ public class BillingAddress
 {
 	@Id
 	@Expose
-	private int userId;
+	private int billId;
+	
+	@Expose
+	int userId;
 	
 	@Expose
 	private String bName;
@@ -44,14 +47,15 @@ public class BillingAddress
 	private int bPIN;
 	
 	@OneToOne
-	@JoinColumn(name="UserId", nullable=false , updatable=false , insertable=false )
+	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
 	private User user;
 	
-	public int getUserId() {
-		return userId;
+
+	public int getBillId() {
+		return billId;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setBillId(int billId) {
+		this.billId = billId;
 	}
 	public String getbPrefix() {
 		return bPrefix;
@@ -106,6 +110,12 @@ public class BillingAddress
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	
 }

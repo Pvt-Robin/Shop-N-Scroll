@@ -51,15 +51,15 @@
 
 <!-- HOME PAGE-BROWSE AREA -->
 
-<h5 class="sns-heading text-center well-sm">Shop Trending</h5>
+<h5 class="sns-heading text-center well-sm">Trending</h5>
 
-<h5 class="sns-heading text-center well-sm">Shop Latest</h5>
+<h5 class="sns-heading text-center well-sm">Latest</h5>
 
-<h5 class="sns-heading text-center well-sm">Shop By Discount</h5>
+<h5 class="sns-heading text-center well-sm">Best Discounts</h5>
 
-<h5 class="sns-heading text-center well-sm">Shop By Offers</h5>
+<h5 class="sns-heading text-center well-sm">Best Offers</h5>
 
-<h5 class="sns-heading text-center well-sm">Shop By Brand</h5>
+<h5 class="sns-heading text-center well-sm">Top Brand</h5>
 
 <div  ng-app="SiteAppAJS">
 <div ng-controller="brandControllerAJS">

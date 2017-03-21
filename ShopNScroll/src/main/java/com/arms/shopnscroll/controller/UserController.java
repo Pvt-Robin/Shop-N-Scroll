@@ -106,15 +106,15 @@ public class UserController
 	
 	
 	@RequestMapping("/signup1")
-	public String getSignupStep1()
-	{
-		return "user-signup-step-1";
+	public String getSignupStep1(BindingResult result,Model model)
+	{	
+		return "user-signup-step-2";
 	}
 	
 	@RequestMapping("/signup2")
-	public String getSignupStep2()
+	public String getSignupStep2(Model model)
 	{
-		return "user-signup-step-2";
+		return null;
 	}
 	
 	@RequestMapping("/signup3")
@@ -129,5 +129,9 @@ public class UserController
 		return "user-profile";
 	}
 	
-	
+	@RequestMapping("/userorder")
+	public String getOrders()
+	{
+		return "user-orderlist";
+	}
 }

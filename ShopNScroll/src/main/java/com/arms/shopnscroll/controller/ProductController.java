@@ -150,6 +150,7 @@ public class ProductController {
 	public String viewOneProductJSON(@PathVariable("productId") int productId, Model model)
 	{
 		Product product = productService.fetchOneProduct(productId);
+		
 		int counterPlus = product.getViewCount()+1;
 		product.setViewCount(counterPlus);
 		

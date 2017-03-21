@@ -53,6 +53,10 @@
 <form:input  path="brandName" placeholder="Name" class="special-textbox"/><br>
 <form:errors path="brandName" class="admin-tool-error"/><br>
 
+<form:label path="brandTagLine">Tag Line</form:label><br>
+<form:input  path="brandTagLine" placeholder="Tagline" class="special-textbox"/><br>
+<form:errors path="brandTagLine" class="admin-tool-error"/><br>
+
 <form:label path="brandDescription">Description</form:label><br>
 <form:input path="brandDescription" placeholder="Description" class="special-textbox"/><br>
 <form:errors path="brandDescription" class="admin-tool-error"/><br>
@@ -84,6 +88,7 @@
 <th><center>Logo</center></th>
 <th><center>Id</center></th>
 <th><center>Name</center></th>
+<th><center>Tag Line</center></th>
 <th><center>Description</center></th>
 <th><center>Website</center></th>
 <th><center>Operation</center></th>
@@ -92,8 +97,10 @@
 <td><img src="resources/data/BRND-{{b.brandId}}.jpg" height="80px" width="80px" alt="img not uploaded" onerror="this.onerror=null;callNoImg(this);"/></td>
 <td>#{{b.brandId}}</td>
 <td>{{b.brandName}}</td>
-<td>{{b.brandSite}}</td>
+<td>{{b.brandTagLine}}</td>
 <td>{{b.brandDescription}}</td>
+<td>{{b.brandSite}}</td>
+
 <td>
 <a href="updatebrand-{{b.brandId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>
 <a href="removebrand-{{b.brandId}}"><button class="special-icon btn btn btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-trash"></i></button></a>

@@ -13,6 +13,7 @@ import com.arms.shopnscroll.model.Cart;
 import com.arms.shopnscroll.model.ShippingAddress;
 import com.arms.shopnscroll.model.User;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class UserDAOImpl implements UserDAO
@@ -30,14 +31,21 @@ public class UserDAOImpl implements UserDAO
 		BillingAddress billingAddress = new BillingAddress();
 		ShippingAddress shippingAddress = new ShippingAddress();
 		
+		cart.setCartId(user.getUserId());
 		cart.setUserId(user.getUserId());
+		
+		billingAddress.setBillId(user.getUserId());
 		billingAddress.setUserId(user.getUserId());
+		
+		shippingAddress.setShipId(user.getUserId());
 		shippingAddress.setUserId(user.getUserId());
 		
 		session.saveOrUpdate(cart);
 		session.saveOrUpdate(billingAddress);
 		session.saveOrUpdate(shippingAddress);
-		
+
+		user.setBillId(user.getUserId());
+		user.setShipId(user.getUserId());
 		user.setEnabled(true);
 		user.setRole("ROLE_BUYER");
 		
@@ -48,8 +56,7 @@ public class UserDAOImpl implements UserDAO
 	public String fetchAllUser() 
 	{
 		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User").getResultList();
-//		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		Gson gson  = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		return gson.toJson(userList);
 	}
 
@@ -57,6 +64,13 @@ public class UserDAOImpl implements UserDAO
 	public User fetchOneUser(int userId) 
 	{
 		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User where userId="+userId).getResultList();
+		return userList.get(0);
+	}
+	
+	@Override
+	public User fetchUserByUserName(String username) 
+	{
+		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User where username='"+username+"'").getResultList();
 		return userList.get(0);
 	}
 	
@@ -73,5 +87,6 @@ public class UserDAOImpl implements UserDAO
 			user.setEnabled(true);
 		}
 	}
+
 
 }

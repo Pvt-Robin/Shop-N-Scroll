@@ -13,7 +13,10 @@ public class ShippingAddress
 {
 	@Id
 	@Expose
-	private int userId;
+	private int shipId;
+	
+	@Expose
+	int userId;
 	
 	@Expose
 	private String sName;
@@ -47,17 +50,19 @@ public class ShippingAddress
 	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
 	private User user;
 	
+	
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public int getUserId() {
-		return userId;
+
+	public int getShipId() {
+		return shipId;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setShipId(int shipId) {
+		this.shipId = shipId;
 	}
 	public String getsPrefix() {
 		return sPrefix;
@@ -106,6 +111,12 @@ public class ShippingAddress
 	}
 	public void setsName(String sName) {
 		this.sName = sName;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	
 	

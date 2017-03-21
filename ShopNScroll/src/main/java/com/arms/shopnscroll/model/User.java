@@ -1,11 +1,16 @@
 package com.arms.shopnscroll.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
@@ -57,7 +62,7 @@ public class User
 	@Expose
 	private boolean enabled;
 	
-	//NOTE:DON'T MAKE SETTER FOR DATE
+//	NOTE:DON'T MAKE SETTER FOR DATES
 //	@Expose
 //	@NotEmpty(message="Date of Birth is Mandatory")
 //	private Date dateOfBirth;
@@ -79,36 +84,51 @@ public class User
 	@Expose
 	private MultipartFile userAvatar;
 	
-//	@OneToOne
-//	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
-//	private Cart cart;
-//
-//	@OneToOne
-//	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
-//	private BillingAddress billingAddress;
-//	
-//	@OneToOne
-//	@JoinColumn(name="userId", nullable=false , updatable=false , insertable=false )
-//	private ShippingAddress shippingAddress;
+	@Expose
+	private int cartId;
+	
+	@Expose
+	private int billId;
+	
+	@Expose
+	private int shipId;
+	
+	@OneToOne (mappedBy="user")
+	private Cart cart;
+	
+	@OneToOne (mappedBy="user")
+	private BillingAddress billingAddress;
+	
+	@OneToOne (mappedBy="user")
+	private ShippingAddress shippingAddress;
+	
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	private Set<CartItems> cartItems;
 
-//	public Cart getCart() {
-//		return cart;
-//	}
-//	public void setCart(Cart cart) {
-//		this.cart = cart;
-//	}
-//	public BillingAddress getBillingAddress() {
-//		return billingAddress;
-//	}
-//	public void setBillingAddress(BillingAddress billingAddress) {
-//		this.billingAddress = billingAddress;
-//	}
-//	public ShippingAddress getShippingAddress() {
-//		return shippingAddress;
-//	}
-//	public void setShippingAddress(ShippingAddress shippingAddress) {
-//		this.shippingAddress = shippingAddress;
-//	}
+	public Set<CartItems> getCartItems() {
+		return cartItems;
+	}
+	public void setCartItems(Set<CartItems> cartItems) {
+		this.cartItems = cartItems;
+	}
+	public int getCartId() {
+		return cartId;
+	}
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+	public int getBillId() {
+		return billId;
+	}
+	public void setBillId(int billId) {
+		this.billId = billId;
+	}
+	public int getShipId() {
+		return shipId;
+	}
+	public void setShipId(int shipId) {
+		this.shipId = shipId;
+	}	
 	public String getUsername() {
 		return username;
 	}
@@ -184,6 +204,23 @@ public class User
 	public void setUserAvatar(MultipartFile userAvatar) {
 		this.userAvatar = userAvatar;
 	}
-	
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+	public BillingAddress getBillingAddress() {
+		return billingAddress;
+	}
+	public void setBillingAddress(BillingAddress billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+	public ShippingAddress getShippingAddress() {
+		return shippingAddress;
+	}
+	public void setShippingAddress(ShippingAddress shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
 
 }
