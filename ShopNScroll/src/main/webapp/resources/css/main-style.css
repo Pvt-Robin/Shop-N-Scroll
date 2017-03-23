@@ -105,6 +105,57 @@
 {
 	background-color:rgba(255,165,0,0.5);
 }
+
+ .special-header-textbox
+ {
+ 		font-family: fontAbelRegular;
+ 		font-size: larger;
+		background-color:rgba(0,0,0,0.3);
+		width:"100%";
+		padding:5px 0;
+		border: 1px solid white;
+		border-radius: 50px 50px 50px 50px;
+		font-size: large;
+		color:rgb(255,255,255);
+		text-align: center;
+ }
+ .special-header-textbox:focus
+ {
+		background-color:rgba(0,0,0,0.2);
+		outline:none;
+ }
+ .special-header-textbox:hover
+ {
+		background-color:rgba(255,255,255,0.1);
+ }
+ 
+ #special-login-btn
+ {
+ 		font-family: fontAbelRegular;
+		background-color:rgba(0,0,0,0.3);
+		width:"100%";
+		padding:8px 8px;
+		border: 1px solid white;
+		border-radius: 50px 50px 50px 50px;
+		font-size: large;
+		color:rgb(255,255,255);
+		text-align: center;
+ }
+ #special-login-btn:focus
+ {
+		background-color:rgba(255,255,255,0.1);
+		outline:none;
+ }
+#special-login-btn:hover
+ {
+		background-color:rgba(255,255,255,0.1);
+ }
+ 
+ #admin-profile
+ {
+ 		color: rgba(255,255,255,1.0);
+ }
+ 
 /* ------------------------------------------------------------------------- BODY STYLING */
 
 #margin-divider
@@ -114,7 +165,6 @@
 
 body
 {
-/* 	background-color:rgba(100,149,237,0.2); */
 	background-color:rgba(255,255,255,0.3);
 	background-image:url("../../resources/img/bodypattern-3.png");
 	background-attachment: fixed;
@@ -130,7 +180,6 @@ body
 
 #login-signup-panels
 {
-/* 	background-color:rgba(255,255,255,0.3) ; */
 	background-color:rgba(0,0,0,0.1) ;
 }
 
@@ -202,7 +251,6 @@ body
 .special-textbox
 {
 	width:70%;
-/* 	height:200%; */
 	background-color:rgba(255,255,255,0.5);
 	border-color: rgba(0,0,0,0.3);
 	border-radius: 50px 50px 50px 50px;
@@ -243,6 +291,65 @@ body
 {
 	color:red;
 	font-style: italic;
+}
+
+.admin-tab-button, .admin-tab-button-back
+{
+	background-color: rgba(255,255,255,0.0);
+	border-color: rgba(255,255,255,1.0);;
+	border-width: 1px;
+	color: rgba(255,255,255,1.0);;
+	outline: none;
+}
+.admin-tab-button:hover
+{
+	background-color: rgba(255,255,255,0.2);
+	color: rgba(255,255,255,1.0);;
+}
+
+.admin-tab-button:focus
+{
+	background-color: rgba(255,255,255,1);
+	color: rgba(0,0,0,1.0);;
+	font-weight: bold;
+}
+.admin-tab-button-selected, .admin-tab-button-selected:active
+{
+	background-color: rgba(255,255,255,1.0);
+	border-color: rgba(255,255,255,1.0);;
+	border-width: 1px;
+	color: rgba(0,0,0,1.0);;
+	outline: none;
+}
+.admin-tab-button-back:hover
+{
+	background-color: rgba(255,0,0,0.2);
+	color:rgba(255,255,255,1.0);;
+}
+
+.sns-breadcrumb
+{
+	 color: rgba(255,255,255,1.0);	
+ 	 background-color: rgba(0,0,0,0.4);
+}
+
+.sns-crumb , .sns-crumb:LINK , .sns-crumb:VISITED , .sns-crumb:ACTIVE, .sns-current-crumb:LINK , .sns-current-crumb:VISITED, .sns-current-crumb ac:ACTIVE
+{
+	color: rgba(255,255,255,1.0);
+ 	text-decoration: none;
+}
+
+.sns-crumb:hover , .sns-current-crumb:hover
+{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.sns-current-crumb
+{
+	font-size: large;
+	color: rgba(255,255,255,1.0);
+ 	text-decoration: none;
 }
 
 /* ------------------------------------------------------------------------- FOOT STYLING */

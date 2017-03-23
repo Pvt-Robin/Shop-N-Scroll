@@ -62,6 +62,13 @@ siteApp.controller("userControllerAJS", function($scope)
 </script>
 
 <script>
+siteApp.controller("cartControllerAJS", function($scope) 
+{
+	$scope.cartlist = ${cartItemsListJSON};
+});
+</script>
+
+<script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
@@ -81,6 +88,26 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$( "#header-login-button" ).click(function() {
 	  $( "#header-login-form" ).slideToggle( {direction: 'left'}, "fast", function() {
+	    // Animation
+	  });
+	});
+	});
+</script>
+
+<script>
+$(document).ready(function(){
+	$( "#admin-profile-button" ).click(function() {
+	  $( "#admin-profile" ).slideToggle( {direction: 'left'}, "fast", function() {
+	    // Animation
+	  });
+	});
+	});
+</script>
+
+<script>
+$(document).ready(function(){
+	$( "#user-profile-button" ).click(function() {
+	  $( "#user-profile" ).slideToggle( {direction: 'left'}, "fast", function() {
 	    // Animation
 	  });
 	});

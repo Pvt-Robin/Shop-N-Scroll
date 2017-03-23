@@ -1,24 +1,28 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
 
-<div class="text-center admin-tool well-sm">
-<button class="btn btn-info">Users</button>
-<a href="supplier" ><button class="btn btn-warning">Suppliers</button></a>
-<a href="category" ><button class="btn btn-warning">Category</button></a>
-<a href="subcategory" ><button class="btn btn-warning">SubCategory</button></a>
-<a href="brand" ><button class="btn btn-warning">Brand</button></a>
-<a href="product" ><button class="btn btn-warning">Products</button></a><br/>
+<div class="text-center" ng-app="SiteAppAJS">
 
+<div class="well-sm sns-heading">
+
+<div class="btn-group admin-tab well-sm col-md-6">
+<a href="admin" class="btn admin-tab-button-back"><i class="glyphicon glyphicon-chevron-left"></i>Back</a>
+<a href="#" class="btn admin-tab-button">Ads</a>
+<button class="btn admin-tab-button-selected"><b>Users</b></button>
+<a href="supplier" class="btn admin-tab-button">Suppliers</a>
+<a href="category" class="btn admin-tab-button">Category</a>
+<a href="subcategory" class="btn admin-tab-button">SubCategory</a>
+<a href="brand" class="btn admin-tab-button">Brand</a>
+<a href="product" class="btn admin-tab-button">Products</a>
 </div>
 
-<div class="text-center" ng-app="SiteAppAJS">
-<div class="well-sm sns-heading">
-<button class="admin-expand-btn btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i>Form</button>
+<div class="text-right well-sm">
+<button class="admin-expand-btn btn admin-tab-button"><i class="glyphicon glyphicon-plus"></i>&nbsp Add</button>
+<input type="text" ng-model="searchkeyword" placeholder="Search" class="btn admin-tab-button" autofocus/>
 
-<input type="text" ng-model="searchkeyword" placeholder="Search" class="btn btn-default btn-sm" autofocus/>
-
-<select ng-model="orderkeyword" class="btn btn-default btn-sm">
-<option value="userId" selected>Id</option>
+<select ng-model="orderkeyword" class="btn admin-tab-button">
+<option value="" disabled selected>Sort By</option>
+<option value="userId">Id</option>
 <option value="firstName">First Name</option>
 <option value="lastName">Last Name</option>
 <option value="age">Age</option>
@@ -29,17 +33,22 @@
 <option value="createdDate">Date</option>
 </select>
 
-<button class="btn btn-default btn-sm">
+<button class="btn admin-tab-button">
 <input type="checkbox" value="true" ng-model="orderflag">&nbsp Descending</input>
 </button>
 </div>
+</div>
+
+<c:if test="${btnLabel eq 'Add'}">
+<div class="admin-tool-form text-center well-sm" style="display:none;">
+</c:if>
 
 <c:if test="${btnLabel eq 'Update'}">
 <div class="admin-tool-form text-center well-sm">
 </c:if>
 
-<c:if test="${btnLabel ne 'Update'}">
-<div class="admin-tool-form text-center well-sm" style="display:none;">
+<c:if test="${btnLabel eq 'Insert'}">
+<div class="admin-tool-form text-center well-sm">
 </c:if>
 
 <form:form class="form" action="adduser" modelAttribute="user" method="post" enctype="multipart/form-data">
@@ -86,12 +95,23 @@
 <form:input path="username" placeholder="Username" class="special-textbox"/><br>
 <form:errors path="username" class="admin-tool-error"/><br>
 
+<c:if test="${btnLabel ne 'Update'}">
 <form:label path="password">Password</form:label><br>
-<form:input path="password" placeholder="Password" class="special-textbox"/><br>
+<form:password path="password" placeholder="Password" class="special-textbox"/><br>
 <form:errors path="password" class="admin-tool-error"/><br>
+</c:if>
+
+<c:if test="${btnLabel eq 'Update'}">
+<form:input path="password" placeholder="Password" class="special-textbox" readonly="true" hidden="true"/><br>
+</c:if>
 
 <form:button class="special-icon btn btn-success"><i class="glyphicon glyphicon-ok"></i></form:button>
+
 <c:if test="${btnLabel eq 'Update'}">
+<a href="user"><button type="button" class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
+</c:if>
+
+<c:if test="${btnLabel eq 'Insert'}">
 <a href="user"><button type="button" class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
 </c:if>
 

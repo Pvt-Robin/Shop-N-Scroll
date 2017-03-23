@@ -5,27 +5,30 @@
 
 <div class="well-sm sns-heading">
 
-<div class="btn-group admin-tool well-sm col-md-6">
-<a href="user" class="btn btn-warning">Users</a>
-<a href="supplier" class="btn btn-warning">Suppliers</a>
-<a href="category" class="btn btn-warning">Category</a>
-<a href="subcategory" class="btn btn-warning">SubCategory</a>
-<button class="btn btn-info">Brand</button>
-<a href="product" class="btn btn-warning">Products</a><br/>
+<div class="btn-group admin-tab well-sm col-md-6">
+<a href="admin" class="btn admin-tab-button-back"><i class="glyphicon glyphicon-chevron-left"></i>Back</a>
+<a href="#" class="btn admin-tab-button">Ads</a>
+<a href="user" class="btn admin-tab-button">Users</a>
+<a href="supplier" class="btn admin-tab-button">Suppliers</a>
+<a href="category" class="btn admin-tab-button">Category</a>
+<a href="subcategory" class="btn admin-tab-button">SubCategory</a>
+<button class="btn admin-tab-button-selected "><b>Brand</b></button>
+<a href="product" class="btn admin-tab-button">Products</a><br/>
 </div>
 
 <div class="text-right well-sm">
-<button class="admin-expand-btn btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i>Form</button>
+<button class="admin-expand-btn btn admin-tab-button"><i class="glyphicon glyphicon-plus"></i>&nbsp Add</button>
 
-<input type="text" ng-model="searchkeyword" class="btn btn-default btn-sm" placeholder="Search" autofocus/>
+<input type="text" ng-model="searchkeyword" class="btn admin-tab-button" placeholder="Search" autofocus/>
 
-<select ng-model="orderkeyword" class="btn btn-default btn-sm">
-<option value="brandId" selected>Id</option>
+<select ng-model="orderkeyword" class="btn admin-tab-button">
+<option value="" disabled selected>Sort By</option>
+<option value="brandId">Id</option>
 <option value="brandName">Name</option>
 <option value="brandDescription">Description</option>
 </select>
 
-<button class="btn btn-default btn-sm">
+<button class="btn admin-tab-button">
 <input type="checkbox" ng-model="orderflag">&nbsp Descending</input>
 </button>
 </div>

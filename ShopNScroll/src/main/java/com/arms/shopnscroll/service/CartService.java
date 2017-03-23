@@ -1,7 +1,5 @@
 package com.arms.shopnscroll.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,29 +14,24 @@ public class CartService
 	@Autowired
 	CartDAOImpl cartDAOImpl;
 	
-	public List<CartItems> fetchAllItems(int userId)
+	public String fetchAllItemsByUserIdJSON(int userId)
 	{
-		return cartDAOImpl.fetchAllItems(userId);
+		return cartDAOImpl.fetchAllItemsByUserIdJSON(userId);
 	}
 	
-	public void addOneItem()
+	public CartItems fetchOneItem(int cartItemsId)
 	{
-		
+		return cartDAOImpl.fetchOneItem(cartItemsId);
 	}
 	
-	public void addManyItems()
+	public void addItem(CartItems cartItems)
 	{
-		
+		cartDAOImpl.addItem(cartItems);
 	}
-	
-	public void removeItem(int product)
+
+	public void removeItem(int cartItemsId)
 	{
-		
-	}
-	
-	public void checkOutItems(int[] productList)
-	{
-		
+		cartDAOImpl.removeItem(cartItemsId);
 	}
 	
 }

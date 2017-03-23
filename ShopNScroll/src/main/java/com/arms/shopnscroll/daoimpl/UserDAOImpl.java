@@ -34,6 +34,7 @@ public class UserDAOImpl implements UserDAO
 		cart.setCartId(user.getUserId());
 		cart.setUserId(user.getUserId());
 		
+		
 		billingAddress.setBillId(user.getUserId());
 		billingAddress.setUserId(user.getUserId());
 		
@@ -46,6 +47,7 @@ public class UserDAOImpl implements UserDAO
 
 		user.setBillId(user.getUserId());
 		user.setShipId(user.getUserId());
+		user.setCartId(user.getUserId());
 		user.setEnabled(true);
 		user.setRole("ROLE_BUYER");
 		

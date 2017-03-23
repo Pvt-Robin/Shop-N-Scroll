@@ -27,7 +27,7 @@ public class Brand
 	@Expose
 	private String brandName;
 	
-	@NotEmpty(message="Name is required")
+	@NotEmpty(message="TagLine is required")
 	@Expose
 	private String brandTagLine;
 	

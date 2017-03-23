@@ -46,7 +46,7 @@ public class UserController
 		{
 			model.addAttribute("userListJSON", userService.fetchAllUser());
 			
-			model.addAttribute("btnLabel","Update");
+			model.addAttribute("btnLabel","Insert");
 			
 			return"admin-user";
 		}

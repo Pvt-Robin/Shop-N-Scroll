@@ -1,26 +1,28 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
 
-
-<div class="well-sm text-center">
-<a href="user" ><button class="btn btn-warning">Users</button></a>
-<a href="supplier" ><button class="btn btn-warning">Suppliers</button></a>
-<a href="category" ><button class="btn btn-warning">Category</button></a>
-<a href="subcategory" ><button class="btn btn-warning">SubCategory</button></a>
-<a href="brand" ><button class="btn btn-warning">Brand</button></a>
-<button class="btn btn-info">Products</button>
-</div>
-
 <div ng-app="SiteAppAJS" class="text-center">
 
 <div class="well-sm sns-heading">
 
-<button class="admin-expand-btn btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i>Form</button>
+<div class="btn-group admin-tab well-sm col-md-6">
+<a href="admin" class="btn admin-tab-button-back"><i class="glyphicon glyphicon-chevron-left"></i>Back</a>
+<a href="#" class="btn admin-tab-button">Ads</a>
+<a href="user" class="btn admin-tab-button">Users</a>
+<a href="supplier" class="btn admin-tab-button">Suppliers</a>
+<a href="category" class="btn admin-tab-button">Category</a>
+<a href="subcategory" class="btn admin-tab-button">SubCategory</a>
+<a href="brand" class="btn admin-tab-button">Brands</a>
+<button class="btn admin-tab-button-selected "><b>Products</b></button>
+</div>
 
-<input type="text" ng-model="searchkeyword" placeholder="Search" class="btn btn-default btn-sm" autofocus/>
+<div class="text-right well-sm">
+<button class="admin-expand-btn btn admin-tab-button"><i class="glyphicon glyphicon-plus"></i>&nbsp Add</button>
+<input type="text" ng-model="searchkeyword" placeholder="Search" class="btn admin-tab-button" autofocus/>
 
-<select ng-model="orderkeyword" class="btn btn-default btn-sm">
-<option value="productId" selected>Id</option>
+<select ng-model="orderkeyword" class="btn admin-tab-button">
+<option value="" disabled selected>Sort By</option>
+<option value="productId">Id</option>
 <option value="productName">Name</option>
 <option value="description">Description</option>
 <option value="categoryId">Category</option>
@@ -33,10 +35,10 @@
 <option value="madeCountry">MadeCountry</option>
 </select>
 
-<button class="btn btn-default btn-sm">
+<button class="btn admin-tab-button">
 <input type="checkbox" value="true" ng-model="orderflag">&nbsp Descending</input>
 </button>
-
+</div>
 </div>
 
 <c:if test="${btnLabel eq 'Update'}">

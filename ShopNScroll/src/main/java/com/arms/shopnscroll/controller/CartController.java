@@ -5,7 +5,6 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -30,41 +29,111 @@ public class CartController
 	private ProductService productService;
 	
 	@RequestMapping("/usercart")
-	public String getCart(@PathVariable("productId")int productId,Model model)
+	public String getCart(Principal p,Model model)
 	{
+		if(p!=null)
+		{
+		int userId = userService.fetchUserByUserName(p.getName()).getUserId();		
+		model.addAttribute("cartItemsListJSON", CartService.fetchAllItemsByUserIdJSON(userId));
 		return "user-cart";
+		}
+		else
+		{
+			model.addAttribute("commonmessage", "You Must Login First!");
+			return "main-login";	
+		}
 	}
 	
-	@RequestMapping("/addonetocart-{productId}")
-	public String addOneToCart(@ModelAttribute("cartItems")CartItems cartItems, @PathVariable("productId")int productId,Principal p, Model model)
+	@RequestMapping("/addtocart-{productId}-{quantity}")
+	public String addOneToCart(@PathVariable("productId")int productId, @PathVariable("quantity")int quantity,Principal p, Model model)
 	{
 		if(p!=null)
 		{
 		String username = p.getName();
+
+		CartItems cartItems = new CartItems();
+		
 		User user = userService.fetchUserByUserName(username);
 		Product product = productService.fetchOneProduct(productId);
 		
+		float rate = product.getPrice();
+		int discount = product.getDiscount();
+		float amountperunit = rate-(rate*discount/100);
+		
+		cartItems.setCartId(user.getCartId());
+		cartItems.setUserId(user.getUserId());
+		cartItems.setProductName(product.getProductName());
+		cartItems.setProductId(product.getProductId());
+		cartItems.setPrice(product.getPrice());
+		cartItems.setDiscount(discount);
+		cartItems.setQuantity(quantity);
+		cartItems.setAmount(amountperunit * quantity);
+		cartItems.setFlag("N");
+		
+		CartService.addItem(cartItems);
+		
+		model.addAttribute("commonmessage", "Added To Cart");
 		return "redirect:/usercart";
 		}
-		model.addAttribute("commonmessage", "You Must Login To Use Cart!");
+		else if(quantity > 3 || quantity <= 0)
+		{
+			model.addAttribute("commonmessage", "You Cannot Order Like This!");
+			return "redirect:/viewproduct-"+productId;
+		}
+		else
+		{
+		model.addAttribute("commonmessage", "You Must Login First!");
 		return "redirect:/login";
+		}
 		
 	}
 	
-	@RequestMapping("/admanytocart-{productId}-{quantity}")
-	public String addManyToCart(@PathVariable("productId")int productId,Principal p, Model model)
+	@RequestMapping("/removefromcart-{cartItemsId}")
+	public String removeFromCart(@PathVariable("cartItemsId")int cartItemsId,Principal p, Model model)
 	{
 		if(p!=null)
 		{
-		String username = p.getName();
-		User user = userService.fetchUserByUserName(username);
-		Product product = productService.fetchOneProduct(productId);
-		
-		return "redirect:/usercart";
+			CartService.removeItem(cartItemsId);
+			model.addAttribute("commonmessage", "Removed From Cart");
+			return "redirect:/usercart";
 		}
-		model.addAttribute("commonmessage", "You Must Login To Use Cart!");
-		return "redirect:/login";
-		
+		else
+		{
+			model.addAttribute("commonmessage", "You Must Login First!");
+			return "redirect:/login";
+		}
+	}
+	
+	
+	@RequestMapping("/checkoutfromcart-{cartItemsId}")
+	public String checkoutFromCart(@PathVariable("cartItemsId")int cartItemsId,Principal p, Model model)
+	{
+		if(p!=null)
+		{
+			CartItems thisItem = CartService.fetchOneItem(cartItemsId);
+			
+			if(thisItem.getFlag().equals("N"))
+			{
+			Product product = productService.fetchOneProduct(thisItem.getProductId());
+			
+			product.setStock(product.getStock() - thisItem.getQuantity());
+			productService.addProduct(product);
+			
+			thisItem.setFlag("Y");
+			CartService.addItem(thisItem);
+			
+			model.addAttribute("commonmessage", "Removed From Cart");
+			return "redirect:/usercart";
+			}
+			
+			model.addAttribute("commonmessage", "Operation Interrupted");
+			return "redirect:/usercart";
+		}
+		else
+		{
+			model.addAttribute("commonmessage", "You Must Login First!");
+			return "redirect:/login";
+		}
 	}
 	
 }

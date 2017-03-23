@@ -19,7 +19,7 @@
 <body>
 
 <!-- HEADER STARTS -->
-<div class="container-fluid well-sm"  id="main-header">
+<div class="container-fluid well-sm"  id="main-header" >
 
 <!-- FIRST ROW STARTS -->
 <div class="row">
@@ -36,29 +36,28 @@
 <div>
 <form>
 <input id="main-head-srctxt" class="well-sm hidden-xs col-sm-6 col-md-6 col-lg-6" type="text" name="searchkeyword" style="text-align:center;" data-toggle="tooltip" title="Search" data-placement="bottom"></input>
-<input id="main-head-srctxt-sm" class="well-sm col-xs-4 hidden-sm hidden-md hidden-lg" type="text" name="searchkeyword" style="text-align:center;" data-toggle="tooltip" title="Search" data-placement="bottom"></input>
+<button id="main-head-srctxt-sm" class="col-xs-4 hidden-sm hidden-md hidden-lg" style="text-align:center;height:36px;" data-toggle="tooltip" title="Menu" data-placement="bottom"></button>
 </form>
 </div>
 
 <div>
 
 <sec:authorize access="isAnonymous()">
-<a href="login">
+<!-- <a href="login"> -->
 <button id="header-login-button" class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Login" data-placement="left">
 </button>
-</a>
+<!-- </a> -->
 <a href="signup">
 <button class="main-header-btn well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-log-in" data-toggle="tooltip" title="SignUp" data-placement="right"></button>
 </a>
 </sec:authorize>
 
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-<a href="profile">
-<button class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Profile" data-placement="left"></button>
-</a>
-<a href="admin">
+
+<button id="admin-profile-button" class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Profile" data-placement="left"></button>
+
 <button class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-tasks" data-toggle="tooltip" title="Manage" data-placement="right"></button>
-</a>
+
 </sec:authorize>
 
 <sec:authorize access="hasRole('ROLE_BUYER')">
@@ -71,38 +70,107 @@
 </sec:authorize>
 
 </div>
-</div>
 
 <!-- RIGHT PADDING -->
 <div class="col-xs-0 col-sm-3 col-md-3 col-lg-3"></div>
 </div>
 </div>
 
-<!-- MARGIN-DIVIDER -->
-<div id="margin-divider"></div>
-
 <!-- TOGGLEABLE AREA STARTS -->
-
-<!-- <!-- LOGIN-STARTS -->
-<!-- <div id="header-login-form" style="display:none;"> -->
-<!-- <hr> -->
-<!-- <form action="perform_login" method="post"> -->
-<!-- <center> -->
-<!-- <input type="text" name="username" class="special-textbox" placeholder="Username"/> -->
-<!-- <input type="password" name="password" class="special-textbox" placeholder="Password"/> -->
-<!-- <button type="submit" class="btn btn-default" style="border-radius: 50px 50px 50px 50px;outline:none;"><i class="glyphicon glyphicon-circle-arrow-right"></i></button> -->
-<!-- <!-- <button type="submit" class="special-icon">Go</button> -->
-<!-- </center> -->
-<!-- </form> -->
-<!-- </div> -->
-<!-- <!-- LOGIN ENDS -->
 
 <!-- NAVBAR STARTS -->
 
 <!-- NAVBAR-ENDS -->
 
+<!-- SEARCH STARTS HERE -->
 
+<!-- SEARCH ENDS HERE -->
+
+<!-- LOGIN-STARTS -->
+<div id="header-login-form" style="display:none;">
+<hr>
+<form action="perform_login" method="post">
+<center>
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<input type="text" name="username" class="special-header-textbox" placeholder="Username" autofocus/>
+<input type="password" name="password" class="special-header-textbox" placeholder="Password"/>
+<button type="submit" class="btn btn-default btn-sm" id="special-login-btn"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i></button>
+</div>
+<div class="col-md-2"></div>
+</center>
+</form>
+</div>
+<!-- LOGIN ENDS -->
+
+<!-- ADMIN PROFILE STARTS HERE -->
+<div id="admin-profile" style="display:none;">
+<hr>
+<div class="col-md-3 col-sm-3 col-xs-0"></div>
+
+<center>
+<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="col-md-2 col-sm-4 col-xs-6">
+<img src="resources/img/default-avatar.png" class="img-circle" width="100%">
+Name
+</div>
+<div class="col-md-2 col-sm-4 col-xs-6">
+<a href="user"><img src="resources/img/admin-edit.png" width="100%"/></a>
+Data
+</div>
+<div class="col-md-2 col-sm-4 col-xs-6"><a href="user"><img class="img-circle" src="resources/img/admin-edit.png" width="100%"/></a>
+Looks
+</div>
+<div class="col-md-2 col-sm-4 col-xs-6"><a href="logout"><img class="img-circle" src="resources/img/admin-edit.png" width="100%"/></a>
+Logout
+</div>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-0"></div>
+</div>
+<!-- ADMIN PROFILE ENDS HERE -->
+
+<!-- USER PROFILE STARTS HERE -->
+
+<div id="admin-profile" style="display:none;">
+<hr>
+<div class="col-md-3"></div>
+<div class="col-md-2 hidden-xs">
+<center>
+<img src="resources/img/plus.png" class="img-responsive img-circle" width="100%">
+</center>
+</div>
+<div class="col-md-2">
+<center>
+<h3>Name Name</h3>
+<h4>(username)</h4>
+<h5>email@email.com</h5>
+<a href="logout"><button class="btn btn-default">Logout</button></a>
+<h3>Logout</h3>
+</center>
+</div>
+
+<div class="col-md-2">
+<div class="row">
+<div class="col-md-6"><img src="resources/img/admin-edit.png" width="100%"/></div>
+<div class="col-md-6"><img src="resources/img/admin-edit.png" width="100%"/></div>
+</div>
+<div class="row">
+<div class="col-md-6"><img src="resources/img/admin-edit.png" width="100%"/></div>
+<div class="col-md-6"><img src="resources/img/admin-edit.png" width="100%"/></div>
+</div>
+</div>
+
+<div class="col-md-3"></div>
+</div>
+
+<!-- USERP ROFILE ENDS HERE -->
+
+</div>
 <!-- TOGGLEABLE AREA ENDS -->
+
+<!-- MARGIN-DIVIDER -->
+<div id="margin-divider"></div>
 
 <!-- <div class="hidden-xs hidden-sm body-area container well-lg"> -->
 <div class="body-area container-fluid well-sm">

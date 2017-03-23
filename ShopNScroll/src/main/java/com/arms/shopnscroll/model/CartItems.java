@@ -3,6 +3,8 @@ package com.arms.shopnscroll.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,42 +16,36 @@ public class CartItems
 {
 	
 @Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
 @Expose
 private int cartItemsId;
 
 @Expose
-private int cartId;
+private int cartId;		
+
+@Expose             
+private int userId;	
 
 @Expose
 private String productName;
 
 @Expose
+private int productId;
+
+@Expose
 private int quantity;
 
 @Expose
-private int price;
+private float price;
 
 @Expose
-private int amount;
+private float amount;
 
 @Expose
-private Date placedDate;
+private int discount;
 
-public int getCartId() {
-	return cartId;
-}
-
-public void setCartId(int cartId) {
-	this.cartId = cartId;
-}
-
-public User getUser() {
-	return user;
-}
-
-public void setUser(User user) {
-	this.user = user;
-}
+@Expose
+private Date placedDate = new Date();
 
 @Expose
 private String flag;
@@ -86,16 +82,25 @@ public void setQuantity(int quantity) {
 	this.quantity = quantity;
 }
 
-public int getPrice() {
-	return price;
-}
 
 public void setPrice(int price) {
 	this.price = price;
 }
 
-public int getAmount() {
+public float getPrice() {
+	return price;
+}
+
+public void setPrice(float price) {
+	this.price = price;
+}
+
+public float getAmount() {
 	return amount;
+}
+
+public void setAmount(float amount) {
+	this.amount = amount;
 }
 
 public void setAmount(int amount) {
@@ -125,5 +130,46 @@ public Cart getCart() {
 public void setCart(Cart cart) {
 	this.cart = cart;
 }
+
+public int getUserId() {
+return userId;
+}
+
+public void setUserId(int userId) {
+this.userId = userId;
+}
+
+public int getCartId() {
+	return cartId;
+}
+
+public void setCartId(int cartId) {
+	this.cartId = cartId;
+}
+
+public User getUser() {
+	return user;
+}
+
+public void setUser(User user) {
+	this.user = user;
+}
+
+public int getProductId() {
+	return productId;
+}
+
+public void setProductId(int productId) {
+	this.productId = productId;
+}
+
+public int getDiscount() {
+	return discount;
+}
+
+public void setDiscount(int discount) {
+	this.discount = discount;
+}
+
 
 }
