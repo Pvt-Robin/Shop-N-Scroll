@@ -1,7 +1,8 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
 
-<div class="text-center" ng-app="SiteAppAJS">
+<div class="text-center">
+
 <div class="well-sm sns-heading">
 
 <div class="btn-group admin-tab well-sm col-md-6">

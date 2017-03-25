@@ -28,7 +28,7 @@ public class Category
 	@Expose
 	@NotEmpty(message="Description Is Required")
 	private String categoryDescription;
-
+	
 	@OneToMany(mappedBy="category", fetch=FetchType.EAGER)
 	Set<SubCategory> subCategory;
 	

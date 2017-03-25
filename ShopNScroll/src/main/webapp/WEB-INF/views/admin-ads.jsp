@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
 
-<div ng-app="SiteAppAJS">
+<div class="text-center">
 
 <div class="well-sm sns-heading">
 

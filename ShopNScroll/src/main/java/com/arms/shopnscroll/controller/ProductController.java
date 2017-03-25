@@ -158,7 +158,19 @@ public class ProductController {
 		
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		model.addAttribute("viewProductJSON", gson.toJson(product));
+		
+		float rate = product.getPrice();
+		int discount = product.getDiscount();
+		float amount = rate-(rate*discount/100);
+		model.addAttribute("viewProductAmount",amount);
+		
 		return "main-viewproduct";
+	}
+	
+	@RequestMapping("/productdisplay")
+	public String getProductDisplay(Model model) 
+	{
+		return "main-productdisplay";
 	}
 	
 	@RequestMapping("/toggleproduct-{productId}")
@@ -167,4 +179,5 @@ public class ProductController {
 		productService.toggleProduct(productId);		
 		return "redirect:/product";
 	}
+
 }

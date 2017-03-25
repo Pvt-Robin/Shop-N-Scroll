@@ -1,23 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false" %> 
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<link rel="stylesheet" href="resources/css/site-style.css" />
-
-<title>Test Page</title>
-
-
-<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
-<link rel="stylesheet" href="resources/css/main-style.css" />
-</head>
-<body>
+<%@ include file="component-header.jsp" %>
 
 <div></div>
 
@@ -37,41 +18,11 @@
 </form>
 </div>
 
+
+
 <!-- RIGHT PADDING -->
 <div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
 </div>
-
-<!-- <nav class="navbar navbar-inverse"> -->
-<!--   <div class="container-fluid"> -->
-<!--     <div class="navbar-header"> -->
-<!--       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> -->
-<!--         <span class="icon-bar"></span> -->
-<!--         <span class="icon-bar"></span> -->
-<!--         <span class="icon-bar"></span>                         -->
-<!--       </button> -->
-<!--       <a class="navbar-brand" href="#">WebSiteName</a> -->
-<!--     </div> -->
-<!--     <div class="collapse navbar-collapse" id="myNavbar"> -->
-<!--       <ul class="nav navbar-nav"> -->
-<!--         <li class="active"><a href="#">Home</a></li> -->
-<!--         <li class="dropdown"> -->
-<!--           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1</a> -->
-<!--           <ul class="dropdown-menu"> -->
-<!--             <li><a href="#">Page 1-1</a></li> -->
-<!--             <li><a href="#">Page 1-2</a></li> -->
-<!--             <li><a href="#">Page 1-3</a></li> -->
-<!--           </ul> -->
-<!--         </li> -->
-<!--         <li><a href="#">Page 2</a></li> -->
-<!--         <li><a href="#">Page 3</a></li> -->
-<!--       </ul> -->
-<!--       <ul class="nav navbar-nav navbar-right"> -->
-<!--         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-<!--         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-<!--       </ul> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </nav> -->
 
 </div>
 
@@ -87,19 +38,27 @@
 
 <a href="logout">Logout</a>
 
-<script type="text/javascript" src="resources/js/jquery-3.1.1.min.js" ></script>
-<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/js/dev-query.js" ></script>
 
-<script>
-$(document).ready(function(){
-$( ".admin-expand-btn" ).click(function() {
-  $( ".admin-tool-form" ).slideToggle( "fast", function() {
-    // Animation complete.
-  });
-});
-});
-</script>
 
-</body>
-</html>
+<nav class="navbar">
+  <div class="container text-center">
+    <ul class="nav navbar-nav">
+      <li class="dropdown" ng-repeat="ct in categoryData">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ct.categoryName}}</a>
+        <ul class="dropdown-menu">
+          <li ng-repeat="sct in subCategory"><a href="#">{{sct.subCategoryName}}</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class=" text-center">
+					<a href="#" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
+					<a href="#" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+					<a href="#" class="product-grid-button btn btn-good pull-right" role="button">
+					<b>&nbspBuy Now<i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i></b>
+					</a>
+					</div>
+
+<%@ include file="component-footer.jsp" %>

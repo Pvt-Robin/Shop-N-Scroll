@@ -7,18 +7,29 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class WishItems 
 {
 	@Id
+	@Expose
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int wishId;
 	
+	@Expose
 	private int userId;
 	
+	@Expose
 	private int productId;
+	
+	@Expose
 	private String productName;
+	
+	@Expose
 	private float price;
+	
+	@Expose
 	private int discount;
 	
 	@ManyToOne

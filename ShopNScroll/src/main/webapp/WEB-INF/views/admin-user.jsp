@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
 
-<div class="text-center" ng-app="SiteAppAJS">
+<div class="text-center">
 
 <div class="well-sm sns-heading">
 
@@ -96,9 +96,11 @@
 <form:errors path="username" class="admin-tool-error"/><br>
 
 <c:if test="${btnLabel ne 'Update'}">
+
 <form:label path="password">Password</form:label><br>
 <form:password path="password" placeholder="Password" class="special-textbox"/><br>
 <form:errors path="password" class="admin-tool-error"/><br>
+
 </c:if>
 
 <c:if test="${btnLabel eq 'Update'}">
@@ -134,7 +136,6 @@
 <th><center>Role</center></th>
 <th><center>Created</center></th>
 <th><center>Username</center></th>
-<th><center>Password</center></th>
 <th><center>Status</center></th>
 <th><center>Operation</center></th>
 </tr>
@@ -150,7 +151,6 @@
 <td>{{u.role}}</td>
 <td>{{u.createdDate}}</td>
 <td>{{u.username}}</td>
-<td>{{u.password}}</td>
 <td ng-if="!u.enabled"  style="color:orange;">Not Active</td><td ng-if="u.enabled" style="color:green;">Active</td>
 <td>
 <a href="updateuser-{{u.userId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>

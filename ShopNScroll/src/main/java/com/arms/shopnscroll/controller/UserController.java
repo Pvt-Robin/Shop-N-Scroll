@@ -3,6 +3,7 @@ package com.arms.shopnscroll.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.security.Principal;
 
 import javax.validation.Valid;
 
@@ -16,14 +17,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.arms.shopnscroll.model.Product;
 import com.arms.shopnscroll.model.User;
+import com.arms.shopnscroll.model.WishItems;
+import com.arms.shopnscroll.service.CartService;
+import com.arms.shopnscroll.service.ProductService;
 import com.arms.shopnscroll.service.UserService;
+import com.arms.shopnscroll.service.WishItemsService;
 
 @Controller
 public class UserController 
 {
 	@Autowired
-	UserService userService;
+	private UserService userService;
+	
+	@Autowired
+	private WishItemsService wishItemsService;
+	
+	@Autowired
+	private ProductService productService;
+	
+	@Autowired
+	private CartService cartService;
 	
 	private String Data_Folder = "E:\\Workspaces\\ShopNScrollSecond\\ShopNScroll\\src\\main\\webapp\\resources\\data";
 	
@@ -104,34 +119,73 @@ public class UserController
 		return "redirect:/user";
 	}
 	
-	
-	@RequestMapping("/signup1")
-	public String getSignupStep1(BindingResult result,Model model)
-	{	
-		return "user-signup-step-2";
-	}
-	
-	@RequestMapping("/signup2")
-	public String getSignupStep2(Model model)
+	@RequestMapping("userwish")
+	public String getWishes(Model model, Principal p)
 	{
-		return null;
+		int userId = userService.fetchUserByUserName(p.getName()).getUserId();		
+		model.addAttribute("wishListJSON", wishItemsService.knowWishes(userId));
+		
+		return "user-wish";
 	}
 	
-	@RequestMapping("/signup3")
-	public String getSignupStep3()
+	@RequestMapping("/addtowishlist-{productId}")
+	public String addWishes(@PathVariable("productId")int productId,Principal p)
 	{
-		return "user-signup-step-3";
+		int userId = userService.fetchUserByUserName(p.getName()).getUserId();	
+		Product product = productService.fetchOneProduct(productId);
+		WishItems wish = new WishItems();
+
+		wish.setUserId(userId);
+		wish.setProductId(productId);
+		wish.setPrice(product.getPrice());
+		wish.setDiscount(product.getDiscount());
+		wish.setProductName(product.getProductName());
+
+		wishItemsService.makeWish(wish);
+		
+		return "redirect:/userwish";
 	}
 	
-	@RequestMapping("/userprofile")
-	public String userProfile()
+	@RequestMapping("/removefromwishlist-{wishId}")
+	public String removeWishes(@PathVariable("wishId")int wishId)
 	{
-		return "user-profile";
+		wishItemsService.forgetWish(wishId);
+		
+		return "redirect:/userwish";
 	}
+	
 	
 	@RequestMapping("/userorder")
-	public String getOrders()
+	public String getOrders(Model model,Principal p)
 	{
-		return "user-orderlist";
+		int userId = userService.fetchUserByUserName(p.getName()).getUserId();	
+		model.addAttribute("orderListJSON", cartService.fetchAllOrders(userId));
+		
+		return "user-order";
 	}
+	
+//	@RequestMapping("/signup1")
+//	public String getSignupStep1(BindingResult result,Model model)
+//	{	
+//		return "user-signup-step-2";
+//	}
+//	
+//	@RequestMapping("/signup2")
+//	public String getSignupStep2(Model model)
+//	{
+//		return null;
+//	}
+//	
+//	@RequestMapping("/signup3")
+//	public String getSignupStep3()
+//	{
+//		return "user-signup-step-3";
+//	}
+//	
+//	@RequestMapping("/userprofile")
+//	public String userProfile()
+//	{
+//		return "user-profile";
+//	}
+
 }

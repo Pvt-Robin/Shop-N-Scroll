@@ -49,7 +49,7 @@ public class UserDAOImpl implements UserDAO
 		user.setShipId(user.getUserId());
 		user.setCartId(user.getUserId());
 		user.setEnabled(true);
-		user.setRole("ROLE_BUYER");
+		user.setRole("ROLE_USER");
 		
 		session.saveOrUpdate(user);
 	}

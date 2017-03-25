@@ -27,6 +27,14 @@ public class CartDAOImpl implements CartDAO
 	}
 	
 	@Override
+	public String fetchAllOrders(int userId) 
+	{
+		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where userId="+userId+" and flag = 'Y'").getResultList();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		return gson.toJson(cartList);
+	}
+	
+	@Override
 	public CartItems fetchOneItem(int cartItemsId) 
 	{
 		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where cartItemsId="+cartItemsId).getResultList();

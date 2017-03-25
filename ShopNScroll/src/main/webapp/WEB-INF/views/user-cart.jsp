@@ -4,7 +4,7 @@
 <div class="body-area container">
 
 <H1>CART</H1>
-<div ng-app="SiteAppAJS" ng-controller="cartControllerAJS">
+<div ng-controller="cartControllerAJS">
 
 <div class="row" ng-repeat="ci in cartlist">
 <div class="col-md-2">
@@ -18,9 +18,9 @@
 </div>
 
 <div class="col-md-3">
-<a href="viewproduct-{{ci.productId}}"><button class="btn btn-danger">View Product</button></a><br>
-<a href="removefromcart-{{ci.cartItemsId}}"><button class="btn btn-danger">Remove From Cart</button></a><br>
-<a href="checkoutfromcart-{{ci.cartItemsId}}"><button class="btn btn-danger">Checkout Now</button></a><br>
+<div class="row"><a href="viewproduct-{{ci.productId}}"><button class="btn btn-danger">View Product</button></a></div>
+<div class="row"><a href="removefromcart-{{ci.cartItemsId}}"><button class="btn btn-danger">Remove From Cart</button></a></div>
+<div class="row"><a href="checkoutfromcart-{{ci.cartItemsId}}"><button class="btn btn-danger">Checkout Now</button></a></div>
 
 </div>
 </div>

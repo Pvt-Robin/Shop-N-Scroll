@@ -34,4 +34,9 @@ public class CartService
 		cartDAOImpl.removeItem(cartItemsId);
 	}
 	
+	public String fetchAllOrders(int userId)
+	{
+		return cartDAOImpl.fetchAllOrders(userId);
+	}
+
 }

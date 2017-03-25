@@ -5,17 +5,58 @@
 <script type="text/javascript" src="resources/js/jquery-3.1.1.min.js" ></script>
 <script type="text/javascript" src="resources/js/angular.min.js" ></script>
 <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/image-scale.js" ></script>
 <script type="text/javascript" src="resources/js/main-query.js" ></script>
 
+
+<!-- IMAGE BEST FIT SCALING -->
+<script>
+// $(function() 
+// 	{
+// 	  $("img.product-grid-img").imageScale();
+// 	});
+</script>
+<!-- IMAGE BEST FIT SCALING ENDS HERE -->
+
+<!-- PAGE LOAD ANIMATION -->
+
+<script>
+$(window).on('load', function() {
+		$("#load-animation").fadeOut("1500");;
+	});
+</script>
+
+<!-- PAGE LOAD ANIMATION ENDS -->
+
+<!-- AJS APP -->
 <script>
 var siteApp = angular.module("SiteAppAJS",[]);
 </script>
 
+<!-- UNIVERSAL CONTROLLERS -->
+
+<script>
+siteApp.controller("headerControllerAJS", function($scope) 
+{
+	$scope.userData = ${userData};
+});
+</script>
+
+<script>
+siteApp.controller("universalProductControllerAJS", function($scope, $location) 
+{
+	$scope.productData = ${productDataJSON};
+});
+</script>
+
+<!-- UNIVERSAL CONTROLLERS ENDS -->
+
+
+<!-- PAGE SPECIFIC CONTROLLERS -->
 <script>
 siteApp.controller("categoryControllerAJS", function($scope) 
 {
 	$scope.clist = ${categoryListJSON};
-	
 });
 </script>
 
@@ -30,6 +71,8 @@ siteApp.controller("productControllerAJS", function($scope)
 siteApp.controller("viewProductControllerAJS", function($scope) 
 {
 	$scope.thisproduct = ${viewProductJSON};
+	$scope.quantity = 1;
+	$scope.amount = ${viewProductAmount};
 });
 </script>
 
@@ -69,6 +112,38 @@ siteApp.controller("cartControllerAJS", function($scope)
 </script>
 
 <script>
+siteApp.controller("wishControllerAJS", function($scope) 
+{
+	$scope.wlist = ${wishListJSON};
+});
+</script>
+
+<script>
+siteApp.controller("orderControllerAJS", function($scope) 
+{
+	$scope.olist = ${orderListJSON};
+});
+</script>
+
+<!-- PAGE SPECIFIC CONTROLLERS ENDS -->
+
+<!-- FUNCTIONALITY FUNCTIONS -->
+
+<script>
+$(document).ready(function(){
+	$(".product-grid").hover(
+		    function() {
+		        $(this).stop().animate({opacity: "1"});
+		    },
+		    function() {
+		        $(this).stop().animate({opacity: "0.8"});
+	});
+});
+</script>
+
+
+
+<script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
@@ -106,16 +181,33 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function(){
-	$( "#user-profile-button" ).click(function() {
-	  $( "#user-profile" ).slideToggle( {direction: 'left'}, "fast", function() {
+	$( "#buyer-profile-button" ).click(function() {
+	  $( "#buyer-profile" ).slideToggle( {direction: 'left'}, "fast", function() {
 	    // Animation
 	  });
 	});
 	});
 </script>
 
+
 <script>
 $(document).ready(function(){
+	$( "#main-header" ).mouseenter(function() {
+	  $( "#header-navbar" ).show( {direction: 'left'}, "fast", function() {
+	    // Animation
+	  })
+	  .mouseleave(function() {
+	  $( "#header-navbar" ).hide( {direction: 'left'}, "fast", function() {
+	    // Animation
+	  });
+	});
+	});
+</script>
+
+
+<script>
+$(document)
+.ready(function(){
     $("#main-head-srctxt")
     .blur(function()
     	{	
@@ -163,16 +255,12 @@ function callNoAvatar(obj)
 };
 </script>
 
-<script>
-function finalPrice(p, d) 
-{
-	  var price = parseInt(p);
-	  var discount = parseInt(d);
-	  var final = (price) - ((price/discount)* 100);
-      document.write(final);
-
-};
-</script>
+<!-- FUNCTIONALITY FUNCTIONS ENDS -->
 
 </body>
+
+<!-- PAGE LOADING ANIMATION -->
+<div id="load-animation"></div>
+<!-- PAGE LOADING ANIMATION END -->
+
 </html>

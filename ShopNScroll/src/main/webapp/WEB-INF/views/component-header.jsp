@@ -16,10 +16,10 @@
 <link rel="stylesheet" href="resources/css/main-style.css" />
 
 </head>
-<body>
+<body ng-app="SiteAppAJS">
 
 <!-- HEADER STARTS -->
-<div class="container-fluid well-sm"  id="main-header" >
+<div class="container-fluid well-sm"  id="main-header" ng-controller="headerControllerAJS">
 
 <!-- FIRST ROW STARTS -->
 <div class="row">
@@ -54,19 +54,18 @@
 
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 
-<button id="admin-profile-button" class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Profile" data-placement="left"></button>
+<button id="admin-profile-button" class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Profile" data-placement="left" style="color:rgba(173,255,47,1.0)"></button>
 
 <button class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-tasks" data-toggle="tooltip" title="Manage" data-placement="right"></button>
 
 </sec:authorize>
 
-<sec:authorize access="hasRole('ROLE_BUYER')">
-<a href="profile">
-<button class="main-header-btn-buyer well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Profile" data-placement="left"></button>
-</a>
+<sec:authorize access="hasRole('ROLE_USER')">
+<button id="buyer-profile-button" class="main-header-btn-admin well-sm col-xs-2 col-sm-1 col-md-2 col-lg-2 glyphicon glyphicon-user" data-toggle="tooltip" title="Profile" data-placement="left" style="color:rgba(173,255,47,1.0)"></button>
+
 <a href="wishlist">
 <button class="main-header-btn-buyer well-sm col-xs-2 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-heart" data-toggle="tooltip" title="Wishlist" data-placement="right"></button>
-</a>
+
 </sec:authorize>
 
 </div>
@@ -79,92 +78,128 @@
 <!-- TOGGLEABLE AREA STARTS -->
 
 <!-- NAVBAR STARTS -->
+<div id="header-navbar" style="display:none;">
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-0"></div>
+
+<div class="col-lg-6 col-md-6 col-sm-4 col-xs-0">
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav">
+    <div class="text-center col-lg-3 col-md-3 col-sm-4 col-xs-0">
+
+      <c:forEach var="cd" items="${categoryData}">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">${cd.categoryName}</a>
+        <ul class="dropdown-menu">
+       
+        <c:forEach var="scd" items="${cd.subCategory}">
+          <li><a href="#">${scd.subCategoryName}</a></li>
+       </c:forEach> 
+       
+        </ul>
+      </li>
+      </c:forEach>
+      </div>
+    </ul>
+  </div>
+</nav>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-0"></div>
+
+</div>
 
 <!-- NAVBAR-ENDS -->
 
 <!-- SEARCH STARTS HERE -->
-
+	
+	
+	
 <!-- SEARCH ENDS HERE -->
 
 <!-- LOGIN-STARTS -->
-<div id="header-login-form" style="display:none;">
-<hr>
+<div id="header-login-form" class="well-sm" style="display:none;">
 <form action="perform_login" method="post">
 <center>
 <div class="col-md-2"></div>
 <div class="col-md-8">
 <input type="text" name="username" class="special-header-textbox" placeholder="Username" autofocus/>
 <input type="password" name="password" class="special-header-textbox" placeholder="Password"/>
-<button type="submit" class="btn btn-default btn-sm" id="special-login-btn"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i></button>
+<button type="submit" class="btn btn-default btn-sm" id="special-login-btn"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i></button>
+<!-- <button type="submit" class="btn btn-default btn-sm" id="special-login-btn">Login</button> -->
 </div>
 <div class="col-md-2"></div>
 </center>
 </form>
 </div>
+
 <!-- LOGIN ENDS -->
 
 <!-- ADMIN PROFILE STARTS HERE -->
 <div id="admin-profile" style="display:none;">
 <hr>
-<div class="col-md-3 col-sm-3 col-xs-0"></div>
+<div class="col-md-4 col-sm-4 col-xs-0"></div>
 
+<div class="col-md-4 col-sm-4 col-xs-12">
 <center>
-<div class="col-md-6 col-sm-6 col-xs-12">
-<div class="col-md-2 col-sm-4 col-xs-6">
-<img src="resources/img/default-avatar.png" class="img-circle" width="100%">
-Name
+<div class="col-md-3 col-sm-4 col-xs-6">
+<a href="profile">
+<img src="resources/data/USER-{{userData.userId}}.jpg" onerror="callNoAvatar(this)" class="profile-grid img-circle" width="100%">
+</a>
+<b>{{userData.firstName}}</b>
 </div>
-<div class="col-md-2 col-sm-4 col-xs-6">
-<a href="user"><img src="resources/img/admin-edit.png" width="100%"/></a>
+<div class="col-md-3 col-sm-3 col-xs-6"><a href="user"><img class="profile-grid img-circle" src="resources/img/admin-edit.png" width="100%"/></a>
 Data
 </div>
-<div class="col-md-2 col-sm-4 col-xs-6"><a href="user"><img class="img-circle" src="resources/img/admin-edit.png" width="100%"/></a>
+<div class="col-md-3 col-sm-3 col-xs-6"><a href="looks"><img class="profile-grid img-circle" src="resources/img/admin-theme.png" width="100%"/></a>
 Looks
 </div>
-<div class="col-md-2 col-sm-4 col-xs-6"><a href="logout"><img class="img-circle" src="resources/img/admin-edit.png" width="100%"/></a>
+<div class="col-md-3 col-sm-3 col-xs-6"><a href="logout"><img class="profile-grid-danger img-circle" src="resources/img/logout.png" width="100%"/></a>
 Logout
 </div>
+</center>
 </div>
 
-<div class="col-md-3 col-sm-3 col-xs-0"></div>
+<div class="col-md-4 col-sm-3 col-xs-0"></div>
 </div>
 <!-- ADMIN PROFILE ENDS HERE -->
 
-<!-- USER PROFILE STARTS HERE -->
-
-<div id="admin-profile" style="display:none;">
+<!-- BUYER PROFILE STARTS HERE -->
+<div id="buyer-profile" style="display:none;">
 <hr>
-<div class="col-md-3"></div>
-<div class="col-md-2 hidden-xs">
+<div class="col-md-3 col-sm-4 col-xs-0"></div>
+
+<div class="col-md-6 col-sm-4 col-xs-12">
+
 <center>
-<img src="resources/img/plus.png" class="img-responsive img-circle" width="100%">
+<div class="col-md-1 col-sm-4 col-xs-0"></div>
+<div class="col-md-2 col-sm-4 col-xs-12">
+<a href="profile">
+<img src="resources/data/USER-{{userData.userId}}.jpg" onerror="callNoAvatar(this)" class="profile-grid img-circle" width="100%">
+</a>
+<b>{{userData.firstName}}</b>
+</div>
+<div class="col-md-2 col-sm-4 col-xs-6">
+<a href="usercart"><img class="profile-grid img-circle" src="resources/img/user-cart.png" width="100%"/></a>
+Cart
+</div>
+<div class="col-md-2 col-sm-4 col-xs-6"><a href="userwish"><img class="profile-grid img-circle" src="resources/img/user-wish.png" width="100%"/></a>
+Wishes
+</div>
+<div class="col-md-2 col-sm-4 col-xs-6"><a href="userorder"><img class="profile-grid img-circle" src="resources/img/user-order.png" width="100%"/></a>
+Orders
+</div>
+<div class="col-md-2 col-sm-4 col-xs-6"><a href="logout"><img class="profile-grid-danger img-circle" src="resources/img/logout.png" width="100%"/></a>
+Logout
+</div>
 </center>
-</div>
-<div class="col-md-2">
-<center>
-<h3>Name Name</h3>
-<h4>(username)</h4>
-<h5>email@email.com</h5>
-<a href="logout"><button class="btn btn-default">Logout</button></a>
-<h3>Logout</h3>
-</center>
+
+<div class="col-md-1 col-sm-4 col-xs-0"></div>
 </div>
 
-<div class="col-md-2">
-<div class="row">
-<div class="col-md-6"><img src="resources/img/admin-edit.png" width="100%"/></div>
-<div class="col-md-6"><img src="resources/img/admin-edit.png" width="100%"/></div>
+<div class="col-md-4 col-sm-3 col-xs-0"></div>
 </div>
-<div class="row">
-<div class="col-md-6"><img src="resources/img/admin-edit.png" width="100%"/></div>
-<div class="col-md-6"><img src="resources/img/admin-edit.png" width="100%"/></div>
-</div>
-</div>
-
-<div class="col-md-3"></div>
-</div>
-
-<!-- USERP ROFILE ENDS HERE -->
+<!-- BUYER PROFILE ENDS HERE -->
 
 </div>
 <!-- TOGGLEABLE AREA ENDS -->

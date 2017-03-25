@@ -31,23 +31,20 @@ public class CartController
 	@RequestMapping("/usercart")
 	public String getCart(Principal p,Model model)
 	{
-		if(p!=null)
-		{
 		int userId = userService.fetchUserByUserName(p.getName()).getUserId();		
 		model.addAttribute("cartItemsListJSON", CartService.fetchAllItemsByUserIdJSON(userId));
 		return "user-cart";
-		}
-		else
-		{
-			model.addAttribute("commonmessage", "You Must Login First!");
-			return "main-login";	
-		}
 	}
 	
 	@RequestMapping("/addtocart-{productId}-{quantity}")
 	public String addOneToCart(@PathVariable("productId")int productId, @PathVariable("quantity")int quantity,Principal p, Model model)
 	{
-		if(p!=null)
+		if(quantity > 3 || quantity <= 0)
+		{
+			model.addAttribute("commonmessage", "You Cannot Have More than 3 Products");
+			return "redirect:/viewproduct-"+productId;
+		}
+		else
 		{
 		String username = p.getName();
 
@@ -75,41 +72,21 @@ public class CartController
 		model.addAttribute("commonmessage", "Added To Cart");
 		return "redirect:/usercart";
 		}
-		else if(quantity > 3 || quantity <= 0)
-		{
-			model.addAttribute("commonmessage", "You Cannot Order Like This!");
-			return "redirect:/viewproduct-"+productId;
-		}
-		else
-		{
-		model.addAttribute("commonmessage", "You Must Login First!");
-		return "redirect:/login";
-		}
 		
 	}
 	
 	@RequestMapping("/removefromcart-{cartItemsId}")
 	public String removeFromCart(@PathVariable("cartItemsId")int cartItemsId,Principal p, Model model)
 	{
-		if(p!=null)
-		{
 			CartService.removeItem(cartItemsId);
 			model.addAttribute("commonmessage", "Removed From Cart");
 			return "redirect:/usercart";
-		}
-		else
-		{
-			model.addAttribute("commonmessage", "You Must Login First!");
-			return "redirect:/login";
-		}
 	}
 	
 	
 	@RequestMapping("/checkoutfromcart-{cartItemsId}")
 	public String checkoutFromCart(@PathVariable("cartItemsId")int cartItemsId,Principal p, Model model)
 	{
-		if(p!=null)
-		{
 			CartItems thisItem = CartService.fetchOneItem(cartItemsId);
 			
 			if(thisItem.getFlag().equals("N"))
@@ -128,12 +105,6 @@ public class CartController
 			
 			model.addAttribute("commonmessage", "Operation Interrupted");
 			return "redirect:/usercart";
-		}
-		else
-		{
-			model.addAttribute("commonmessage", "You Must Login First!");
-			return "redirect:/login";
-		}
 	}
 	
 }
