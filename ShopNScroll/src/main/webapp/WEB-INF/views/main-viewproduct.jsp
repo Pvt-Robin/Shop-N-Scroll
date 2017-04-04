@@ -2,16 +2,14 @@
 <%@ include file="component-header.jsp" %>
 <div class="body-area container-fluid">
 
-
-
 <div ng-app="SiteAppAJS" ng-controller="viewProductControllerAJS">
 
-
 <ul class="breadcrumb sns-breadcrumb">
-  <li><a class="sns-crumb" href="home">Home</a></li>
-  <li><a class="sns-crumb" href="searchby-{{thisproduct.category.categoryName}}">{{thisproduct.category.categoryName}}</a></li>
-  <li><a class="sns-crumb" href="searchby-{{thisproduct.subCategory.subCategoryName}}">{{thisproduct.subCategory.subCategoryName}}</a></li>
-  <li><a class="sns-current-crumb" href="#">{{thisproduct.productName}}</a></li>
+  <li><a class="sns-crumb noUnderLineInAnchor" href="home" style="font-size: large;color:orange;text-shadow: 1px 1px 1px white">Shop</a></li>
+  <li><a class="sns-crumb noUnderLineInAnchor" href="productdisplay?browse={{thisproduct.category.categoryName}}">{{thisproduct.category.categoryName}}  &nbsp Section</a></li>
+  <li><a class="sns-crumb noUnderLineInAnchor" href="productdisplay?browse={{thisproduct.subCategory.subCategoryName}}">{{thisproduct.subCategory.subCategoryName}} &nbsp Shelf</a></li>
+  <li><a class="sns-crumb noUnderLineInAnchor" href="productdisplay?browse={{thisproduct.brand.brandName}}">{{thisproduct.brand.brandName}}  &nbsp Rack</a></li>
+  <li><a class="sns-current-crumb noUnderLineInAnchor" href="#">{{thisproduct.productName}}</a></li>
 </ul>
 
 <div class="row">
@@ -34,7 +32,7 @@
 
 <h1><b>{{thisproduct.productName}}</b></h1>
 <h2 style="color:blue">{{thisproduct.brand.brandName}}</h2>
-<h3 style="color:red"><b>&#8377 {{amount}}</b></h3>
+<h3 style="color:red"><b>&#8377 {{thisproduct.productAmount}}</b></h3>
 <h4>&#8377<span style="text-decoration: line-through;color:orange;">{{thisproduct.price}}</span>
 <span style="color:green">{{thisproduct.discount}}% off</span></h4>
 <h4><b>Seller: </b><span>{{thisproduct.supplier.supplierFirmName}}</span></h4>
@@ -59,7 +57,7 @@
 <button class="btn btn-success btn-lg" data-toggle="tooltip" title="Add To Cart"><i class="glyphicon glyphicon-shopping-cart"></i>Add To Cart</button>
 </a>
 
-<a href="buynow-{{thisproduct.productId}}-{{1}}">
+<a href="buynow-{{pd.productId}}">
 <button class="btn btn-success btn-lg" data-toggle="tooltip" title="Buy Now"><i class="glyphicon glyphicon-shopping"></i>Buy Now</button>
 </a>
 

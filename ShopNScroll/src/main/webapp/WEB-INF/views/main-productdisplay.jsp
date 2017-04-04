@@ -1,56 +1,88 @@
 <!-- HEADER -->
 <%@ include file="component-header.jsp" %>
 
+<div ng-controller="universalProductControllerAJS">
+
 <ul class="breadcrumb sns-breadcrumb">
-  <li><a class="sns-crumb" href="home">Home</a></li>
-  <li><a class="sns-crumb" href="#">Browse</a></li>
+  <li><a class="sns-crumb newpager noUnderLineInAnchor" style="font-size: large;color:orange;text-shadow: 1px 1px 1px white" href="home">Shop</a></li>
+  <li><a class="sns-crumb current-page noUnderLineInAnchor" href="productdisplay">Product Explorer</a></li>
+  <li class="sns-current-crumb">{{browseWord}}</li>
 </ul>
 
+<div class="product-sort-area col-*-*">
+<div class="well-sm  text-center">
 
-<div class="container-fluid" ng-controller="universalProductControllerAJS">
+<select ng-model="orderkeyword" class="btn admin-tab-button">
+<option value="" disabled selected>Sort By</option>
+<option value="viewCount">Popular</option>
+<option value="discount">Discount</option>
+<option value="price">Price(Low-High)</option>
+<option value="price">Price(High-Low)</option>
+<option value="creationDate">Latest</option>
+</select>
 
-<div class="product-filter-area col-md-2 well-sm" style="background-color: rgba(0,0,0,0.4);">
-<input type="text" name="browseword" ng-model="browseWord"/><br>
-{{browseWord}}
-{{egg}}
+<button class="btn admin-tab-button" id="sort-button-popular" onclick="">Popular</button>
+<button class="btn admin-tab-button" id="sort-button-popular">Latest</button>
+<button class="btn admin-tab-button" id="sort-button-popular">Discount</button>
+<button class="btn admin-tab-button" id="sort-button-popular">Price(Low-High)</button>
+<button class="btn admin-tab-button" id="sort-button-popular">Price(High-Low)</button>
+
+</div>
+</div>
+
+<div class="product-filter-area col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<div class="form-group">
+<input type="text" name="browseword" ng-model="searchWord" class="form-control" placeholder="Search"/>
+<h4 class="text-center">Filters</h4>
+</div>
 </div>
 
 <div class="col-md-10">
-	<div class="row">
-		<div class="product-grid col-xs-18 col-sm-4 col-md-3 well-sm" ng-repeat="pd in productData | filter:browseWord">
+	<div class="row-uniform">
+
+<div ng-repeat="pd in productData | filter:searchWord || browseWord | orderBy:orderkeyword : orderflag">
+<a href="viewproduct-{{pd.productId}}">
+
+		<div class="product-grid col-xs-12 col-sm-3 col-md-3 col-lg-3 well-sm">
 			<div class="">
 				<div class="img-responsive carousel-inner">
 				
-					<img class="product-grid-img img-rounded img-thumbnail" src="resources/data/PRDT-{{pd.productId}}.jpg"/>
+					<img class="product-grid-img img-rounded" src="" style="background-image: url('resources/data/PRDT-{{pd.productId}}.jpg');" />
 					
-					<div class="product-grid-caption carousel-caption well-sm hidden-sm hidden-xs">
+					<div class="product-grid-caption carousel-caption hidden-sm hidden-xs">
 					<b><a href="productdisplay?browse={{pd.category.categoryName}}" class="sns-crumb">{{pd.category.categoryName}}</a>
 					&nbsp>>&nbsp
 					<a href="productdisplay?browse={{pd.subCategory.subCategoryName}}" class="sns-crumb">{{pd.subCategory.subCategoryName}}</a></b><br><br>
-					<a href="#" class="product-grid-button btn btn-nice" role="button" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="glyphicon glyphicon-heart"></i></a>
-					<a href="#" class="product-grid-button btn btn-sleek" role="button"  data-toggle="tooltip"  data-placement="top" title="Add To Cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-					<a href="#" class="product-grid-button btn btn-good pull-right" role="button"  data-toggle="tooltip" data-placement="bottom" title="Buy Now">
-					<b>Buy Now<i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i></b>
+					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="glyphicon glyphicon-heart"></i></a>
+					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"  data-toggle="tooltip"  data-placement="top" title="Add To Cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good" role="button"  data-toggle="tooltip" data-placement="bottom" title="Buy Now">
+					<i class="fa fa fa-shopping-bag icon icon icon-shopping-bag" aria-hidden="true"></i>&nbsp Buy Now
 					</a>
 					</div>
-				</div>
+					</div>
 				
-				<div class="">
-					<h5><b>{{pd.productName}}</b></h5>
-					<h5><b><a href="productdisplay?browse={{pd.brand.brandName}}" style="text-decoration: none;">{{pd.brand.brandName}}</a></b></h5>
-					<h5><span class="pull-left" style="text-decoration: line-through;color:orange">&#8377 {{pd.price}}</span><span style="color:green">&nbsp- {{pd.discount}}% off </span><b class="pull-right" style="font-size: large;color:red;">&#8377 3000  &nbsp</b></h5>
-				</div>
+					<div class="">
+					<h5><b>{{pd.productName}}</b><b class="pull-right"><a href="productdisplay?browse={{pd.brand.brandName}}" style="text-decoration: none;">{{pd.brand.brandName}}</a></b></h5>
+					<h5><span class="pull-left" style="text-decoration: line-through;color:orange">&#8377 {{pd.price}}</span><span style="color:green">&nbsp- {{pd.discount}}% off </span>
+					<b class="pull-right" style="font-size: large;color:red;">&#8377
+					<b id="getamounthere">&nbsp
+					{{pd.productAmount}}
+					 &nbsp</b></h5>
+					</div>
 				
-					<div class="product-grid-caption well-sm hidden-md hidden-lg">
-					<a href="#" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
-					<a href="#" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-					<a href="#" class="product-grid-button btn btn-good pull-right" role="button">
-					<b>Buy</b>
+					<div class="product-grid-sm well-sm hidden-md hidden-lg">
+					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
+					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good pull-right" role="button">				
+					<i class="fa fa-shopping-bag" aria-hidden="true"></i>
 					</a>
 					</div>
 										
 				</div>
 			</div>
+</a>
+</div>
+			
 		</div>
 	</div>
 </div>

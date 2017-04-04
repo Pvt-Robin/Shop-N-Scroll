@@ -1,12 +1,14 @@
 package com.arms.shopnscroll.controller;
 
 import java.security.Principal;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arms.shopnscroll.model.CartItems;
 import com.arms.shopnscroll.model.Product;
@@ -37,7 +39,7 @@ public class CartController
 	}
 	
 	@RequestMapping("/addtocart-{productId}-{quantity}")
-	public String addOneToCart(@PathVariable("productId")int productId, @PathVariable("quantity")int quantity,Principal p, Model model)
+	public String addOneToCart(@PathVariable("productId")int productId, @PathVariable("quantity")int quantity,Principal p, Model model , RedirectAttributes redirectAttributes)
 	{
 		if(quantity > 3 || quantity <= 0)
 		{
@@ -66,6 +68,7 @@ public class CartController
 		cartItems.setQuantity(quantity);
 		cartItems.setAmount(amountperunit * quantity);
 		cartItems.setFlag("N");
+		cartItems.setPlacedDate(new Date());
 		
 		CartService.addItem(cartItems);
 		
@@ -76,16 +79,15 @@ public class CartController
 	}
 	
 	@RequestMapping("/removefromcart-{cartItemsId}")
-	public String removeFromCart(@PathVariable("cartItemsId")int cartItemsId,Principal p, Model model)
+	public String removeFromCart(@PathVariable("cartItemsId")int cartItemsId,Principal p, Model model, RedirectAttributes redirectAttributes)
 	{
 			CartService.removeItem(cartItemsId);
 			model.addAttribute("commonmessage", "Removed From Cart");
 			return "redirect:/usercart";
 	}
 	
-	
 	@RequestMapping("/checkoutfromcart-{cartItemsId}")
-	public String checkoutFromCart(@PathVariable("cartItemsId")int cartItemsId,Principal p, Model model)
+	public String checkoutFromCart(@PathVariable("cartItemsId")int cartItemsId,Principal p, Model model, RedirectAttributes redirectAttributes)
 	{
 			CartItems thisItem = CartService.fetchOneItem(cartItemsId);
 			
@@ -96,15 +98,16 @@ public class CartController
 			product.setStock(product.getStock() - thisItem.getQuantity());
 			productService.addProduct(product);
 			
+			thisItem.setPlacedDate(new Date());
 			thisItem.setFlag("Y");
 			CartService.addItem(thisItem);
 			
-			model.addAttribute("commonmessage", "Removed From Cart");
+			model.addAttribute("commonmessage", "Order Confirmed");
 			return "redirect:/usercart";
 			}
 			
 			model.addAttribute("commonmessage", "Operation Interrupted");
-			return "redirect:/usercart";
+			return "redirect:/userorder";
 	}
 	
 }

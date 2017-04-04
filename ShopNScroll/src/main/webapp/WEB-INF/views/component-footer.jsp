@@ -8,25 +8,31 @@
 <script type="text/javascript" src="resources/js/image-scale.js" ></script>
 <script type="text/javascript" src="resources/js/main-query.js" ></script>
 
-
-<!-- IMAGE BEST FIT SCALING -->
-<script>
-// $(function() 
-// 	{
-// 	  $("img.product-grid-img").imageScale();
-// 	});
-</script>
 <!-- IMAGE BEST FIT SCALING ENDS HERE -->
 
 <!-- PAGE LOAD ANIMATION -->
 
 <script>
-$(window).on('load', function() {
-		$("#load-animation").fadeOut("1500");;
+	$("a.newpager").on('click', function() {
+	$("#load-animation").fadeIn("500");;
+	});
+	
+	$(window).on('load', function() {
+		$("#load-animation").fadeOut("500");;
 	});
 </script>
 
 <!-- PAGE LOAD ANIMATION ENDS -->
+
+<!-- MEGA MENU -->
+
+<script>
+jQuery(document).on('click', '.mega-dropdown', function(e) {
+  e.stopPropagation()
+});
+</script>
+
+<!-- MEGA MENU ENDS -->
 
 <!-- AJS APP -->
 <script>
@@ -46,6 +52,34 @@ siteApp.controller("headerControllerAJS", function($scope)
 siteApp.controller("universalProductControllerAJS", function($scope, $location) 
 {
 	$scope.productData = ${productDataJSON};
+
+	var getUrlParameter = function getUrlParameter(sParam) {
+	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+	        sURLVariables = sPageURL.split('&'),
+	        sParameterName,
+	        i;
+
+	    for (i = 0; i < sURLVariables.length; i++) {
+	        sParameterName = sURLVariables[i].split('=');
+
+	        if (sParameterName[0] === sParam) {
+	            return sParameterName[1] === undefined ? true : sParameterName[1];
+	        }
+	    }
+	};
+
+	$scope.browseWord = getUrlParameter('browse');
+
+	$scope.changeColor = function(person) {
+	    $scope.showCaption = {color: '#'+person.colour};
+	};
+	
+// 	$scope.getAmount = function(rate,discount){
+// 	    var amount = rate-(rate*discount/100);
+
+// 	    return amount;
+// 	}
+	
 });
 </script>
 
@@ -72,7 +106,6 @@ siteApp.controller("viewProductControllerAJS", function($scope)
 {
 	$scope.thisproduct = ${viewProductJSON};
 	$scope.quantity = 1;
-	$scope.amount = ${viewProductAmount};
 });
 </script>
 
@@ -131,20 +164,6 @@ siteApp.controller("orderControllerAJS", function($scope)
 
 <script>
 $(document).ready(function(){
-	$(".product-grid").hover(
-		    function() {
-		        $(this).stop().animate({opacity: "1"});
-		    },
-		    function() {
-		        $(this).stop().animate({opacity: "0.8"});
-	});
-});
-</script>
-
-
-
-<script>
-$(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
 </script>
@@ -165,6 +184,7 @@ $(document).ready(function(){
 	  $( "#header-login-form" ).slideToggle( {direction: 'left'}, "fast", function() {
 	    // Animation
 	  });
+      $("#header-navbar").slideUp('200');
 	});
 	});
 </script>
@@ -174,7 +194,8 @@ $(document).ready(function(){
 	$( "#admin-profile-button" ).click(function() {
 	  $( "#admin-profile" ).slideToggle( {direction: 'left'}, "fast", function() {
 	    // Animation
-	  });
+	  });      
+	  $("#header-navbar").slideUp('200');
 	});
 	});
 </script>
@@ -184,7 +205,8 @@ $(document).ready(function(){
 	$( "#buyer-profile-button" ).click(function() {
 	  $( "#buyer-profile" ).slideToggle( {direction: 'left'}, "fast", function() {
 	    // Animation
-	  });
+	  });      
+	  $("#header-navbar").slideUp('200');
 	});
 	});
 </script>
@@ -192,16 +214,15 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function(){
-	$( "#main-header" ).mouseenter(function() {
-	  $( "#header-navbar" ).show( {direction: 'left'}, "fast", function() {
-	    // Animation
-	  })
-	  .mouseleave(function() {
-	  $( "#header-navbar" ).hide( {direction: 'left'}, "fast", function() {
+	$( "#header-menu-button" ).click(function() {
+	  $( "#header-navbar" ).slideToggle( {direction: 'left'}, "fast", function() {
 	    // Animation
 	  });
+	  $("#header-login-form").slideUp('200');
+	  $("#admin-profile").slideUp('200');
+	  $("#buyer-profile").slideUp('200');
 	});
-	});
+});
 </script>
 
 
@@ -215,17 +236,27 @@ $(document)
         {
             $(this).css("background-image", "none");
             $(this).css("background-color", "rgba(0,0,0,0.2)");
+            $("#searchresults").slideUp('200');
         }
         else
         	{
         	$(this).css("background-image", "url(resources/img/logo.png)");
             $(this).css("background-color", "rgba(0,0,0,0.2)");
+            $("#searchresults").slideUp('200');
         	}
     })
-    .focus(function(){
-        $(this).css("background-image", "none");
-        $(this).css("background-color", "rgba(0,0,0,0.2)");
-	})
+    .focus(function()
+    		{
+          $(this).css("background-image", "none");
+          $(this).css("background-color", "rgba(0,0,0,0.2)");
+          $("#header-login-form").slideUp('200');
+          $("#admin-profile").slideUp('200');
+          $("#buyer-profile").slideUp('200');
+          $("#header-navbar").slideUp('200');
+          $("#searchresults").slideDown( {direction: 'left'}, "fast", function() {
+      	    // Animation
+      	  });        
+        })
 	.mouseenter(function(){
         $(this).css("background-color", "rgba(255,165,0,0.5)");
 	})
@@ -254,6 +285,7 @@ function callNoAvatar(obj)
        obj.src=defaultavatar;
 };
 </script>
+
 
 <!-- FUNCTIONALITY FUNCTIONS ENDS -->
 

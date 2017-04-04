@@ -45,7 +45,7 @@ private float amount;
 private int discount;
 
 @Expose
-private Date placedDate = new Date();
+private Date placedDate;
 
 @Expose
 private String flag;

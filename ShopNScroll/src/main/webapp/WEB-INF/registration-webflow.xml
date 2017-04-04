@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+                          
+    <var name="userDetail" class="com.arms.shopnscroll.model.User" />
+	<var name="shippingAddress" class="com.arms.shopnscroll.model.ShippingAddress" />
+	<var name="billingAddress" class="com.arms.shopnscroll.model.BillingAddress" />
+	
+	<!-- Executed when webFlow is triggered -->
+	<on-start>
+		<evaluate expression="registrationHandler.initFlow()" result="flowScope.userDetail" />
+	</on-start>
+	
+<!-- 	VALIDATE PERSONAL DETAILS -->
+	
+	<view-state id="start" view="RegisterWebflow" model="userDetail">
+	<transition on="edit" to="cancel" />
+	<transition on="submit" to="validateUserDetails" />
+	</view-state>
+	
+	<action-state id="validateUserDetails">
+		<evaluate expression="registrationHandler.validateUserDetails(userDetail,messageContext)"></evaluate>
+		<transition on="success" to="check" />
+		<transition on="failure" to="start" />
+	</action-state>
+	
+	<action-state id="check">
+		<evaluate expression="registrationHandler.duplicateUser(userDetail,messageContext)"></evaluate>
+		<transition on="success" to="shipping" />
+		<transition on="failure" to="start" />
+	</action-state>
+	
+	<view-state id="shipping" view="shippingaddress" model="shippingAddress">
+		<transition on="edit" to="start" />
+		<transition on="submitShipping" to="validateshippingDetails" />
+	</view-state>
+	
+	<action-state id="validateshippingDetails">
+		<evaluate expression="registrationHandler.validateShippingDetails(shippingAddress, messageContext)"></evaluate>
+		<transition on="success" to="addshipping" />
+		<transition on="failure" to="shipping" />
+	</action-state>
+	
+	<action-state id="addshipping">
+		<evaluate
+			expression="registrationHandler.addShippingAddress(shippingAddress)"></evaluate>
+		<transition on="success" to="billing" />
+		<transition on="failure" to="start" />
+	</action-state>
+	
+	<view-state id="billing" view="billingaddress" model="billingAddress">
+		<transition on="edit" to="start" />
+		<transition on="submitBilling" to="addbilling" />
+	</view-state>
+	
+	<action-state id="addbilling">
+		<evaluate
+			expression="registrationHandler.addBillingAddress(billingAddress)"></evaluate>
+		<transition on="success" to="action" />
+	</action-state>
+	
+	<action-state id="action">
+		<evaluate
+			expression="registrationHandler.saveDetail(flowScope.userDetail, billingAddress, shippingAddress)"></evaluate>
+		<transition on="success" to="save" />
+	</action-state>
+	
+	<action-state id="save">
+	<!-- <evaluate expression="userService.saveShippingAddress(shippingAddress)" result="shippingAddress"></evaluate>
+<evaluate expression="userService.saveBillingAddress(billingAddress)" result="billingAddress"></evaluate> -->
+<evaluate expression="userService.saveOrUpdate(userDetail)" result="userDetail"></evaluate>
+<transition to="welcome"  />
+</action-state>
+	
+	<!-- <view-state id="confirmdetails" view="confirmdetails" model="flowScope.userDetail">
+		<transition on="edit" to="start" />
+		<transition on="submit" to="saveOrder" />
+	</view-state>
+	
+	<action-state id="saveOrder">
+<evaluate expression="userService.saveOrUpdate(userDetail)" result="userDetail"></evaluate>
+<transition to="Invalid User" on-exception="java.lang.NullPointerException" />
+<transition to="welcome"  />
+</action-state> -->
+	
+	<end-state id="welcome" view="index" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+	<global-transitions>
+		<transition on="cancel" to="toHome" />
+		<!-- <transition on="finalHome" to="toHome" /> -->
+	</global-transitions>
+	
+	</flow>

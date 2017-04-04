@@ -7,33 +7,30 @@
   <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img class="carosel-ad-image" src="resources/data/ad2.jpg" alt="Game Store">
-      <div class="carousel-caption">
-        <h3>Game Store</h3>
-        <p>Buy games with upto 60% Discount...</p>
+      <div class="carousel-caption carousel-caption-style">
+        <h5 class = "hidden-md hidden-lg hidden-sm">Game Store</h5>
+        <h3 class = "hidden-xs">Game Store</h3>        
       </div>
     </div>
 
     <div class="item">
       <img class="carosel-ad-image" src="resources/data/ad3.jpg" alt="Airtel 4G">
       <div class="carousel-caption">
-        <h3>Airtel 4G Network</h3>
-        <p>Shift to Airtel Network and Explore Internet at High Speed...</p>
+        <h5>Airtel 4G Network</h5>
       </div>
     </div>
 
     <div class="item">
       <img class="carosel-ad-image" src="resources/data/ad4.jpg" alt="Play Online">
       <div class="carousel-caption">
-        <h3>Online Games</h3>
-        <p>Play Online and win Exclusive Prizes...</p>
+        <h5>Online Games</h5>
       </div>
     </div>
 
     <div class="item">
       <img class="carosel-ad-image" src="resources/data/ad1.jpg" alt="Mat Market">
       <div class="carousel-caption">
-        <h3>Mat Market</h3>
-        <p>Buy Mats at Amazing Discounts...</p>
+        <h5>Mat Market</h5>
       </div>
     </div>
   </div>
@@ -50,25 +47,88 @@
 </div>
 
 <!-- HOME PAGE-BROWSE AREA -->
+<div ng-controller="universalProductControllerAJS">
 
-<h5 class="sns-heading text-center well-sm">Trending</h5>
+<a class="noUnderLineInAnchor" href="#"><h5 class="sns-heading text-center well-sm">Trending</h5></a>
 
-<h5 class="sns-heading text-center well-sm">Latest</h5>
-
-<h5 class="sns-heading text-center well-sm">Best Discounts</h5>
-
-<h5 class="sns-heading text-center well-sm">Best Offers</h5>
-
-<h5 class="sns-heading text-center well-sm">Top Brand</h5>
-
-
-<div ng-controller="brandControllerAJS">
-<div class="sns-product-grid col-md-2 well-sm" ng-repeat="b in blist">
-<img class="sns-product-grid-img" src="resources/data/BRND-{{b.brandId}}.jpg"/>
-<br><font class="sns-product-title text-center">{{b.brandName}}</font>
+<div class="container-fluid">
+<div class="row">
+	<div ng-repeat="pd in productData | limitTo:6| orderBy: 'viewCount':true">
+	<a href="viewproduct-{{pd.productId}}">
+		<div class="product-grid col-xs-12 col-sm-6 col-md-2 col-lg-2 well-sm">
+				<div class="img-responsive carousel-inner">
+					<img class="product-grid-img img-rounded" src="" style="background-image: url('resources/data/PRDT-{{pd.productId}}.jpg');" />
+					</div>
+				
+					<h5><b style="color:black;">{{pd.productName}}</b><b class="pull-right"><a href="productdisplay?browse={{pd.brand.brandName}}" style="text-decoration: none;">{{pd.brand.brandName}}</a></b></h5>
+					<h5><span class="pull-left" style="text-decoration: line-through;color:orange">&#8377 {{pd.price}}</span><span style="color:green">&nbsp- {{pd.discount}}% off </span>
+					<b class="pull-right" style="font-size: large;color:red;">&#8377 {{pd.productAmount}} &nbsp</b></h5>
+				
+					<div class="product-grid-sm pull-right">
+					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
+					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+					</div>					
+				</div>
+			</a>
+		</div>
 </div>
 </div>
 
+<a class="noUnderLineInAnchor" href="#"><h5 class="sns-heading text-center well-sm">Latest</h5></a>
+
+<div class="container-fluid">
+<div class="row">
+	<div ng-repeat="pd in productData | limitTo:6| orderBy: 'createdDate':true">
+	<a href="viewproduct-{{pd.productId}}">
+		<div class="product-grid col-xs-12 col-sm-6 col-md-2 col-lg-2 well-sm">
+				<div class="img-responsive carousel-inner">
+					<img class="product-grid-img img-rounded" src="" style="background-image: url('resources/data/PRDT-{{pd.productId}}.jpg');" />
+					</div>
+				
+					<h5><b style="color:black;">{{pd.productName}}</b><b class="pull-right"><a href="productdisplay?browse={{pd.brand.brandName}}" style="text-decoration: none;">{{pd.brand.brandName}}</a></b></h5>
+					<h5><span class="pull-left" style="text-decoration: line-through;color:orange">&#8377 {{pd.price}}</span><span style="color:green">&nbsp- {{pd.discount}}% off </span>
+					<b class="pull-right" style="font-size: large;color:red;">&#8377 {{pd.productAmount}} &nbsp</b></h5>
+				
+					<div class="product-grid-sm pull-right">
+					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
+					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+					</div>					
+				</div>
+			</a>
+		</div>
+</div>
+</div>
+
+<a class="noUnderLineInAnchor" href="#"><h5 class="sns-heading text-center well-sm">Best Discount</h5></a>
+
+<div class="container-fluid">
+<div class="row">
+	<div ng-repeat="pd in productData | orderBy: 'discount':true | limitTo:6 ">
+	<a href="viewproduct-{{pd.productId}}">
+		<div class="product-grid col-xs-12 col-sm-6 col-md-2 col-lg-2 well-sm">
+				<div class="img-responsive carousel-inner">
+					<img class="product-grid-img img-rounded" src="" style="background-image: url('resources/data/PRDT-{{pd.productId}}.jpg');" />
+					</div>
+				
+					<h5><b style="color:black;">{{pd.productName}}</b><b class="pull-right"><a href="productdisplay?browse={{pd.brand.brandName}}" style="text-decoration: none;">{{pd.brand.brandName}}</a></b></h5>
+					<h5><span class="pull-left" style="text-decoration: line-through;color:orange">&#8377 {{pd.price}}</span><span style="color:green">&nbsp- {{pd.discount}}% off </span>
+					<b class="pull-right" style="font-size: large;color:red;">&#8377
+					<b id="getamounthere">&nbsp
+					{{pd.productAmount}}
+					 &nbsp</b></b></h5>
+				
+					<div class="product-grid-sm pull-right">
+					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
+					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+					</div>					
+				</div>
+			</a>
+		</div>
+</div>
+</div>
 
 <!-- BASE -->
 <%@ include file="component-base.jsp" %>

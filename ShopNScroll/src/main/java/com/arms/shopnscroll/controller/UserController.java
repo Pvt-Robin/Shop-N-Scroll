@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arms.shopnscroll.model.Product;
 import com.arms.shopnscroll.model.User;
@@ -55,7 +56,7 @@ public class UserController
 	}
 	
 	@RequestMapping("/adduser")
-	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam("userAvatar")MultipartFile userAvatar, Model model)
+	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam("userAvatar")MultipartFile userAvatar, Model model,RedirectAttributes redirectAttributes)
 	{
 		if(result.hasErrors())
 		{
@@ -113,7 +114,7 @@ public class UserController
 	}
 	
 	@RequestMapping("toggleuser-{userId}")
-	public String toggleUser(@PathVariable("userId")int userId)
+	public String toggleUser(@PathVariable("userId")int userId,RedirectAttributes redirectAttributes)
 	{
 		userService.toggleUserStatus(userId);
 		return "redirect:/user";
@@ -129,7 +130,7 @@ public class UserController
 	}
 	
 	@RequestMapping("/addtowishlist-{productId}")
-	public String addWishes(@PathVariable("productId")int productId,Principal p)
+	public String addWishes(@PathVariable("productId")int productId,Principal p,RedirectAttributes redirectAttributes)
 	{
 		int userId = userService.fetchUserByUserName(p.getName()).getUserId();	
 		Product product = productService.fetchOneProduct(productId);
@@ -147,7 +148,7 @@ public class UserController
 	}
 	
 	@RequestMapping("/removefromwishlist-{wishId}")
-	public String removeWishes(@PathVariable("wishId")int wishId)
+	public String removeWishes(@PathVariable("wishId")int wishId,RedirectAttributes redirectAttributes)
 	{
 		wishItemsService.forgetWish(wishId);
 		
@@ -163,29 +164,5 @@ public class UserController
 		
 		return "user-order";
 	}
-	
-//	@RequestMapping("/signup1")
-//	public String getSignupStep1(BindingResult result,Model model)
-//	{	
-//		return "user-signup-step-2";
-//	}
-//	
-//	@RequestMapping("/signup2")
-//	public String getSignupStep2(Model model)
-//	{
-//		return null;
-//	}
-//	
-//	@RequestMapping("/signup3")
-//	public String getSignupStep3()
-//	{
-//		return "user-signup-step-3";
-//	}
-//	
-//	@RequestMapping("/userprofile")
-//	public String userProfile()
-//	{
-//		return "user-profile";
-//	}
 
 }

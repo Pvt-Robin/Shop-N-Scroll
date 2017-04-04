@@ -1,5 +1,6 @@
 package com.arms.shopnscroll.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,10 +23,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.annotations.Expose;
 
+import javassist.SerialVersionUID;
+
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"username", "email", "contact"}))
-public class User 
+public class User
 {
+//	private static final long SerialVersionUID = 1L;
+	
 	@Id
 	@Expose
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

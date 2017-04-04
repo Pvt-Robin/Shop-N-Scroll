@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arms.shopnscroll.model.Brand;
 import com.arms.shopnscroll.service.BrandService;
@@ -52,7 +53,7 @@ public class BrandController
 	}
 	
 	@RequestMapping("/addbrand")
-	public String addBrand(@Valid @ModelAttribute("brand")Brand brand,BindingResult result, @RequestParam("brandImage")MultipartFile productImage, Model model)
+	public String addBrand(@Valid @ModelAttribute("brand")Brand brand,BindingResult result, @RequestParam("brandImage")MultipartFile productImage, Model model , RedirectAttributes redirectAttributes)
 	{
 		if(result.hasErrors())
 		{
@@ -98,7 +99,7 @@ public class BrandController
 	}
 	
 	@RequestMapping("/removebrand-{brandId}")
-	public String removeBrand(@PathVariable("brandId")int brandId)
+	public String removeBrand(@PathVariable("brandId")int brandId , RedirectAttributes redirectAttributes)
 	{
 		try{
     		File file = new File(Data_Folder +  File.separator + "BRND-" + brandId +".jpg");

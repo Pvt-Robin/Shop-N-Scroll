@@ -26,19 +26,18 @@
 <!-- 		<intercept-url pattern="" access="hasRole()"/> -->
 <!-- templates for intercepts -->
 
-
 <!-- 		<intercept-url pattern="/login**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 <!-- 		<intercept-url pattern="/signup**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 <!-- 		<intercept-url pattern="/signup1**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 <!-- 		<intercept-url pattern="/signup2**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 <!-- 		<intercept-url pattern="/signup3**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 
-<!-- 		<intercept-url pattern="/" access="permitAll"/> -->
-<!-- 		<intercept-url pattern="/home**" access="permitAll"/> -->
-<!-- 		<intercept-url pattern="/about**" access="permitAll"/> -->
-<!-- 		<intercept-url pattern="/contact**" access="permitAll"/> -->
-<!-- 		<intercept-url pattern="/faqs**" access="permitAll"/> -->
-<!-- 		<intercept-url pattern="/test**" access="permitAll"/> -->
+		<intercept-url pattern="/" access="permitAll"/>
+		<intercept-url pattern="/home**" access="permitAll"/>
+		<intercept-url pattern="/about**" access="permitAll"/>
+		<intercept-url pattern="/contact**" access="permitAll"/>
+		<intercept-url pattern="/faqs**" access="permitAll"/>
+		<intercept-url pattern="/test**" access="permitAll"/>
 
 		<intercept-url pattern="/logout**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
 
@@ -72,25 +71,25 @@
 		<intercept-url pattern="/removeproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/toggleproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
 
-<!-- 		<intercept-url pattern="/user" access="hasRole('ROLE_ADMIN')"/> -->
-<!-- 		<intercept-url pattern="/updateuser-{{userId}}**" access="hasRole('ROLE_ADMIN')"/> -->
-<!-- 		<intercept-url pattern="/adduser**" access="hasRole('ROLE_ADMIN')"/> -->
-<!-- 		<intercept-url pattern="/userprofile**" access="hasRole('ROLE_ADMIN')"/> -->
+		<intercept-url pattern="/user" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/updateuser-{{userId}}**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/adduser**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/userprofile**" access="hasRole('ROLE_ADMIN')"/>
 
-<!-- 		<intercept-url pattern="/addtowishlist-{productId}**" access="hasRole('ROLE_USER')"/> -->
-<!-- 		<intercept-url pattern="/removefromwishlist-{wishId}**" access="hasRole('ROLE_USER')"/> -->
-<!-- 		<intercept-url pattern="/userorder**" access="hasRole('ROLE_USER')"/> -->
-<!-- 		<intercept-url pattern="/userwish**" access="hasRole('ROLE_USER')"/> -->
-<!-- 		<intercept-url pattern="/usercart**" access="hasRole('ROLE_USER')"/> -->
-<!-- 		<intercept-url pattern="/checkoutfromcart-{cartItemsId}**" access="hasRole('ROLE_USER')"/> -->
-<!-- 		<intercept-url pattern="/addtocart-{productId}-{quantity}" access="hasRole('ROLE_USER')"/> -->
-<!-- 		<intercept-url pattern="/removefromcart-{cartItemsId}" access="hasRole('ROLE_USER')"/> -->
+		<intercept-url pattern="/addtowishlist-{productId}**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/removefromwishlist-{wishId}**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/userorder**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/userwish**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/usercart**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/checkoutfromcart-{cartItemsId}**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/addtocart-{productId}-{quantity}" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/removefromcart-{cartItemsId}" access="hasRole('ROLE_USER')"/>
 		
 		<intercept-url pattern="/toggleproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
 
 
-		<!-- access denied page -->
-<!-- 		<access-denied-handler error-page="/403" /> -->
+<!-- 		access denied page -->
+		<access-denied-handler error-page="/accessdenied" />
 
 		<form-login
 		    login-page="/login"

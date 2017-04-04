@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arms.shopnscroll.model.SubCategory;
 import com.arms.shopnscroll.service.CategoryService;
@@ -50,7 +51,7 @@ public class SubCategoryController
 	}
 	
 	@RequestMapping("/addsubcategory")
-	public String addSubCategory(@Valid @ModelAttribute("subCategory")SubCategory subCategory,BindingResult result,Model model)
+	public String addSubCategory(@Valid @ModelAttribute("subCategory")SubCategory subCategory,BindingResult result,Model model,RedirectAttributes redirectAttributes)
 	{
 		if(result.hasErrors())
 		{
@@ -69,7 +70,7 @@ public class SubCategoryController
 	}
 	
 	@RequestMapping("/removesubcategory-{subCategoryId}")
-	public String removeSubCategory(@PathVariable("subCategoryId")int subCategoryId)
+	public String removeSubCategory(@PathVariable("subCategoryId")int subCategoryId,RedirectAttributes redirectAttributes)
 	{
 		subCategoryService.removeSubCategory(subCategoryId);
 		return "redirect:/subcategory";

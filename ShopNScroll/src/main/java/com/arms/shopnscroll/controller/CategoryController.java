@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arms.shopnscroll.model.Category;
 import com.arms.shopnscroll.service.CategoryService;
@@ -32,7 +33,7 @@ public class CategoryController
 	}
 	
 	@RequestMapping("/updatecategory-{categoryId}")
-	public String updateCategory(@PathVariable("categoryId") int categoryId, @ModelAttribute("category") Category category, Model model)
+	public String updateCategory(@PathVariable("categoryId") int categoryId, @ModelAttribute("category") Category category, Model model, RedirectAttributes redirectAttributes)
 	{
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
 		model.addAttribute("category",categoryService.fetchOneCategory(categoryId));
@@ -44,7 +45,7 @@ public class CategoryController
 	}
 	
 	@RequestMapping(value="/addcategory")
-	public String addCategory(@Valid @ModelAttribute("category")Category category,BindingResult result,Model model)
+	public String addCategory(@Valid @ModelAttribute("category")Category category,BindingResult result,Model model, RedirectAttributes redirectAttributes)
 	{
 		if(result.hasErrors())
 		{
@@ -62,7 +63,7 @@ public class CategoryController
 	}
 	
 	@RequestMapping("/removecategory-{categoryId}")
-	public String removeCategory(@PathVariable("categoryId") int categoryId)
+	public String removeCategory(@PathVariable("categoryId") int categoryId, RedirectAttributes redirectAttributes)
 	{
 		categoryService.removeCategory(categoryId);
 		return "redirect:/category";

@@ -49,7 +49,7 @@
 <div class="admin-tool-form text-center well-sm" style="display:none;">
 </c:if>
 
-<form:form action="addproduct" modelAttribute="product" enctype="multipart/form-data">
+<form:form action="addproduct" modelAttribute="product" enctype="multipart/form-data" method="post">
 
 <div class="row">
 <div class="col-xs-0 col-sm-8 col-md-4 col-lg-4 well-lg"></div>

@@ -1,6 +1,5 @@
 package com.arms.shopnscroll.daoimpl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -13,7 +12,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @Repository
-public class ProductDAOImpl implements ProductDAO {
+public class ProductDAOImpl implements ProductDAO
+{
 	
 	@Autowired
 	SessionFactory sessionFactory;
@@ -37,17 +37,18 @@ public class ProductDAOImpl implements ProductDAO {
 		return productList.get(0);
 	}
 
-	public boolean addProduct(Product product) 
+	public boolean addProduct(Product product)
 	{
-		
+
 		product.setEnabled(true);
 		try
 		{
 			sessionFactory.getCurrentSession().saveOrUpdate(product);
-		
 		}
 		catch (Exception e) 
 		{
+
+			e.printStackTrace();
 			return false;
 		}
 		return true;

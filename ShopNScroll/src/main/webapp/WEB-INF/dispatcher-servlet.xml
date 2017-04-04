@@ -3,6 +3,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	 http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -26,13 +27,26 @@
 		</property>
 	</bean>
 
-	<bean id = "multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<bean id = "multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" >
 		 <value>1024000</value>
 		 </property>
 	</bean>
+	
+	
+<!-- 	 <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" p:definitions="/WEB-INF/registration-webflow.xml" /> -->
+ 
+<!--     <bean id="tilesViewResolver" -->
+<!--           class="org.springframework.web.servlet.view.UrlBasedViewResolver" -->
+<!--           p:viewClass="org.springbyexample.web.servlet.view.tiles2.DynamicTilesView" -->
+<!--           p:prefix="/WEB-INF/views/" -->
+<!--           p:suffix=".jsp" /> -->
 
-		<mvc:resources mapping="/resources/**" location="/resources/" />
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+          p:basenames="messages" />
 
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<mvc:default-servlet-handler/>
+	
 </beans>

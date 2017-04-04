@@ -10,7 +10,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/dispatcher-servlet.xml,
 			/WEB-INF/application-context.xml,
-			/WEB-INF/spring-security.xml
+			/WEB-INF/spring-security.xml,
+			/WEB-INF/webflow-context.xml
 		</param-value>
 	</context-param>
 
@@ -41,5 +42,10 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<error-page>
+        <error-code>404</error-code>
+        <location>/404</location>
+    </error-page>
 
 </web-app>

@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arms.shopnscroll.model.Supplier;
 import com.arms.shopnscroll.service.SupplierService;
@@ -41,7 +42,7 @@ public class SupplierController {
 	}
 
 	@RequestMapping("/addsupplier")
-	public String addSupplier(@Valid @ModelAttribute("supplier") Supplier supplier,BindingResult result,Model model) 
+	public String addSupplier(@Valid @ModelAttribute("supplier") Supplier supplier,BindingResult result,Model model,RedirectAttributes redirectAttributes) 
 	{
 		if(result.hasErrors())
 		{
@@ -58,13 +59,13 @@ public class SupplierController {
 	}
 
 	@RequestMapping("/removesupplier-{supplierId}")
-	public String removeSupplier(@PathVariable("supplierId") int supplierId) {
+	public String removeSupplier(@PathVariable("supplierId") int supplierId,RedirectAttributes redirectAttributes) {
 		supplierService.removeSupplier(supplierId);
 		return "redirect:/supplier";
 	}
 
 	@RequestMapping("/supplieractivatetoggle-{supplierId}")
-	public String activeToggleSupplier(@PathVariable("supplierId") int supplierId) 
+	public String activeToggleSupplier(@PathVariable("supplierId") int supplierId,RedirectAttributes redirectAttributes) 
 	{
 		supplierService.toggleSupplier(supplierId);
 		return "redirect:/supplier";

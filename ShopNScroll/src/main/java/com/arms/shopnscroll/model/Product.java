@@ -46,6 +46,9 @@ public class Product
 	@Expose
 	private int discount;
 	
+	@Expose
+	private float productAmount;
+	
 	@NotNull(message="*")
 	@Expose
 	private int viewCount;
@@ -266,6 +269,14 @@ public class Product
 	
 	public Date getCreatedDate() {
 		return createdDate;
+	}
+
+	public float getProductAmount() {
+		return productAmount;
+	}
+
+	public void setProductAmount(float productAmount) {
+		this.productAmount = productAmount;
 	}
 
 }

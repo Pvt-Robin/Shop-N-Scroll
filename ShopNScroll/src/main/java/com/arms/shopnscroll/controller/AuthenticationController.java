@@ -46,4 +46,23 @@ public class AuthenticationController
 	{
 		return "test";
 	}
+	
+	@RequestMapping("/accessdenied")
+	public String getAcessDenied()
+	{
+		return "component-accessdenied";
+	}
+
+	@RequestMapping("/serverdown")
+	public String getServerDown()
+	{
+		return "component-serverdown";
+	}
+	
+	@RequestMapping("/404")
+	public String getNoSuchPlace()
+	{
+		return "component-nosuchplace";
+	}
+	
 }

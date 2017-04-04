@@ -13,8 +13,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arms.shopnscroll.model.Product;
 import com.arms.shopnscroll.model.SubCategory;
@@ -45,7 +47,7 @@ public class ProductController {
 	
 	private String Data_Folder = "E:\\Workspaces\\ShopNScrollSecond\\ShopNScroll\\src\\main\\webapp\\resources\\data";
 
-	@RequestMapping("/product")
+	@RequestMapping(value = "/product" , method = RequestMethod.GET)
 	public String getProduct(@ModelAttribute("product") Product product, Model model) {
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
 		model.addAttribute("subCategoryList", subCategoryService.fetchAllSubCategory());
@@ -61,7 +63,7 @@ public class ProductController {
 		return "admin-product";
 	}
 
-	@RequestMapping("/updateproduct-{productId}")
+	@RequestMapping(value="/updateproduct-{productId}")
 	public String updateProduct(@PathVariable("productId") int productId,@ModelAttribute("product") SubCategory product, Model model) {
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
 		model.addAttribute("subCategoryList", subCategoryService.fetchAllSubCategory());
@@ -76,9 +78,10 @@ public class ProductController {
 		return "admin-product";
 	}
 
-	@RequestMapping("/addproduct")
-	public String addProduct(@Valid @ModelAttribute("product") Product product,BindingResult result, @RequestParam("productImage")MultipartFile productImage,  Model model)
+	@RequestMapping(value = "/addproduct", method = RequestMethod.POST )
+	public String addProduct(@Valid @ModelAttribute("product") Product product,BindingResult result, @RequestParam("productImage")MultipartFile productImage,  Model model , RedirectAttributes redirectAttributes)
 	{
+
 		if(result.hasErrors()) 
 		{
 			model.addAttribute("categoryList", categoryService.fetchAllCategory());
@@ -94,6 +97,15 @@ public class ProductController {
 
 			return "admin-product";
 		}
+		
+		float rate = product.getPrice();
+		int discount = product.getDiscount();
+		if(discount <= 0)
+		{
+			discount = 1;
+		}
+		float amount = rate-(rate*discount/100);
+		product.setProductAmount(amount);
 		
 		productService.addProduct(product);
 		
@@ -124,12 +136,13 @@ public class ProductController {
 		{
 			model.addAttribute("filemessage","Image file is required");
 		}
-		
+						
 		return "redirect:/product";
+		
 	}
 
 	@RequestMapping("/removeproduct-{productId}")
-	public String removeProduct(@PathVariable("productId") int productId) {
+	public String removeProduct(@PathVariable("productId") int productId , RedirectAttributes redirectAttributes) {
 				
 		productService.removeProduct(productId);
 		
@@ -141,7 +154,6 @@ public class ProductController {
 			{
     		e.printStackTrace();
     		}
-		
 		
 		return "redirect:/product";
 	}
@@ -159,22 +171,17 @@ public class ProductController {
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		model.addAttribute("viewProductJSON", gson.toJson(product));
 		
-		float rate = product.getPrice();
-		int discount = product.getDiscount();
-		float amount = rate-(rate*discount/100);
-		model.addAttribute("viewProductAmount",amount);
-		
 		return "main-viewproduct";
 	}
 	
-	@RequestMapping("/productdisplay")
+	@RequestMapping(value = "/productdisplay")
 	public String getProductDisplay(Model model) 
 	{
 		return "main-productdisplay";
 	}
 	
-	@RequestMapping("/toggleproduct-{productId}")
-	public String toggleDisabled(@PathVariable("productId") int productId)
+	@RequestMapping(value = "/toggleproduct-{productId}")
+	public String toggleDisabled(@PathVariable("productId") int productId , RedirectAttributes redirectAttributes)
 	{
 		productService.toggleProduct(productId);		
 		return "redirect:/product";
