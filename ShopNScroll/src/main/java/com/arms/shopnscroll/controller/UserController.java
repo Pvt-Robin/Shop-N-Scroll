@@ -113,14 +113,14 @@ public class UserController
 		return "admin-user";
 	}
 	
-	@RequestMapping("toggleuser-{userId}")
+	@RequestMapping("/toggleuser-{userId}")
 	public String toggleUser(@PathVariable("userId")int userId,RedirectAttributes redirectAttributes)
 	{
 		userService.toggleUserStatus(userId);
 		return "redirect:/user";
 	}
 	
-	@RequestMapping("userwish")
+	@RequestMapping("/userwish")
 	public String getWishes(Model model, Principal p)
 	{
 		int userId = userService.fetchUserByUserName(p.getName()).getUserId();		
@@ -164,5 +164,5 @@ public class UserController
 		
 		return "user-order";
 	}
-
+	
 }

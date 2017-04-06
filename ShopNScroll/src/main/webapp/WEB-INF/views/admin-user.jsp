@@ -74,7 +74,7 @@
 <form:label path="gender">Gender</form:label><br>
 <form:select path="gender" placeholder="Gender" class="special-textbox"><br>
    <form:option value="Male" label="Male"/>
-   <form:option value="Female" label="Female"/>   
+   <form:option value="Female" label="Female"/>
 </form:select>
 <form:errors path="gender" class="admin-tool-error"/><br>
 

@@ -184,6 +184,7 @@ $(document).ready(function(){
 	  $( "#header-login-form" ).slideToggle( {direction: 'left'}, "fast", function() {
 	    // Animation
 	  });
+      $("#usernametextbox").focus();
       $("#header-navbar").slideUp('200');
 	});
 	});
@@ -285,7 +286,6 @@ function callNoAvatar(obj)
        obj.src=defaultavatar;
 };
 </script>
-
 
 <!-- FUNCTIONALITY FUNCTIONS ENDS -->
 

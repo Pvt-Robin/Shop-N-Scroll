@@ -1,95 +1,77 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/webflow
-                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
-                          
-    <var name="userDetail" class="com.arms.shopnscroll.model.User" />
-	<var name="shippingAddress" class="com.arms.shopnscroll.model.ShippingAddress" />
-	<var name="billingAddress" class="com.arms.shopnscroll.model.BillingAddress" />
-	
-	<!-- Executed when webFlow is triggered -->
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/webflow 
+		http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<var name="user" class="com.arms.shopnscroll.model.User"/>
+
+<!-- Executed when webFlow is triggered -->
 	<on-start>
-		<evaluate expression="registrationHandler.initFlow()" result="flowScope.userDetail" />
+		<evaluate expression="registrationHandler.initFlow()" result="flowScope.user" />
 	</on-start>
 	
-<!-- 	VALIDATE PERSONAL DETAILS -->
-	
-	<view-state id="start" view="RegisterWebflow" model="userDetail">
-	<transition on="edit" to="cancel" />
-	<transition on="submit" to="validateUserDetails" />
+		<!-- 	VALIDATE PERSONAL DETAILS -->
+
+	<view-state id="start" view="user-signup-step-1" model="user">
+	<transition on="discontinue" to="cancel" />
+	<transition on="continue" to="validatePersonalDetails" />
 	</view-state>
 	
-	<action-state id="validateUserDetails">
-		<evaluate expression="registrationHandler.validateUserDetails(userDetail,messageContext)"></evaluate>
-		<transition on="success" to="check" />
+	<action-state id="validatePersonalDetails">
+		<evaluate expression="registrationHandler.validatePersonalDetails(user,messageContext)"></evaluate>
+		<transition on="success" to="viewContactForm" />
 		<transition on="failure" to="start" />
 	</action-state>
 	
-	<action-state id="check">
-		<evaluate expression="registrationHandler.duplicateUser(userDetail,messageContext)"></evaluate>
-		<transition on="success" to="shipping" />
-		<transition on="failure" to="start" />
-	</action-state>
-	
-	<view-state id="shipping" view="shippingaddress" model="shippingAddress">
-		<transition on="edit" to="start" />
-		<transition on="submitShipping" to="validateshippingDetails" />
+	<!-- 	VALIDATE CONTACT DETAILS -->
+
+ 	<view-state id="viewContactForm" view="user-signup-step-2" model="user">
+	<transition on="discontinue" to="cancel" />
+	<transition on="continue" to="validateContacts" />
+	<transition on="previous" to="start" />	
 	</view-state>
 	
-	<action-state id="validateshippingDetails">
-		<evaluate expression="registrationHandler.validateShippingDetails(shippingAddress, messageContext)"></evaluate>
-		<transition on="success" to="addshipping" />
-		<transition on="failure" to="shipping" />
+	<action-state id="validateContacts">
+		<evaluate expression="registrationHandler.validateContactDetails(user,messageContext)"></evaluate>
+		<transition on="success" to="viewPasswordForm" />
+		<transition on="failure" to="viewContactForm" />
 	</action-state>
 	
-	<action-state id="addshipping">
-		<evaluate
-			expression="registrationHandler.addShippingAddress(shippingAddress)"></evaluate>
-		<transition on="success" to="billing" />
-		<transition on="failure" to="start" />
-	</action-state>
-	
-	<view-state id="billing" view="billingaddress" model="billingAddress">
-		<transition on="edit" to="start" />
-		<transition on="submitBilling" to="addbilling" />
+	<!-- 	VALIDATE PASSWORD DETAILS -->
+
+ 	<view-state id="viewPasswordForm" view="user-signup-step-3" model="user">
+	<transition on="discontinue" to="cancel" />
+	<transition on="continue" to="validatePassword" />
+	<transition on="previous" to="viewContactForm" />	
 	</view-state>
 	
-	<action-state id="addbilling">
-		<evaluate
-			expression="registrationHandler.addBillingAddress(billingAddress)"></evaluate>
-		<transition on="success" to="action" />
+	<action-state id="validatePassword">
+		<evaluate expression="registrationHandler.validatePasswordDetails(user,messageContext)"></evaluate>
+		<transition on="success" to="viewConfirmDetails" />
+		<transition on="failure" to="viewPasswordForm" />
 	</action-state>
 	
-	<action-state id="action">
-		<evaluate
-			expression="registrationHandler.saveDetail(flowScope.userDetail, billingAddress, shippingAddress)"></evaluate>
-		<transition on="success" to="save" />
-	</action-state>
-	
-	<action-state id="save">
-	<!-- <evaluate expression="userService.saveShippingAddress(shippingAddress)" result="shippingAddress"></evaluate>
-<evaluate expression="userService.saveBillingAddress(billingAddress)" result="billingAddress"></evaluate> -->
-<evaluate expression="userService.saveOrUpdate(userDetail)" result="userDetail"></evaluate>
-<transition to="welcome"  />
-</action-state>
-	
-	<!-- <view-state id="confirmdetails" view="confirmdetails" model="flowScope.userDetail">
-		<transition on="edit" to="start" />
-		<transition on="submit" to="saveOrder" />
+	<!-- 	ADD NEW USER -->
+
+ 	<view-state id="viewConfirmDetails" view="user-signup-step-4" model="user">
+	<transition on="discontinue" to="cancel" />
+	<transition on="continue" to="doConfirmDetails" />
+	<transition on="previous" to="viewPasswordForm" />	
 	</view-state>
 	
-	<action-state id="saveOrder">
-<evaluate expression="userService.saveOrUpdate(userDetail)" result="userDetail"></evaluate>
-<transition to="Invalid User" on-exception="java.lang.NullPointerException" />
-<transition to="welcome"  />
-</action-state> -->
+	<action-state id="doConfirmDetails">
+		<evaluate expression="registrationHandler.addNewUser(user,messageContext)"></evaluate>
+		<transition on="success" to="welcome" />
+		<transition on="failure" to="error" />
+	</action-state>
 	
-	<end-state id="welcome" view="index" />
+	<end-state id="welcome" view="user-signup-step-success" />
+	<end-state id="error" view="user-signup-step-error" />
 	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+	
 	<global-transitions>
 		<transition on="cancel" to="toHome" />
-		<!-- <transition on="finalHome" to="toHome" /> -->
 	</global-transitions>
 	
-	</flow>
+</flow>

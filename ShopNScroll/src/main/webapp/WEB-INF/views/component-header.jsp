@@ -26,9 +26,9 @@
 <!-- FIRST ROW STARTS -->
 <div class="row">
 <!-- LEFT PADDING -->
-<div class="col-xs-0 col-sm-3 col-md-4 col-lg-4"></div>
+<div class="col-xs-0 col-sm-2 col-md-4 col-lg-4"></div>
 
-<div id="main-head-src" class="form-element col-xs-12 col-sm-6 col-md-4 col-lg-4">
+<div id="main-head-src" class="form-element col-xs-12 col-sm-8 col-md-4 col-lg-4">
 
 <div>
 <button id="header-menu-button" class="main-header-btn well-sm col-xs-2 col-sm-2 col-md-2 col-lg-2 glyphicon glyphicon-menu-hamburger" data-toggle="tooltip" title="Scroll" data-placement="right"></button>
@@ -56,8 +56,8 @@
 
 </div>
 <!-- RIGHT PADDING -->
-<div class="col-xs-0 col-sm-3 col-md-4 col-lg-4"></div>
 </div>
+<div class="col-xs-0 col-sm-2 col-md-4 col-lg-4"></div>
 </div>
 
 <!-- HEADER ENDS -->
@@ -66,94 +66,83 @@
 
 <!-- NAVBAR STARTS -->
 
-<div id="header-navbar" data-spy="affix" class="container-fluid" style="display: none; ">
-<div class="row">
-<div >
-<div class="col-xs-0 col-sm-2 col-md-2 col-lg-2"></div>
+<div id="header-navbar" class="row well-lg removescrollbar" style="display: none; ">
 
-<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+<div class="col-xs-0 col-sm-2 col-md-3 col-lg-3"></div>
 
-            <div id="navbar-section-menu" class="well col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <ul>
-                <li class="navbar-list well-sm"><a href="#" class="navbar-category text-Center">Menu</a></li>
-                <li class="navbar-list"><a href="home" class="navbar-subcategory">Home</a></li>
-                <li class="navbar-list"><a href="productdisplay" class="navbar-subcategory">Browse</a></li>
-                <li class="navbar-list"><a href="login" class="navbar-subcategory">Log In</a></li>
-                <li class="navbar-list"><a href="register" class="navbar-subcategory">Sign Up</a></li>
-                <li class="navbar-list"><a href="about" class="navbar-subcategory">About Us</a></li>
-              </ul>
+<div class="container search-grid-middle col-xs-12 col-sm-8 col-md-6 col-lg-6 well-sm text-center">
+            <div class="row well-sm">
+              <a href="home" class="text-center" style="color:white;text-decoration: none;"><i class="glyphicon glyphicon-home"></i>&nbsp Go To Home</a>
             </div>
-
+			<div class="well-sm">
             <c:forEach var="ci" items="${categoryDataList}">
             <div class="navbar-section well col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <ul>
-                <li class="navbar-list"><a href="productdisplay?browse=${ci.categoryName}" class="navbar-category text-center">${ci.categoryName}</a></li>
+                <a href="productdisplay?browse=${ci.categoryName}" class="navbar-category text-center" style="margin-top: 3px;font-size: medium;font-weight: bold;width: 100%;">
+                 ${ci.categoryName}</a><br>
                 <c:forEach var="si" items="${ci.subCategory}">
-                <li class="navbar-list"><a href="productdisplay?browse=${si.subCategoryName}" class="navbar-subcategory">${si.subCategoryName}</a></li>
+                <a href="productdisplay?browse=${si.subCategoryName}" class="navbar-subcategory"><button class="btn btn-xs btn-fame" style="margin-top: 3px;font-size: medium;">${si.subCategoryName}</button></a>
                 </c:forEach>
-              </ul>
             </div>
             </c:forEach>
-
+			</div>
 </div>
             
-<div class="col-xs-0 col-sm-2 col-md-2 col-lg-2"></div>
-</div>
-</div>
+<div class="col-xs-0 col-sm-2 col-md-3 col-lg-3 well-sm"></div>
+
 </div>
 
 <!-- NAVBAR-ENDS -->
 
 <!-- SEARCH STARTS HERE -->
-
-<div id="searchresults" data-spy="affix" class="row well-lg" style="display:none;">
 <div ng-controller="universalProductControllerAJS" >
-<h2 ng-if="{{mainsearchword}}" class="text-center" style="color:rgb(255,255,255)">Are You Looking For This?</h2>
+<div id="searchresults" class="row well-sm removescrollbar" style="display:none;">
 
-<div class="col-xs-0 col-sm-2 col-md-4 col-lg-4 well-sm"></div>
+<div class="col-xs-1 col-sm-1 col-md-4 col-lg-4 well-sm"></div>
 
-<div class="container search-grid-middle col-xs-12 col-sm-8 col-md-4 col-lg-4 well-lg">
-	<div class="row">
-		<div class="search-grid col-xs-12 col-sm-12 col-md-12 col-lg-12 well-sm" ng-repeat="pd in productData | filter:mainsearchword ||'vdsivhsivdsvhsiovsovd' | orderBy:createdDate:true |limitTo:15 " style="background-color: rgba(255,255,255,1.0)">
+<div class="container search-grid-middle col-xs-10 col-sm-10 col-md-4 col-lg-4 well-lg text-center">
+              
+	<div class="row well-sm">      
+	    <a href="productdisplay" class="text-center" style="color:white;text-decoration: none;"><i class="glyphicon glyphicon-search"></i>&nbsp More Search Options</a>
+<br><br>	
+		<div class="search-grid col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="pd in productData | filter:mainsearchword || 'this is to empty container-38247618741cndfjkwe' | orderBy:createdDate:true |limitTo:15 " style="background-color: rgba(255,255,255,1.0)">
+				<div class="">
+				<a href="viewproduct-{{pd.productId}}">
+					<img class="search-grid-img hidden-xs hidden-sm img-thumbnail col-xs-0 col-sm-0 col-md-3 col-lg-3" src="resources/data/PRDT-{{pd.productId}}.jpg"/>
 
-				<div class="img-responsive">
-				
-					<img class="search-grid-img hidden-xs hidden-sm img-rounded img-thumbnail col-xs-0 col-sm-0 col-md-2 col-lg-2" src="resources/data/PRDT-{{pd.productId}}.jpg"/>
-
-					<div class="col-xs-8 col-sm-10 col-md-7 col-lg-7">
-					<b>{{pd.productName}}</b><br>
-					<a href="productdisplay?browse={{pd.subCategory.subCategoryName}}" style="text-decoration: none;font-weight: lighter;font-size: small;">{{pd.subCategory.subCategoryName}}</a>
+					<div class="col-xs-8 col-sm-10 col-md-6 col-lg-6">
+					<b style="color:black">{{pd.productName}}</b><br>
+					<a href="productdisplay?browse={{pd.subCategory.subCategoryName}}" style="text-decoration: none;font-weight: lighter;font-size: small;">{{pd.brand.brandName}}</a>
 					</div>
 					
-					<div class="col-xs-4 col-sm-2 col-md-3 col-lg-3">
-					<b class="text-center" style="color: orange;font-size: large;">&#8377{{pd.productAmount}}</b>
-					</div>
-										
+					<div class="col-xs-4 col-sm-2 col-md-3 col-lg-3 pull-right">
+					<font class="text-center" style="color: orange;font-size: medium;text-decoration: line-through;">&#8377{{pd.price}}</font><br>
+					<b class="text-center" style="color: green;font-size: medium;">&#8377{{pd.productAmount}}</b>
+					</div>	
+					</a>			
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<div class="col-xs-0 col-sm-0 col-md-4 col-lg-4 well-sm"></div>
+	<div class="col-xs-1 col-sm-1 col-md-4 col-lg-4 well-sm"></div>
 </div>
 </div>
 	
 <!-- SEARCH ENDS HERE -->
 
 <!-- LOGIN-STARTS -->
-<div id="header-login-form" data-spy="affix" class="container" style="display:none;">
+
+<div id="header-login-form" class="container" style="display:none;">
 <div class="row well-sm">
 <div id="header-login-form"class="col-xs-0 col-sm-1 col-md-2 col-lg-2"></div>
 <center>
 <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
 <center>
 <form action="perform_login" method="post">
-<button type="button" class="btn btn-default btn-sm" id="special-login-btn">Sign Up</button>
-<button type="button" class="btn btn-default btn-sm" id="special-login-btn">Forgot</button>
-<input type="text" name="username" class="special-header-textbox" placeholder="Username" autofocus/>
-<input type="password" name="password" class="special-header-textbox" placeholder="Password"/>
+<input type="text" name="username" class="special-header-textbox forplaceholder" id="usernametextbox" placeholder="Email.." autofocus/>
+<input type="password" name="password" class="special-header-textbox forplaceholder" placeholder="Password.."/>
 <button type="submit" class="btn btn-default btn-sm" id="special-login-btn">Log In</button>
-
+<a href="reg"><button type="button" class="btn btn-default btn-sm" id="special-login-btn" style="margin-bottom: ">Sign Up</button></a>
 </form>
 </center>
 </div>
@@ -161,6 +150,7 @@
 <div class="col-xs-0 col-sm-1 col-md-2 col-lg-2"></div>
 </div>
 </div>
+
 <!-- LOGIN ENDS -->
 
 <!-- ADMIN PROFILE STARTS HERE -->
@@ -255,5 +245,5 @@
 <!-- MARGIN-DIVIDER -->
 <div id="margin-divider"></div>
 
-<!-- <div class="hidden-xs hidden-sm body-area container well-lg"> -->
-<div class="body-area container-fluid well-sm">
+<!-- LOGICAL BODY STARTS -->
+<div class="body-area container-fluid">

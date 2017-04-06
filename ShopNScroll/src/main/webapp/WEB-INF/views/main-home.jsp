@@ -4,33 +4,28 @@
 <div id="myCarousel" class="carousel slide vertical well-sm sns-heading" data-ride="carousel">
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox" style=" width:100%; height: 50% !important;">
     <div class="item active">
       <img class="carosel-ad-image" src="resources/data/ad2.jpg" alt="Game Store">
-      <div class="carousel-caption carousel-caption-style">
-        <h5 class = "hidden-md hidden-lg hidden-sm">Game Store</h5>
-        <h3 class = "hidden-xs">Game Store</h3>        
+      <div class="carousel-caption carousel-caption-style">       
       </div>
     </div>
 
     <div class="item">
       <img class="carosel-ad-image" src="resources/data/ad3.jpg" alt="Airtel 4G">
       <div class="carousel-caption">
-        <h5>Airtel 4G Network</h5>
       </div>
     </div>
 
     <div class="item">
       <img class="carosel-ad-image" src="resources/data/ad4.jpg" alt="Play Online">
       <div class="carousel-caption">
-        <h5>Online Games</h5>
       </div>
     </div>
 
     <div class="item">
       <img class="carosel-ad-image" src="resources/data/ad1.jpg" alt="Mat Market">
       <div class="carousel-caption">
-        <h5>Mat Market</h5>
       </div>
     </div>
   </div>
@@ -38,7 +33,7 @@
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="sr-only">Prev</span>
   </a>
   <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>

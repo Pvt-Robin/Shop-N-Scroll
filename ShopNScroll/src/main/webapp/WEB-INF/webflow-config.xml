@@ -16,10 +16,10 @@
 <webflow:flow-executor id="flowExecutor" />
 
 	<webflow:flow-registry id="flowRegistry"
-		flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
-		<!-- here the id is mapped to invoke this flow -->
-		<webflow:flow-location id="reg" path="/registration-webflow.xml" />
-		<webflow:flow-location id="cart" path="/cart-webflow.xml" />
+		flow-builder-services="flowBuilderServices" base-path="/WEB-INF/">
+
+		<webflow:flow-location id="reg" path="registration-webflow.xml" />
+<!-- 		<webflow:flow-location id="checkout" path="cart-webflow.xml" /> -->
 		
 	</webflow:flow-registry>
 
@@ -59,6 +59,6 @@
 
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 		<property name="flowRegistry" ref="flowRegistry" />
-		
+		<property name="order" value="0" />
 	</bean>
 	</beans>

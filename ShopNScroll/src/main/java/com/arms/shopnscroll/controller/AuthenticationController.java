@@ -41,7 +41,7 @@ public class AuthenticationController
 		return "admin-tools";
 	}
 	
-	@RequestMapping("test")
+	@RequestMapping("/test")
 	public String getTest()
 	{
 		return "test";
@@ -64,5 +64,6 @@ public class AuthenticationController
 	{
 		return "component-nosuchplace";
 	}
+
 	
 }

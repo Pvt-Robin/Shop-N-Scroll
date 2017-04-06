@@ -3,14 +3,13 @@
 
 <div ng-controller="universalProductControllerAJS">
 
-<ul class="breadcrumb sns-breadcrumb">
-  <li><a class="sns-crumb newpager noUnderLineInAnchor" style="font-size: large;color:orange;text-shadow: 1px 1px 1px white" href="home">Shop</a></li>
-  <li><a class="sns-crumb current-page noUnderLineInAnchor" href="productdisplay">Product Explorer</a></li>
-  <li class="sns-current-crumb">{{browseWord}}</li>
-</ul>
+<div class="container-fluid text-center well-sm sitewise-header">
+<div class="row">
+<a href="home"><button class="btn btn-warning btn-arrow-right pull-left" style="outline:none;"><b>Home</b></button></a>
+<a href="productdisplay"><button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Browse</button></a>
+<button ng-if="browseWord" class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{browseWord}}</button>
 
-<div class="product-sort-area col-*-*">
-<div class="well-sm  text-center">
+<div class="pull-right" style="margin-right: 15px;">
 
 <select ng-model="orderkeyword" class="btn admin-tab-button">
 <option value="" disabled selected>Sort By</option>
@@ -21,12 +20,13 @@
 <option value="creationDate">Latest</option>
 </select>
 
-<button class="btn admin-tab-button" id="sort-button-popular" onclick="">Popular</button>
-<button class="btn admin-tab-button" id="sort-button-popular">Latest</button>
-<button class="btn admin-tab-button" id="sort-button-popular">Discount</button>
-<button class="btn admin-tab-button" id="sort-button-popular">Price(Low-High)</button>
-<button class="btn admin-tab-button" id="sort-button-popular">Price(High-Low)</button>
+<!-- <button class="btn admin-tab-button" id="sort-button-popular" onclick="">Popular</button> -->
+<!-- <button class="btn admin-tab-button" id="sort-button-popular">Latest</button> -->
+<!-- <button class="btn admin-tab-button" id="sort-button-popular">Discount</button> -->
+<!-- <button class="btn admin-tab-button" id="sort-button-popular">Price(Low-High)</button> -->
+<!-- <button class="btn admin-tab-button" id="sort-button-popular">Price(High-Low)</button> -->
 
+</div>
 </div>
 </div>
 

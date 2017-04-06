@@ -23,13 +23,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.annotations.Expose;
 
-import javassist.SerialVersionUID;
-
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"username", "email", "contact"}))
-public class User
+public class User implements Serializable
 {
-//	private static final long SerialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Expose
@@ -66,17 +64,15 @@ public class User
 	@Expose
 	private boolean enabled;
 	
-//	NOTE:DON'T MAKE SETTER FOR DATES
-//	@Expose
-//	@NotEmpty(message="Date of Birth is Mandatory")
-//	private Date dateOfBirth;
+	@Expose
+	@NotEmpty(message="Date of Birth is Mandatory")
+	private String dateOfBirth;
 	
 	@Expose
 	private Date createdDate = new Date();
 	
 	@Expose
 	@NotEmpty(message="Cannot Be Empty")
-	@Length(min=8, max=16, message="User Name Should Be 8-16 Characters In length" )
 	private String username;
 	
 	@Expose
@@ -166,12 +162,12 @@ public class User
 	public Date getCreatedDate() {
 		return createdDate;
 	}
-//	public Date getDateOfBirth() {
-//		return dateOfBirth;
-//	}
-//	public void setDateOfBirth(Date dateOfBirth) {
-//		this.dateOfBirth = dateOfBirth;
-//	}
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 	public String getContact() {
 		return contact;
 	}

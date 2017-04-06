@@ -11,7 +11,7 @@
 		<param-value>/WEB-INF/dispatcher-servlet.xml,
 			/WEB-INF/application-context.xml,
 			/WEB-INF/spring-security.xml,
-			/WEB-INF/webflow-context.xml
+			/WEB-INF/webflow-config.xml
 		</param-value>
 	</context-param>
 
@@ -43,9 +43,9 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<error-page>
-        <error-code>404</error-code>
-        <location>/404</location>
-    </error-page>
+<!-- 	<error-page> -->
+<!--         <error-code>404</error-code> -->
+<!--         <location>/404</location> -->
+<!--     </error-page> -->
 
 </web-app>

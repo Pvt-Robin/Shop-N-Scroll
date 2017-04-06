@@ -10,6 +10,11 @@
     src: url("../../resources/fonts/dev-font-abelregular.woff2");
 }
 
+@font-face {
+    font-family: neometricMedium;
+    src: url("../../resources/fonts/dev-font-neometric-medium.woff2");
+}
+
 .tooltip
 {
 	font-family: fontRoundedElegance;
@@ -27,7 +32,7 @@
 	top: 0px;
 	left: 0px;
 	right: 0px;
-	z-index: 2;
+	z-index: 100;
 }
 
 .main-header-btn
@@ -78,8 +83,7 @@
 	border: 1px solid white;
 	border-radius: 50px 50px 50px 50px;
 	font-size: large;
-	color:rgb(255,255,255)
-	
+	color:rgb(255,255,255);
 }
 #main-head-srctxt:focus
 {
@@ -94,7 +98,7 @@
 
 #header-login-form
 {
-position: relative !important;
+	position: relative !important;
 }
 
  .special-header-textbox
@@ -119,7 +123,7 @@ position: relative !important;
  }
  .special-header-textbox:hover
  {
-		background-color:rgba(255,127,39,0.5);
+		background-color:rgba(255,165,0,0.5);
  }
  
  #special-login-btn
@@ -141,7 +145,7 @@ position: relative !important;
  }
 #special-login-btn:hover
  {
-		background-color:rgba(255,127,39,0.5);
+		background-color:rgba(255,165,0,0.5);
  }
  
  #admin-profile, #buyer-profile
@@ -179,13 +183,40 @@ position: relative !important;
 .search-grid-middle
 {
 	 background-color: rgba(0,0,0,0.8);
+	 margin-left: 5px;
 } 
+
+#searchresults
+{ 	
+	font-family: fontAbelRegular;
+	z-index: 10;
+	top: 64px;
+	left:0px;
+	right:0px;
+	bottom:15px;
+	position:fixed;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	border-radius: 10px 10px 10px 10px;
+}
+
+ #header-navbar.well-lg
+ {
+ border-radius: 10px 10px 10px 10px;
+ }
 
  #header-navbar 
  {
- 	color:orange;
- 	max-height:100%;
-    overflow-y: auto;
+ 	font-family: fontAbelRegular;
+	z-index: 10;
+	top: 64px;
+	left:0px;
+	right:0px;
+	bottom:15px;
+	position:fixed;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	border-radius: 10px 10px 10px 10px;
  }
  
  .navbar-section
@@ -194,27 +225,15 @@ position: relative !important;
  	background-color: rgba(255,255,255,1.0);
  	margin: 1px 1px 1px 1px;
  	border: 1px solid rgba(0,0,0,1);
+ 	border-radius: 10px 10px 10px 10px;
  }
  
  .navbar-section:HOVER ,  #navbar-section-menu:HOVER
  {
   background-color: rgba(255,255,255,1.0);
+  border-color: rgba(255,165,0,0.8);
  }
- 
- #navbar-section-menu
- {
- 	padding: 4px 4px 4px 4px;
- 	background-color: rgba(255,255,255,1.0);
- 	margin: 1px 1px 1px 1px;
- 	border: 1px solid rgba(0,0,0,1);
- }
- 
- .navbar-list
- {
- list-style: none;
- display: list-item;
- }
- 
+
  a.navbar-subcategory
  {
  font-size: medium;
@@ -271,7 +290,7 @@ a.navbar-category:LINK , a.navbar-category:VISITED , a.navbar-category:ACTIVE, a
 
 #margin-divider
 {
-	margin-top: 60px;
+	margin-top: 70px;
 }
 
 body
@@ -279,7 +298,6 @@ body
 	background-color:rgba(255,255,255,0.3);
 	background-image:url("../../resources/img/bodypattern-3.png");
 	background-attachment: fixed;
-	
 }
 
 .body-area
@@ -289,9 +307,16 @@ body
 	background-attachment: fixed;
 }
 
-#login-signup-panels
+.login-signup-panels
 {
-	background-color:rgba(0,0,0,0.1) ;
+	border-radius: 10px 10px 10px 10px;
+	border:1px solid black;
+	background-color:rgba(255,255,255,0.5) ;
+}
+.login-signup-font
+{
+	font-size: large;
+	font-weight: bold;
 }
 
 .signup-grid
@@ -307,8 +332,8 @@ body
 
 .carosel-ad
 {
-	height:200px;
-	width:100%;
+	height:100%;
+	width:60%;
 }
 
 .carosel-ad-image
@@ -412,7 +437,6 @@ body
 .admin-tool-form
 {
 	background-image: url("../../resources/img/bodypattern-3.png");
-	
 }
 
 .admin-tool-error
@@ -424,27 +448,27 @@ body
 .admin-tab-button, .admin-tab-button-back
 {
 	background-color: rgba(255,255,255,0.0);
-	border-color: rgba(255,255,255,1.0);;
+	border-color: rgba(255,255,255,1.0);
 	border-width: 1px;
-	color: rgba(255,255,255,1.0);;
+	color: rgba(255,255,255,1.0);
 	outline: none;
 }
 .admin-tab-button:hover
 {
 	background-color: rgba(255,255,255,0.2);
-	color: rgba(255,255,255,1.0);;
+	color: rgba(255,255,255,1.0);
 }
 
 .admin-tab-button:focus
 {
 	background-color: rgba(255,255,255,1);
-	color: rgba(0,0,0,1.0);;
+	color: rgba(0,0,0,1.0);
 	font-weight: bold;
 }
 .admin-tab-button-selected, .admin-tab-button-selected:active
 {
 	background-color: rgba(255,255,255,1.0);
-	border-color: rgba(255,255,255,1.0);;
+	border-color: rgba(255,255,255,1.0);
 	border-width: 1px;
 	color: rgba(0,0,0,1.0);;
 	outline: none;
@@ -515,7 +539,7 @@ body
 
 .search-grid-img
 {
-height:40px;
+	height:50px;
 }
 
 .product-grid-button
@@ -565,7 +589,7 @@ height:40px;
 
 .btn-good
 {
-	font-size: medium;
+	font-size: large;
 	color:white;
 	background-color: rgba(0,193,193,0.7);
 	border-radius: 50px 50px 50px 50px;
@@ -576,20 +600,100 @@ height:40px;
 .btn-good:hover, .btn-good:active
 {
 	color:white;
-	background-color: rgba(0,193,193,1.0);
+	background-color: rgba(61,156,244,1.0);
 }
 
-.product-sort-area
+.btn-fame
 {
-	border-radius: 5px 5px 0px 0px;
-	background-color: rgba(0,0,0,0.4);
-	color: white;
-	font-weight: bold
+	font-size: medium;
+	font-weight: bold;
+	color:black;
+	background-color: rgba(255,179,86,0.5);
+	border-radius: 20px 20px 20px 20px;
+	height:auto;
+	width:auto;
+	margin: 3px 3px 3px 3px;
 }
+.btn-fame:hover, .btn-fame:active
+{
+	color:white;
+	background-color: rgba(255,179,86,1.0);
+}
+
+/* .btn-rock */
+/* { */
+/* 	font-size: medium; */
+/* 	color:white; */
+/* 	background-color: rgba(0,0,0,0.2); */
+/* 	border-radius: 50px 50px 50px 50px; */
+/* 	height:auto; */
+/* 	width:auto; */
+/* 	margin: 3px 3px 3px 3px; */
+/* } */
+/* .btn-rock:hover, .btn-rock:active */
+/* { */
+/* 	color:white; */
+/* 	background-color: rgba(0,0,0,0.5); */
+/* } */
+
+/* .product-sort-area */
+/* { */
+/* 	border-radius: 0px 0px 0px 0px; */
+/* 	background-color: rgba(0,0,0,0.8); */
+/* 	color: white; */
+/* 	font-weight: bold */
+/* } */
 .product-filter-area
 {
 	border-radius: 0px 0px 5px 5px;
-	background-color: rgba(0,0,0,0.4);
+	background-color: rgba(0,0,0,0.8);
+}
+
+.sitewise-header
+{
+	background-color:rgba(0,0,0,0.8);
+	color: rgba(255,255,255,1.0);
+}
+
+.signup-header-font, .signup-header-font:hover
+{
+	height:40px;
+	width:40px;
+	font-size:large;
+	font-weight: bold;
+	color: rgba(255,255,255,1.0);
+	background-color: rgba(0,0,0,0.8);
+	border-color: rgba(255,255,255,1.0);
+	border-width: 2px;
+	border-radius: 50px 50px 50px 50px;
+	outline: none;
+}
+.signup-header-font-current, .signup-header-font-current:hover
+{
+	height:40px;
+	width:40px;
+	font-size:large;
+	font-weight: bold;
+	background-color:rgba(92,184,92,1.0);
+	border-color: rgba(255,255,255,1.0);
+	border-width: 2px;
+	color: rgba(255,255,255,1.0);
+	border-radius: 50px 50px 50px 50px;
+	outline: none;
+}
+.signup-header-button-danger
+{
+	height:40px;
+	width:40px;
+	border-radius: 50px 50px 50px 50px;
+	outline:none;
+	margin-right: 5px;
+}
+
+.signup-button
+{
+	margin: 5px 5px 5px 5px;
+	width: 96px;
 }
 
 /* ------------------------------------------------------------------------- FOOT STYLING */
@@ -737,75 +841,91 @@ height:40px;
   margin-bottom: 3px;
 }
 
-/* ________________________________________________________________row uniform */
+/* --------------------------------------------------------------------------------------------Arrow Button */
 
-.row-uniform {
-  margin-right: -15px;
-  margin-left: -15px;
+.btn-arrow-right,
+.btn-arrow-left {
+    position: relative;
+    padding-left: 18px;
+    padding-right: 18px;
 }
-.row-uniform:after {
-  clear: both;
+.btn-arrow-right {
+    padding-left: 36px;
 }
-.row-uniform:before {
-  display: table;
-  content: '';
+.btn-arrow-left {
+    padding-right: 36px;
 }
-.row-uniform .col-xs-6:nth-child(2n+1) {
-  clear: left;
+.btn-arrow-right:before,
+.btn-arrow-right:after,
+.btn-arrow-left:before,
+.btn-arrow-left:after { /* make two squares (before and after), looking similar to the button */
+    content:"";
+    position: absolute;
+    top: 5px; /* move it down because of rounded corners */
+    width: 22px; /* same as height */
+    height: 22px; /* button_outer_height / sqrt(2) */
+    background: inherit; /* use parent background */
+    border: inherit; /* use parent border */
+    border-left-color: transparent; /* hide left border */
+    border-bottom-color: transparent; /* hide bottom border */
+    border-radius: 0px 4px 0px 0px; /* round arrow corner, the shorthand property doesn't accept "inherit" so it is set to 4px */
+    -webkit-border-radius: 0px 4px 0px 0px;
+    -moz-border-radius: 0px 4px 0px 0px;
 }
-.row-uniform .col-xs-4:nth-child(3n+1) {
-  clear: left;
+.btn-arrow-right:before,
+.btn-arrow-right:after {
+    transform: rotate(45deg); /* rotate right arrow squares 45 deg to point right */
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
 }
-.row-uniform .col-xs-3:nth-child(4n+1) {
-  clear: left;
+.btn-arrow-left:before,
+.btn-arrow-left:after {
+    transform: rotate(225deg); /* rotate left arrow squares 225 deg to point left */
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
 }
-.row-uniform .col-xs-2:nth-child(6n+1) {
-  clear: left;
+.btn-arrow-right:before,
+.btn-arrow-left:before { /* align the "before" square to the left */
+    left: -11px;
 }
-@media (min-width: 768px) and (max-width: 992px) {
-  .row-uniform .col-sm-6:nth-child(2n+1) {
-    clear: left;
-  }
-  .row-uniform .col-sm-4:nth-child(3n+1) {
-    clear: left;
-  }
-  .row-uniform .col-sm-3:nth-child(4n+1) {
-    clear: left;
-  }
-  .row-uniform .col-sm-2:nth-child(6n+1) {
-    clear: left;
-  }
+.btn-arrow-right:after,
+.btn-arrow-left:after { /* align the "after" square to the right */
+    right: -11px;
 }
-@media (min-width: 992px) and (max-width: 1200px) {
-  .row-uniform .col-md-6:nth-child(2n+1) {
-    clear: left;
-  }
-  .row-uniform .col-md-4:nth-child(3n+1) {
-    clear: left;
-  }
-  .row-uniform .col-md-3:nth-child(4n+1) {
-    clear: left;
-  }
-  .row-uniform .col-md-2:nth-child(6n+1) {
-    clear: left;
-  }
+.btn-arrow-right:after,
+.btn-arrow-left:before { /* bring arrow pointers to front */
+    z-index: 1;
 }
-@media (min-width: 1200px) {
-  .row-uniform .col-lg-6:nth-child(2n+1) {
-    clear: left;
-  }
-  .row-uniform .col-lg-4:nth-child(3n+1) {
-    clear: left;
-  }
-  .row-uniform .col-lg-3:nth-child(4n+1) {
-    clear: left;
-  }
-  .row-uniform .col-lg-2:nth-child(6n+1) {
-    clear: left;
-  }
+.btn-arrow-right:before,
+.btn-arrow-left:after { /* hide arrow tails background */
+    background-color: white;
 }
 
-.footer-widget {
-    border: 1px solid #444;
-    height: 100%;
-    width: 100%;
+/* ----------------------------------------------------------------------------CHANGE PLACEHOLDER COLOR */
+input.forplaceholder::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: rgba(255,255,255,0.8);
+}
+input.forplaceholder:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: rgba(255,255,255,0.8);
+   opacity:  1;
+}
+input.forplaceholder::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: rgba(255,255,255,0.8);
+   opacity:  1;
+}
+input.forplaceholder:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: rgba(255,255,255,0.8);
+}
+
+
+/* -------------------------------------------------------------------------------REMOVE BROWSER SCROLL BAR */
+
+.removescrollbar::-webkit-scrollbar 
+{
+ display: none;
+}
+
