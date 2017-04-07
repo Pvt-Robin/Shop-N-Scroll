@@ -1,8 +1,8 @@
-#ShopNScroll#
+#ShopNScroll
 
 An E-Commerce Site that focuses on multiplatform easy-to-browse and easy-to-buy UI to widen the age-group of Customers.
 
-##Prerequisites##
+##Prerequisites
 
 -Maven 3
 -Java Development Kit(1.8 and Above)
@@ -10,21 +10,21 @@ An E-Commerce Site that focuses on multiplatform easy-to-browse and easy-to-buy 
 -Eclipse IDE Neon.2
 -H2 DB Server
 
-##Deployment##
+##Deployment
 
-######On the Deployment Environment######
+######On the Deployment Environment
 1.Run the H2 Database Server
 2.Export the WAR archive
 3.Place it in Apache TomCat Server's 'webapp' folder
 4.Run TomCat Server
 
-##Built With##
+##Built With
 
 -Maven - Dependency Management
 -Spring MVC - Architecture, Security and Webflow
 -Java Server Pages - View
 
-##Coded With##
+##Coded With
 
 -Java 8 - Back End
 -HQL - Back End
@@ -35,10 +35,10 @@ An E-Commerce Site that focuses on multiplatform easy-to-browse and easy-to-buy 
 -BootStrap 3 - Additional Elements
 -JQuery 1.8 - Additional Functionalities
 
-##Version Controlled using##
+##Version Controlled using
 
 -Github
 
-##Author##
+##Author
 
 -Robin - Initial work
