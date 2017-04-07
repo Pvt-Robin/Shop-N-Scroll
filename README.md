@@ -1,4 +1,4 @@
-#ShopNScroll
+ShopNScroll
 
 An E-Commerce Site that focuses on multiplatform easy-to-browse and easy-to-buy UI to widen the age-group of Customers.
 
