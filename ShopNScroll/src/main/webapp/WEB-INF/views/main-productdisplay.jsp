@@ -37,14 +37,13 @@
 </div>
 </div>
 
-<div class="col-md-10">
-	<div class="row-uniform">
+<div class="col-md-10" style="padding-top: 10px;">
+<div class="row">
 
-<div ng-repeat="pd in productData | filter:searchWord || browseWord | orderBy:orderkeyword : orderflag">
-<a href="viewproduct-{{pd.productId}}">
+<div class="product-grid well-sm col-xs-12 col-sm-3 col-md-3 col-lg-3" ng-repeat="pd in productData | filter:searchWord || browseWord | orderBy:orderkeyword : orderflag">
 
-		<div class="product-grid col-xs-12 col-sm-3 col-md-3 col-lg-3 well-sm">
-			<div class="">
+				<div class="grid-padding">
+				<a href="viewproduct-{{pd.productId}}">
 				<div class="img-responsive carousel-inner">
 				
 					<img class="product-grid-img img-rounded" src="" style="background-image: url('resources/data/PRDT-{{pd.productId}}.jpg');" />
@@ -77,14 +76,12 @@
 					<i class="fa fa-shopping-bag" aria-hidden="true"></i>
 					</a>
 					</div>
-										
-				</div>
-			</div>
-</a>
-</div>
-			
+		</a>
 		</div>
-	</div>
+		</div>	
+		</div>
+		</div>
+		
 </div>
 
 

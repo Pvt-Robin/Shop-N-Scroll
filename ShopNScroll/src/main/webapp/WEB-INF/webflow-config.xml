@@ -11,7 +11,7 @@
 	      http://www.springframework.org/schema/tx 
 	       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		      http://www.springframework.org/schema/webflow-config
-        http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+        http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd">
         
 <webflow:flow-executor id="flowExecutor" />
 
@@ -19,7 +19,7 @@
 		flow-builder-services="flowBuilderServices" base-path="/WEB-INF/">
 
 		<webflow:flow-location id="reg" path="registration-webflow.xml" />
-<!-- 		<webflow:flow-location id="checkout" path="cart-webflow.xml" /> -->
+		<webflow:flow-location id="checkout" path="cart-webflow.xml" />
 		
 	</webflow:flow-registry>
 

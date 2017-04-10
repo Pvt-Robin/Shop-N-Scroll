@@ -95,7 +95,7 @@
 
 <input type="checkbox"  
 onchange="document.getElementById('continue1').disabled = !this.checked;" name='agree' 
-id='agree'/><b>&nbsp I Agree To All ShopNScroll <a href="faqs" style="color:green;text-decoration: none;">Policies,Terms And Conditions</a></b>
+id='agree'/><b>&nbsp I Agree To All ShopNScroll <a href="terms" style="color:green;text-decoration: none;">Policies,Terms And Conditions</a></b>
 <br><br>
 
 <input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-success pull-left" value="Previous" />

@@ -1,6 +1,9 @@
 package com.arms.shopnscroll.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +40,11 @@ public class CartService
 	public String fetchAllOrders(int userId)
 	{
 		return cartDAOImpl.fetchAllOrders(userId);
+	}
+	
+	public List<CartItems> fetchAllItemsByUserId(int userId)
+	{
+		return cartDAOImpl.fetchAllItemsByUserId(userId);
 	}
 
 }

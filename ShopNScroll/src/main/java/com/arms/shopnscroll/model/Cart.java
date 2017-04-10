@@ -1,5 +1,6 @@
 package com.arms.shopnscroll.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -12,8 +13,10 @@ import javax.persistence.OneToOne;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class Cart 
+public class Cart implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Expose
 	private int cartId;

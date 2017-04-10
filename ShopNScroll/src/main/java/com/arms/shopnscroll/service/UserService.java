@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.arms.shopnscroll.daoimpl.UserDAOImpl;
+import com.arms.shopnscroll.model.BillingAddress;
+import com.arms.shopnscroll.model.ShippingAddress;
 import com.arms.shopnscroll.model.User;
 
 @Service
@@ -18,7 +20,6 @@ public class UserService
 	{
 		userDAOImpl.addUser(user);
 	}
-	
 
 	public String fetchAllUser()
 	{
@@ -38,6 +39,26 @@ public class UserService
 	public void toggleUserStatus(int userId)
 	{
 		userDAOImpl.toggleUserStatus(userId);
+	}
+	
+	public BillingAddress fetchBillingAddressByUserId(int userId)
+	{
+		return userDAOImpl.fetchBillingAddressByUserId(userId);
+	}
+	
+	public ShippingAddress fetchShippingAddressByUserId(int userId)
+	{
+		return userDAOImpl.fetchShippingAddressByUserId(userId);
+	}
+	
+	public void saveBillingAddress(BillingAddress billingAddress)
+	{
+		userDAOImpl.saveBillingAddress(billingAddress);
+	}
+	
+	public void saveShippingAddress(ShippingAddress shippingAddress)
+	{
+		userDAOImpl.saveShippingAddress(shippingAddress);
 	}
 	
 }

@@ -29,24 +29,6 @@ public class AuthenticationController
 		return "main-login";
 	}
 	
-	@RequestMapping("/signup")
-	public String getSignUp()
-	{
-		return "main-signup";
-	}
-	
-	@RequestMapping("/admin")
-	public String getAdminLogin()
-	{
-		return "admin-tools";
-	}
-	
-	@RequestMapping("/test")
-	public String getTest()
-	{
-		return "test";
-	}
-	
 	@RequestMapping("/accessdenied")
 	public String getAcessDenied()
 	{

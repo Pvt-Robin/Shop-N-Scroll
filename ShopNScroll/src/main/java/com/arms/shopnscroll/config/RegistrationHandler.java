@@ -2,8 +2,6 @@ package com.arms.shopnscroll.config;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
@@ -66,13 +64,16 @@ public class RegistrationHandler extends AbstractFlowHandler
 
 		if (user.getDateOfBirth().isEmpty()) 
 		{
-			messageContext.addMessage(new MessageBuilder().error().source("dateOfBirth").defaultText("Date is Mandatory").build());
+			messageContext.addMessage(new MessageBuilder().error().source("dateOfBirth").defaultText("Date is Required").build());
 			status = "failure";
 		}
-//		else if (!lnameflag) 
+//		else 
 //		{
-//			messageContext.addMessage(new MessageBuilder().error().source("lastName").defaultText("Age Limit 12-80").build());
+//		if(!dobflag)
+//		{
+//			messageContext.addMessage(new MessageBuilder().error().source("dateOfBirth").defaultText("Age Limit 12-80").build());
 //			status = "failure";
+//		}
 //		}
 		
 		if (user.getGender().isEmpty())

@@ -27,6 +27,13 @@ public class CartDAOImpl implements CartDAO
 	}
 	
 	@Override
+	public List<CartItems> fetchAllItemsByUserId(int userId) 
+	{
+		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where userId="+userId+" and flag = 'N'").getResultList();
+		return cartList;
+	}
+	
+	@Override
 	public String fetchAllOrders(int userId) 
 	{
 		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where userId="+userId+" and flag = 'Y'").getResultList();

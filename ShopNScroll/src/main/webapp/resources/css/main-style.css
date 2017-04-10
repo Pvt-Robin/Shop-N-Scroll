@@ -21,12 +21,26 @@
 	font-stretch: condensed;
 }
 
+p, .condition-list
+{
+	font-size: medium;
+}
+
+.carousel-inner
+{
+	width:100%;
+}
+
+.th-green
+{
+	background-color: rgba(92,184,92,1.0);
+}
+
 /* ------------------------------------------------------------------------- HEAD STYLING  */
 
 #main-header
 {
 	font-family:fontRoundedElegance;
-/* 	background-color:rgba(0,0,0,0.5) ; */
 	background-color:rgba(0,0,0,0.8);
 	position:fixed;
 	top: 0px;
@@ -57,7 +71,7 @@
 	background-color:rgba(0,0,0,0.0);
 }
 
-.main-header-btn-buyer ,  .main-header-btn-admin
+.main-header-btn-buyer, .main-header-btn-admin
 {
 	background-color:rgba(0,0,0,0.2);
 	color: rgba(173,255,47,1.0);
@@ -79,7 +93,7 @@
 {
 	background:rgba(0,0,0,0.3) url("../../resources/img/logo.png") center no-repeat;
 	background-size:auto 100%;
-	width:"100%";
+	
 	border: 1px solid white;
 	border-radius: 50px 50px 50px 50px;
 	font-size: large;
@@ -261,7 +275,6 @@ a.navbar-category:LINK , a.navbar-category:VISITED , a.navbar-category:ACTIVE, a
 	color: rgba(0,0,0,1.0);
 	font-size: large;
 	font-weight: bold;
-/* 	text-shadow: 2px 2px rgba(255,127,39,0.8); */
 	background-color: rgba(224,225,228,1.0);
 	border-radius: 5px 5px 5px 5px;
 	padding-left: 8px;
@@ -278,7 +291,6 @@ a.navbar-category:LINK , a.navbar-category:VISITED , a.navbar-category:ACTIVE, a
 
 #load-animation
 {
-/*  	display: none;  */
  	position: fixed;
 	left: 0px;
 	top: 0px;
@@ -316,7 +328,8 @@ body
 .login-signup-font
 {
 	font-size: large;
-	font-weight: bold;
+	font-family: 
+	font-weight: normal;
 }
 
 .signup-grid
@@ -511,13 +524,14 @@ body
 	font-weight: bold;
 	border: 2px solid rgba(0,0,0,0.1);
 	border-radius:10px 10px 10px 10px;
-	margin: 3px 3px 3px 3px;
+	margin: 4px 4px 4px 4px;
 }
 .product-grid:hover , .search-grid:hover
 {
 	background-color:rgba(255,255,255,1.0);
 	color:rgba(0,0,0,1.0);
-	border: 2px solid rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 0 0 1px 1px black;
 }
 
 .product-grid:hover .product-grid-caption
@@ -620,29 +634,14 @@ body
 	background-color: rgba(255,179,86,1.0);
 }
 
-/* .btn-rock */
-/* { */
-/* 	font-size: medium; */
-/* 	color:white; */
-/* 	background-color: rgba(0,0,0,0.2); */
-/* 	border-radius: 50px 50px 50px 50px; */
-/* 	height:auto; */
-/* 	width:auto; */
-/* 	margin: 3px 3px 3px 3px; */
-/* } */
-/* .btn-rock:hover, .btn-rock:active */
-/* { */
-/* 	color:white; */
-/* 	background-color: rgba(0,0,0,0.5); */
-/* } */
+.product-sort-area
+{
+	border-radius: 0px 0px 0px 0px;
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	font-weight: bold
+}
 
-/* .product-sort-area */
-/* { */
-/* 	border-radius: 0px 0px 0px 0px; */
-/* 	background-color: rgba(0,0,0,0.8); */
-/* 	color: white; */
-/* 	font-weight: bold */
-/* } */
 .product-filter-area
 {
 	border-radius: 0px 0px 5px 5px;
@@ -701,7 +700,7 @@ body
 #base-area
 {
 	font-family:fontRoundedElegance;
-	background-color: rgba(0,0,0,0.9);
+	background-color: rgba(0,0,0,0.8);
 	color:rgba(163,106,0,1);
 	position:fixed;
 	left:0px;
@@ -731,6 +730,21 @@ body
 {
 	background-color:rgba(255,165,0,1.0);
 	color:rgba(255,255,255,1);
+}
+
+#base-clickable
+{
+	background-color: rgba(0,0,0,0.8);	
+}
+
+#base-clickable:hover
+{
+	background-color: rgba(0,0,0,0.9);
+}
+
+#base-expandable
+{
+	background-color: rgba(0,0,0,0.7);
 }
 
 /* -------------------------------------------------------------------XCLUSIVE AREA */
@@ -906,21 +920,28 @@ body
 }
 
 /* ----------------------------------------------------------------------------CHANGE PLACEHOLDER COLOR */
+
 input.forplaceholder::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.3);
+    font-weight: normal;
 }
 input.forplaceholder:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: rgba(255,255,255,0.8);
+   color: rgba(255,255,255,0.3);
    opacity:  1;
+       font-weight: normal;
+   
 }
 input.forplaceholder::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: rgba(255,255,255,0.8);
+   color: rgba(255,255,255,0.3);
    opacity:  1;
+       font-weight: normal;
+   
 }
 input.forplaceholder:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: rgba(255,255,255,0.8);
+   color: rgba(255,255,255,0.3);
+	    font-weight: normal;
+	
 }
-
 
 /* -------------------------------------------------------------------------------REMOVE BROWSER SCROLL BAR */
 
@@ -929,3 +950,42 @@ input.forplaceholder:-ms-input-placeholder { /* Internet Explorer 10-11 */
  display: none;
 }
 
+/* ---------------------------------------------------------------------------------TAB PAYMENT MTD */
+
+div.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 300px;
+}
+
+div.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+div.tab button.active {
+    background-color: #ccc;
+}
+
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+}

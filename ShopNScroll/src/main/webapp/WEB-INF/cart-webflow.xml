@@ -1,0 +1,92 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/webflow 
+		http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<var name="user" class="com.arms.shopnscroll.model.User"/>
+<var name="billingAddr" class="com.arms.shopnscroll.model.BillingAddress"/>
+<var name="shippingAddr" class="com.arms.shopnscroll.model.ShippingAddress"/>
+<!-- <var name="cartItemsList" class="java.lang.String"/> -->
+
+<!-- Executed when webFlow is triggered -->
+	<on-start>
+		<evaluate expression="checkoutHandler.initFlow()" result="flowScope.user" />
+		<evaluate expression="checkoutHandler.initShip(user)" result="flowScope.shippingAddr" />
+		<evaluate expression="checkoutHandler.initBill(user)" result="flowScope.billingAddr" />
+<!-- 		<evaluate expression="checkoutHandler.initCart(user)" result="flowScope.cartItemsList"/> -->
+	</on-start>
+	
+<!-- GET SHIPPING ADDRESSES -->
+
+	<view-state id="start" view="user-checkout-step-1" model="shippingAddr">
+	<transition on="continue" to="validateShippingAddressDetails" />
+	</view-state>
+	
+	<action-state id="validateShippingAddressDetails">
+		<evaluate expression="checkoutHandler.validateShippingAddress(shippingAddr,messageContext)"></evaluate>
+		<transition on="success" to="getBillingAddressDetails" />
+		<transition on="failure" to="start" />
+	</action-state>
+	
+<!-- GET BILLING ADDRESSES -->
+
+	<view-state id="getBillingAddressDetails" view="user-checkout-step-2" model="billingAddr">
+	<transition on="previous" to="start" />
+	<transition on="assign" to="assignBillingAddressDetails" />
+	<transition on="continue" to="valdateBillingAddressDetails" />
+	</view-state>
+	
+<!-- 	TO ASSIGN BILLING ADDRESS TO SHIPPING ADD -->
+	<action-state id="assignBillingAddressDetails">
+		<evaluate expression="checkoutHandler.assignBillingAddress(shippingAddr,billingAddr)"></evaluate>
+		<transition on="success" to="getBillingAddressDetails" />
+		<transition on="failure" to="getBillingAddressDetails" />
+	</action-state>
+	
+<!-- 	TO CONFIRM ADDRESSES -->
+	<action-state id="valdateBillingAddressDetails">
+		<evaluate expression="checkoutHandler.validateBillingAddress(billingAddr,messageContext)"></evaluate>
+		<transition on="success" to="viewCartItems" />
+		<transition on="failure" to="getBillingAddressDetails" />
+	</action-state>
+	
+<!-- Confirming Cart Items -->
+
+ 	<view-state id="viewCartItems" view="user-checkout-step-3" model="user">
+<!--  	<on-render> -->
+<!--     	<evaluate expression="checkoutHandler.initCart(user)" result="flowScope.cartItemsList" />    	 -->
+<!-- 	</on-render> -->
+	<transition on="continue" to="viewPaymentForm" />
+	<transition on="previous" to="getBillingAddressDetails" />	
+	</view-state>
+	
+	<action-state id="confirmCart">
+		<evaluate expression="checkoutHandler.validateCart(userCom,messageContext)"></evaluate>
+		<transition on="success" to="viewPaymentForm" />
+		<transition on="failure" to="viewCartItems" />
+	</action-state>
+	
+<!-- Choose Payment Method -->
+
+ 	<view-state id="viewPaymentForm" view="user-checkout-step-4" model="user">
+	<transition on="continue" to="checkoutProducts" />
+	<transition on="previous" to="viewCartItems" />	
+	</view-state>
+	
+	<action-state id="checkoutProducts">
+		<evaluate expression="checkoutHandler.checkoutCartItems(user)"></evaluate>
+		<transition on="success" to="success-pay" />
+		<transition on="failure" to="failure-pay" />
+	</action-state>
+	
+<!-- END STATES -->
+	<end-state id="success-pay" view="user-checkout-step-success.jsp" />
+	<end-state id="failure-pay" view="user-checkout-step-error.jsp" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+	
+	<global-transitions>
+		<transition on="cancel" to="toHome" />
+	</global-transitions>
+	
+</flow>

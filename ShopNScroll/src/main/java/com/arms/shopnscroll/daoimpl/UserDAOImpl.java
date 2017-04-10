@@ -90,5 +90,33 @@ public class UserDAOImpl implements UserDAO
 		}
 	}
 
+	@Override
+	public BillingAddress fetchBillingAddressByUserId(int userId) 
+	{
+		List<BillingAddress> billingAddressList = sessionFactory.getCurrentSession().createQuery("from BillingAddress where userId="+userId).getResultList();
+		return billingAddressList.get(0);
+	}
+
+	@Override
+	public ShippingAddress fetchShippingAddressByUserId(int userId) 
+	{
+		List<ShippingAddress> shippingAddressList = sessionFactory.getCurrentSession().createQuery("from ShippingAddress where userId="+userId).getResultList();
+		return shippingAddressList.get(0);
+	}
+
+	@Override
+	public void saveBillingAddress(BillingAddress billingAddress) 
+	{
+		sessionFactory.getCurrentSession().saveOrUpdate(billingAddress);
+	}
+
+	@Override
+	public void saveShippingAddress(ShippingAddress shippingAddress) 
+	{
+		sessionFactory.getCurrentSession().saveOrUpdate(shippingAddress);
+	}
+
+	
+	
 
 }

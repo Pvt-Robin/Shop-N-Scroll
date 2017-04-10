@@ -3,10 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div class="body-area container-fluid">
 
-<div class="row well-sm">
-<a href="userwish" class="noUnderLineInAnchor"><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 sns-heading text-center"><h4>Wishes</h4></div></a>
-<a href="usercart" class="noUnderLineInAnchor"><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 sns-heading text-center"><h4>Cart</h4></div></a>
-<a><div class="sns-selected col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center"><h4>Orders</h4></div></a>
+<div class="container-fluid text-center well-sm sitewise-header" ng-controller="headerControllerAJS">
+<div class="row">
+<a href="home"><button class="btn btn-warning btn-arrow-right pull-left" style="outline:none;"><b>Home</b></button></a>
+<a href="profile"><button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{userData.firstName}}</button></a>
+<button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Orders</button>
+</div>
 </div>
 
 <div ng-controller="orderControllerAJS">

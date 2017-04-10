@@ -155,7 +155,6 @@ public class UserController
 		return "redirect:/userwish";
 	}
 	
-	
 	@RequestMapping("/userorder")
 	public String getOrders(Model model,Principal p)
 	{
@@ -163,6 +162,12 @@ public class UserController
 		model.addAttribute("orderListJSON", cartService.fetchAllOrders(userId));
 		
 		return "user-order";
+	}
+	
+	@RequestMapping("/profile")
+	public String seeProfile()
+	{		
+		return "user-profile";
 	}
 	
 }

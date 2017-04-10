@@ -1,16 +1,19 @@
 package com.arms.shopnscroll.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Pattern;
 
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class BillingAddress 
-{
+public class BillingAddress implements Serializable
+{	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Expose
 	private int billId;
@@ -31,19 +34,15 @@ public class BillingAddress
 	private String bStreet;
 	
 	@Expose
-	@Pattern(regexp="^[a-zA-Z_]*$",message="Cannot Have Numbers And Symbols")
 	private String bCity;
 	
 	@Expose
-	@Pattern(regexp="^[a-zA-Z_]*$",message="Cannot Have Numbers And Symbols")
 	private String bState;
 	
 	@Expose
-	@Pattern(regexp="^[a-zA-Z_]*$",message="Cannot Have Numbers And Symbols")
 	private String bCountry;
 	
 	@Expose
-//	@Pattern(regexp="(^$|[0-9]{10})",message="Should Be A 6 Digit Number")
 	private int bPIN;
 	
 	@OneToOne

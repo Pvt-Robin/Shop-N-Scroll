@@ -85,6 +85,8 @@
 		<intercept-url pattern="/addtocart-{productId}-{quantity}" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/removefromcart-{cartItemsId}" access="hasRole('ROLE_USER')"/>
 		
+		<intercept-url pattern="/checkout" access="hasRole('ROLE_USER')"/>
+		
 		<intercept-url pattern="/toggleproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
 
 

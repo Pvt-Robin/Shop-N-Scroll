@@ -66,11 +66,11 @@
 
 <!-- NAVBAR STARTS -->
 
-<div id="header-navbar" class="row well-lg removescrollbar" style="display: none; ">
+<div id="header-navbar" class="row well-sm removescrollbar" style="display: none; ">
 
-<div class="col-xs-0 col-sm-2 col-md-3 col-lg-3"></div>
+<div class="col-xs-1 col-sm-1 col-md-4 col-lg-4"></div>
 
-<div class="container search-grid-middle col-xs-12 col-sm-8 col-md-6 col-lg-6 well-sm text-center">
+<div class="container search-grid-middle col-xs-10 col-sm-10 col-md-4 col-lg-4 well-sm text-center">
             <div class="row well-sm">
               <a href="home" class="text-center" style="color:white;text-decoration: none;"><i class="glyphicon glyphicon-home"></i>&nbsp Go To Home</a>
             </div>
@@ -87,7 +87,7 @@
 			</div>
 </div>
             
-<div class="col-xs-0 col-sm-2 col-md-3 col-lg-3 well-sm"></div>
+<div class="col-xs-1 col-sm-1 col-md-4 col-lg-4"></div>
 
 </div>
 
@@ -103,9 +103,8 @@
               
 	<div class="row well-sm">      
 	    <a href="productdisplay" class="text-center" style="color:white;text-decoration: none;"><i class="glyphicon glyphicon-search"></i>&nbsp More Search Options</a>
-<br><br>	
+		</div>
 		<div class="search-grid col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="pd in productData | filter:mainsearchword || 'this is to empty container-38247618741cndfjkwe' | orderBy:createdDate:true |limitTo:15 " style="background-color: rgba(255,255,255,1.0)">
-				<div class="">
 				<a href="viewproduct-{{pd.productId}}">
 					<img class="search-grid-img hidden-xs hidden-sm img-thumbnail col-xs-0 col-sm-0 col-md-3 col-lg-3" src="resources/data/PRDT-{{pd.productId}}.jpg"/>
 
@@ -118,10 +117,8 @@
 					<font class="text-center" style="color: orange;font-size: medium;text-decoration: line-through;">&#8377{{pd.price}}</font><br>
 					<b class="text-center" style="color: green;font-size: medium;">&#8377{{pd.productAmount}}</b>
 					</div>	
-					</a>			
-				</div>
+					</a>	
 			</div>
-		</div>
 	</div>
 	
 	<div class="col-xs-1 col-sm-1 col-md-4 col-lg-4 well-sm"></div>
