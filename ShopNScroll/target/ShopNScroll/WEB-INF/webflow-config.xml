@@ -1,0 +1,64 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"		
+		xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	  http://www.springframework.org/schema/mvc
+	   http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	    http://www.springframework.org/schema/context
+	     http://www.springframework.org/schema/context/spring-context.xsd
+	      http://www.springframework.org/schema/tx 
+	       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		      http://www.springframework.org/schema/webflow-config
+        http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd">
+        
+<webflow:flow-executor id="flowExecutor" />
+
+	<webflow:flow-registry id="flowRegistry"
+		flow-builder-services="flowBuilderServices" base-path="/WEB-INF/">
+
+		<webflow:flow-location id="reg" path="registration-webflow.xml" />
+		<webflow:flow-location id="checkout" path="cart-webflow.xml" />
+		
+	</webflow:flow-registry>
+
+	<webflow:flow-builder-services id="flowBuilderServices"
+		view-factory-creator="viewFactoryCreator" />
+		
+		<bean id="flowHandlerMapping"
+    class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+    <property name="flowRegistry" ref="flowRegistry" />
+</bean>
+
+<bean id="flowHandlerAdapter"
+    class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+    <property name="flowExecutor" ref="flowExecutor" />
+</bean>
+
+	<bean id="viewFactoryCreator"
+		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+		<property name="viewResolvers">
+			<list>
+				<ref bean="viewResolver" />
+			</list>
+		</property>
+	</bean>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+		<property name="flowExecutor" ref="flowExecutor" />
+	</bean>
+
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+		<property name="flowRegistry" ref="flowRegistry" />
+		<property name="order" value="0" />
+	</bean>
+	</beans>

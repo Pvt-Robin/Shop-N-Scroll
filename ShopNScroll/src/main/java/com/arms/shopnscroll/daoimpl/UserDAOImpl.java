@@ -21,7 +21,6 @@ public class UserDAOImpl implements UserDAO
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	@Override
 	public void addUser(User user) 
 	{
 		Session session = sessionFactory.getCurrentSession();
@@ -54,7 +53,6 @@ public class UserDAOImpl implements UserDAO
 		session.saveOrUpdate(user);
 	}
 
-	@Override
 	public String fetchAllUser() 
 	{
 		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User").getResultList();
@@ -62,21 +60,18 @@ public class UserDAOImpl implements UserDAO
 		return gson.toJson(userList);
 	}
 
-	@Override
 	public User fetchOneUser(int userId) 
 	{
 		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User where userId="+userId).getResultList();
 		return userList.get(0);
 	}
 	
-	@Override
 	public User fetchUserByUserName(String username) 
 	{
 		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User where username='"+username+"'").getResultList();
 		return userList.get(0);
 	}
 	
-	@Override
 	public void toggleUserStatus(int userId)
 	{
 		User user = fetchOneUser(userId);
@@ -90,27 +85,23 @@ public class UserDAOImpl implements UserDAO
 		}
 	}
 
-	@Override
 	public BillingAddress fetchBillingAddressByUserId(int userId) 
 	{
 		List<BillingAddress> billingAddressList = sessionFactory.getCurrentSession().createQuery("from BillingAddress where userId="+userId).getResultList();
 		return billingAddressList.get(0);
 	}
 
-	@Override
 	public ShippingAddress fetchShippingAddressByUserId(int userId) 
 	{
 		List<ShippingAddress> shippingAddressList = sessionFactory.getCurrentSession().createQuery("from ShippingAddress where userId="+userId).getResultList();
 		return shippingAddressList.get(0);
 	}
 
-	@Override
 	public void saveBillingAddress(BillingAddress billingAddress) 
 	{
 		sessionFactory.getCurrentSession().saveOrUpdate(billingAddress);
 	}
 
-	@Override
 	public void saveShippingAddress(ShippingAddress shippingAddress) 
 	{
 		sessionFactory.getCurrentSession().saveOrUpdate(shippingAddress);

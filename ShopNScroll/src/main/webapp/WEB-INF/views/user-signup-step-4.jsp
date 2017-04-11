@@ -98,9 +98,9 @@ onchange="document.getElementById('continue1').disabled = !this.checked;" name='
 id='agree'/><b>&nbsp I Agree To All ShopNScroll <a href="terms" style="color:green;text-decoration: none;">Policies,Terms And Conditions</a></b>
 <br><br>
 
-<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-success pull-left" value="Previous" />
+<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-orange pull-left" value="Previous" />
 
-<input type="submit" id="continue1" name="_eventId_continue" class="signup-button btn btn-lg btn-success pull-right" value="Continue" disabled="true"/>
+<input type="submit" id="continue1" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right" value="Continue" disabled="true"/>
 
 </form:form>
 

@@ -17,7 +17,6 @@ public class WishItemsDAOImpl implements WishItemsDAO
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	@Override
 	public void makeWish(WishItems wish) 
 	{
 		List<WishItems> temp = sessionFactory.getCurrentSession().createQuery("from WishItems where productId="+wish.getProductId()+" and userId="+wish.getUserId()).getResultList();
@@ -27,13 +26,11 @@ public class WishItemsDAOImpl implements WishItemsDAO
 		}
 	}
 	
-	@Override
 	public void forgetWish(int wishId) 
 	{
 		sessionFactory.getCurrentSession().delete(recallWishById(wishId));
 	}
 
-	@Override
 	public String knowWishes(int userId) 
 	{
 		List<WishItems> wishList = sessionFactory.getCurrentSession().createQuery("from WishItems where userId="+userId).getResultList();
@@ -42,7 +39,6 @@ public class WishItemsDAOImpl implements WishItemsDAO
 		return gson.toJson(wishList);
 	}
 	
-	@Override
 	public WishItems recallWishById(int wishId) 
 	{
 		List<WishItems> temp = sessionFactory.getCurrentSession().createQuery("from WishItems where wishId="+wishId).getResultList();

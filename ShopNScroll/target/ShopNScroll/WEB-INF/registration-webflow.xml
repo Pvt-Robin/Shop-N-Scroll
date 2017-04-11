@@ -1,0 +1,77 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/webflow 
+		http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<var name="user" class="com.arms.shopnscroll.model.User"/>
+
+<!-- Executed when webFlow is triggered -->
+	<on-start>
+		<evaluate expression="registrationHandler.initFlow()" result="flowScope.user" />
+	</on-start>
+	
+		<!-- 	VALIDATE PERSONAL DETAILS -->
+
+	<view-state id="start" view="user-signup-step-1" model="user">
+	<transition on="discontinue" to="cancel" />
+	<transition on="continue" to="validatePersonalDetails" />
+	</view-state>
+	
+	<action-state id="validatePersonalDetails">
+		<evaluate expression="registrationHandler.validatePersonalDetails(user,messageContext)"></evaluate>
+		<transition on="success" to="viewContactForm" />
+		<transition on="failure" to="start" />
+	</action-state>
+	
+	<!-- 	VALIDATE CONTACT DETAILS -->
+
+ 	<view-state id="viewContactForm" view="user-signup-step-2" model="user">
+	<transition on="discontinue" to="cancel" />
+	<transition on="continue" to="validateContacts" />
+	<transition on="previous" to="start" />	
+	</view-state>
+	
+	<action-state id="validateContacts">
+		<evaluate expression="registrationHandler.validateContactDetails(user,messageContext)"></evaluate>
+		<transition on="success" to="viewPasswordForm" />
+		<transition on="failure" to="viewContactForm" />
+	</action-state>
+	
+	<!-- 	VALIDATE PASSWORD DETAILS -->
+
+ 	<view-state id="viewPasswordForm" view="user-signup-step-3" model="user">
+	<transition on="discontinue" to="cancel" />
+	<transition on="continue" to="validatePassword" />
+	<transition on="previous" to="viewContactForm" />	
+	</view-state>
+	
+	<action-state id="validatePassword">
+		<evaluate expression="registrationHandler.validatePasswordDetails(user,messageContext)"></evaluate>
+		<transition on="success" to="viewConfirmDetails" />
+		<transition on="failure" to="viewPasswordForm" />
+	</action-state>
+	
+	<!-- 	ADD NEW USER -->
+
+ 	<view-state id="viewConfirmDetails" view="user-signup-step-4" model="user">
+	<transition on="discontinue" to="cancel" />
+	<transition on="continue" to="doConfirmDetails" />
+	<transition on="previous" to="viewPasswordForm" />	
+	</view-state>
+	
+	<action-state id="doConfirmDetails">
+		<evaluate expression="registrationHandler.addNewUser(user,messageContext)"></evaluate>
+		<transition on="success" to="welcome" />
+		<transition on="failure" to="error" />
+	</action-state>
+	
+	<end-state id="welcome" view="user-signup-step-success" />
+	<end-state id="error" view="user-signup-step-error" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+	
+	<global-transitions>
+		<transition on="cancel" to="toHome" />
+	</global-transitions>
+	
+</flow>

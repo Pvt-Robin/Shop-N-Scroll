@@ -46,35 +46,37 @@
 
 
 <div id="Credit" class="tabcontent">
-  <h5>Enter Credit Details</h5>
-  <form>
-  <input type="text"/><br>
-  <input type="text"/><br>
-  </form>
+  <h4><b style="color: rgba(255,127,42,0.8)">Enter Credit Card Details</b></h4>
+  <input type="text" class="form-control text-center" placeholder="Enter 16 Digit Card Number..."/>
+  <br>
+  <input type="text" class="form-control text-center" placeholder="Enter Expiry Date..."/>
 </div>
 
 <div id="Debit" class="tabcontent" style="display: none;">
-  <h5>Enter Debit Card Details</h5>
-  <form>
-  <input type="text"/><br>
-  <input type="text"/><br>
-  </form>
+  <h4><b style="color: rgba(255,127,42,0.8)">Enter Debit Card Details</b></h4>
+  <input type="text" class="form-control text-center" placeholder="Enter 16 Digit Card Number..."/>
+  <br>
+  <input type="text" class="form-control text-center" placeholder="Enter Expiry Date..."/>
 </div>
 
 <div id="COD" class="tabcontent" style="display: none;">
-  <h5>Cash On Delivery</h5>
-  <p>Usually delivered in 15 days</p>
+  <h4><b style="color: rgba(255,127,42,0.8)">Cash On Delivery</b></h4>
+  <br>
+  <p>Usually delivered within 15 Business days...</p>
 </div>
-</div>
+
+<br>
+<br>
 
 <form:form modelAttribute="user">
 
-<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-success pull-left" value="Previous" />
+<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-orange pull-left" value="Previous" />
 
-<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-success pull-right" value="Pay Now"/>
+<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right" value="Order Now"/>
 
 </form:form>
 
+</div>
 </div>
 </div>
 

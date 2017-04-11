@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" />
 <link rel="stylesheet" href="resources/css/main-style.css" />
-<link rel="stylesheet" href="resources/css/bootstrap-column-offset.css" />
 
 </head>
 <body ng-app="SiteAppAJS">
@@ -157,26 +156,26 @@
 
 <div class="col-md-4 col-sm-4 col-xs-12">
 <center>
-<div class="col-md-3 col-sm-4 col-xs-6">
+<div class="col-md-4 col-sm-4 col-xs-6">
 <a href="profile">
 <img src="resources/data/USER-{{userData.userId}}.jpg" onerror="callNoAvatar(this)" class="profile-grid img-circle" width="100%">
 </a>
 <font class="shadowed-text"><b>{{userData.firstName}}</b></font>
 </div>
 
-<div class="col-md-3 col-sm-3 col-xs-6">
+<div class="col-md-4 col-sm-4 col-xs-6">
 <a href="user">
 <img class="profile-grid img-circle" src="resources/img/admin-edit.png" width="100%"/></a>
 <font class="shadowed-text">Data</font>
 </div>
 
-<div class="col-md-3 col-sm-3 col-xs-6">
-<a href="looks">
-<img class="profile-grid img-circle" src="resources/img/admin-theme.png" width="100%"/></a>
-<font class="shadowed-text">Looks</font>
-</div>
+<!-- <div class="col-md-3 col-sm-3 col-xs-6"> -->
+<!-- <a href="looks"> -->
+<!-- <img class="profile-grid img-circle" src="resources/img/admin-theme.png" width="100%"/></a> -->
+<!-- <font class="shadowed-text">Looks</font> -->
+<!-- </div> -->
 
-<div class="col-md-3 col-sm-3 col-xs-6">
+<div class="col-md-4 col-sm-4 col-xs-6">
 <a href="logout">
 <img class="profile-grid-danger img-circle" src="resources/img/logout.png" width="100%"/></a>
 <font class="shadowed-text">Logout</font>
@@ -185,7 +184,7 @@
 </center>
 </div>
 
-<div class="col-md-4 col-sm-3 col-xs-0"></div>
+<div class="col-md-4 col-sm-4 col-xs-0"></div>
 </div>
 <!-- ADMIN PROFILE ENDS HERE -->
 
@@ -206,14 +205,14 @@
 </div>
 
 <div class="col-md-2 col-sm-4 col-xs-6">
-<a href="usercart"><img class="profile-grid img-circle" src="resources/img/user-cart.png" width="100%"/></a>
-<font class="shadowed-text">Cart</font>
-</div>
-
-<div class="col-md-2 col-sm-4 col-xs-6">
 <a href="userwish">
 <img class="profile-grid img-circle" src="resources/img/user-wish.png" width="100%"/></a>
 <font class="shadowed-text">Wishes</font>
+</div>
+
+<div class="col-md-2 col-sm-4 col-xs-6">
+<a href="usercart"><img class="profile-grid img-circle" src="resources/img/user-cart.png" width="100%"/></a>
+<font class="shadowed-text">Cart</font>
 </div>
 
 <div class="col-md-2 col-sm-4 col-xs-6">

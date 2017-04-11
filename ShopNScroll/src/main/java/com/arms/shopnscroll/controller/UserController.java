@@ -165,8 +165,12 @@ public class UserController
 	}
 	
 	@RequestMapping("/profile")
-	public String seeProfile()
-	{		
+	public String seeProfile(Model model,Principal p)
+	{
+		int userId = userService.fetchUserByUserName(p.getName()).getUserId();	
+		model.addAttribute("shipDataJSON", userService.fetchShippingAddressByUserId(userId));
+		model.addAttribute("billDataJSON", userService.fetchBillingAddressByUserId(userId));
+		
 		return "user-profile";
 	}
 	

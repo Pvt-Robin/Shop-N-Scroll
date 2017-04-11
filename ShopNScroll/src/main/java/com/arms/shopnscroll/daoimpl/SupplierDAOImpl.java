@@ -17,34 +17,39 @@ public class SupplierDAOImpl implements SupplierDAO
 	@Autowired
 	SessionFactory sessionFactory;
 
-	public List<Supplier> fetchAllSupplier() {
-		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier").getResultList();
+	public List<Supplier> fetchAllSupplier() 
+	{
+		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier where enabled = 'true'").getResultList();
 		return supplierList;
 	}
 
-	public String fetchAllSupplierJSON() {
+	public String fetchAllSupplierJSON() 
+	{
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier").getResultList();
 		return gson.toJson(supplierList);
 	}
 	
-	public Supplier fetchOneSupplier(int supplierId) {
+	public Supplier fetchOneSupplier(int supplierId) 
+	{
 		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier where supplierId = "+supplierId).getResultList();
 		return supplierList.get(0);
 	}
 
-	public void addSupplier(Supplier supplier) {
+	public void addSupplier(Supplier supplier) 
+	{
 		supplier.setEnabled(true);
 		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 	}
 
-	public void removeSupplier(int supplierId) {
+	public void removeSupplier(int supplierId) 
+	{
 		sessionFactory.getCurrentSession().delete(fetchOneSupplier(supplierId));
 
 	}
 
-	@Override
-	public void toggleSupplier(int supplierId) {
+	public void toggleSupplier(int supplierId) 
+	{
 		Supplier supplier = fetchOneSupplier(supplierId);
 		if(supplier.isEnabled())
 		{

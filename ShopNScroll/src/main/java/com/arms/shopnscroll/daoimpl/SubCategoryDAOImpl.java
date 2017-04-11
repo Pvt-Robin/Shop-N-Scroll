@@ -17,19 +17,21 @@ public class SubCategoryDAOImpl implements SubCategoryDAO
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public List<SubCategory> fetchAllSubCategory() {
+	public List<SubCategory> fetchAllSubCategory() 
+	{
 		List<SubCategory> catList = sessionFactory.getCurrentSession().createQuery("from SubCategory").getResultList();
 		return catList;
 	}
 	
-	public String fetchAllSubCategoryJSON() {
-		//Gson gson = new Gson();
+	public String fetchAllSubCategoryJSON() 
+	{
 		List<SubCategory> catList = sessionFactory.getCurrentSession().createQuery("from SubCategory").getResultList();
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		return gson.toJson(catList);
 	}
 
-	public SubCategory fetchOneSubCategory(int subCategoryId) {
+	public SubCategory fetchOneSubCategory(int subCategoryId) 
+	{
 		List<SubCategory> catList = sessionFactory.getCurrentSession().createQuery("from SubCategory where subCategoryId = "+subCategoryId).getResultList();
 		return catList.get(0);
 	}

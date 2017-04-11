@@ -15,27 +15,23 @@ public class AdvertisementDAOImpl implements AdvertisementDAO
 	@Autowired
 	SessionFactory sessionFactory;
 
-	@Override
 	public List<Advertisement> fetchFiveAds() 
 	{
 		List<Advertisement> adList = sessionFactory.getCurrentSession().createQuery("select min(adTurns) from Advertisement ").getResultList();
 		return adList.subList(0, 4);
 	}
 
-	@Override
 	public Advertisement fetchOneAd(int adId) 
 	{
 		List<Advertisement> adList = sessionFactory.getCurrentSession().createQuery("from Advertisement where adId="+adId).getResultList();
 		return adList.get(0);
 	}
 
-	@Override
 	public void addAd(Advertisement advertisement) 
 	{
 		sessionFactory.getCurrentSession().saveOrUpdate(advertisement);
 	}
 
-	@Override
 	public void removeAd(int adId) 
 	{
 		Advertisement thisAd = fetchOneAd(adId);

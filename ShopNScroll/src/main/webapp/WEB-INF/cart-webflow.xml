@@ -81,8 +81,8 @@
 	</action-state>
 	
 <!-- END STATES -->
-	<end-state id="success-pay" view="user-checkout-step-success.jsp" />
-	<end-state id="failure-pay" view="user-checkout-step-error.jsp" />
+	<end-state id="success-pay" view="user-checkout-step-success" />
+	<end-state id="failure-pay" view="user-checkout-step-error" />
 	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
 	
 	<global-transitions>

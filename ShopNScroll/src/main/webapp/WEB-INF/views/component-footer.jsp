@@ -5,7 +5,9 @@
 <script type="text/javascript" src="resources/js/jquery-3.1.1.min.js" ></script>
 <script type="text/javascript" src="resources/js/angular.min.js" ></script>
 <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/js/image-scale.js" ></script>
+<script type="text/javascript" src="resources/js/jquery.elevatezoom.js" ></script>
+<script type="text/javascript" src="resources/js/jquery.elevateZoom-3.0.8.min.js" ></script>
+<script type="text/javascript" src="resources/js/jquery.fancybox.js" ></script>
 <script type="text/javascript" src="resources/js/main-query.js" ></script>
 
 <!-- IMAGE BEST FIT SCALING ENDS HERE -->
@@ -24,13 +26,18 @@
 
 <!-- PAGE LOAD ANIMATION ENDS -->
 
-<!-- MEGA MENU -->
-
+<!-- GOOGLE MAPS -->
 <script>
-jQuery(document).on('click', '.mega-dropdown', function(e) {
-  e.stopPropagation()
-});
-</script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: { lat: 19.121940 , lng: 72.850088 },
+          zoom: 16
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyND1RL3mvnKzfWYf9kQE_3poEEYMpqEs&callback=initMap"
+    async defer></script>
 
 <!-- MEGA MENU ENDS -->
 
@@ -87,6 +94,7 @@ siteApp.controller("universalProductControllerAJS", function($scope, $location)
 
 
 <!-- PAGE SPECIFIC CONTROLLERS -->
+
 <script>
 siteApp.controller("categoryControllerAJS", function($scope) 
 {
@@ -314,6 +322,10 @@ function openCity(evt, cityName)
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+</script>
+
+<script>
+$("#img_01").elevateZoom();
 </script>
 
 <!-- FUNCTIONALITY FUNCTIONS ENDS -->

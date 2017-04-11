@@ -25,7 +25,6 @@ public class CategoryDAOImpl implements CategoryDAO
 	public String fetchAllCategoryJSON() {
 		List<Category> catList = sessionFactory.getCurrentSession().createQuery("from Category").getResultList();
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-//		Gson gson = new Gson();
 		return gson.toJson(catList);
 	}
 

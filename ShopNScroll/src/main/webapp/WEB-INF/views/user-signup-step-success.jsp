@@ -16,11 +16,11 @@
 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 login-signup-panels">
 <br>
 
-<h2><b style="color:rgba(92,184,92,1.0);">Success - Account Created</b></h2>
-<h4><b>You Have To LogIn Again To Start Shopping</b></h4>
+<h2><b style="color: rgba(255,143,69,1.0);">Success - Account Created</b></h2>
+<h4><b>For Security Reasons,You Have To Log In Again.</b></h4>
 <br>
 <a href="login">
-<button id="login" name="login" class="signup-button btn btn-lg btn-success text-center">Login Now</button>
+<button id="login" name="login" class="signup-button btn btn-lg btn-orange text-center">Login Now</button>
 </a>
 
 </div>

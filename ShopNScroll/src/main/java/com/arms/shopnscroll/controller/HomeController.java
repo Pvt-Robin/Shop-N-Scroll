@@ -43,6 +43,12 @@ public class HomeController
 		return "main-contact";
 	}
 	
+	@RequestMapping("/faqs")
+	public String getFAQs()
+	{
+		return "main-faqs";
+	}
+	
 	@RequestMapping("/terms")
 	public String seeProfile()
 	{		

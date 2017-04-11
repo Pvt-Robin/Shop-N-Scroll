@@ -140,19 +140,22 @@ public class RegistrationHandler extends AbstractFlowHandler
 	{	
 		status = "success";
 		
-		java.util.regex.Pattern pass = java.util.regex.Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})");
-        java.util.regex.Matcher mpass = pass.matcher(user.getContact());
-        boolean strongpassword =  mpass.matches();
-		
         if (user.getPassword().isEmpty()) 
 		{
 			messageContext.addMessage(new MessageBuilder().error().source("password").defaultText("Password Is Required").build());
 			status = "failure";
 		}
-        else if(strongpassword) 
+        else
 		{
+        	java.util.regex.Pattern pass = java.util.regex.Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})");
+            java.util.regex.Matcher mpass = pass.matcher(user.getPassword());
+            boolean strongpassword =  mpass.matches();
+            
+            if(!strongpassword)
+            {
 			messageContext.addMessage(new MessageBuilder().error().source("password").defaultText("Password Is Weak.Follow Below Rules").build());
-			status = "failure";;
+			status = "failure";
+            }
 		}
 
 		return status;

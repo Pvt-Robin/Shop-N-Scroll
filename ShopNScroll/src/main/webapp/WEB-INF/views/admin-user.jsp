@@ -17,7 +17,7 @@
 </div>
 
 <div class="text-right well-sm">
-<button class="admin-expand-btn btn admin-tab-button"><i class="glyphicon glyphicon-plus"></i>&nbsp Add</button>
+<!-- <button class="admin-expand-btn btn admin-tab-button"><i class="glyphicon glyphicon-plus"></i>&nbsp Add</button> -->
 <input type="text" ng-model="searchkeyword" placeholder="Search" class="btn admin-tab-button" autofocus/>
 
 <select ng-model="orderkeyword" class="btn admin-tab-button">
@@ -153,7 +153,7 @@
 <td>{{u.username}}</td>
 <td ng-if="!u.enabled"  style="color:orange;">Not Active</td><td ng-if="u.enabled" style="color:green;">Active</td>
 <td>
-<a href="updateuser-{{u.userId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>
+<!-- <a href="updateuser-{{u.userId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a> -->
 <a href="toggleuser-{{u.userId}}"><button class="special-icon btn btn btn-warning" data-toggle="tooltip" title="Enable" ng-if="!u.enabled"><i class="glyphicon glyphicon-ok-circle"></i></button></a>
 <a href="toggleuser-{{u.userId}}"><button class="special-icon btn btn btn-warning" data-toggle="tooltip" title="Disable" ng-if="u.enabled"><i class="glyphicon glyphicon-ban-circle"></i></button></a>
 </td>

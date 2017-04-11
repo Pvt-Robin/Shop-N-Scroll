@@ -18,7 +18,6 @@ public class CartDAOImpl implements CartDAO
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	@Override
 	public String fetchAllItemsByUserIdJSON(int userId) 
 	{
 		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where userId="+userId+" and flag = 'N'").getResultList();
@@ -26,14 +25,12 @@ public class CartDAOImpl implements CartDAO
 		return gson.toJson(cartList);
 	}
 	
-	@Override
 	public List<CartItems> fetchAllItemsByUserId(int userId) 
 	{
 		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where userId="+userId+" and flag = 'N'").getResultList();
 		return cartList;
 	}
 	
-	@Override
 	public String fetchAllOrders(int userId) 
 	{
 		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where userId="+userId+" and flag = 'Y'").getResultList();
@@ -41,7 +38,6 @@ public class CartDAOImpl implements CartDAO
 		return gson.toJson(cartList);
 	}
 	
-	@Override
 	public CartItems fetchOneItem(int cartItemsId) 
 	{
 		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where cartItemsId="+cartItemsId).getResultList();
@@ -49,13 +45,11 @@ public class CartDAOImpl implements CartDAO
 		return cartItems;
 	}
 
-	@Override
 	public void addItem(CartItems cartItems) 
 	{
 		sessionFactory.getCurrentSession().saveOrUpdate(cartItems);
 	}
 
-	@Override
 	public void removeItem(int cartItemsId) 
 	{
 		CartItems thisCartItem = fetchOneItem(cartItemsId);

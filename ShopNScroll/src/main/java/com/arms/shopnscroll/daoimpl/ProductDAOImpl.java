@@ -31,6 +31,14 @@ public class ProductDAOImpl implements ProductDAO
 		return list;
 	}
 	
+	public String fetchAllProductJSONEnabled() 
+	{
+		List<Product> productList = sessionFactory.getCurrentSession().createQuery("from Product where enabled = 'true'").getResultList();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String list = gson.toJson(productList);
+		return list;
+	}
+	
 	public Product fetchOneProduct(int productId) 
 	{
 		List <Product> productList = sessionFactory.getCurrentSession().createQuery("from Product where productId = "+productId).getResultList();
@@ -61,7 +69,6 @@ public class ProductDAOImpl implements ProductDAO
 		sessionFactory.getCurrentSession().delete(fetchOneProduct(productId));
 	}
 
-	@Override
 	public void toggleProduct(int productId) 
 	{
 		Product product = fetchOneProduct(productId);

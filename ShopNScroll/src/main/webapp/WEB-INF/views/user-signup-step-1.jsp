@@ -65,7 +65,7 @@
    <form:option value="Female" label="Female"/>   
 </form:select><br>
 
-<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-success pull-right" value="Continue"/>
+<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right" value="Continue"/>
 
 </form:form>
 

@@ -90,13 +90,13 @@
 </c:forEach> 
 <form:input class="login-signup-font form-control text-center" path="bPIN" placeholder="PIN..." /><br>
 
-<input type="submit" id="assign" name="_eventId_assign" class="btn btn-xs btn-warning text-center" value="Same As Delivery Address" style="margin-bottom: 5px;" />
+<input type="submit" id="assign" name="_eventId_assign" class="btn btn-xs btn-orange text-center" value="Same As Delivery Address" style="margin-bottom: 5px;" />
 
 </div>
 
-<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-success pull-left" value="Previous" />
+<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-orange pull-left" value="Previous" />
 
-<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-success pull-right" value="Continue"/>
+<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right" value="Continue"/>
 
 </div>
 </div>

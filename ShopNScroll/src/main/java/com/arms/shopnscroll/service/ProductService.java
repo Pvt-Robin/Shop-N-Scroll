@@ -31,6 +31,11 @@ public class ProductService
 		return productDAOImpl.fetchAllProductJSON();
 	}
 	
+	public String fetchAllProductJSONEnabled()
+	{
+		return productDAOImpl.fetchAllProductJSONEnabled();
+	}
+	
 	public boolean addProduct(Product product)
 	{	
 		return productDAOImpl.addProduct(product);

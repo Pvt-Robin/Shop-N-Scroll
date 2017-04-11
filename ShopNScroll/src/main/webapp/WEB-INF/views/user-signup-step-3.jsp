@@ -50,15 +50,15 @@
 <li>Should have Atleast One Number</li>
 <li>Should have Atleast One Capital Alphabet</li>
 <li>Should have Atleast One Small Alphabet</li>
-<li>Should have Atleast One Symbol(@,$,&,#)</li>
+<li>Should have Atleast One Symbol(@,$,%,#)</li>
 
 </ul>
 </span>
 <br>
 
-<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-success pull-left" value="Previous" />
+<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-orange pull-left" value="Previous" />
 
-<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-success pull-right" value="Continue"/>
+<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right" value="Continue"/>
 
 </form:form>
 

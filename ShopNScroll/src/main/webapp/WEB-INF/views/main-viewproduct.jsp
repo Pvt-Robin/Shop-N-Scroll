@@ -15,20 +15,12 @@
 </div>
 </div>
 
-<!-- <ul class="breadcrumb sns-breadcrumb"> -->
-<!--   <li><a class="sns-crumb noUnderLineInAnchor" href="home" style="font-size: large;color:orange;text-shadow: 1px 1px 1px white">Shop</a></li> -->
-<!--   <li><a class="sns-crumb noUnderLineInAnchor" href="productdisplay?browse={{thisproduct.category.categoryName}}">{{thisproduct.category.categoryName}}  &nbsp Section</a></li> -->
-<!--   <li><a class="sns-crumb noUnderLineInAnchor" href="productdisplay?browse={{thisproduct.subCategory.subCategoryName}}">{{thisproduct.subCategory.subCategoryName}} &nbsp Shelf</a></li> -->
-<!--   <li><a class="sns-crumb noUnderLineInAnchor" href="productdisplay?browse={{thisproduct.brand.brandName}}">{{thisproduct.brand.brandName}}  &nbsp Rack</a></li> -->
-<!--   <li><a class="sns-current-crumb noUnderLineInAnchor" href="#">{{thisproduct.productName}}</a></li> -->
-<!-- </ul> -->
-
 <div class="row">
 
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 well-sm" width="500">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 well-lg" width="500">
 
-<div style="background-color: rgba(255,255,255,0.5)" class="login-signup-panels text-center">
-<img src="resources/data/PRDT-{{thisproduct.productId}}.jpg" class="well-sm" style="width:100%;"/>
+<div style="background-color: rgba(255,255,255,0.5)" class="login-signup-panels text-center well-lg">
+<img id="product-view-image" src="resources/data/PRDT-{{thisproduct.productId}}.jpg" class="well-sm" style="width:100%;" data-zoom-image="resources/data/PRDT-{{thisproduct.productId}}.jpg"/>
 </div>
 
 </div>

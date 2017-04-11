@@ -9,94 +9,81 @@
 <button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Cart</button>
 </div>
 </div>
-
-<div ng-controller="cartControllerAJS">
-
-<!-- <div class="col-md-1 hidden-sm hidden-xs"></div> -->
-<!-- <div class="col-md-5 well-sm product-grid"> -->
-<!-- <div class="col-md-4"> -->
-<!-- <img src="resources/data/PRDT-{{ci.productId}}.jpg" width="100%"> -->
-<!-- </div> -->
-
-<!-- <div class="col-md-6"> -->
-<!-- <h4 style="font-weight: bold">{{ci.productName}}</h4> -->
-<!-- <font>Price:<span style="color:orange"> &#8377 {{ci.price}}</span></font><br> -->
-<!-- <font>Discount:<span style="color:green"> {{ci.discount}}%</span></font><br> -->
-<!-- <font>Quantity:<span style="color:blue"> {{ci.quantity}}</span></font><br> -->
-<!-- <font style="font-weight: bold;font-size: large;">Total: <span style="color:red"> &#8377 {{ci.amount}}</span></font><br> -->
-<!-- <font>Added:<span style="color:green;font-size: small;">{{ci.placedDate}}</span></font><br> -->
-<!-- </div> -->
-
-<!-- <div class="col-md-2"> -->
-<!-- <div class="row"><a href="viewproduct-{{ci.productId}}"><button class="btn btn-info form-control special-button text-center" style="margin-bottom: 2px;">View</button></a></div> -->
-<!-- <div class="row"><a href="removefromcart-{{ci.cartItemsId}}"><button class="btn btn-danger form-control text-center" style="margin-bottom: 2px;">Remove</button></a></div> -->
-<!-- <div class="row"><a href="checkoutfromcart-{{ci.cartItemsId}}"><button class="btn btn-success form-control text-center" style="margin-bottom: 2px;">CheckOut</button></a></div> -->
-
-<!-- </div> -->
-<!-- </div> -->
-
-
+<div class="container well-sm">
+<div  class="row" ng-controller="cartControllerAJS">
 
 <div class="table-responsive">
-<table class="table text-center" style="border: 2px solid rgba(92,184,92,1.0);">
+<table class="table" style="border: 2px solid rgba(0,0,0,0.8);">
 
 <thead>
 <tr>
-<th class="th-green text-center">Image</th>
-<th class="th-green text-center">Name</th>
-<th class="th-green text-center">Quantity</th>
-<th class="th-green text-center">Actual Price</th>
-<th class="th-green text-center">Your Price</th>
-<th class="th-green text-center">Remove</th>
+<th class="text-center"></th>
+<th class="text-center"></th>
+<th class="text-center"></th>
+<th class="text-center"></th>
+<th class="text-center"></th>
+<th class="text-center"></th>
 </tr>
 </thead>
 
-<tr ng-repeat="ci in cartlist" ng-init="totalPrice = 0;">
+<tr ng-repeat="ci in cartlist" style="background-color: rgba(255,255,255,0.8);">
 
-<td>
-<img src="resources/data/PRDT-{{ci.productId}}.jpg" height="100px"/>
+<td class="text-center">
+<img src="resources/data/PRDT-{{ci.productId}}.jpg" style="height: 100px;" />
+</td>
+
+<td class="text-center">
+<br>
+<b style="font-size: large; font-weight: bold;"><span style="color: orange;">{{ci.productName}}</span></b><br>
+<b style="font-size: larger; font-weight: bold;">Added: &nbsp <span style="color:green;">{{ci.placedDate}}</span></b>
 </td>
 
 <td>
-<b>{{ci.productName}}</b>
+<br>
+<br>
+<b style="font-size: larger; font-weight: bold;">Quantity: &nbsp <span style="color: green;">{{ci.quantity}}</span></b>
 </td>
 
 <td>
-<b>{{ci.quantity}}</b>
-</td>
-
-<td style="text-decoration: line-through;">
-<b>{{ci.price}}</b>
+<br>
+<font style="font-size: larger; font-weight: bold;">Price:<span style="color:orange;"> &#8377 {{ci.price}}</span></font><br>
+<font style="font-size: larger; font-weight: bold;">Discount:<span style="color:green;">{{ci.discount}}%</span></font><br>
 </td>
 
 <td>
 <b>
-{{ci.amount}}
+<br>
+<br>
+<font style="font-weight: bolder;font-size: larger;">Total:<span style="color:green;"> &#8377 {{ci.amount}}</span></font><br>
 </b>
 </td>
 
-<td>
-<b>
-
-</b>
+<td class="well-sm">
+<a href="viewproduct-{{ci.productId}}"><button class="btn btn-black form-control special-button text-center" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">View</button></a>
+<a href="removefromcart-{{ci.cartItemsId}}"><button class="btn btn-black form-control text-center" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">Remove</button></a>
 </td>
 
 </tr>
 
-
-
 <thead>
-<tr style="width: 100%; background-color: rgba(92,184,92,1.0);">
+<tr style="width: 100%; background-color: rgba(0,0,0,0.8);">
 <td colspan="6">
-<a href="checkout" class="pull-right" ><button class="btn btn-warning">
-<font style="font-size: medium; font-weight: bold; color: rgba(255,255,255,1.0); "> Proceed To Pay &#8377 ${totalPrice} </font>
-</button></a>
+
+<a href="checkout" ng-if="cartlist" class="pull-right" >
+<button class="btn btn-orange">
+<font style="font-size: Large; font-weight: bold; color: rgba(255,255,255,1.0); ">
+<i class="fa fa-shopping-bag"></i> &nbsp Checkout 
+</font>
+</button>
+</a>
+
 </td>
 </tr>
 </thead>
 
 </table>
 
+</div>
 </div>
 </div>
 

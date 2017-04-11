@@ -14,7 +14,6 @@
 	      http://www.springframework.org/schema/tx 
 	       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-
 	<context:component-scan base-package="com.arms.shopnscroll.controller"></context:component-scan>
 
 	<bean id="viewResolver"
@@ -32,15 +31,6 @@
 		 <value>1024000</value>
 		 </property>
 	</bean>
-	
-	
-<!-- 	 <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" p:definitions="/WEB-INF/registration-webflow.xml" /> -->
- 
-<!--     <bean id="tilesViewResolver" -->
-<!--           class="org.springframework.web.servlet.view.UrlBasedViewResolver" -->
-<!--           p:viewClass="org.springbyexample.web.servlet.view.tiles2.DynamicTilesView" -->
-<!--           p:prefix="/WEB-INF/views/" -->
-<!--           p:suffix=".jsp" /> -->
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
           p:basenames="messages" />

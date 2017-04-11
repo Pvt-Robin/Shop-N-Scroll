@@ -1,5 +1,6 @@
 package com.arms.shopnscroll.config;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,11 @@ import org.springframework.webflow.mvc.servlet.AbstractFlowHandler;
 
 import com.arms.shopnscroll.model.BillingAddress;
 import com.arms.shopnscroll.model.CartItems;
+import com.arms.shopnscroll.model.Product;
 import com.arms.shopnscroll.model.ShippingAddress;
 import com.arms.shopnscroll.model.User;
 import com.arms.shopnscroll.service.CartService;
+import com.arms.shopnscroll.service.ProductService;
 import com.arms.shopnscroll.service.UserService;
 
 @Component
@@ -27,7 +30,11 @@ public class CheckoutHandler extends AbstractFlowHandler
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	public User initFlow() 
 	{
@@ -314,19 +321,35 @@ public class CheckoutHandler extends AbstractFlowHandler
 	public String checkoutCartItems(User user)
 	{
 		status="success";
-		
+				
 		try
 		{
 			
 			for(CartItems ci:user.getCartItems())
 			{
-				System.out.println("*************************************************************************************"+ci.getProductName());
-			
+				CartItems thisItem = cartService.fetchOneItem(ci.getCartItemsId());
+				
+				if(thisItem.getFlag().equals("N"))
+				{
+				Product product = productService.fetchOneProduct(thisItem.getProductId());
+				
+				if(product.getStock() > thisItem.getQuantity())
+				{
+				product.setStock(product.getStock() - thisItem.getQuantity());
+				productService.addProduct(product);
+				
+				thisItem.setPlacedDate(new Date());
+				thisItem.setFlag("Y");
+				cartService.addItem(thisItem);
+				}
+				
+				}
 			}
 			
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			return "failure";
 		}
 		

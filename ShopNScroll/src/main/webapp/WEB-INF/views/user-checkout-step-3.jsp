@@ -41,20 +41,20 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 <div style="margin:10px 0px 10px 0px;padding-left: 10px;padding-right: 10px;">
 <div class="table-responsive">
-<table class="table text-center" style="border: 2px solid rgba(92,184,92,1.0);">
+<table class="table text-center" style="border: 2px solid rgba(255,143,69,1.0);">
 
 <thead>
 <tr>
 <th class="th-green text-center">Image</th>
 <th class="th-green text-center">Name</th>
 <th class="th-green text-center">Quantity</th>
-<th class="th-green text-center">Actual Price</th>
-<th class="th-green text-center">Your Price</th>
-<th class="th-green text-center">Remove</th>
+<th class="th-green text-center">Actual Price Per Unit</th>
+<th class="th-green text-center">Total Price</th>
 </tr>
 </thead>
 <c:forEach var="clist" items="${user.cartItems}">
 
+<c:if test="${clist.flag  eq 'N'}">
 <c:set var="totalPrice" value="${totalPrice + clist.amount}"/>
 
 <tr>
@@ -80,20 +80,14 @@ ${clist.amount}
 </b>
 </td>
 
-<td>
-<b>
-
-</b>
-</td>
-
 </tr>
-
+</c:if>
 </c:forEach>
 
 <thead>
-<tr style="width: 100%; background-color: rgba(92,184,92,1.0);">
-<td colspan="5">
-<font class="pull-right" style="font-size: medium; font-weight: bold; color: rgba(255,255,255,1.0); ">Total Price: &#8377 ${totalPrice} </font>
+<tr style="width: 100%; background-color: rgba(255,143,69,1.0);">
+<td colspan="4">
+<font class="pull-right" style="font-size: large; font-weight: bold; color: rgba(255,255,255,1.0); ">Total: &#8377 ${totalPrice} </font>
 <td>
 </tr>
 </thead>
@@ -110,9 +104,9 @@ ${clist.amount}
 
 </div>
 
-<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-success pull-left" value="Previous" />
+<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-orange pull-left" value="Previous" />
 
-<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-success pull-right" value="Confirm"/>
+<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right" value="Confirm"/>
 
 </div>
 </div>
