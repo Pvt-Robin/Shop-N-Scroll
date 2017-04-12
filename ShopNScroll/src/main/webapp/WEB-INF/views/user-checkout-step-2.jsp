@@ -23,8 +23,8 @@
 
 <div class="col-xs-10 col-sm-8 col-md-8 col-lg-8">
 <font class="signup-header-font btn">1</font>
-<font class="signup-header-font-current btn">2</font>
-<font class="signup-header-font btn">3</font>
+<font class="signup-header-font btn">2</font>
+<font class="signup-header-font-current btn">3</font>
 <font class="signup-header-font btn">4</font>
 </div>
 

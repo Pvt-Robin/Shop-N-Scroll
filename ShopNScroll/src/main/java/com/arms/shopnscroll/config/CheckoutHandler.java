@@ -356,4 +356,68 @@ public class CheckoutHandler extends AbstractFlowHandler
 		return status;
 	}
 	
+//	BELOW CODES ARE ONLY FOR BUY NOW
+	
+	public CartItems initBuyNowCart(User user, int productId)
+	{
+		Product product = productService.fetchOneProduct(productId);		
+		CartItems cartItems = new CartItems();
+		
+		Date placedDate = new Date(); 
+		
+		cartItems.setUserId(user.getUserId());
+		cartItems.setCartId(user.getCart().getCartId());
+		cartItems.setProductId(product.getProductId());
+		cartItems.setProductName(product.getProductName());
+		cartItems.setPrice(product.getPrice());
+		cartItems.setDiscount(product.getDiscount());
+		cartItems.setAmount(product.getProductAmount());
+		cartItems.setFlag("Y");
+		cartItems.setQuantity(1);
+		cartItems.setPlacedDate(placedDate);
+		
+		return cartItems;
+	}
+	
+	public String checkoutBuyNowItem(CartItems thisCartItem)
+	{
+		status = "success";
+		
+		try
+		{
+			System.out.println("******************************************************************************************************************entered Checkout");
+
+				Product product = productService.fetchOneProduct(thisCartItem.getProductId());
+				
+				if(product.getStock() >= 1)
+				{
+				product.setStock(product.getStock() - 1);
+				productService.addProduct(product);
+				
+				System.out.println("******************************************************************************************************************PRODUCT STOCK REDUCED" + product.getStock());
+
+				cartService.addItem(thisCartItem);
+				
+				System.out.println("******************************************************************************************************************added cart items" + product.getStock());
+
+				}
+				else
+				{
+					status= "failure";
+					System.out.println("******************************************************************************************************************not enough stock" + product.getStock());
+
+				}
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("******************************************************************************************************************exception occured");
+
+			e.printStackTrace();
+			return "failure";
+		}
+		
+		return status;
+	}
+	
 }

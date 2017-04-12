@@ -16,13 +16,13 @@
 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 login-signup-panels">
 <br>
 
-<h2><b style="color:rgba(231,35,35.1.0);">Sorry - Unable To Place Order</b></h2>
+<h2><b style="color: rgba(255,86,86,1.0);">Sorry - <span style="color: black;"> Order Not Placed</span></b></h2>
 <br>
 <a href="home">
 <button id="home" name="home" class="signup-button btn btn-lg btn-orange text-center">Home</button>
 </a>
 
-<a href="order">
+<a href="userorder">
 <button id="order" name="order" class="signup-button btn btn-lg btn-orange text-center">Orders</button>
 </a>
 

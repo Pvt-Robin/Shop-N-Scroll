@@ -6,8 +6,7 @@
 <div class="well-sm sns-heading">
 
 <div class="btn-group admin-tab well-sm col-md-6">
-<a href="admin" class="btn admin-tab-button-back"><i class="glyphicon glyphicon-chevron-left"></i>Back</a>
-<a href="#" class="btn admin-tab-button">Ads</a>
+<!-- <a href="#" class="btn admin-tab-button">Ads</a> -->
 <button class="btn admin-tab-button-selected"><b>Users</b></button>
 <a href="supplier" class="btn admin-tab-button">Suppliers</a>
 <a href="category" class="btn admin-tab-button">Category</a>

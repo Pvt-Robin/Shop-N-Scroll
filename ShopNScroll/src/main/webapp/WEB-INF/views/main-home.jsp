@@ -63,7 +63,7 @@
 					<div class="product-grid-sm text-center">
 					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
 					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+					<a href="buynow?item={{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 					</div>					
 			</a>
 			</div>
@@ -89,7 +89,7 @@
 					<div class="product-grid-sm text-center">
 					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
 					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+					<a href="buynow?item={{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 					</div>					
 				</a>
 			</div>
@@ -115,7 +115,7 @@
 					<div class="product-grid-sm text-center">
 					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
 					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+					<a href="buynow?item={{pd.productId}}" class="product-grid-button btn btn-good" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 					</div>					
 				</a>
 			</div>

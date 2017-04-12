@@ -14,22 +14,28 @@
 
 </div>
 </div>
+<br>
+
+<div class="container login-signup-panels">
 
 <div class="row">
 
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 well-lg" width="500">
+<!-- <div class="col-xs-2 col-sm--2 col-md-2 col-lg-2 well-lg" style=""> -->
+<!-- <!-- <img src="resources/data/PRDT-{{thisproduct.productId}}.jpg" class="well-lg" style="width: 100%; border: 2px solid green;background-color: rgba(255,255,255,1.0);"/> -->
+<!-- <br> -->
+<!-- </div> -->
 
-<div style="background-color: rgba(255,255,255,0.5)" class="login-signup-panels text-center well-lg">
-<img id="product-view-image" src="resources/data/PRDT-{{thisproduct.productId}}.jpg" class="well-sm" style="width:100%;" data-zoom-image="resources/data/PRDT-{{thisproduct.productId}}.jpg"/>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 well-sm">
+
+<div style="background-color: rgba(255,255,255,0.5)" class="text-center"  style="border: 2px solid black;">
+<img src="resources/data/PRDT-{{thisproduct.productId}}.jpg" class="well-sm" style="width:100%;"/>
 </div>
 
 </div>
 
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 well-sm" style="background-color: rgba(255,255,255,0.5)">
-<div class="login-signup-panels" style="margin: 10px 10px 10px 10px;">
-<img src="resources/data/PRDT-{{thisproduct.productId}}.jpg" width="20%" style="margin:10px 10px 10px 10px;"/>
-</div>
-<div class="login-signup-panels" style="padding: 30px 30px 30px 30px;">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 well-lg" style="background-color: rgba(255,255,255,0.5)">
+
+<div class="login-signup-panels well-lg" style="padding: 30px 30px 30px 30px;background-color: rgba(244,121,37,0.1);border-color: 3px solid rgba(244,121,37,1.0);">
 <h2><b>{{thisproduct.productName}}</b></h2>
 <h3 style="color:blue;font-weight: bold;font-stretch: wider;">{{thisproduct.brand.brandName}}</h3>
 <h4 style="color:red"><b>&#8377 {{thisproduct.productAmount}}</b></h4>
@@ -58,10 +64,11 @@
 <button class="btn btn-sleek btn-lg" data-toggle="tooltip" title="Add To Cart"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp Cart It</button>
 </a>
 
-<a href="buynow-{{pd.productId}}">
+<a href="buynow?item={{thisproduct.productId}}">
 <button class="btn btn-good btn-lg" data-toggle="tooltip" title="Buy Now"><i class="fa fa-shopping-bag"></i>&nbsp Buy It</button>
 </a>
 
+</div>
 </div>
 </div>
 </div>

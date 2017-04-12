@@ -16,13 +16,13 @@
 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 login-signup-panels">
 <br>
 
-<h2><b style="color:rgba(92,184,92,1.0);">Success - Order Placed</b></h2>
+<h2><b style="color: rgba(255,127,39,1.0);">Success - <span style="color: rgba(0,0,0,1.0);"> Order Placed</span></b></h2>
 <br>
 <a href="home">
 <button id="home" name="home" class="signup-button btn btn-lg btn-orange text-center">Home</button>
 </a>
 
-<a href="order">
+<a href="userorder">
 <button id="order" name="order" class="signup-button btn btn-lg btn-orange text-center">Orders</button>
 </a>
 

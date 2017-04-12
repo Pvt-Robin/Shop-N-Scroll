@@ -22,8 +22,8 @@
 </div>
 
 <div class="col-xs-10 col-sm-8 col-md-8 col-lg-8">
-<font class="signup-header-font-current btn">1</font>
-<font class="signup-header-font btn">2</font>
+<font class="signup-header-font btn">1</font>
+<font class="signup-header-font-current btn">2</font>
 <font class="signup-header-font btn">3</font>
 <font class="signup-header-font btn">4</font>
 </div>
@@ -91,6 +91,7 @@
 <form:input class="login-signup-font form-control text-center" path="sPIN" placeholder="PIN..." /><br>
 
 </div>
+<input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-orange pull-left" value="Previous" />
 
 <input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right" value="Continue"/>
 </div>

@@ -17,22 +17,36 @@
 <!-- 		<evaluate expression="checkoutHandler.initCart(user)" result="flowScope.cartItemsList"/> -->
 	</on-start>
 	
+	
+<!-- CONFIRM CART ITEMS -->
+
+ 	<view-state id="viewCartItems" view="user-checkout-step-3" model="user">
+	<transition on="continue" to="viewShippingAddress" />
+	</view-state>
+	
+	<action-state id="confirmCart">
+		<evaluate expression="checkoutHandler.validateCart(userCom,messageContext)"></evaluate>
+		<transition on="success" to="viewShippingAddress" />
+		<transition on="failure" to="viewCartItems" />
+	</action-state>
+	
 <!-- GET SHIPPING ADDRESSES -->
 
-	<view-state id="start" view="user-checkout-step-1" model="shippingAddr">
+	<view-state id="viewShippingAddress" view="user-checkout-step-1" model="shippingAddr">
 	<transition on="continue" to="validateShippingAddressDetails" />
+	<transition on="previous" to="viewCartItems" />	
 	</view-state>
 	
 	<action-state id="validateShippingAddressDetails">
 		<evaluate expression="checkoutHandler.validateShippingAddress(shippingAddr,messageContext)"></evaluate>
 		<transition on="success" to="getBillingAddressDetails" />
-		<transition on="failure" to="start" />
+		<transition on="failure" to="viewShippingAddress" />
 	</action-state>
 	
 <!-- GET BILLING ADDRESSES -->
 
 	<view-state id="getBillingAddressDetails" view="user-checkout-step-2" model="billingAddr">
-	<transition on="previous" to="start" />
+	<transition on="previous" to="viewShippingAddress" />
 	<transition on="assign" to="assignBillingAddressDetails" />
 	<transition on="continue" to="valdateBillingAddressDetails" />
 	</view-state>
@@ -47,31 +61,15 @@
 <!-- 	TO CONFIRM ADDRESSES -->
 	<action-state id="valdateBillingAddressDetails">
 		<evaluate expression="checkoutHandler.validateBillingAddress(billingAddr,messageContext)"></evaluate>
-		<transition on="success" to="viewCartItems" />
-		<transition on="failure" to="getBillingAddressDetails" />
-	</action-state>
-	
-<!-- Confirming Cart Items -->
-
- 	<view-state id="viewCartItems" view="user-checkout-step-3" model="user">
-<!--  	<on-render> -->
-<!--     	<evaluate expression="checkoutHandler.initCart(user)" result="flowScope.cartItemsList" />    	 -->
-<!-- 	</on-render> -->
-	<transition on="continue" to="viewPaymentForm" />
-	<transition on="previous" to="getBillingAddressDetails" />	
-	</view-state>
-	
-	<action-state id="confirmCart">
-		<evaluate expression="checkoutHandler.validateCart(userCom,messageContext)"></evaluate>
 		<transition on="success" to="viewPaymentForm" />
-		<transition on="failure" to="viewCartItems" />
+		<transition on="failure" to="getBillingAddressDetails" />
 	</action-state>
 	
 <!-- Choose Payment Method -->
 
  	<view-state id="viewPaymentForm" view="user-checkout-step-4" model="user">
 	<transition on="continue" to="checkoutProducts" />
-	<transition on="previous" to="viewCartItems" />	
+	<transition on="previous" to="getBillingAddressDetails" />	
 	</view-state>
 	
 	<action-state id="checkoutProducts">

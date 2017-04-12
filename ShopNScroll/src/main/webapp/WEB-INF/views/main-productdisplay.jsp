@@ -6,25 +6,25 @@
 <div class="container-fluid text-center well-sm sitewise-header">
 <div class="row">
 <a href="home"><button class="btn btn-warning btn-arrow-right pull-left" style="outline:none;"><b>Home</b></button></a>
-<a href="productdisplay"><button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Browse</button></a>
-<button ng-if="browseWord" class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{browseWord}}</button>
+<a href="productdisplay"><button class="btn btn-black btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Browse</button></a>
+<button ng-if="browseWord" class="btn btn-black btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{browseWord}}</button>
 
 <div class="pull-right" style="margin-right: 15px;">
 
-<select ng-model="orderkeyword" class="btn admin-tab-button">
-<option value="" disabled selected>Sort By</option>
-<option value="viewCount">Popular</option>
-<option value="discount">Discount</option>
-<option value="price">Price(Low-High)</option>
-<option value="price">Price(High-Low)</option>
-<option value="creationDate">Latest</option>
-</select>
+<!-- <select ng-model="orderkeyword" class="btn admin-tab-button"> -->
+<!-- <option value="" disabled selected>Sort By</option> -->
+<!-- <option value="viewCount">Popular</option> -->
+<!-- <option value="discount">Discount</option> -->
+<!-- <option value="price">Price(Low-High)</option> -->
+<!-- <option value="price">Price(High-Low)</option> -->
+<!-- <option value="creationDate">Latest</option> -->
+<!-- </select> -->
 
-<!-- <button class="btn admin-tab-button" id="sort-button-popular" onclick="">Popular</button> -->
-<!-- <button class="btn admin-tab-button" id="sort-button-popular">Latest</button> -->
-<!-- <button class="btn admin-tab-button" id="sort-button-popular">Discount</button> -->
-<!-- <button class="btn admin-tab-button" id="sort-button-popular">Price(Low-High)</button> -->
-<!-- <button class="btn admin-tab-button" id="sort-button-popular">Price(High-Low)</button> -->
+<button class="btn btn-xs btn-black" id="sort-button-popular" onclick="">Popular</button>
+<button class="btn btn-xs btn-black" id="sort-button-popular">Latest</button>
+<button class="btn btn-xs btn-black" id="sort-button-popular">Discount</button>
+<button class="btn btn-xs btn-black" id="sort-button-popular">Price(Low-High)</button>
+<button class="btn btn-xs btn-black" id="sort-button-popular">Price(High-Low)</button>
 
 </div>
 </div>
@@ -50,12 +50,12 @@
 					
 					<div class="product-grid-caption carousel-caption hidden-sm hidden-xs">
 					<b><a href="productdisplay?browse={{pd.category.categoryName}}" class="sns-crumb">{{pd.category.categoryName}}</a>
-					&nbsp>>&nbsp
+					&nbsp;>>&nbsp;
 					<a href="productdisplay?browse={{pd.subCategory.subCategoryName}}" class="sns-crumb">{{pd.subCategory.subCategoryName}}</a></b><br><br>
 					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="glyphicon glyphicon-heart"></i></a>
 					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"  data-toggle="tooltip"  data-placement="top" title="Add To Cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good" role="button"  data-toggle="tooltip" data-placement="bottom" title="Buy Now">
-					<i class="fa fa fa-shopping-bag icon icon icon-shopping-bag" aria-hidden="true"></i>&nbsp Buy Now
+					<a href="buynow?item={{pd.productId}}" class="product-grid-button btn btn-good" role="button"  data-toggle="tooltip" data-placement="bottom" title="Buy Now">
+					<i class="fa fa fa-shopping-bag icon icon icon-shopping-bag" aria-hidden="true"></i>&nbsp; Buy Now
 					</a>
 					</div>
 					</div>
@@ -72,7 +72,7 @@
 					<div class="product-grid-sm well-sm hidden-md hidden-lg">
 					<a href="addtowishlist-{{pd.productId}}" class="product-grid-button btn btn-nice" role="button"><i class="glyphicon glyphicon-heart"></i></a>
 					<a href="addtocart-{{pd.productId}}-{{1}}" class="product-grid-button btn btn-sleek" role="button"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-					<a href="buynow-{{pd.productId}}" class="product-grid-button btn btn-good pull-right" role="button">				
+					<a href="buynow?item={{pd.productId}}" class="product-grid-button btn btn-good pull-right" role="button">				
 					<i class="fa fa-shopping-bag" aria-hidden="true"></i>
 					</a>
 					</div>

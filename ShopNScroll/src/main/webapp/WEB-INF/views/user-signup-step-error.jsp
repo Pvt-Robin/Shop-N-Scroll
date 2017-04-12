@@ -16,7 +16,7 @@
 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 login-signup-panels">
 <br>
 
-<h2><b style="color:rgba(92,184,92,1.0);">Sorry - Account Cannot Be Created</b></h2>
+<h2><b style="color: rgba(255,86,86,1.0);">Sorry - <span style="color: black;"> Account Cannot Be Created</span></b></h2>
 <h4><b>Please Try To SignUp Again.</b></h4>
 <br>
 <a href="reg">

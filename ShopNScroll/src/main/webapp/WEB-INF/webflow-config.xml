@@ -20,6 +20,7 @@
 
 		<webflow:flow-location id="reg" path="registration-webflow.xml" />
 		<webflow:flow-location id="checkout" path="cart-webflow.xml" />
+		<webflow:flow-location id="buynow" path="buynow-webflow.xml" />	
 		
 	</webflow:flow-registry>
 

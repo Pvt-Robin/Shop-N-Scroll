@@ -16,7 +16,8 @@
 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 login-signup-panels">
 <br>
 
-<h2><b style="color: rgba(255,143,69,1.0);">Success - Account Created</b></h2>
+<h2><b style="color: rgba(255,127,39,1.0);">Success - <span style="color: black;"> Account Created</span></b></h2>
+
 <h4><b>For Security Reasons,You Have To Log In Again.</b></h4>
 <br>
 <a href="login">

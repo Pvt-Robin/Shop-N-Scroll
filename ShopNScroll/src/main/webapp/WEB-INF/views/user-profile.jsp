@@ -39,11 +39,11 @@
 </div>
 
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 well-sm">
- <div class="profile-data"> &nbsp {{userData.firstName}} &nbsp {{userData.lastName}} </div><br>
- <div class="profile-data"> &nbsp {{userData.gender}}</div><br>
- <div class="profile-data"> &nbsp {{userData.dateOfBirth}}</div><br>
- <div class="profile-data"> &nbsp {{userData.email}} </div><br>
- <div class="profile-data"> &nbsp {{userData.contact}} </div><br>
+ <div class="profile-data"> &nbsp; {{userData.firstName}} &nbsp {{userData.lastName}} </div><br>
+ <div class="profile-data"> &nbsp; {{userData.gender}}</div><br>
+ <div class="profile-data"> &nbsp; {{userData.dateOfBirth}}</div><br>
+ <div class="profile-data"> &nbsp; {{userData.email}} </div><br>
+ <div class="profile-data"> &nbsp; {{userData.contact}} </div><br>
 </div>
 
 </div>
@@ -69,14 +69,14 @@
 </div>
 
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 well-sm">
- <div class="profile-data"> &nbsp ${shipDataJSON.sName}</div><br>
- <div class="profile-data"> &nbsp ${shipDataJSON.sPrefix}</div><br>
- <div class="profile-data"> &nbsp ${shipDataJSON.sLandmark}</div><br>
- <div class="profile-data"> &nbsp ${shipDataJSON.sStreet}</div><br>
- <div class="profile-data"> &nbsp ${shipDataJSON.sCity}}</div><br>
- <div class="profile-data"> &nbsp ${shipDataJSON.sState}</div><br>
- <div class="profile-data"> &nbsp ${shipDataJSON.sCountry}</div><br>
- <div class="profile-data"> &nbsp ${shipDataJSON.sPIN}</div><br>
+ <div class="profile-data"> &nbsp; ${shipDataJSON.sName}</div><br>
+ <div class="profile-data"> &nbsp; ${shipDataJSON.sPrefix}</div><br>
+ <div class="profile-data"> &nbsp; ${shipDataJSON.sLandmark}</div><br>
+ <div class="profile-data"> &nbsp; ${shipDataJSON.sStreet}</div><br>
+ <div class="profile-data"> &nbsp; ${shipDataJSON.sCity}</div><br>
+ <div class="profile-data"> &nbsp; ${shipDataJSON.sState}</div><br>
+ <div class="profile-data"> &nbsp; ${shipDataJSON.sCountry}</div><br>
+ <div class="profile-data"> &nbsp; ${shipDataJSON.sPIN}</div><br>
 </div>
 
 </div>
@@ -106,14 +106,14 @@
 </div>
 
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 well-sm">
- <div class="profile-data"> &nbsp ${billDataJSON.bName}</div><br>
- <div class="profile-data"> &nbsp ${billDataJSON.bPrefix}</div><br>
- <div class="profile-data"> &nbsp ${billDataJSON.bLandmark}</div><br>
- <div class="profile-data"> &nbsp ${billDataJSON.bStreet}</div><br>
- <div class="profile-data"> &nbsp ${billDataJSON.bCity}}</div><br>
- <div class="profile-data"> &nbsp ${billDataJSON.bState}</div><br>
- <div class="profile-data"> &nbsp ${billDataJSON.bCountry}</div><br>
- <div class="profile-data"> &nbsp ${billDataJSON.bPIN}</div><br>
+ <div class="profile-data"> &nbsp; ${billDataJSON.bName}</div><br>
+ <div class="profile-data"> &nbsp; ${billDataJSON.bPrefix}</div><br>
+ <div class="profile-data"> &nbsp; ${billDataJSON.bLandmark}</div><br>
+ <div class="profile-data"> &nbsp; ${billDataJSON.bStreet}</div><br>
+ <div class="profile-data"> &nbsp; ${billDataJSON.bCity}</div><br>
+ <div class="profile-data"> &nbsp; ${billDataJSON.bState}</div><br>
+ <div class="profile-data"> &nbsp; ${billDataJSON.bCountry}</div><br>
+ <div class="profile-data"> &nbsp; ${billDataJSON.bPIN}</div><br>
 </div>
 
 </div>
