@@ -5,12 +5,12 @@
 
 <div class="container-fluid text-center well-sm sitewise-header">
 <div class="row">
-<a href="home"><button class="btn btn-warning btn-arrow-right pull-left" style="outline:none;"><b>Home</b></button></a>
-<a href="productdisplay"><button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Browse</button></a>
-<a href="productdisplay?browse={{thisproduct.category.categoryName}}"><button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{thisproduct.category.categoryName}}</button></a>
-<a href="productdisplay?browse={{thisproduct.subCategory.subCategoryName}}"><button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{thisproduct.subCategory.subCategoryName}}</button></a>
-<a href="productdisplay?browse={{thisproduct.brand.brandName}}"><button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{thisproduct.brand.brandName}}</button></a>
-<button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{thisproduct.productName}}</button>
+<a href="home"  class="newpager"><button class="btn btn-black-home btn-arrow-right pull-left" style="outline:none;"><i class="glyphicon glyphicon-home"></i></button></a>
+<a href="productdisplay" class="newpager"><button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Browse</button></a>
+<a href="productdisplay?browse={{thisproduct.category.categoryName}}" class="newpager"><button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{thisproduct.category.categoryName}}</button></a>
+<a href="productdisplay?browse={{thisproduct.subCategory.subCategoryName}}" class="newpager"><button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{thisproduct.subCategory.subCategoryName}}</button></a>
+<a href="productdisplay?browse={{thisproduct.brand.brandName}}" class="newpager"><button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{thisproduct.brand.brandName}}</button></a>
+<button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{thisproduct.productName}}</button>
 
 </div>
 </div>
@@ -19,11 +19,6 @@
 <div class="container login-signup-panels">
 
 <div class="row">
-
-<!-- <div class="col-xs-2 col-sm--2 col-md-2 col-lg-2 well-lg" style=""> -->
-<!-- <!-- <img src="resources/data/PRDT-{{thisproduct.productId}}.jpg" class="well-lg" style="width: 100%; border: 2px solid green;background-color: rgba(255,255,255,1.0);"/> -->
-<!-- <br> -->
-<!-- </div> -->
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 well-sm">
 

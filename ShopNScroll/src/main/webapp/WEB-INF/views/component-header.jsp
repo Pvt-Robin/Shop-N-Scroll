@@ -169,12 +169,6 @@
 <font class="shadowed-text">Data</font>
 </div>
 
-<!-- <div class="col-md-3 col-sm-3 col-xs-6"> -->
-<!-- <a href="looks"> -->
-<!-- <img class="profile-grid img-circle" src="resources/img/admin-theme.png" width="100%"/></a> -->
-<!-- <font class="shadowed-text">Looks</font> -->
-<!-- </div> -->
-
 <div class="col-md-4 col-sm-4 col-xs-6">
 <a href="logout">
 <img class="profile-grid-danger img-circle" src="resources/img/logout.png" width="100%"/></a>

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.arms.shopnscroll.model.BillingAddress;
 import com.arms.shopnscroll.model.Product;
+import com.arms.shopnscroll.model.ShippingAddress;
 import com.arms.shopnscroll.model.User;
 import com.arms.shopnscroll.model.WishItems;
 import com.arms.shopnscroll.service.CartService;
@@ -60,12 +62,10 @@ public class UserController
 	{
 		if(result.hasErrors())
 		{
-			model.addAttribute("userListJSON", userService.fetchAllUser());
-			
-			model.addAttribute("btnLabel","Insert");
-			
-			return"admin-user";
+			return"redirect:/profile";
 		}
+		
+		user.setUsername(user.getEmail());
 		userService.addUser(user);
 		
 		
@@ -98,7 +98,7 @@ public class UserController
 		}
 		
 		
-		return "redirect:/user";
+		return "redirect:/profile";
 	}
 	
 	@RequestMapping("/updateuser-{userId}")
@@ -167,11 +167,87 @@ public class UserController
 	@RequestMapping("/profile")
 	public String seeProfile(Model model,Principal p)
 	{
-		int userId = userService.fetchUserByUserName(p.getName()).getUserId();	
-		model.addAttribute("shipDataJSON", userService.fetchShippingAddressByUserId(userId));
-		model.addAttribute("billDataJSON", userService.fetchBillingAddressByUserId(userId));
+		try
+		{
+		int userId = userService.fetchUserByUserName(p.getName()).getUserId();
+		model.addAttribute("user", userService.fetchOneUser(userId));
+		model.addAttribute("shippingAddr", userService.fetchShippingAddressByUserId(userId));
+		model.addAttribute("billingAddr", userService.fetchBillingAddressByUserId(userId));
+		}
+		catch(Exception e)
+		{
+			return "redirect:/logout";
+		}
 		
 		return "user-profile";
+	}
+	
+	@RequestMapping("/editprofile")
+	public String editUser(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam("userAvatar")MultipartFile userAvatar, Model model,RedirectAttributes redirectAttributes)
+	{
+		if(result.hasErrors())
+		{
+			return"redirect:/profile";
+		}
+		
+		userService.editUser(user);
+		
+		
+		if(!userAvatar.isEmpty()){
+			try
+			{
+				byte[] bytes = userAvatar.getBytes();
+				
+				File directory = new File(Data_Folder + File.separator);
+						if(!directory.exists())
+						{
+							directory.mkdirs();
+						}
+						
+						File imageFile = new File(directory.getAbsolutePath() + File.separator + "USER-" + user.getUserId() + ".jpg");
+						BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(imageFile));
+						stream.write(bytes);
+						stream.close();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+				model.addAttribute("fmessage","Image Upload Failed.try again");
+			}
+			model.addAttribute("filemessage","Image Upload Successful");
+		}
+		else
+		{
+			model.addAttribute("filemessage","Image file is required");
+		}
+		
+		
+		return "redirect:/profile";
+	}
+	
+	@RequestMapping("/editshippingaddress")
+	public String updateShippingAddress( @ModelAttribute("shippingAddr")ShippingAddress shippingAddress, BindingResult result, RedirectAttributes redirectAttributes)
+	{
+		if(result.hasErrors())
+		{
+			return"redirect:/profile";
+		}
+		
+		userService.saveShippingAddress(shippingAddress);
+
+		return "redirect:/profile";
+	}
+	
+	@RequestMapping("/editbillingaddress")
+	public String updateBillingAddress( @ModelAttribute("billingAddr")BillingAddress billingAddress, BindingResult result, RedirectAttributes redirectAttributes)
+	{
+		if(result.hasErrors())
+		{
+			return"redirect:/profile";
+		}
+		userService.saveBillingAddress(billingAddress);
+
+		return "redirect:/profile";
 	}
 	
 }

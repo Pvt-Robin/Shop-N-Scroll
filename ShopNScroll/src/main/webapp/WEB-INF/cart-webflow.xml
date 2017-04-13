@@ -81,7 +81,7 @@
 <!-- END STATES -->
 	<end-state id="success-pay" view="user-checkout-step-success" />
 	<end-state id="failure-pay" view="user-checkout-step-error" />
-	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:/usercart" />
 	
 	<global-transitions>
 		<transition on="cancel" to="toHome" />

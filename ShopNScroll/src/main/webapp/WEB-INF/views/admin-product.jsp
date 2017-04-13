@@ -162,7 +162,7 @@
 
 <td>{{p.supplier.supplierName}}</td>
 <td>
-<a href="viewproduct-{{p.productId}}"><button class="special-icon btn btn btn-success" data-toggle="tooltip" title="View"><i class="glyphicon glyphicon-eye-open"></i></button></a>
+<!-- <a href="viewproduct-{{p.productId}}"><button class="special-icon btn btn btn-success" data-toggle="tooltip" title="View"><i class="glyphicon glyphicon-eye-open"></i></button></a> -->
 <a href="updateproduct-{{p.productId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>
 <a href="removeproduct-{{p.productId}}"><button class="special-icon btn btn btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-trash"></i></button></a>
 <a href="toggleproduct-{{p.productId}}" ng-if="p.enabled"><button class="special-icon btn btn btn-warning" data-toggle="tooltip" title="Disable"><i class="glyphicon glyphicon-ban-circle"></i></button></a>

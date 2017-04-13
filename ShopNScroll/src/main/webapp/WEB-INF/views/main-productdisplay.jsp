@@ -5,26 +5,17 @@
 
 <div class="container-fluid text-center well-sm sitewise-header">
 <div class="row">
-<a href="home"><button class="btn btn-warning btn-arrow-right pull-left" style="outline:none;"><b>Home</b></button></a>
-<a href="productdisplay"><button class="btn btn-black btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Browse</button></a>
-<button ng-if="browseWord" class="btn btn-black btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{browseWord}}</button>
+<a href="home" class="newpager"><button class="btn btn-black-home btn-arrow-right pull-left" style="outline:none;"><i class="glyphicon glyphicon-home"></i></button></a>
+<a href="productdisplay"  class="newpager"><button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Browse</button></a>
+<button ng-if="browseWord" class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{browseWord}}</button>
 
 <div class="pull-right" style="margin-right: 15px;">
 
-<!-- <select ng-model="orderkeyword" class="btn admin-tab-button"> -->
-<!-- <option value="" disabled selected>Sort By</option> -->
-<!-- <option value="viewCount">Popular</option> -->
-<!-- <option value="discount">Discount</option> -->
-<!-- <option value="price">Price(Low-High)</option> -->
-<!-- <option value="price">Price(High-Low)</option> -->
-<!-- <option value="creationDate">Latest</option> -->
-<!-- </select> -->
-
-<button class="btn btn-xs btn-black" id="sort-button-popular" onclick="">Popular</button>
-<button class="btn btn-xs btn-black" id="sort-button-popular">Latest</button>
-<button class="btn btn-xs btn-black" id="sort-button-popular">Discount</button>
-<button class="btn btn-xs btn-black" id="sort-button-popular">Price(Low-High)</button>
-<button class="btn btn-xs btn-black" id="sort-button-popular">Price(High-Low)</button>
+<button class="btn btn-black" id="sort-button-popular" ng-click="sortByFame()">Popular</button>
+<!-- <button class="btn btn-black" id="sort-button-popular" ng-click="sortByTime()">Latest</button> -->
+<button class="btn btn-black" id="sort-button-popular" ng-click="sortByDiscount()">Discount</button>
+<button class="btn btn-black" id="sort-button-popular" ng-click="sortByHigh()">Price(Low-High)</button>
+<button class="btn btn-black" id="sort-button-popular" ng-click="sortByLow()">Price(High-Low)</button>
 
 </div>
 </div>

@@ -2,8 +2,20 @@
 <div id="base-area" >
 
 <div class="well-sm">
-<div id="base-clickable" style="margin-right: 10px;">
-<font style="font-size: small; color: rgba(255,255,255,0.4);" class="pull-right">@shopNscroll</font>
+<div style="margin-right: 10px;">
+
+<a href="terms">
+<button class="btn btn-xs base-area-btn pull-right">Terms And Conditions</button>
+</a>
+
+<a href="contact">
+<button class="btn btn-xs base-area-btn pull-right">Contacts</button>
+</a>
+
+<a href="about">
+<button class="btn btn-xs base-area-btn pull-right">About Us</button>
+</a>
+
 </div>
 
 <div id="base-expandable" class="well-sm" style="display: none;">

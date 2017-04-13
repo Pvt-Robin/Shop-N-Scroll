@@ -33,6 +33,8 @@
 		<intercept-url pattern="/terms**" access="permitAll"/>
 
 		<intercept-url pattern="/logout**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/editprofile" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/updateprofile" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>		
 
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/control**" access="hasRole('ROLE_ADMIN')"/>
@@ -60,7 +62,6 @@
 		<intercept-url pattern="/toggleproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/user" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/updateuser-{{userId}}**" access="hasRole('ROLE_ADMIN')"/>
-		<intercept-url pattern="/adduser**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/userprofile**" access="hasRole('ROLE_ADMIN')"/>
 
 		<intercept-url pattern="/addtowishlist-{productId}**" access="hasRole('ROLE_USER')"/>
@@ -73,6 +74,7 @@
 		<intercept-url pattern="/removefromcart-{cartItemsId}" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/checkout" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/buynow" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/adduser" access="hasRole('ROLE_USER')"/>
 		
 <!-- 		<intercept-url pattern="/login**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 <!-- 		<intercept-url pattern="/reg**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
@@ -84,10 +86,10 @@
 		    login-page="/login"
 		    login-processing-url="/perform_login"
 		    default-target-url="/"
-			authentication-failure-url="/login?error"
+			authentication-failure-url="/login?errormessage=Invalid Credentials.Try Again"
 			username-parameter="username"
 			password-parameter="password" />
-		<logout logout-success-url="/login?logout"  />
+		<logout logout-success-url="/login?errormessage=Logged Out"  />
 		<!-- enable csrf protection -->
 		<csrf disabled="true"/>
 	</http>

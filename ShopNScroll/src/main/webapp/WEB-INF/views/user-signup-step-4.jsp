@@ -4,8 +4,8 @@
 
 <div class="container-fluid text-center well-sm sitewise-header">
 <div class="row">
-<a href="home"><button class="btn btn-warning btn-arrow-right pull-left" style="outline:none;"><b>Home</b></button></a>
-<button class="btn btn-warning btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">SignUp</button>
+<a href="home" class="newpager"><button class="btn btn-black-home btn-arrow-right pull-left" style="outline:none;"><i class="glyphicon glyphicon-home"></i></button></a>
+<button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">SignUp</button>
 </div>
 </div>
 
@@ -95,7 +95,7 @@
 
 <input type="checkbox"  
 onchange="document.getElementById('continue1').disabled = !this.checked;" name='agree' 
-id='agree'/><b>&nbsp I Agree To All ShopNScroll <a href="terms" style="color:green;text-decoration: none;">Policies,Terms And Conditions</a></b>
+id='agree'/><b>&nbsp; I Agree To All ShopNScroll <a href="terms" target="_blank" style="color:green;text-decoration: none;">Policies,Terms And Conditions</a></b>
 <br><br>
 
 <input type="submit" id="previous" name="_eventId_previous" class="signup-button btn btn-lg btn-orange pull-left" value="Previous" />

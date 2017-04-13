@@ -61,4 +61,9 @@ public class UserService
 		userDAOImpl.saveShippingAddress(shippingAddress);
 	}
 	
+	public void editUser(User user)
+	{
+		userDAOImpl.editUser(user);
+	}
+	
 }

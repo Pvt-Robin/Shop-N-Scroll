@@ -11,6 +11,11 @@
 }
 
 @font-face {
+    font-family: fontBravoSCT;
+    src: url("../../resources/fonts/dev-font-bravoSCT.woff2");
+}
+
+@font-face {
     font-family: neometricMedium;
     src: url("../../resources/fonts/dev-font-neometric-medium.woff2");
 }
@@ -36,11 +41,17 @@ p, .condition-list
 	background-color: rgba(255,143,69,1.0);
 }
 
-#map {
-        width: 100%;
-        height: 300px;
-        background-color: grey;
-      }
+#map 
+{
+    width: 100%;
+    height: 500px;
+    background-color: grey;
+}
+
+.grid-equal-height
+{
+	height: 130%;
+}
 
 .btn-orange, .btn-orange:VISITED, .btn-orange:ACTIVE
 {
@@ -56,7 +67,7 @@ p, .condition-list
 	text-decoration: none;
 }
 
-.btn-black, .btn-black:VISITED, .btn-black:ACTIVE
+.btn-black, .btn-black:VISITED, .btn-black:ACTIVE ,.btn-black:ENABLED
 {
 	background-color: rgba(0,0,0,0.8);
 	color: rgb(255,255,255);
@@ -68,6 +79,38 @@ p, .condition-list
 	background-color: rgba(0,0,0,0.9);
 	border:1px solid rgba(255,143,69,1.0);
 	color: rgb(255,127,39);
+	text-decoration: none;
+}
+
+.btn-black-full, .btn-black-full:VISITED, .btn-black-full:ACTIVE ,.btn-black-full:ENABLED
+{
+	background-color: rgba(0,0,0,1.0);
+	color: rgb(255,255,255);
+	text-decoration: none;
+}
+
+.btn-black-full:HOVER
+{
+	background-color: rgba(0,0,0,1.0);
+	border:1px solid rgba(255,143,69,1.0);
+	color: rgb(255,127,39);
+	text-decoration: none;
+}
+
+.btn-black-home, .btn-black-home:VISITED, .btn-black-home:ACTIVE ,.btn-black-home:ENABLED
+{
+	background-color: rgba(255,255,255,1.0);
+	font-size: large;
+	color: rgb(0,0,0);
+	text-decoration: none;
+	height: 34px;
+}
+
+.btn-black-home:HOVER
+{
+	
+	background-color: rgba(255,255,255,1.0);
+	color: rgb(255,143,69);
 	text-decoration: none;
 }
 
@@ -199,7 +242,7 @@ p, .condition-list
  
  #admin-profile, #buyer-profile
  {
- 		color: rgba(255,255,255,1.0);
+ 		color: rgba(0,0,0,0.8);
  }
  
  .profile-grid, .profile-grid-danger
@@ -209,7 +252,7 @@ p, .condition-list
  }
  .profile-grid:hover
  {
- 		background-color: rgba(255,127,39,0.5);
+ 		background-color: rgba(255,165,0,0.5);
  }
  .profile-grid-danger:hover
  {
@@ -317,6 +360,14 @@ a.navbar-category:LINK , a.navbar-category:VISITED , a.navbar-category:ACTIVE, a
 	padding-top: 3px;
 }
 
+.contact-content
+{
+	font-weight: bold;
+	font-size: large;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+}
 
 /* ------------------------------------------------------------------------- BODY STYLING */
 

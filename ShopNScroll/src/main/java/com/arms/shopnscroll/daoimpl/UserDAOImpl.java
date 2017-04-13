@@ -33,7 +33,6 @@ public class UserDAOImpl implements UserDAO
 		cart.setCartId(user.getUserId());
 		cart.setUserId(user.getUserId());
 		
-		
 		billingAddress.setBillId(user.getUserId());
 		billingAddress.setUserId(user.getUserId());
 		
@@ -107,7 +106,13 @@ public class UserDAOImpl implements UserDAO
 		sessionFactory.getCurrentSession().saveOrUpdate(shippingAddress);
 	}
 
-	
+	public void editUser(User user)
+	{
+		user.setEnabled(true);
+		user.setUsername(user.getEmail());
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(user);
+	}
 	
 
 }
