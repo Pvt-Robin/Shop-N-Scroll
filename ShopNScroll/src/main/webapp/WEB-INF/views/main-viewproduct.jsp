@@ -30,7 +30,7 @@
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 well-lg" style="background-color: rgba(255,255,255,0.5)">
 
-<div class="login-signup-panels well-lg" style="padding: 30px 30px 30px 30px;background-color: rgba(244,121,37,0.1);border-color: 3px solid rgba(244,121,37,1.0);">
+<div class="login-signup-panels well-lg" style="padding: 30px 30px 30px 30px;background-color: rgba(255,244,169,0.4);border-color: 3px solid rgba(244,121,37,1.0);">
 <h2><b>{{thisproduct.productName}}</b></h2>
 <h3 style="color:blue;font-weight: bold;font-stretch: wider;">{{thisproduct.brand.brandName}}</h3>
 <h4 style="color:red"><b>&#8377 {{thisproduct.productAmount}}</b></h4>
@@ -51,6 +51,8 @@
 
 </div>
 
+<fieldset data-ng-disabled="thisproduct.stock <= 0 || usr.role == 'ROLE_ADMIN'">
+
 <a href="addtowishlist-{{thisproduct.productId}}">
 <button class="btn btn-nice btn-lg" data-toggle="tooltip" title="Add To Wishlist"><i class="glyphicon glyphicon-heart"></i>&nbsp Wish It</button>
 </a>
@@ -62,6 +64,8 @@
 <a href="buynow?item={{thisproduct.productId}}">
 <button class="btn btn-good btn-lg" data-toggle="tooltip" title="Buy Now"><i class="fa fa-shopping-bag"></i>&nbsp Buy It</button>
 </a>
+
+</fieldset>
 
 </div>
 </div>

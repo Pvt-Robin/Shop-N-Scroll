@@ -6,19 +6,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class Advertisement 
 {
 	@Id
+	@Expose
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int adId;
 	
+	@Expose
+	@NotEmpty
 	private String adTitle;
-	private String adAllureTerm;
+	
+	@Expose
+	@NotEmpty
+	private String adCaption;
+	
+	@Expose
+//	@NotEmpty
 	private String adLink;
+	
+	@Expose
 	private int adTurns;
+	
+	@Expose
+	private boolean enabled;
 	
 	@Transient
 	private MultipartFile adBanner;
@@ -35,11 +52,11 @@ public class Advertisement
 	public void setAdTitle(String adTitle) {
 		this.adTitle = adTitle;
 	}
-	public String getAdAllureTerm() {
-		return adAllureTerm;
+	public String getAdCaption() {
+		return adCaption;
 	}
-	public void setAdAllureTerm(String adAllureTerm) {
-		this.adAllureTerm = adAllureTerm;
+	public void setAdCaption(String adCaption) {
+		this.adCaption = adCaption;
 	}
 	public String getAdLink() {
 		return adLink;
@@ -59,5 +76,11 @@ public class Advertisement
 	public void setAdBanner(MultipartFile adBanner) {
 		this.adBanner = adBanner;
 	}
-
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 }

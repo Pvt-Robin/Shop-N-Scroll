@@ -6,7 +6,7 @@
 <div class="well-sm sns-heading">
 
 <div class="btn-group admin-tab well-sm col-md-6">
-<!-- <a href="#" class="btn admin-tab-button">Ads</a> -->
+<a href="ads" class="btn admin-tab-button">Slider</a>
 <button class="btn admin-tab-button-selected"><b>Users</b></button>
 <a href="supplier" class="btn admin-tab-button">Suppliers</a>
 <a href="category" class="btn admin-tab-button">Category</a>
@@ -151,7 +151,7 @@
 <td>{{u.createdDate}}</td>
 <td>{{u.username}}</td>
 <td ng-if="!u.enabled"  style="color:orange;">Not Active</td><td ng-if="u.enabled" style="color:green;">Active</td>
-<td>
+<td width="150px">
 <!-- <a href="updateuser-{{u.userId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a> -->
 <a href="toggleuser-{{u.userId}}"><button class="special-icon btn btn btn-warning" data-toggle="tooltip" title="Enable" ng-if="!u.enabled"><i class="glyphicon glyphicon-ok-circle"></i></button></a>
 <a href="toggleuser-{{u.userId}}"><button class="special-icon btn btn btn-warning" data-toggle="tooltip" title="Disable" ng-if="u.enabled"><i class="glyphicon glyphicon-ban-circle"></i></button></a>

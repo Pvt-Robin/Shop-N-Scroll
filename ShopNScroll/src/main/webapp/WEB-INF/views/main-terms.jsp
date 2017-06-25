@@ -5,13 +5,17 @@
 <div class="container-fluid text-center well-sm sitewise-header" ng-controller="headerControllerAJS">
 <div class="row">
 <a href="home" class="newpager"><button class="btn btn-black-home btn-arrow-right pull-left" style="outline:none;"><i class="glyphicon glyphicon-home"></i></button></a>
-<button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Terms And Condition</button>
+<button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Terms And Conditions</button>
 </div>
 </div>
 
 <div class="container">
-<h3 class="sns-heading text-center well-sm" style="border-radius: 25px 25px 25px 25px;">Terms And Conditions</h3>
-<p>ShopNScroll Standard Terms and Conditions written on this webpage shall manage your use of this website. These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions.</p>
+<h1 class="sns-heading text-center well-sm" style="font-family: fontBravoSCT;font-stretch: wider;border-radius: 25px 25px 25px 25px;">
+terms<span style="color: rgba(255,143,69,1.0);">n</span>conditions
+</h1>
+<p>
+
+<b>ShopNScroll</b> Standard Terms and Conditions written on this webpage shall manage your use of this website. These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions.</p>
 
 <p><b>Minors or people below 16 years old are not allowed to use this Website.</b></p>
 

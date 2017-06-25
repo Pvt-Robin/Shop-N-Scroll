@@ -25,7 +25,6 @@ public class BrandDAOImpl implements BrandDAO
 	
 	public String fetchAllBrandJSON() 
 	{
-//		Gson gson = new Gson();
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		List<Brand> brandList = sessionFactory.getCurrentSession().createQuery("from Brand").getResultList();
 		String list = gson.toJson(brandList);

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.arms.shopnscroll.model.Category;
 import com.arms.shopnscroll.model.User;
 import com.arms.shopnscroll.service.CategoryService;
 import com.arms.shopnscroll.service.ProductService;
@@ -42,7 +43,7 @@ public class SNSController
 	}
 	
 	@ModelAttribute("categoryDataList")
-	public List userDataJSON()
+	public List<Category> userDataJSON()
 	{
 		return categoryService.fetchAllCategory();
 	}

@@ -6,7 +6,7 @@
 <div class="well-sm sns-heading">
 
 <div class="btn-group admin-tab well-sm col-md-6">
-<!-- <a href="#" class="btn admin-tab-button">Ads</a> -->
+<a href="ads" class="btn admin-tab-button">Slider</a>
 <a href="user" class="btn admin-tab-button">Users</a>
 <button class="btn admin-tab-button-selected"><b>Suppliers</b></button>
 <a href="category" class="btn admin-tab-button">Category</a>
@@ -140,7 +140,7 @@
 <font style="color:green;" ng-if="s.enabled">Active</font>
 </td>
 
-<td>
+<td width="150px">
 <a href="updatesupplier-{{s.supplierId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>
 <a href="removesupplier-{{s.supplierId}}"><button class="special-icon btn btn btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-trash"></i></button></a>
 

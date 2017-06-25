@@ -12,7 +12,7 @@
 <!-- PAGE LOAD ANIMATION -->
 
 <script>
-	$("a.newpager").on('click', function() {
+	$(".newpager").on('click', function() {
 	$("#load-animation").fadeIn("500");;
 	});
 	
@@ -23,13 +23,13 @@
 
 <!-- PAGE LOAD ANIMATION ENDS -->
 
-<!-- GOOGLE MAPS -->
+<!-- GOOGLE MAP -->
 <script>
 function initMap() {
-    var myLatLng = {lat: -25.363, lng: 131.044};
+    var myLatLng = {lat: 19.121605, lng: 72.850108};
 
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 20,
+      zoom: 16,
       center: myLatLng
     });
 
@@ -60,9 +60,15 @@ siteApp.controller("headerControllerAJS", function($scope)
 </script>
 
 <script>
-siteApp.controller("universalProductControllerAJS", function($scope, $location) 
+siteApp.controller("universalProductControllerAJS", function($scope, $location, $filter) 
 {
 	$scope.productData = ${productDataJSON};
+	
+	$scope.productDataView = $filter('orderBy')($scope.productData, 'viewCount', true);
+	$scope.productDataLate = $filter('orderBy')($scope.productData, 'productId', true);
+	$scope.productDataDisc = $filter('orderBy')($scope.productData, 'discount', true);	
+	
+	$scope.usr = ${userData};	
 
 	var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -81,7 +87,9 @@ siteApp.controller("universalProductControllerAJS", function($scope, $location)
 
 	$scope.browseWord = getUrlParameter('browse');
 	$scope.errorToDisplay = getUrlParameter('errormessage');
-	
+	$scope.orderkeyword = getUrlParameter('orderingkey');
+	$scope.orderflag = true;
+	  
 	$scope.changeColor = function(person) 
 	{
 	    $scope.showCaption = {color: '#'+person.colour};
@@ -144,6 +152,7 @@ siteApp.controller("viewProductControllerAJS", function($scope)
 {
 	$scope.thisproduct = ${viewProductJSON};
 	$scope.quantity = 1;
+	$scope.usr = ${userData};	
 });
 </script>
 
@@ -193,6 +202,20 @@ siteApp.controller("wishControllerAJS", function($scope)
 siteApp.controller("orderControllerAJS", function($scope) 
 {
 	$scope.olist = ${orderListJSON};
+});
+</script>
+
+<script>
+siteApp.controller("sliderControllerAJS", function($scope) 
+{
+	$scope.slidelist = ${adList};
+});
+</script>
+
+<script>
+siteApp.controller("adControllerAJS", function($scope) 
+{
+	$scope.alist = ${adListAll};
 });
 </script>
 

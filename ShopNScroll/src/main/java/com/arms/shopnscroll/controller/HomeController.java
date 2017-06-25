@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.arms.shopnscroll.service.AdvertisementService;
 import com.arms.shopnscroll.service.BrandService;
 import com.arms.shopnscroll.service.CategoryService;
 import com.arms.shopnscroll.service.ProductService;
@@ -21,20 +22,18 @@ public class HomeController
 	@Autowired
 	BrandService brandService;
 	
+	@Autowired
+	AdvertisementService advertisementService;
+	
 	@RequestMapping(value={"/","/home"})
 	public String getHome(Model model)
 	{
 		model.addAttribute("categoryList", categoryService.fetchAllCategory());
 		model.addAttribute("productListJSON", productService.fetchAllProductJSON());
 		model.addAttribute("brandListJSON", brandService.fetchAllBrandJSON());
+		model.addAttribute("adList", advertisementService.fetchThreeAdsJSON());
 		
 		return "main-home";
-	}
-	
-	@RequestMapping("/about")
-	public String getAbout()
-	{
-		return "main-about";
 	}
 	
 	@RequestMapping("/contact")

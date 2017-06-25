@@ -1,7 +1,5 @@
 package com.arms.shopnscroll.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,9 +14,14 @@ public class AdvertisementService
 	@Autowired
 	private AdvertisementDAOImpl advertisementDAOImpl;
 	
-	public List<Advertisement> fetchFiveAds()
+	public String fetchThreeAdsJSON()
 	{
-		return advertisementDAOImpl.fetchFiveAds();
+		return advertisementDAOImpl.fetchThreeAdsJSON();
+	}
+	
+	public String fetchAllAdsJSON()
+	{
+		return advertisementDAOImpl.fetchAllAdsJSON();
 	}
 	
 	public Advertisement fetchOneAd(int adId)
@@ -31,10 +34,10 @@ public class AdvertisementService
 		advertisementDAOImpl.addAd(advertisement);
 	}
 	
-	public void removeAd(int adId)
+	public int fetchNoOfEnabledAd()
 	{
 		
-		advertisementDAOImpl.removeAd(adId);
+		return advertisementDAOImpl.fetchNoOfEnabledAd();
 	}
 	
 }

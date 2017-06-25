@@ -2,6 +2,8 @@ package com.arms.shopnscroll.config;
 
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
@@ -73,7 +75,7 @@ public class CheckoutHandler extends AbstractFlowHandler
 	public String validateShippingAddress(ShippingAddress shipAddr,MessageContext messageContext)
 	{
 		status="success";
-		java.util.regex.Pattern patt = java.util.regex.Pattern.compile("^[a-zA-Z,\\s]*$");
+		Pattern patt = Pattern.compile("^[a-zA-Z,\\s]*$");
 
 		if(shipAddr.getsName().isEmpty())
 		{
@@ -82,8 +84,8 @@ public class CheckoutHandler extends AbstractFlowHandler
 		}
 		else
 		{
-			java.util.regex.Pattern pat = java.util.regex.Pattern.compile("^[a-zA-Z]{3,12}$");
-	        java.util.regex.Matcher mat = pat.matcher(shipAddr.getsName());
+			Pattern pat = Pattern.compile("^[a-zA-Z]{3,12}$");
+	        Matcher mat = pat.matcher(shipAddr.getsName());
 	        if(!mat.matches())
 	        {
 			messageContext.addMessage(new MessageBuilder().error().source("sName").defaultText("Cannot Have Number & Symbols.3-12 Characters Long.").build());
@@ -161,8 +163,8 @@ public class CheckoutHandler extends AbstractFlowHandler
 		else
 		{
 			String temp = shipAddr.getsPIN()+"";
-			java.util.regex.Pattern pba = java.util.regex.Pattern.compile("^[0-9]{6}$");
-	        java.util.regex.Matcher mfn = pba.matcher(temp);
+			Pattern pba = Pattern.compile("^[0-9]{6}$");
+	        Matcher mfn = pba.matcher(temp);
 	        boolean pinflag =  mfn.matches();
 			if(!pinflag)
 			{
@@ -189,7 +191,7 @@ public class CheckoutHandler extends AbstractFlowHandler
 	public String validateBillingAddress(BillingAddress billAddr,MessageContext messageContext)
 	{
 		status="success";
-		java.util.regex.Pattern patt = java.util.regex.Pattern.compile("^[a-zA-Z,\\s]*$");
+		Pattern patt = Pattern.compile("^[a-zA-Z,\\s]*$");
 		
 		if(billAddr.getbName().isEmpty())
 		{
@@ -198,8 +200,8 @@ public class CheckoutHandler extends AbstractFlowHandler
 		}
 		else
 		{
-			java.util.regex.Pattern pat = java.util.regex.Pattern.compile("^[a-zA-Z]{3,12}$");
-	        java.util.regex.Matcher mat = pat.matcher(billAddr.getbName());
+			Pattern pat = Pattern.compile("^[a-zA-Z]{3,12}$");
+	        Matcher mat = pat.matcher(billAddr.getbName());
 	        if(!mat.matches())
 	        {
 			messageContext.addMessage(new MessageBuilder().error().source("bName").defaultText("Cannot Have Numbers & Symbols.3-12 Characters Long.").build());
@@ -231,7 +233,7 @@ public class CheckoutHandler extends AbstractFlowHandler
 		}
 		else
 		{
-		 	java.util.regex.Matcher mat1 = patt.matcher(billAddr.getbCity());
+		 	Matcher mat1 = patt.matcher(billAddr.getbCity());
 	        if(!mat1.matches())
 	        {
 			messageContext.addMessage(new MessageBuilder().error().source("bName").defaultText("Cannot Have Numbers & Symbols.").build());
@@ -246,7 +248,7 @@ public class CheckoutHandler extends AbstractFlowHandler
 		}
 		else
 		{
-		 	java.util.regex.Matcher mat1 = patt.matcher(billAddr.getbState());
+		 	Matcher mat1 = patt.matcher(billAddr.getbState());
 	        if(!mat1.matches())
 	        {
 			messageContext.addMessage(new MessageBuilder().error().source("bName").defaultText("Cannot Have Numbers & Symbols.").build());
@@ -261,7 +263,7 @@ public class CheckoutHandler extends AbstractFlowHandler
 		}
 		else
 		{
-		 	java.util.regex.Matcher mat1 = patt.matcher(billAddr.getbCountry());
+		 	Matcher mat1 = patt.matcher(billAddr.getbCountry());
 	        if(!mat1.matches())
 	        {
 			messageContext.addMessage(new MessageBuilder().error().source("bName").defaultText("Cannot Have Numbers & Symbols.").build());
@@ -277,8 +279,8 @@ public class CheckoutHandler extends AbstractFlowHandler
 		else
 		{
 			String temp = billAddr.getbPIN()+"";
-			java.util.regex.Pattern pba = java.util.regex.Pattern.compile("^[0-9]{6}$");
-	        java.util.regex.Matcher mfn = pba.matcher(temp);
+			Pattern pba = Pattern.compile("^[0-9]{6}$");
+	        Matcher mfn = pba.matcher(temp);
 	        boolean pinflag =  mfn.matches();
 			if(!pinflag)
 			{
@@ -385,8 +387,6 @@ public class CheckoutHandler extends AbstractFlowHandler
 		
 		try
 		{
-			System.out.println("******************************************************************************************************************entered Checkout");
-
 				Product product = productService.fetchOneProduct(thisCartItem.getProductId());
 				
 				if(product.getStock() >= 1)
@@ -394,25 +394,17 @@ public class CheckoutHandler extends AbstractFlowHandler
 				product.setStock(product.getStock() - 1);
 				productService.addProduct(product);
 				
-				System.out.println("******************************************************************************************************************PRODUCT STOCK REDUCED" + product.getStock());
-
 				cartService.addItem(thisCartItem);
 				
-				System.out.println("******************************************************************************************************************added cart items" + product.getStock());
-
 				}
 				else
 				{
 					status= "failure";
-					System.out.println("******************************************************************************************************************not enough stock" + product.getStock());
-
 				}
 			
 		}
 		catch(Exception e)
 		{
-			System.out.println("******************************************************************************************************************exception occured");
-
 			e.printStackTrace();
 			return "failure";
 		}

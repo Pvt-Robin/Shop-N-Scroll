@@ -19,11 +19,11 @@
 <h2><b style="color: rgba(255,86,86,1.0);">Sorry - <span style="color: black;"> Order Not Placed</span></b></h2>
 <br>
 <a href="home">
-<button id="home" name="home" class="signup-button btn btn-lg btn-orange text-center">Home</button>
+<button id="home" name="home" class="signup-button btn btn-lg btn-orange text-center newpager">Home</button>
 </a>
 
 <a href="userorder">
-<button id="order" name="order" class="signup-button btn btn-lg btn-orange text-center">Orders</button>
+<button id="order" name="order" class="signup-button btn btn-lg btn-orange text-center newpager">Orders</button>
 </a>
 
 </div>

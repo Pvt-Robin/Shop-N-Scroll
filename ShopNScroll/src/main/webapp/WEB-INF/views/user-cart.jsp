@@ -60,8 +60,8 @@
 </td>
 
 <td class="well-sm">
-<a href="viewproduct-{{ci.productId}}"><button class="btn btn-black form-control special-button text-center" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">View</button></a>
-<a href="removefromcart-{{ci.cartItemsId}}"><button class="btn btn-black form-control text-center" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">Remove</button></a>
+<a href="viewproduct-{{ci.productId}}"><button class="btn btn-black form-control special-button text-center newpager" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">View</button></a>
+<a href="removefromcart-{{ci.cartItemsId}}"><button class="btn btn-black form-control text-center newpager" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">Remove</button></a>
 </td>
 
 </tr>
@@ -70,7 +70,7 @@
 <tr style="width: 100%; background-color: rgba(0,0,0,0.8);">
 <td colspan="6">
 
-<a href="checkout" ng-if="cartlist" class="pull-right" >
+<a href="checkout" ng-if="cartlist" class="pull-right newpager" >
 <button class="btn btn-orange">
 <font style="font-size: Large; font-weight: bold; color: rgba(255,255,255,1.0); ">
 <i class="fa fa-shopping-bag"></i> &nbsp Checkout 

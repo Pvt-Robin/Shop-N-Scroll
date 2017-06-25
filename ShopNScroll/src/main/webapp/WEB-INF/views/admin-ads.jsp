@@ -6,8 +6,7 @@
 <div class="well-sm sns-heading">
 
 <div class="btn-group admin-tab well-sm col-md-6">
-<a href="admin" class="btn admin-tab-button-back"><i class="glyphicon glyphicon-chevron-left"></i>Back</a>
-<button class="btn admin-tab-button-selected"><b>Ads</b></button>
+<button class="btn admin-tab-button-selected"><b>Slider</b></button>
 <a href="user" class="btn admin-tab-button">Users</a>
 <a href="supplier" class="btn admin-tab-button">Suppliers</a>
 <a href="category" class="btn admin-tab-button">Category</a>
@@ -25,9 +24,7 @@
 <option value="" disabled selected>Sort By</option>
 <option value="adId">Id</option>
 <option value="adTitle">Title</option>
-<option value="adAllureTerm">Allure</option>
-<option value="adLink">Link</option>
-<option value="adTurns">Turns</option>
+<option value="adCaption">Caption</option>
 </select>
 
 <button class="btn admin-tab-button">
@@ -56,22 +53,23 @@
 <form:input  path="adTitle" placeholder="Title" class="special-textbox"/><br>
 <form:errors path="adTitle" class="admin-tool-error"/><br>
 
-<form:label path="adAllureTerm">Allure Term</form:label><br>
-<form:input  path="adAllureTerm" placeholder="Allure Term" class="special-textbox"/><br>
-<form:errors path="adAllureTerm"brandTagLine" class="admin-tool-error"/><br>
+<form:label path="adCaption">Caption</form:label><br>
+<form:input  path="adCaption" placeholder="Caption" class="special-textbox"/><br>
+<form:errors path="adCaption" class="admin-tool-error"/><br>
 
-<form:label path="adLink">Link</form:label><br>
-<form:input path="adLink" placeholder="Link" class="special-textbox"/><br>
+<form:label path="adLink">Keyword</form:label><br>
+<form:input path="adLink" placeholder="Key Word" class="special-textbox"/><br>
 <form:errors path="adLink" class="admin-tool-error"/><br>
 
 <center>
 <form:label path="adBanner">Banner</form:label><br>
-<form:input type="file" accept=".jpg,.jpeg,.png" class="btn btn-default special-textbox" path="adBanner" /><br>
+<form:input type="file" accept=".jpg,.jpeg,.png" class="btn btn-default special-textbox" path="adBanner" required="true" />
+<font class="admin-tool-error">Note: Only 1024x270 Images Will Be Allowed</font><br><br>
 </center>
 
 <form:button class="btn special-icon btn-success"><i class="glyphicon glyphicon-ok"></i></form:button>
 <c:if test="${btnLabel eq 'Update'}">
-<a href="brand"><button type="button" class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
+<a href="ads"><button type="button" class="special-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
 </c:if>
 
 </div>
@@ -83,27 +81,40 @@
 
 <div class="table-responsive">
 <table class="table well-sm text-center" ng-controller="adControllerAJS">
+
 <tr>
 <th><center>Banner</center></th>
+<th><center>Id</center></th>
 <th><center>Title</center></th>
-<th><center>Term</center></th>
-<th><center>Link</center></th>
-<th><center>Turns</center></th>
+<th><center>Caption</center></th>
+<th><center>Keyword</center></th>
+<th><center>Status</center></th>
 <th><center>Operation</center></th>
 </tr>
-<!-- <tr ng-repeat="ad in adlist | filter:searchkeyword | orderBy:orderkeyword : orderflag"> -->
-<!-- <td><img src="resources/data/BRND-{{b.brandId}}.jpg" height="80px" width="80px" alt="img not uploaded" onerror="this.onerror=null;callNoImg(this);"/></td> -->
-<%-- <td>#{{b.brandId}}</td> --%>
-<!-- <td>{{b.brandName}}</td> -->
-<!-- <td>{{b.brandTagLine}}</td> -->
-<!-- <td>{{b.brandDescription}}</td> -->
-<!-- <td>{{b.brandSite}}</td> -->
 
-<!-- <td> -->
-<!-- <a href="updatebrand-{{b.brandId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a> -->
-<!-- <a href="removebrand-{{b.brandId}}"><button class="special-icon btn btn btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-trash"></i></button></a> -->
-<!-- </td> -->
-<!-- </tr> -->
+<tr><td colspan="7">
+Note: Atleast 4 Ads Should Be Enabled For Display. Cannot Disable Beyond This Limit.
+</td></tr>
+
+<tr ng-repeat="al in alist | filter:searchkeyword | orderBy:orderkeyword : orderflag">
+<td  width="370px"><img src="resources/data/AD-{{al.adId}}.jpg" height="80px" width="360px" alt="img not uploaded"/></td>
+<td>#{{al.adId}}</td>
+<td>{{al.adTitle}}</td>
+<td>{{al.adCaption}}</td>
+<td>{{al.adLink}}</td>
+
+<td>
+<div ng-if="al.enabled" style="color: green;">Active<br></div>
+<div ng-if="!al.enabled" style="color: red;">Not Active<br></div>
+<div>({{al.adTurns}} Times Displayed)</div>
+</td>
+
+<td width="150px">
+<a href="updatead-{{al.adId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>
+<a href="togglestatus-{{al.adId}}" ng-if="al.enabled"><button class="special-icon btn btn btn-warning" data-toggle="tooltip" title="Disable"><i class="glyphicon glyphicon-ban-circle"></i></button></a>
+<a href="togglestatus-{{al.adId}}" ng-if="!al.enabled"><button class="special-icon btn btn btn-warning" data-toggle="tooltip" title="Enable"><i class="glyphicon glyphicon-ok-circle"></i></button></a>
+</td>
+</tr>
 </table>
 </div>
 

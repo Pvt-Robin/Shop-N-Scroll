@@ -32,9 +32,11 @@
 		<intercept-url pattern="/contact**" access="permitAll"/>
 		<intercept-url pattern="/terms**" access="permitAll"/>
 
-		<intercept-url pattern="/logout**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/logout" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/profile" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
 		<intercept-url pattern="/editprofile" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
-		<intercept-url pattern="/updateprofile" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>		
+		<intercept-url pattern="/editshippingaddress" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>		
+		<intercept-url pattern="/editbillingaddress" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>				
 
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/control**" access="hasRole('ROLE_ADMIN')"/>

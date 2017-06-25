@@ -46,6 +46,5 @@ public class AuthenticationController
 	{
 		return "component-nosuchplace";
 	}
-
 	
 }

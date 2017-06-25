@@ -6,7 +6,7 @@
 <div class="container-fluid text-center well-sm sitewise-header" ng-controller="headerControllerAJS">
 <div class="row">
 <a href="home" class="newpager"><button class="btn btn-black-home btn-arrow-right pull-left" style="outline:none;"><i class="glyphicon glyphicon-home"></i></button></a>
-<a href="profile"><button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">{{userData.firstName}}</button></a>
+<a href="profile"><button class="btn btn-black-full btn-arrow-right pull-left newpager" style="background-color: rgba(0,0,0,1.0);outline:none;">{{userData.firstName}}</button></a>
 <button class="btn btn-black-full btn-arrow-right pull-left" style="background-color: rgba(0,0,0,1.0);outline:none;">Order History</button>
 </div>
 </div>
@@ -61,7 +61,7 @@
 </td>
 
 <td class="well-sm">
-<a href="viewproduct-{{ci.productId}}"><button class="btn btn-black form-control special-button text-center" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px">View</button></a>
+<a href="viewproduct-{{ci.productId}}"><button class="btn btn-black form-control special-button text-center newpager" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px">View</button></a>
 </td>
 
 </tr>

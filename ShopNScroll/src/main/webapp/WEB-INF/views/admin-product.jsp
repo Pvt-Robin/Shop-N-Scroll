@@ -6,7 +6,7 @@
 <div class="well-sm sns-heading">
 
 <div class="btn-group admin-tab well-sm col-md-6">
-<!-- <a href="#" class="btn admin-tab-button">Ads</a> -->
+<a href="ads" class="btn admin-tab-button">Slider</a>
 <a href="user" class="btn admin-tab-button">Users</a>
 <a href="supplier" class="btn admin-tab-button">Suppliers</a>
 <a href="category" class="btn admin-tab-button">Category</a>
@@ -161,7 +161,7 @@
 </td>
 
 <td>{{p.supplier.supplierName}}</td>
-<td>
+<td width="150px">
 <!-- <a href="viewproduct-{{p.productId}}"><button class="special-icon btn btn btn-success" data-toggle="tooltip" title="View"><i class="glyphicon glyphicon-eye-open"></i></button></a> -->
 <a href="updateproduct-{{p.productId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>
 <a href="removeproduct-{{p.productId}}"><button class="special-icon btn btn btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-trash"></i></button></a>

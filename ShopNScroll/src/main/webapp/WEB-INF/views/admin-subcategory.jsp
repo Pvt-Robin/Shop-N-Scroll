@@ -6,7 +6,7 @@
 <div class="well-sm sns-heading">
 
 <div class="btn-group admin-tab well-sm col-md-6">
-<!-- <a href="#" class="btn admin-tab-button">Ads</a> -->
+<a href="ads" class="btn admin-tab-button">Slider</a>
 <a href="user" class="btn admin-tab-button">Users</a>
 <a href="supplier" class="btn admin-tab-button">Suppliers</a>
 <a href="category" class="btn admin-tab-button">Category</a>
@@ -87,7 +87,7 @@
 <td>{{sc.subCategoryName}}</td>
 <td>{{sc.subCategoryDescription}}</td>
 <td>{{sc.category.categoryName}}</td>
-<td>
+<td width="150px">
 <a href="updatesubcategory-{{sc.subCategoryId}}"><button class="special-icon btn btn btn-info" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-edit"></i></button></a>
 <a href="removesubcategory-{{sc.subCategoryId}}"><button class="special-icon btn btn btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-trash"></i></button></a>
 </td>

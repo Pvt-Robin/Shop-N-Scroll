@@ -20,7 +20,7 @@
 <h4><b>Please Try To SignUp Again.</b></h4>
 <br>
 <a href="reg">
-<button id="login" name="login" class="signup-button btn btn-lg btn-warning text-center">SignUp Again</button>
+<button id="login" name="login" class="signup-button btn btn-lg btn-warning text-center newpager">SignUp Again</button>
 </a>
 
 </div>

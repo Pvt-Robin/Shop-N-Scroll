@@ -1,7 +1,5 @@
 package com.arms.shopnscroll.dao;
 
-import java.util.List;
-
 import com.arms.shopnscroll.model.WishItems;
 
 public interface WishItemsDAO 

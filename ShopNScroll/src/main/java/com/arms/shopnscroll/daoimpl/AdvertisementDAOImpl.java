@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.arms.shopnscroll.dao.AdvertisementDAO;
 import com.arms.shopnscroll.model.Advertisement;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class AdvertisementDAOImpl implements AdvertisementDAO
@@ -15,10 +17,23 @@ public class AdvertisementDAOImpl implements AdvertisementDAO
 	@Autowired
 	SessionFactory sessionFactory;
 
-	public List<Advertisement> fetchFiveAds() 
+	public String fetchThreeAdsJSON() 
 	{
-		List<Advertisement> adList = sessionFactory.getCurrentSession().createQuery("select min(adTurns) from Advertisement ").getResultList();
-		return adList.subList(0, 4);
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		List<Advertisement> adList = sessionFactory.getCurrentSession().createQuery("from Advertisement where enabled = true order by adTurns").getResultList().subList(0, 4);
+		for(Advertisement temp:adList)
+		{
+			temp.setAdTurns(temp.getAdTurns() + 1);
+			addAd(temp);
+		}
+		return gson.toJson(adList);
+	}
+	
+	public String fetchAllAdsJSON() 
+	{
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		List<Advertisement> adList = sessionFactory.getCurrentSession().createQuery("from Advertisement").getResultList();
+		return gson.toJson(adList);
 	}
 
 	public Advertisement fetchOneAd(int adId) 
@@ -32,10 +47,9 @@ public class AdvertisementDAOImpl implements AdvertisementDAO
 		sessionFactory.getCurrentSession().saveOrUpdate(advertisement);
 	}
 
-	public void removeAd(int adId) 
+	public int fetchNoOfEnabledAd()
 	{
-		Advertisement thisAd = fetchOneAd(adId);
-		sessionFactory.getCurrentSession().delete(thisAd);
+		return sessionFactory.getCurrentSession().createQuery("from Advertisement where enabled = true").getResultList().size();
 	}
 	
 	

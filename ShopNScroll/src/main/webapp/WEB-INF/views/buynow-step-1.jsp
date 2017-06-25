@@ -101,7 +101,7 @@ ${thisCartItem.amount}
 </div>
 
 <c:if test="${not empty totalPrice}">
-<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right" value="Confirm"/>
+<input type="submit" id="continue" name="_eventId_continue" class="signup-button btn btn-lg btn-orange pull-right newpager" value="Confirm"/>
 </c:if>
 
 

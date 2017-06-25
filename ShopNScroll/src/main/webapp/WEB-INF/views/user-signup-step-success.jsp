@@ -21,7 +21,7 @@
 <h4><b>For Security Reasons,You Have To Log In Again.</b></h4>
 <br>
 <a href="login">
-<button id="login" name="login" class="signup-button btn btn-lg btn-orange text-center">Login Now</button>
+<button id="login" name="login" class="signup-button btn btn-lg btn-orange text-center newpager">Login Now</button>
 </a>
 
 </div>

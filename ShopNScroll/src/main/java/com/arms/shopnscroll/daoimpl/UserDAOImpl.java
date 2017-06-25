@@ -52,6 +52,12 @@ public class UserDAOImpl implements UserDAO
 		session.saveOrUpdate(user);
 	}
 
+	public List<User> fetchAllUserList() 
+	{
+		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User").getResultList();
+		return userList;
+	}
+	
 	public String fetchAllUser() 
 	{
 		List<User> userList = sessionFactory.getCurrentSession().createQuery("from User").getResultList();

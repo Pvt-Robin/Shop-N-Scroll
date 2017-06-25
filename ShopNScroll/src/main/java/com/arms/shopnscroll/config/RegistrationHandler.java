@@ -2,6 +2,9 @@ package com.arms.shopnscroll.config;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
@@ -29,8 +32,8 @@ public class RegistrationHandler extends AbstractFlowHandler
 	{
 		status = "success";
 
-		java.util.regex.Pattern pfn = java.util.regex.Pattern.compile("^[a-zA-Z]{3,12}$");
-        java.util.regex.Matcher mfn = pfn.matcher(user.getFirstName());
+		Pattern pfn = Pattern.compile("^[a-zA-Z]{3,12}$");
+        Matcher mfn = pfn.matcher(user.getFirstName());
         boolean fnameflag =  mfn.matches();
 		
 		if (user.getFirstName().isEmpty()) 
@@ -48,7 +51,7 @@ public class RegistrationHandler extends AbstractFlowHandler
 //			DO NOTHING
 		}
 
-		java.util.regex.Matcher mln = pfn.matcher(user.getLastName());
+		Matcher mln = pfn.matcher(user.getLastName());
         boolean lnameflag =  mln.matches();
 		
 		if (user.getLastName().isEmpty()) 
@@ -102,8 +105,8 @@ public class RegistrationHandler extends AbstractFlowHandler
 		status = "success";
 		
 		String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-        java.util.regex.Matcher m = p.matcher(user.getEmail());
+        Pattern p = Pattern.compile(ePattern);
+        Matcher m = p.matcher(user.getEmail());
         boolean emailflag =  m.matches();
         
 		if (user.getEmail().isEmpty()) 
@@ -116,9 +119,21 @@ public class RegistrationHandler extends AbstractFlowHandler
 			messageContext.addMessage(new MessageBuilder().error().source("email").defaultText("Invalid Email Format").build());
 			status = "failure";
 		}
+		else
+		{
+			List<User> userList = userService.fetchAllUserList();
+			for(User existinguser:userList)
+			{
+			if(existinguser.getEmail().equals(user.getEmail()))
+			{
+				messageContext.addMessage(new MessageBuilder().error().source("email").defaultText("Email Already Exists").build());
+				status = "failure";
+			}
+			}
+		}
 		
-        java.util.regex.Pattern p1 = java.util.regex.Pattern.compile("^[4-9]{1}[0-9]{9}$");
-        java.util.regex.Matcher m1 = p1.matcher(user.getContact());
+        Pattern p1 = Pattern.compile("^[4-9]{1}[0-9]{9}$");
+        Matcher m1 = p1.matcher(user.getContact());
         boolean noonly =  m1.matches();
         
 		if (user.getContact().isEmpty()) 
@@ -147,8 +162,8 @@ public class RegistrationHandler extends AbstractFlowHandler
 		}
         else
 		{
-        	java.util.regex.Pattern pass = java.util.regex.Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})");
-            java.util.regex.Matcher mpass = pass.matcher(user.getPassword());
+        	Pattern pass = Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})");
+            Matcher mpass = pass.matcher(user.getPassword());
             boolean strongpassword =  mpass.matches();
             
             if(!strongpassword)

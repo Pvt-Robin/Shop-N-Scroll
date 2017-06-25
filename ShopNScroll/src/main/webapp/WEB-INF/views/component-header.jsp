@@ -76,10 +76,10 @@
 			<div class="well-sm">
             <c:forEach var="ci" items="${categoryDataList}">
             <div class="navbar-section well col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <a href="productdisplay?browse=${ci.categoryName}" class="navbar-category text-center" style="margin-top: 3px;font-size: medium;font-weight: bold;width: 100%;">
+                <a href="productdisplay?browse=${ci.categoryName}" class="navbar-category text-center newpager" style="margin-top: 3px;font-size: medium;font-weight: bold;width: 100%;">
                  ${ci.categoryName}</a><br>
                 <c:forEach var="si" items="${ci.subCategory}">
-                <a href="productdisplay?browse=${si.subCategoryName}" class="navbar-subcategory"><button class="btn btn-xs btn-fame" style="margin-top: 3px;font-size: medium;">${si.subCategoryName}</button></a>
+                <a href="productdisplay?browse=${si.subCategoryName}" class="navbar-subcategory newpager"><button class="btn btn-xs btn-fame" style="margin-top: 3px;font-size: medium;">${si.subCategoryName}</button></a>
                 </c:forEach>
             </div>
             </c:forEach>
@@ -164,7 +164,7 @@
 </div>
 
 <div class="col-md-4 col-sm-4 col-xs-6">
-<a href="user">
+<a href="ads">
 <img class="profile-grid img-circle" src="resources/img/admin-edit.png" width="100%"/></a>
 <font class="shadowed-text">Data</font>
 </div>

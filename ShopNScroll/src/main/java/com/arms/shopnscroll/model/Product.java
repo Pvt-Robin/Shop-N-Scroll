@@ -68,7 +68,7 @@ public class Product
 	private String madeCountry;
 	
 	@NotNull(message="Stock Is Needed")
-	@Min(value=5, message="Cannot Be Less Than 5")
+	@Min(value=0, message="Cannot Be Less Than 0")
 	@Expose
 	private int stock;
 	

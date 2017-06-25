@@ -51,9 +51,9 @@
 
 <td class="well-sm btn-group">
 <br>
-<a href="viewproduct-{{ci.productId}}"><button class="btn btn-black special-button text-center" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">View</button></a>
-<a href="removefromwishlist-{{ci.wishId}}"><button class="btn btn-black text-center" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">Remove</button></a>
-<a href="addtocart-{{ci.productId}}-{{1}}"><button class="btn btn-black text-center" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">Add To Cart</button></a>
+<a href="viewproduct-{{ci.productId}}"><button class="btn btn-black special-button text-center newpager" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">View</button></a>
+<a href="removefromwishlist-{{ci.wishId}}"><button class="btn btn-black text-center newpager" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">Remove</button></a>
+<a href="addtocart-{{ci.productId}}-{{1}}"><button class="btn btn-black text-center newpager" style="margin-bottom: 2px; border-radius: 10px 10px 10px 10px;">Add To Cart</button></a>
 </td>
 
 </tr>
